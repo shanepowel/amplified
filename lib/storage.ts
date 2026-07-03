@@ -1,6 +1,6 @@
 import { type ConsultationRequest, type InsertConsultationRequest, type AiWasteCalculation, type InsertAiWasteCalculation, consultationRequests, aiWasteCalculations } from "@shared/schema";
 import { randomUUID } from "crypto";
-import { db } from "./db";
+import { getDb } from "./db";
 
 export interface IStorage {
   createConsultationRequest(request: InsertConsultationRequest): Promise<ConsultationRequest>;
@@ -53,21 +53,21 @@ export class MemStorage implements IStorage {
 
 export class DbStorage implements IStorage {
   async createConsultationRequest(insertRequest: InsertConsultationRequest): Promise<ConsultationRequest> {
-    const [request] = await db.insert(consultationRequests).values(insertRequest).returning();
+    const [request] = await getDb().insert(consultationRequests).values(insertRequest).returning();
     return request;
   }
 
   async getConsultationRequests(): Promise<ConsultationRequest[]> {
-    return await db.select().from(consultationRequests);
+    return await getDb().select().from(consultationRequests);
   }
 
   async createAiWasteCalculation(insertCalculation: InsertAiWasteCalculation): Promise<AiWasteCalculation> {
-    const [calculation] = await db.insert(aiWasteCalculations).values(insertCalculation).returning();
+    const [calculation] = await getDb().insert(aiWasteCalculations).values(insertCalculation).returning();
     return calculation;
   }
 
   async getAiWasteCalculations(): Promise<AiWasteCalculation[]> {
-    return await db.select().from(aiWasteCalculations);
+    return await getDb().select().from(aiWasteCalculations);
   }
 }
 

@@ -1,10 +1,22 @@
-import { drizzle } from "drizzle-orm/neon-http";
+import { drizzle, type NeonHttpDatabase } from "drizzle-orm/neon-http";
 import { neon } from "@neondatabase/serverless";
 import * as schema from "@shared/schema";
 
-if (!process.env.DATABASE_URL) {
-  throw new Error("DATABASE_URL environment variable is required");
-}
+type AppDatabase = NeonHttpDatabase<typeof schema>;
 
-const sql = neon(process.env.DATABASE_URL);
-export const db = drizzle(sql, { schema });
+let dbInstance: AppDatabase | null = null;
+
+/**
+ * Returns the Drizzle database client. Initialised lazily so Next.js can build
+ * without DATABASE_URL; routes fail at request time if the variable is missing.
+ */
+export function getDb(): AppDatabase {
+  if (!dbInstance) {
+    const url = process.env.DATABASE_URL;
+    if (!url) {
+      throw new Error("DATABASE_URL environment variable is required");
+    }
+    dbInstance = drizzle(neon(url), { schema });
+  }
+  return dbInstance;
+}
