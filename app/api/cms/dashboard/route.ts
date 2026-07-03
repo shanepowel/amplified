@@ -1,7 +1,10 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
+import { requireAdminApiKey } from '../../../../lib/api-auth';
 import { cmsService } from '../../../../lib/services/cms';
 
-export async function GET() {
+export async function GET(request: NextRequest) {
+  const authError = requireAdminApiKey(request);
+  if (authError) return authError;
   try {
     const stats = await cmsService.getDashboardStats();
     return NextResponse.json({ success: true, data: stats });

@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import { getAllEngagements } from '../../lib/content/engagements';
+import { EngagementsPageClient } from '../../client/src/components/engagements-page-client';
 
 export const metadata: Metadata = {
   title: 'Engagements | Productised consulting for delivery directors and CIOs | Amplified',
@@ -20,9 +22,7 @@ export const metadata: Metadata = {
   },
 };
 
-import { PageWrapper } from '../../client/src/components/page-wrapper';
-import Engagements from '../../client/src/pages/engagements';
-
-export default function Page() {
-  return <PageWrapper component={Engagements} />;
+export default async function Page() {
+  const engagements = await getAllEngagements();
+  return <EngagementsPageClient engagements={engagements} />;
 }

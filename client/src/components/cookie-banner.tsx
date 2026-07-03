@@ -19,6 +19,7 @@ const CookieBanner = () => {
   const handleAcceptAll = () => {
     localStorage.setItem("cookie-consent", "all");
     localStorage.setItem("analytics-cookies", "accepted");
+    window.dispatchEvent(new Event("amplified:cookie-consent"));
     setIsVisible(false);
   };
 

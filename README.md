@@ -37,6 +37,9 @@ leads are stored in Postgres and forwarded to HubSpot CRM.
    keys are optional for local development — the app falls back to bundled
    content and disables the relevant features when a key is missing.
 
+   Set `ADMIN_API_KEY` in production to protect internal API routes
+   (`/api/consultation-requests`, `/api/crm/*`, `/api/cms/dashboard`).
+
 3. Push the database schema (for consultation requests and AI waste leads):
 
    ```bash

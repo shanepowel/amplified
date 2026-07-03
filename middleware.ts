@@ -50,11 +50,11 @@ export function middleware(request: NextRequest) {
     'Content-Security-Policy',
     [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.hs-scripts.com https://js.hsforms.net https://js.usemessages.com https://js.hubspot.com https://chimpstatic.com https://static.mailchimp.com",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.hs-scripts.com https://js.hsforms.net https://js.usemessages.com https://js.hubspot.com https://chimpstatic.com https://static.mailchimp.com https://www.googletagmanager.com",
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "font-src 'self' https://fonts.gstatic.com",
       "img-src 'self' data: blob: https: http:",
-      "connect-src 'self' https://api.hubapi.com https://forms.hubspot.com wss: ws:",
+      "connect-src 'self' https://api.hubapi.com https://forms.hubspot.com https://www.googletagmanager.com https://www.google-analytics.com wss: ws:",
       "frame-src 'self' https://meetings.hubspot.com",
     ].join('; ')
   );

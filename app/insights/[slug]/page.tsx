@@ -13,7 +13,7 @@ export async function generateMetadata(
     .join(' ');
 
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:5000';
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://amplified.co.uk';
     const res = await fetch(`${baseUrl}/api/cms/content/insight`, { next: { revalidate: 300 } });
     if (res.ok) {
       const data = await res.json();

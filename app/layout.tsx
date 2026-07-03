@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter, Fraunces } from 'next/font/google';
 import './globals.css';
+import { AnalyticsScripts, GoogleTagManagerNoScript } from '../client/src/components/analytics-scripts';
 import { Providers } from '../client/src/components/providers';
 
 const inter = Inter({
@@ -122,17 +123,20 @@ export const metadata: Metadata = {
     icon: '/favicon.png',
     shortcut: '/favicon.png',
   },
+  manifest: '/manifest.json',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning className={`${inter.variable} ${fraunces.variable}`}>
       <body className={inter.className}>
+        <GoogleTagManagerNoScript />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organisationJsonLd) }}
         />
         <Providers>{children}</Providers>
+        <AnalyticsScripts />
       </body>
     </html>
   );

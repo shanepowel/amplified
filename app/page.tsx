@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import { getAllEngagements } from '../lib/content/engagements';
+import { HomePageClient } from '../client/src/components/home-page-client';
 
 export const metadata: Metadata = {
   title: 'Amplified | Rigour for serious change',
@@ -23,9 +25,7 @@ export const metadata: Metadata = {
   },
 };
 
-import { PageWrapper } from '../client/src/components/page-wrapper';
-import Home from '../client/src/pages/home';
-
-export default function Page() {
-  return <PageWrapper component={Home} />;
+export default async function Page() {
+  const engagements = await getAllEngagements();
+  return <HomePageClient engagements={engagements} />;
 }

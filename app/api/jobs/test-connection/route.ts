@@ -1,7 +1,10 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
+import { requireAdminApiKey } from '../../../../lib/api-auth';
 import { getTalentHRService } from '../../../../lib/services/talenthr';
 
-export async function GET() {
+export async function GET(request: NextRequest) {
+  const authError = requireAdminApiKey(request);
+  if (authError) return authError;
   try {
     const talentHR = getTalentHRService();
     const isConnected = await talentHR.testConnection();

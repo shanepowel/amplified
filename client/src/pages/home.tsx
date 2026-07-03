@@ -8,31 +8,13 @@ import ServiceSpotlight from "@/components/service-spotlight";
 import Image from "next/image";
 import strategicThinkingImage from "@assets/50_1760470599806.webp";
 import networkImage from "@assets/46_1760470581285.webp";
+import type { Engagement } from "@/lib/engagements";
+import { engagements as fallbackEngagements } from "@/lib/engagements";
 
 interface HomeProps {
   onOpenConsultation: (serviceType?: string) => void;
+  engagements?: Engagement[];
 }
-
-const heroEngagements = [
-  {
-    name: "Squad Blueprint",
-    duration: "6 weeks",
-    slug: "squad-blueprint",
-    outcome: "A delivery operating model your leadership has signed off on.",
-  },
-  {
-    name: "The Forge",
-    duration: "4 weeks",
-    slug: "the-forge",
-    outcome: "A programme that runs from day one rather than discovering itself in flight.",
-  },
-  {
-    name: "Delivery Compass",
-    duration: "8 weeks",
-    slug: "delivery-compass",
-    outcome: "An AI governance framework integrated with how you actually deliver.",
-  },
-];
 
 const proofPoints = [
   { metric: "40+", label: "Engagements delivered", detail: "Discovery to handover, no open-ended retainers" },
@@ -161,7 +143,20 @@ const insightCards = [
   },
 ];
 
-const Home = memo(function Home({ onOpenConsultation }: HomeProps) {
+const Home = memo(function Home({ onOpenConsultation, engagements: engagementsProp }: HomeProps) {
+  const engagements = engagementsProp ?? fallbackEngagements;
+  const heroEngagements = engagements.map((eng) => ({
+    name: eng.name,
+    duration: eng.duration,
+    slug: eng.slug,
+    outcome: eng.oneLineOutcome || eng.outcome,
+  }));
+  const workCards = engagements.map((eng) => ({
+    slug: eng.slug,
+    duration: eng.duration,
+    title: eng.name,
+    body: eng.oneLineOutcome || eng.outcome,
+  }));
   const [heroRef, heroVisible] = useReveal(0.05);
   const [tensionRef, tensionVisible] = useReveal();
   const [ampRef, ampVisible] = useReveal();
@@ -372,26 +367,7 @@ const Home = memo(function Home({ onOpenConsultation }: HomeProps) {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border-l border-t" style={{ borderColor: "#E5E3EE" }}>
-            {[
-              {
-                slug: "squad-blueprint",
-                duration: "Six weeks",
-                title: "Squad Blueprint",
-                body: "A redesigned delivery operating model for engineering and delivery functions of fifty people or more. You leave with squads, charters, and accountabilities your leadership has signed off on, and a 90-day adoption plan in execution.",
-              },
-              {
-                slug: "the-forge",
-                duration: "Four weeks",
-                title: "The Forge",
-                body: "A launch intensive for new programmes, designed to get governance, operating cadence, and supplier model right before delivery starts. You leave with a programme that is ready to run rather than one that is still figuring itself out in flight.",
-              },
-              {
-                slug: "delivery-compass",
-                duration: "Eight weeks",
-                title: "Delivery Compass",
-                body: "AI governance and delivery alignment for organisations where AI usage has outpaced oversight. You leave with an inventory of what is running where, a governance framework aligned to the regulators that apply to you, and a 90-day action plan.",
-              },
-            ].map((card) => (
+            {workCards.map((card) => (
               <Link
                 href={`/engagements/${card.slug}`}
                 key={card.slug}

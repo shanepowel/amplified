@@ -1,17 +1,20 @@
 'use client';
 
+import type { Engagement } from "@/lib/engagements";
+import { engagements as fallbackEngagements } from "@/lib/engagements";
 import Link from "next/link";
 import { memo } from "react";
-import { ArrowRight, Clock, Tag, Users } from "lucide-react";
-import { engagements } from "@/lib/engagements";
+import { ArrowRight, Clock, Tag } from "lucide-react";
 
 interface Props {
   onOpenConsultation: (serviceType?: string) => void;
+  engagements?: Engagement[];
 }
 
 const accentBgs = ["#181F4F", "#60266A", "#181F4F"];
 
-export default memo(function Engagements({ onOpenConsultation }: Props) {
+export default memo(function Engagements({ onOpenConsultation, engagements: engagementsProp }: Props) {
+  const engagements = engagementsProp ?? fallbackEngagements;
   return (
     <div className="min-h-screen font-sans" style={{ backgroundColor: "#FFFFFF" }}>
       {/* Breadcrumb */}
