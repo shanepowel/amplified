@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { requireAdminApiKey } from '../../../lib/api-auth';
 import { storage } from '../../../lib/storage';
 
+export const dynamic = 'force-dynamic';
+
 export async function GET(request: NextRequest) {
   const authError = requireAdminApiKey(request);
   if (authError) return authError;

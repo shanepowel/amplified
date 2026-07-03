@@ -71,4 +71,9 @@ export class DbStorage implements IStorage {
   }
 }
 
-export const storage = new DbStorage();
+function createStorage(): IStorage {
+  return process.env.DATABASE_URL ? new DbStorage() : new MemStorage();
+}
+
+/** Resolved per serverless invocation; never throws during module initialisation. */
+export const storage = createStorage();

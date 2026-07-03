@@ -4,6 +4,8 @@ import { insertConsultationRequestSchema } from '@shared/schema';
 import { emailService } from '../../../lib/services/email';
 import { crmService } from '../../../lib/services/crm';
 
+export const dynamic = 'force-dynamic';
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
