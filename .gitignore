@@ -1,0 +1,16 @@
+node_modules
+dist
+.next
+out
+.DS_Store
+*.tar.gz
+tsconfig.tsbuildinfo
+
+# Env
+.env
+.env.local
+.env.*.local
+
+# Sanity
+.sanity
+sanity/dist
