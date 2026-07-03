@@ -87,19 +87,13 @@ in Postgres into your Sanity dataset:
 npm run seed:sanity
 ```
 
-Requires `NEXT_PUBLIC_SANITY_PROJECT_ID`, `SANITY_API_WRITE_TOKEN`, and (to
-migrate insights) `DATABASE_URL`.
+Requires `NEXT_PUBLIC_SANITY_PROJECT_ID` and `SANITY_API_WRITE_TOKEN`.
 
 ### Fallback behaviour
 
-When Sanity is not configured (no project ID), the site renders the bundled
-TypeScript engagement data and serves insights from Postgres. This keeps local
-development and the build working before Sanity is connected.
-
-> Note: the engagements hub and homepage list render from the bundled
-> TypeScript engagement data. The engagement detail pages and server-rendered
-> surfaces (sitemap, the assistant, the playbook PDF) read from Sanity when it
-> is configured.
+When Sanity is not configured (no project ID), the site renders bundled
+TypeScript content for engagements, insights, and case studies. This keeps
+local development and the build working before Sanity is connected.
 
 ## Deploying to Vercel
 
@@ -123,7 +117,6 @@ the build.
 | `npm run start` | Run the production build |
 | `npm run check` | Type-check with `tsc` |
 | `npm run db:push` | Push the Drizzle schema to Postgres |
-| `npm run seed:articles` | Seed the bundled articles into Postgres |
 | `npm run seed:sanity` | Seed Sanity with bundled content |
 
 ## Project structure

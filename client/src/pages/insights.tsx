@@ -15,7 +15,7 @@ import { Calendar, ArrowRight, BookOpen, TrendingUp, Users, Shield, Clock, Light
 import dynamic from "next/dynamic";
 const NewsletterModal = dynamic(() => import("@/components/newsletter-modal"), { ssr: false });
 import Image from "next/image";
-import type { ContentItem } from "@shared/schema";
+import type { InsightItem } from "@/lib/content/types";
 
 interface InsightsProps {
   onOpenConsultation: (serviceType?: string) => void;
@@ -39,7 +39,7 @@ export default function Insights({ onOpenConsultation }: InsightsProps) {
   const [selectedType, setSelectedType] = useState<string>("all");
   const [sortBy, setSortBy] = useState<string>("date-desc");
 
-  const { data: response, isLoading } = useQuery<{ success: boolean; data: ContentItem[] }>({
+  const { data: response, isLoading } = useQuery<{ success: boolean; data: InsightItem[] }>({
     queryKey: ["/api/cms/content", "insight"],
   });
 

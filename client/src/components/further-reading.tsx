@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import { Link } from "wouter";
+import Link from "next/link";
 import { ArrowRight, Clock } from "lucide-react";
-import type { ContentItem } from "@shared/schema";
+import type { InsightItem } from "@/lib/content/types";
 
 interface ArticleContent {
   description?: string;
@@ -18,7 +18,7 @@ interface FurtherReadingProps {
 }
 
 export function FurtherReading({ tags, maxArticles = 3, currentSlug }: FurtherReadingProps) {
-  const { data: response } = useQuery<{ success: boolean; data: ContentItem[] }>({
+  const { data: response } = useQuery<{ success: boolean; data: InsightItem[] }>({
     queryKey: ["/api/cms/content", "insight"],
   });
 

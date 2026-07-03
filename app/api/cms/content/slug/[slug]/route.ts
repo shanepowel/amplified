@@ -2,12 +2,11 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getInsightBySlug } from '../../../../../../lib/content/insights';
 
 export async function GET(
-  request: NextRequest,
+  _request: NextRequest,
   { params }: { params: Promise<{ slug: string }> }
 ) {
   try {
     const { slug } = await params;
-    // Prefers Sanity, falling back to the bundled CMS content by slug.
     const content = await getInsightBySlug(slug);
     if (!content) {
       return NextResponse.json({ success: false, error: 'Content not found' }, { status: 404 });

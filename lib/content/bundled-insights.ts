@@ -1,6 +1,6 @@
-import { storage } from '../lib/storage';
+import type { BundledInsightSeed, InsightItem } from './types';
 
-const articles = [
+export const bundledInsights: BundledInsightSeed[] = [
   {
     id: `content-article-001`,
     type: 'insight' as const,
@@ -1424,42 +1424,17 @@ The organisations that have made this investment, and made it specifically for g
   },
 ];
 
-async function seedArticles() {
-  console.log('Seeding articles...');
-
-  for (const article of articles) {
-    const existing = await storage.getContentItemBySlug(article.slug);
-    if (existing) {
-      console.log(`Article already exists: ${article.slug}, updating...`);
-      await storage.updateContentItem(existing.id, {
-        title: article.title,
-        content: article.content,
-        status: article.status,
-        modifiedBy: article.modifiedBy,
-        version: article.version,
-      });
-      console.log(`Updated: ${article.title}`);
-      continue;
-    }
-
-    await storage.createContentItem({
-      id: article.id,
-      type: article.type,
-      title: article.title,
-      slug: article.slug,
-      content: article.content,
-      status: article.status,
-      modifiedBy: article.modifiedBy,
-      version: article.version,
-    });
-    console.log(`Created: ${article.title}`);
-  }
-
-  console.log('Done seeding articles.');
-  process.exit(0);
+export function getBundledInsights(): InsightItem[] {
+  return bundledInsights.map((article) => ({
+    id: article.id,
+    type: 'insight' as const,
+    title: article.title,
+    slug: article.slug,
+    content: article.content,
+    status: article.status,
+    modifiedBy: article.modifiedBy,
+    version: article.version,
+    lastModified: article.content.date ? new Date(article.content.date) : new Date(),
+    createdAt: article.content.date ? new Date(article.content.date) : new Date(),
+  }));
 }
-
-seedArticles().catch((err) => {
-  console.error('Seed failed:', err);
-  process.exit(1);
-});

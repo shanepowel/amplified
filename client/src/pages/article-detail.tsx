@@ -1,7 +1,8 @@
 'use client';
 
 import { useEffect, useState } from "react";
-import { useRoute, Link } from "wouter";
+import Link from "next/link";
+import { useParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
@@ -158,7 +159,8 @@ function FAQAccordion({ faqs }: { faqs: FAQItem[] }) {
 }
 
 export default function ArticleDetail({ onOpenConsultation }: ArticleDetailProps) {
-  const [, params] = useRoute("/insights/:slug");
+  const params = useParams<{ slug: string }>();
+  const slug = params?.slug;
   const [article, setArticle] = useState<ArticleContent | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -166,10 +168,10 @@ export default function ArticleDetail({ onOpenConsultation }: ArticleDetailProps
 
   useEffect(() => {
     const fetchArticle = async () => {
-      if (!params?.slug) return;
+      if (!slug) return;
       try {
         setIsLoading(true);
-        const response = await fetch(`/api/cms/content/slug/${params.slug}`);
+        const response = await fetch(`/api/cms/content/slug/${slug}`);
         const data = await response.json();
         if (!data.success) { setError("Article not found"); return; }
         setArticle(data.data);
@@ -181,7 +183,7 @@ export default function ArticleDetail({ onOpenConsultation }: ArticleDetailProps
       }
     };
     fetchArticle();
-  }, [params?.slug]);
+  }, [slug]);
 
   const articleUrl = article ? `https://amplified.co.uk/insights/${article.slug}` : undefined;
   const articleTags = article?.content?.tags || [];

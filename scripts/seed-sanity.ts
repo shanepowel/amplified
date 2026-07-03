@@ -1,12 +1,11 @@
 /**
  * Seeds the Sanity dataset with the bundled engagements, insights, case
- * studies, and manifesto so the new CMS starts populated.
+ * studies, and manifesto so the CMS starts populated.
  *
  * Requirements (set in .env.local before running):
  *   NEXT_PUBLIC_SANITY_PROJECT_ID
  *   NEXT_PUBLIC_SANITY_DATASET            (defaults to "production")
  *   SANITY_API_WRITE_TOKEN                (Editor/Write token)
- *   DATABASE_URL                          (only needed to migrate insights)
  *
  * Run with:  npm run seed:sanity
  */
@@ -14,8 +13,7 @@ import { createClient } from '@sanity/client';
 import { engagements } from '../client/src/lib/engagements';
 import { manifestoClaims } from '../client/src/lib/manifesto';
 import { caseStudies } from '../client/src/lib/case-studies';
-import { storage } from '../lib/storage';
-import type { ContentItem } from '../shared/schema';
+import { getBundledInsights } from '../lib/content/bundled-insights';
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production';
@@ -38,13 +36,6 @@ const client = createClient({
   token,
   useCdn: false,
 });
-
-function slugify(value: string): string {
-  return value
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '');
-}
 
 async function seedEngagements() {
   console.log(`Seeding ${engagements.length} engagements...`);
@@ -127,37 +118,30 @@ async function seedSiteSettings() {
 }
 
 async function seedInsights() {
-  let items: ContentItem[] = [];
-  try {
-    items = await storage.getContentItemsByType('insight');
-  } catch (error) {
-    console.warn('Could not read insights from the database (set DATABASE_URL to migrate them). Skipping insights.');
-    return;
-  }
+  const items = getBundledInsights();
 
   if (items.length === 0) {
-    console.warn('No insights found in the database. Skipping insights.');
+    console.warn('No bundled insights found. Skipping insights.');
     return;
   }
 
   console.log(`Seeding ${items.length} insights...`);
   for (const item of items) {
-    const content = (item.content || {}) as Record<string, unknown>;
-    const slug = item.slug || slugify(item.title);
+    const content = item.content;
     await client.createOrReplace({
-      _id: `insight-${slug}`,
+      _id: `insight-${item.slug}`,
       _type: 'insight',
       title: item.title,
-      slug: { _type: 'slug', current: slug },
-      category: (content.type as string) || undefined,
-      description: (content.description as string) || undefined,
-      imageUrl: (content.image as string) || undefined,
-      date: (content.date as string) || undefined,
-      readTime: (content.readTime as string) || undefined,
-      author: (content.author as string) || undefined,
-      keyTakeaways: (content.keyTakeaways as string[]) || undefined,
-      body: (content.body as string) || undefined,
-      sources: (content.sources as string) || undefined,
+      slug: { _type: 'slug', current: item.slug },
+      category: content.type || undefined,
+      description: content.description || undefined,
+      imageUrl: content.image || undefined,
+      date: content.date || undefined,
+      readTime: content.readTime || undefined,
+      author: content.author || undefined,
+      keyTakeaways: content.keyTakeaways || undefined,
+      body: content.body || undefined,
+      sources: content.sources || undefined,
     });
     console.log(`  - ${item.title}`);
   }
