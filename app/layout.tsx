@@ -3,6 +3,7 @@ import { Inter, Fraunces } from 'next/font/google';
 import './globals.css';
 import { AnalyticsScripts, GoogleTagManagerNoScript } from '../client/src/components/analytics-scripts';
 import { Providers } from '../client/src/components/providers';
+import { Analytics } from '@vercel/analytics/next';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -137,6 +138,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
         <Providers>{children}</Providers>
         <AnalyticsScripts />
+        <Analytics />
       </body>
     </html>
   );
