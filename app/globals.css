@@ -67,11 +67,37 @@
 
   html {
     scroll-behavior: smooth;
+    overflow-x: clip;
   }
 
   body {
     @apply font-sans antialiased bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
+    overflow-x: clip;
+  }
+
+  /* Prevent flex/grid children from forcing horizontal overflow. */
+  img,
+  svg,
+  video,
+  canvas {
+    max-width: 100%;
+    height: auto;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  li,
+  dd,
+  dt,
+  blockquote {
+    overflow-wrap: anywhere;
+    word-break: break-word;
   }
 }
 
@@ -101,6 +127,31 @@
     outline-offset: 3px;
     box-shadow: 0 0 0 1px #ffffff;
     border-radius: 4px;
+  }
+
+  /* Layout safety utilities used by the design system */
+  .amp-min-w-0 {
+    min-width: 0;
+  }
+
+  .amp-text-safe {
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    text-wrap: balance;
+  }
+
+  .amp-equal-card {
+    @apply flex h-full min-h-0 min-w-0 flex-col overflow-hidden;
+  }
+
+  .amp-border-grid {
+    @apply border-l border-t border-[#E5E3EE];
+  }
+
+  .amp-border-cell {
+    @apply border-r border-b border-[#E5E3EE];
   }
 }
 

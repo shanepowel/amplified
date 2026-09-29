@@ -10,6 +10,16 @@ import strategicThinkingImage from "@assets/50_1760470599806.webp";
 import networkImage from "@assets/46_1760470581285.webp";
 import type { Engagement } from "@/lib/engagements";
 import { engagements as fallbackEngagements } from "@/lib/engagements";
+import {
+  AmpButton,
+  Container,
+  Eyebrow,
+  Grid,
+  Section,
+  Stack,
+  Surface,
+  Text,
+} from "@/components/system";
 
 interface HomeProps {
   onOpenConsultation: (serviceType?: string) => void;
@@ -168,332 +178,259 @@ const Home = memo(function Home({ onOpenConsultation, engagements: engagementsPr
 
 
   return (
-    <div className="min-h-screen font-sans">
+    <div className="min-h-screen min-w-0 overflow-x-clip font-sans">
       {/* SECTION 1: HERO */}
       <section
         ref={heroRef}
-        className="relative min-h-screen flex items-center overflow-hidden"
-        style={{ backgroundColor: "#181F4F" }}
+        className="relative flex min-h-screen items-center overflow-hidden bg-[#181F4F]"
       >
         <div
-          className="absolute inset-0 pointer-events-none"
+          className="pointer-events-none absolute inset-0"
           style={{
             background:
               "radial-gradient(circle at 80% 20%, rgba(96, 38, 106, 0.15) 0%, transparent 60%)",
           }}
         />
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 w-full py-32 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-16 items-center">
-            {/* Left column */}
-            <div
-              className="lg:col-span-3 space-y-8"
+        <Container className="relative z-10 w-full py-24 lg:py-32">
+          <Grid cols="5-hero" gap="xl" equal={false} className="items-center">
+            <Stack
+              gap="xl"
+              className="lg:col-span-3"
               style={{
                 opacity: heroVisible ? 1 : 0,
                 transform: heroVisible ? "translateY(0)" : "translateY(24px)",
                 transition: "opacity 0.7s ease, transform 0.7s ease",
               }}
             >
-              <p
-                className="font-mono text-xs uppercase tracking-[0.12em]"
-                style={{ color: "#F85C70" }}
-              >
-                A productised digital consultancy
-              </p>
-
-              <h1
-                className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white leading-[1.05] break-words"
-                style={{ fontWeight: 400 }}
-              >
+              <Eyebrow>A productised digital consultancy</Eyebrow>
+              <Text variant="display" tone="white">
                 Rigour for serious change, in the work and in the room.
-              </h1>
-
-              <p
-                className="text-lg leading-relaxed max-w-[560px]"
-                style={{ color: "rgba(255,255,255,0.80)" }}
-              >
+              </Text>
+              <Text variant="lead" tone="white-80" className="max-w-[560px]">
                 We partner with leaders accountable for AI, delivery, and the change that has to land in front of a board.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-4 pt-2 items-start">
-                <a href="#how-we-work">
-                  <button
-                    className="amp-focus-ring-on-navy inline-flex items-center gap-2 px-8 h-12 font-sans font-bold text-base rounded transition-colors duration-200"
-                    style={{ backgroundColor: "#F85C70", color: "#181F4F" }}
-                    onMouseOver={(e) => { (e.currentTarget as HTMLButtonElement).style.backgroundColor = "#d94a5e"; }}
-                    onMouseOut={(e) => { (e.currentTarget as HTMLButtonElement).style.backgroundColor = "#F85C70"; }}
-                    data-testid="button-hero-see-how-we-work"
-                  >
+              </Text>
+              <Stack direction="row-responsive" gap="md" align="start" className="pt-2">
+                <AmpButton asChild data-testid="button-hero-see-how-we-work">
+                  <a href="#how-we-work">
                     See how we work <ArrowRight className="h-4 w-4" />
-                  </button>
-                </a>
-                <Link href="/contact">
-                  <button
-                    className="amp-focus-ring-on-navy inline-flex items-center gap-2 px-8 h-12 font-sans font-semibold text-base rounded border transition-colors duration-200"
-                    style={{ backgroundColor: "transparent", color: "white", borderColor: "rgba(255,255,255,0.45)" }}
-                    onMouseOver={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,255,255,0.80)"; }}
-                    onMouseOut={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,255,255,0.45)"; }}
-                    data-testid="button-hero-talk-to-us"
-                  >
-                    Talk to us
-                  </button>
-                </Link>
-              </div>
-            </div>
+                  </a>
+                </AmpButton>
+                <AmpButton asChild variant="outlineLight" data-testid="button-hero-talk-to-us">
+                  <Link href="/contact">Talk to us</Link>
+                </AmpButton>
+              </Stack>
+            </Stack>
 
-            {/* Right column, quiet engagement summary */}
             <div
-              className="lg:col-span-2"
+              className="min-w-0 lg:col-span-2"
               style={{
                 opacity: heroVisible ? 1 : 0,
                 transform: heroVisible ? "translateY(0)" : "translateY(24px)",
                 transition: "opacity 0.7s ease 0.2s, transform 0.7s ease 0.2s",
               }}
             >
-              <div
-                className="rounded-lg p-6"
-                style={{ backgroundColor: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.10)" }}
-              >
-                <p
-                  className="font-mono text-xs uppercase tracking-[0.12em] mb-5"
-                  style={{ color: "rgba(255,255,255,0.45)" }}
-                >
+              <Surface variant="inset" padding="md" radius="md" className="h-full">
+                <Eyebrow tone="white-45" className="mb-5">
                   Three productised engagements
-                </p>
-                <ul className="space-y-0">
+                </Eyebrow>
+                <ul className="min-w-0 space-y-0">
                   {heroEngagements.map((eng) => (
-                    <li key={eng.slug}>
+                    <li key={eng.slug} className="min-w-0">
                       <Link
                         href={`/engagements/${eng.slug}`}
-                        className="amp-focus-ring-on-navy group block py-4 border-t"
-                        style={{ borderColor: "rgba(255,255,255,0.10)" }}
+                        className="amp-focus-ring-on-navy group block border-t border-white/10 py-4"
                         data-testid={`link-hero-engagement-${eng.slug}`}
                       >
-                        <div className="flex items-baseline justify-between gap-4">
-                          <span
-                            className="font-display text-xl text-white group-hover:text-[#F85C70] transition-colors duration-200"
-                            style={{ fontWeight: 400 }}
+                        <Stack direction="row" justify="between" align="baseline" gap="md">
+                          <Text
+                            as="span"
+                            variant="h4"
+                            tone="white"
+                            className="text-xl transition-colors duration-200 group-hover:text-[#F85C70]"
                           >
                             {eng.name}
-                          </span>
-                          <span
-                            className="font-mono text-xs uppercase tracking-[0.12em] flex-shrink-0"
-                            style={{ color: "rgba(255,255,255,0.45)" }}
-                          >
+                          </Text>
+                          <Text as="span" variant="eyebrow" tone="white-45" className="shrink-0">
                             {eng.duration}
-                          </span>
-                        </div>
-                        <p
-                          className="font-sans text-sm leading-snug max-h-24 opacity-100 mt-2 overflow-hidden [@media(hover:hover)]:max-h-0 [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:mt-0 group-hover:[@media(hover:hover)]:max-h-24 group-hover:[@media(hover:hover)]:opacity-100 group-hover:[@media(hover:hover)]:mt-2 group-focus-visible:[@media(hover:hover)]:max-h-24 group-focus-visible:[@media(hover:hover)]:opacity-100 group-focus-visible:[@media(hover:hover)]:mt-2 transition-all duration-300 ease-out"
-                          style={{ color: "rgba(255,255,255,0.7)" }}
-                        >
+                          </Text>
+                        </Stack>
+                        <Text variant="small" tone="white-70" clamp={2} className="mt-2">
                           {eng.outcome}
-                        </p>
+                        </Text>
                       </Link>
                     </li>
                   ))}
                 </ul>
-              </div>
+              </Surface>
             </div>
-          </div>
-        </div>
-        {/* Bottom accent line */}
-        <div
-          className="absolute bottom-0 left-0 right-0 h-px"
-          style={{ backgroundColor: "rgba(248,92,112,0.4)" }}
-        />
+          </Grid>
+        </Container>
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-[#F85C70]/40" />
       </section>
 
       {/* SECTION 1b: PROOF STRIP */}
-      <section
+      <Section
         aria-label="Credentials and reach"
-        className="py-12 lg:py-14 border-b"
-        style={{ backgroundColor: "#FFFFFF", borderColor: "#E5E3EE" }}
+        tone="white"
+        padding="sm"
+        className="border-b border-[#E5E3EE]"
       >
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="font-mono text-xs uppercase tracking-[0.12em] mb-6" style={{ color: "#6B6E81" }}>
-            Built for industries where rigour is not optional
-          </p>
-          <dl
-            className="grid grid-cols-2 lg:grid-cols-4 gap-0 border-l border-t"
-            style={{ borderColor: "#E5E3EE" }}
-            data-testid="list-home-proof-strip"
-          >
-            {proofPoints.map((p) => (
-              <div
-                key={p.label}
-                className="p-6 lg:p-7 border-r border-b flex flex-col"
-                style={{ borderColor: "#E5E3EE" }}
-              >
-                <dt
-                  className="font-display text-2xl lg:text-3xl mb-3 leading-tight"
-                  style={{ color: "#181F4F", fontWeight: 400 }}
-                >
+        <Eyebrow tone="subtle" className="mb-6">
+          Built for industries where rigour is not optional
+        </Eyebrow>
+        <dl className="amp-border-grid grid grid-cols-2 lg:grid-cols-4" data-testid="list-home-proof-strip">
+          {proofPoints.map((p) => (
+            <div key={p.label} className="amp-border-cell amp-equal-card p-6 lg:p-7">
+              <dt>
+                <Text variant="h3" className="mb-3 text-2xl lg:text-3xl" clamp={2}>
                   {p.metric}
-                </dt>
-                <dd className="flex-1">
-                  <p className="font-sans text-sm font-semibold mb-1.5" style={{ color: "#181F4F" }}>
-                    {p.label}
-                  </p>
-                  <p className="font-sans text-xs leading-relaxed" style={{ color: "#65677B" }}>
-                    {p.detail}
-                  </p>
-                </dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-      </section>
+                </Text>
+              </dt>
+              <dd className="min-w-0 flex-1">
+                <Text variant="small" className="mb-1.5 font-semibold" clamp={2}>
+                  {p.label}
+                </Text>
+                <Text variant="caption" tone="muted" clamp={3}>
+                  {p.detail}
+                </Text>
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </Section>
 
       {/* SECTION 2: HOW WE WORK WITH YOU */}
-      <section
-        id="how-we-work"
-        className="py-24 lg:py-28"
-        style={{ backgroundColor: "#F2F0F7" }}
-      >
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-[820px] mb-14">
-            <p className="font-mono text-xs uppercase tracking-[0.12em] mb-4" style={{ color: "#F85C70" }}>
-              How we work with you
-            </p>
-            <h2
-              className="font-display text-4xl md:text-5xl leading-tight mb-6"
-              style={{ color: "#181F4F", fontWeight: 400 }}
-            >
-              Three engagements. Each one named, scoped, and designed to leave your organisation with something concrete in hand.
-            </h2>
-            <p className="font-sans text-lg leading-relaxed" style={{ color: "#65677B" }}>
-              An operating model, an evidence pack, a governance roadmap. Not a slide deck nobody opens again.
-            </p>
-          </div>
+      <Section id="how-we-work" tone="mist" padding="lg">
+        <Stack gap="md" className="mb-14 max-w-[820px]">
+          <Eyebrow>How we work with you</Eyebrow>
+          <Text variant="h2">
+            Three engagements. Each one named, scoped, and designed to leave your organisation with something concrete in hand.
+          </Text>
+          <Text variant="lead" tone="muted">
+            An operating model, an evidence pack, a governance roadmap. Not a slide deck nobody opens again.
+          </Text>
+        </Stack>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border-l border-t" style={{ borderColor: "#E5E3EE" }}>
-            {workCards.map((card) => (
-              <Link
-                href={`/engagements/${card.slug}`}
-                key={card.slug}
-                className="amp-focus-ring-on-light block h-full"
+        <Grid cols={3} gap="none" className="amp-border-grid">
+          {workCards.map((card) => (
+            <Link
+              href={`/engagements/${card.slug}`}
+              key={card.slug}
+              className="amp-focus-ring-on-light block h-full min-w-0"
+            >
+              <Surface
+                as="article"
+                variant="panel"
+                padding="lg"
+                className="amp-border-cell amp-equal-card transition-colors duration-200 hover:bg-[#FAF9FD]"
+                data-testid={`card-how-we-work-${card.slug}`}
               >
-                <article
-                  className="p-8 lg:p-10 border-r border-b h-full flex flex-col cursor-pointer transition-colors duration-200"
-                  style={{ borderColor: "#E5E3EE", backgroundColor: "#FFFFFF" }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = "#FAF9FD"; }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = "#FFFFFF"; }}
-                  data-testid={`card-how-we-work-${card.slug}`}
-                >
-                  <p className="font-mono text-xs uppercase tracking-[0.12em] mb-3" style={{ color: "#F85C70" }}>
-                    {card.duration}
-                  </p>
-                  <h3 className="font-display text-2xl mb-5 leading-snug" style={{ color: "#181F4F", fontWeight: 400 }}>
-                    {card.title}
-                  </h3>
-                  <p className="font-sans text-base leading-relaxed flex-1" style={{ color: "#65677B" }}>
-                    {card.body}
-                  </p>
-                  <span className="mt-8 inline-flex items-center gap-2 font-sans text-sm font-semibold" style={{ color: "#F85C70" }}>
-                    See full engagement <ArrowRight className="h-3 w-3" />
-                  </span>
-                </article>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+                <Eyebrow className="mb-3">{card.duration}</Eyebrow>
+                <Text variant="h3" className="mb-5" clamp={2}>
+                  {card.title}
+                </Text>
+                <Text variant="body" tone="muted" clamp={5} className="flex-1">
+                  {card.body}
+                </Text>
+                <span className="mt-8 inline-flex items-center gap-2 font-sans text-sm font-semibold text-[#F85C70]">
+                  See full engagement <ArrowRight className="h-3 w-3 shrink-0" />
+                </span>
+              </Surface>
+            </Link>
+          ))}
+        </Grid>
+      </Section>
 
       {/* SECTION 2b: WHO WE WORK WITH */}
-      <section className="py-24 lg:py-28" style={{ backgroundColor: "#FFFFFF" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-end justify-between mb-12 flex-wrap gap-6">
-            <div>
-              <p className="font-mono text-xs uppercase tracking-[0.12em] mb-3" style={{ color: "#F85C70" }}>
-                Who we work with
-              </p>
-              <h2 className="font-display text-4xl md:text-5xl leading-tight max-w-[640px]" style={{ color: "#181F4F", fontWeight: 400 }}>
-                Real engagements.<br />Named outcomes.
-              </h2>
-            </div>
-            <Link href="/case-studies">
-              <span className="font-mono text-xs uppercase tracking-[0.12em] flex items-center gap-2 hover:gap-3 transition-all" style={{ color: "#F85C70" }}>
-                See all case studies <ArrowRight className="h-3 w-3" />
-              </span>
-            </Link>
-          </div>
+      <Section tone="white" padding="lg">
+        <Stack
+          direction="row-responsive"
+          justify="between"
+          align="end"
+          gap="lg"
+          className="mb-12 flex-wrap"
+        >
+          <Stack gap="sm" className="max-w-[640px]">
+            <Eyebrow>Who we work with</Eyebrow>
+            <Text variant="h2">
+              Real engagements.
+              <br />
+              Named outcomes.
+            </Text>
+          </Stack>
+          <Link
+            href="/case-studies"
+            className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.12em] text-[#F85C70] transition-all hover:gap-3"
+          >
+            See all case studies <ArrowRight className="h-3 w-3 shrink-0" />
+          </Link>
+        </Stack>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border-l border-t" style={{ borderColor: "#E5E3EE" }}>
-            {[
-              {
-                id: "payment-provider",
-                sector: "Financial Services",
-                client: "Global Payment Provider PLC",
-                situation: "A 150-person delivery function across two legacy cultures was missing its targets following a major acquisition.",
-                action: "Designed and embedded a structured squad model with coaching and Kanban workflow improvement inside the existing PMO.",
-                outcome: "Over 12% productivity gain in four months, with the new operating model ratified at board level.",
-              },
-              {
-                id: "elsevier",
-                sector: "Publishing & Technology",
-                client: "Elsevier",
-                situation: "Architecture expertise was siloed and inconsistent across product teams during a period of acquisition-led growth.",
-                action: "Embedded coaches restructured roles to build genuine architectural competence inside the teams rather than in a separate centre.",
-                outcome: "Significant six-figure HR cost savings, with the engagement extended after measurable improvement across all four squads.",
-              },
-              {
-                id: "public-sector",
-                sector: "Public Sector",
-                client: "Central Government Programme",
-                situation: "A digital delivery programme was running at half pace because governance and delivery operated on different cadences.",
-                action: "Aligned the operating model to the existing assurance framework using the Delivery Compass approach, with weekly governance integrated into delivery.",
-                outcome: "38% reduction in time-to-delivery within two quarters, with a single board-level dashboard adopted as the standard.",
-              },
-            ].map((c) => (
-              <Link
-                href={`/case-studies${c.id !== "public-sector" ? "#" + c.id : ""}`}
-                key={c.id}
-                className="amp-focus-ring-on-light block h-full"
+        <Grid cols={3} gap="none" className="amp-border-grid">
+          {[
+            {
+              id: "payment-provider",
+              sector: "Financial Services",
+              client: "Global Payment Provider PLC",
+              situation: "A 150-person delivery function across two legacy cultures was missing its targets following a major acquisition.",
+              action: "Designed and embedded a structured squad model with coaching and Kanban workflow improvement inside the existing PMO.",
+              outcome: "Over 12% productivity gain in four months, with the new operating model ratified at board level.",
+            },
+            {
+              id: "elsevier",
+              sector: "Publishing & Technology",
+              client: "Elsevier",
+              situation: "Architecture expertise was siloed and inconsistent across product teams during a period of acquisition-led growth.",
+              action: "Embedded coaches restructured roles to build genuine architectural competence inside the teams rather than in a separate centre.",
+              outcome: "Significant six-figure HR cost savings, with the engagement extended after measurable improvement across all four squads.",
+            },
+            {
+              id: "public-sector",
+              sector: "Public Sector",
+              client: "Central Government Programme",
+              situation: "A digital delivery programme was running at half pace because governance and delivery operated on different cadences.",
+              action: "Aligned the operating model to the existing assurance framework using the Delivery Compass approach, with weekly governance integrated into delivery.",
+              outcome: "38% reduction in time-to-delivery within two quarters, with a single board-level dashboard adopted as the standard.",
+            },
+          ].map((c) => (
+            <Link
+              href={`/case-studies${c.id !== "public-sector" ? "#" + c.id : ""}`}
+              key={c.id}
+              className="amp-focus-ring-on-light block h-full min-w-0"
+            >
+              <Surface
+                as="article"
+                variant="plain"
+                padding="lg"
+                className="amp-border-cell amp-equal-card transition-colors duration-200 hover:bg-[#F2F0F7]"
+                data-testid={`card-home-case-${c.id}`}
               >
-                <article
-                  className="p-8 lg:p-10 border-r border-b h-full flex flex-col cursor-pointer transition-colors duration-200"
-                  style={{ borderColor: "#E5E3EE", backgroundColor: "transparent" }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = "#F2F0F7"; }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = "transparent"; }}
-                  data-testid={`card-home-case-${c.id}`}
-                >
-                  <p className="font-mono text-xs uppercase tracking-[0.12em] mb-3" style={{ color: "#F85C70" }}>
-                    {c.sector}
-                  </p>
-                  <h3 className="font-display text-xl mb-8 leading-snug" style={{ color: "#181F4F", fontWeight: 400 }}>
-                    {c.client}
-                  </h3>
-
-                  <div className="space-y-5 flex-1">
-                    <div>
-                      <p className="font-mono text-xs uppercase tracking-[0.12em] mb-2" style={{ color: "#6B6E81" }}>
-                        Situation
-                      </p>
-                      <p className="font-sans text-sm leading-relaxed" style={{ color: "#65677B" }}>{c.situation}</p>
-                    </div>
-                    <div>
-                      <p className="font-mono text-xs uppercase tracking-[0.12em] mb-2" style={{ color: "#6B6E81" }}>
-                        What we did
-                      </p>
-                      <p className="font-sans text-sm leading-relaxed" style={{ color: "#65677B" }}>{c.action}</p>
-                    </div>
-                    <div>
-                      <p className="font-mono text-xs uppercase tracking-[0.12em] mb-2" style={{ color: "#6B6E81" }}>
-                        Outcome
-                      </p>
-                      <p className="font-sans text-sm leading-relaxed font-medium" style={{ color: "#181F4F" }}>{c.outcome}</p>
-                    </div>
+                <Eyebrow className="mb-3">{c.sector}</Eyebrow>
+                <Text variant="h4" className="mb-8 text-xl" clamp={2}>
+                  {c.client}
+                </Text>
+                <Stack gap="md" className="flex-1">
+                  <div>
+                    <Eyebrow tone="subtle" className="mb-2">Situation</Eyebrow>
+                    <Text variant="small" tone="muted" clamp={4}>{c.situation}</Text>
                   </div>
-
-                  <span className="mt-8 inline-flex items-center gap-2 font-sans text-xs font-semibold" style={{ color: "#F85C70" }}>
-                    Read the case study <ArrowRight className="h-3 w-3" />
-                  </span>
-                </article>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+                  <div>
+                    <Eyebrow tone="subtle" className="mb-2">What we did</Eyebrow>
+                    <Text variant="small" tone="muted" clamp={4}>{c.action}</Text>
+                  </div>
+                  <div>
+                    <Eyebrow tone="subtle" className="mb-2">Outcome</Eyebrow>
+                    <Text variant="small" className="font-medium" clamp={4}>{c.outcome}</Text>
+                  </div>
+                </Stack>
+                <span className="mt-8 inline-flex items-center gap-2 font-sans text-xs font-semibold text-[#F85C70]">
+                  Read the case study <ArrowRight className="h-3 w-3 shrink-0" />
+                </span>
+              </Surface>
+            </Link>
+          ))}
+        </Grid>
+      </Section>
 
       {/* SECTION 3: CREDIBILITY BAR */}
       <section
@@ -1135,24 +1072,11 @@ const Home = memo(function Home({ onOpenConsultation, engagements: engagementsPr
             Whether you're starting an AI strategy or untangling a delivery model, we'll give you a
             straight answer on where to begin.
           </p>
-          <Link href="/contact">
-            <button
-              className="amp-focus-ring-on-navy inline-flex items-center gap-2 px-8 h-12 font-sans font-bold text-base rounded transition-colors duration-200"
-              style={{
-                backgroundColor: "#F85C70",
-                color: "#181F4F",
-              }}
-              onMouseOver={(e) => {
-                (e.currentTarget as HTMLButtonElement).style.backgroundColor = "#d94a5e";
-              }}
-              onMouseOut={(e) => {
-                (e.currentTarget as HTMLButtonElement).style.backgroundColor = "#F85C70";
-              }}
-              data-testid="button-final-cta-conversation"
-            >
+          <AmpButton asChild data-testid="button-final-cta-conversation">
+            <Link href="/contact">
               Start a Conversation <ArrowRight className="h-4 w-4" />
-            </button>
-          </Link>
+            </Link>
+          </AmpButton>
           <p
             className="font-sans text-sm mt-6"
             style={{ color: "rgba(255,255,255,0.45)" }}
@@ -1174,64 +1098,39 @@ function AmpCard({
   index: number;
   visible: boolean;
 }) {
-  const [hovered, setHovered] = useState(false);
-
   return (
-    <Link href={card.href}>
-      <div
-        className="p-8 flex flex-col h-full border-r border-b cursor-pointer"
+    <Link href={card.href} className="block h-full min-w-0">
+      <Surface
+        variant="mist"
+        padding="lg"
+        className="amp-border-cell amp-equal-card border-t border-[#C8C4D8] transition-[background-color,border-top-color,opacity] duration-300 hover:border-t-[#F85C70] hover:bg-white"
         style={{
-          backgroundColor: hovered ? "#FFFFFF" : "#F2F0F7",
-          borderColor: "#C8C4D8",
-          borderTopWidth: "1px",
-          borderTopColor: hovered ? "#F85C70" : "#C8C4D8",
-          borderTopStyle: "solid",
-          transition: "background-color 0.3s ease, border-top-color 0.3s ease",
           opacity: visible ? 1 : 0,
           transitionDelay: `${index * 0.08}s`,
         }}
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
       >
-        <p
-          className="font-mono text-xs uppercase tracking-[0.12em] mb-4"
-          style={{ color: "#F85C70" }}
-        >
-          {card.tag}
-        </p>
-        <h3
-          className="font-display text-2xl mb-2"
-          style={{ color: "#181F4F", fontWeight: 400 }}
-        >
+        <Eyebrow className="mb-4">{card.tag}</Eyebrow>
+        <Text variant="h3" className="mb-2 text-2xl" clamp={2}>
           {card.title}
-        </h3>
-        <p
-          className="font-sans text-sm mb-4 font-medium"
-          style={{ color: "#60266A" }}
-        >
+        </Text>
+        <Text variant="small" className="mb-4 font-medium text-[#60266A]" clamp={2}>
           {card.subtitle}
-        </p>
-        <p
-          className="font-sans text-sm leading-relaxed mb-6 flex-1"
-          style={{ color: "#65677B" }}
-        >
+        </Text>
+        <Text variant="small" tone="muted" clamp={4} className="mb-6 flex-1">
           {card.body}
-        </p>
-        <ul className="space-y-1.5 mb-6">
+        </Text>
+        <ul className="mb-6 min-w-0 space-y-1.5">
           {card.bullets.map((b) => (
-            <li key={b} className="flex items-start gap-2 text-xs" style={{ color: "#6B6E81" }}>
-              <span style={{ color: "#F85C70", flexShrink: 0 }}>·</span>
-              {b}
+            <li key={b} className="flex min-w-0 items-start gap-2 text-xs text-[#6B6E81]">
+              <span className="shrink-0 text-[#F85C70]">·</span>
+              <span className="amp-text-safe min-w-0">{b}</span>
             </li>
           ))}
         </ul>
-        <span
-          className="font-sans text-sm font-medium flex items-center gap-1"
-          style={{ color: hovered ? "#60266A" : "#F85C70", transition: "color 0.2s" }}
-        >
-          Learn more about {card.title} <ArrowRight className="h-3 w-3" />
+        <span className="inline-flex items-center gap-1 font-sans text-sm font-medium text-[#F85C70] transition-colors group-hover:text-[#60266A]">
+          Learn more about {card.title} <ArrowRight className="h-3 w-3 shrink-0" />
         </span>
-      </div>
+      </Surface>
     </Link>
   );
 }
