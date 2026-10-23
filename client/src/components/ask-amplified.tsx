@@ -1,7 +1,8 @@
 'use client';
 
 import { useEffect, useRef, useState } from "react";
-import { MessageCircle, X, Send, Sparkles } from "lucide-react";
+import { X, Send, Sparkles } from "lucide-react";
+import { AmpButton, Eyebrow, Text } from "@/components/system";
 
 interface Props {
   engagementSlug: string;
@@ -71,43 +72,35 @@ export default function AskAmplified({ engagementSlug, engagementName }: Props) 
     <>
       {/* Launcher button */}
       {!open && (
-        <button
+        <AmpButton
           type="button"
+          variant="navy"
+          size="lg"
+          className="!fixed bottom-6 right-6 z-40 !h-12 !rounded-full !px-5 shadow-lg transition-transform duration-200 hover:scale-[1.03]"
           onClick={() => setOpen(true)}
-          className="amp-focus-ring-on-navy fixed z-40 bottom-6 right-6 inline-flex items-center gap-2 px-5 h-12 font-sans font-semibold text-sm rounded-full shadow-lg transition-transform duration-200 hover:scale-[1.03]"
-          style={{ backgroundColor: "#181F4F", color: "#FFFFFF" }}
           data-testid="button-ask-amplified-open"
           aria-label={`Ask Amplified about ${engagementName}`}
         >
-          <Sparkles className="h-4 w-4" style={{ color: "#F85C70" }} />
+          <Sparkles className="h-4 w-4 text-[#F85C70]" />
           Ask Amplified
-        </button>
+        </AmpButton>
       )}
 
       {/* Panel */}
       {open && (
         <div
-          className="fixed z-50 bottom-6 right-6 w-[min(420px,calc(100vw-32px))] max-h-[min(640px,calc(100vh-48px))] flex flex-col rounded-lg shadow-2xl border"
-          style={{ backgroundColor: "#FFFFFF", borderColor: "#E5E3EE" }}
+          className="fixed bottom-6 right-6 z-50 flex max-h-[min(640px,calc(100vh-48px))] w-[min(420px,calc(100vw-32px))] flex-col rounded-lg border border-[#E5E3EE] bg-white shadow-2xl"
           role="dialog"
           aria-label="Ask Amplified assistant"
           data-testid="dialog-ask-amplified"
         >
           {/* Header */}
-          <div
-            className="flex items-start justify-between p-4 rounded-t-lg"
-            style={{ backgroundColor: "#181F4F" }}
-          >
+          <div className="flex items-start justify-between rounded-t-lg bg-[#181F4F] p-4">
             <div>
-              <p
-                className="font-mono text-[10px] uppercase tracking-[0.15em] mb-1"
-                style={{ color: "#F85C70" }}
-              >
-                Ask Amplified
-              </p>
-              <h3 className="font-display text-base text-white" style={{ fontWeight: 400 }}>
+              <Eyebrow className="mb-1 !text-[10px]">Ask Amplified</Eyebrow>
+              <Text variant="small" tone="white" className="font-display !text-base font-normal">
                 Questions about {engagementName}?
-              </h3>
+              </Text>
             </div>
             <button
               type="button"
@@ -123,23 +116,21 @@ export default function AskAmplified({ engagementSlug, engagementName }: Props) 
           {/* Conversation */}
           <div
             ref={scrollRef}
-            className="flex-1 overflow-y-auto p-4 space-y-4"
-            style={{ backgroundColor: "#F8F7FB" }}
+            className="flex-1 space-y-4 overflow-y-auto bg-[#F8F7FB] p-4"
           >
             {turns.length === 0 && (
               <div className="space-y-3">
-                <p className="font-sans text-sm leading-relaxed" style={{ color: "#65677B" }}>
+                <Text variant="small" tone="muted">
                   Grounded answers from the engagement page, our manifesto, and our case studies.
                   No sales pitch — if it isn&apos;t a fit, we&apos;ll say so.
-                </p>
+                </Text>
                 <div className="space-y-2">
                   {STARTER_QUESTIONS.map((q) => (
                     <button
                       key={q}
                       type="button"
                       onClick={() => ask(q)}
-                      className="amp-focus-ring-on-navy w-full text-left px-3 py-2 rounded border font-sans text-sm transition-colors hover:bg-white"
-                      style={{ borderColor: "#E5E3EE", color: "#181F4F", backgroundColor: "#FFFFFF" }}
+                      className="amp-focus-ring-on-navy w-full rounded border border-[#E5E3EE] bg-white px-3 py-2 text-left font-sans text-sm text-[#181F4F] transition-colors hover:bg-white"
                       data-testid={`button-ask-amplified-starter-${q.length}`}
                     >
                       {q}
@@ -156,12 +147,11 @@ export default function AskAmplified({ engagementSlug, engagementName }: Props) 
                 data-testid={`message-ask-amplified-${t.role}-${i}`}
               >
                 <div
-                  className="max-w-[85%] px-3 py-2 rounded-lg font-sans text-sm leading-relaxed whitespace-pre-wrap"
-                  style={
+                  className={`max-w-[85%] whitespace-pre-wrap rounded-lg px-3 py-2 font-sans text-sm leading-relaxed ${
                     t.role === "user"
-                      ? { backgroundColor: "#181F4F", color: "#FFFFFF" }
-                      : { backgroundColor: "#FFFFFF", color: "#181F4F", border: "1px solid #E5E3EE" }
-                  }
+                      ? "bg-[#181F4F] text-white"
+                      : "border border-[#E5E3EE] bg-white text-[#181F4F]"
+                  }`}
                 >
                   {t.content}
                 </div>
@@ -170,10 +160,7 @@ export default function AskAmplified({ engagementSlug, engagementName }: Props) 
 
             {loading && (
               <div className="flex justify-start">
-                <div
-                  className="px-3 py-2 rounded-lg font-sans text-sm"
-                  style={{ backgroundColor: "#FFFFFF", color: "#65677B", border: "1px solid #E5E3EE" }}
-                >
+                <div className="rounded-lg border border-[#E5E3EE] bg-white px-3 py-2 font-sans text-sm text-[#65677B]">
                   <span className="inline-flex items-center gap-1">
                     <span className="amp-pulse-dot" />
                     <span className="amp-pulse-dot" style={{ animationDelay: "0.15s" }} />
@@ -185,8 +172,7 @@ export default function AskAmplified({ engagementSlug, engagementName }: Props) 
 
             {error && (
               <div
-                className="px-3 py-2 rounded font-sans text-xs"
-                style={{ backgroundColor: "#FDECEE", color: "#B0364B" }}
+                className="rounded bg-[#FDECEE] px-3 py-2 font-sans text-xs text-[#B0364B]"
                 role="alert"
               >
                 {error}
@@ -200,16 +186,14 @@ export default function AskAmplified({ engagementSlug, engagementName }: Props) 
               e.preventDefault();
               ask(question);
             }}
-            className="p-3 border-t space-y-2"
-            style={{ borderColor: "#E5E3EE", backgroundColor: "#FFFFFF" }}
+            className="space-y-2 border-t border-[#E5E3EE] bg-white p-3"
           >
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Your email (optional, for sales follow-up)"
-              className="amp-focus-ring-on-navy w-full px-3 h-9 font-sans text-xs rounded border"
-              style={{ borderColor: "#E5E3EE", color: "#181F4F" }}
+              className="amp-focus-ring-on-navy h-9 w-full rounded border border-[#E5E3EE] px-3 font-sans text-xs text-[#181F4F]"
               data-testid="input-ask-amplified-email"
               autoComplete="email"
             />
@@ -219,23 +203,22 @@ export default function AskAmplified({ engagementSlug, engagementName }: Props) 
                 value={question}
                 onChange={(e) => setQuestion(e.target.value)}
                 placeholder="Ask about fit, scope, timeline…"
-                className="amp-focus-ring-on-navy flex-1 px-3 h-10 font-sans text-sm rounded border"
-                style={{ borderColor: "#E5E3EE", color: "#181F4F" }}
+                className="amp-focus-ring-on-navy h-10 flex-1 rounded border border-[#E5E3EE] px-3 font-sans text-sm text-[#181F4F]"
                 disabled={loading}
                 data-testid="input-ask-amplified-question"
               />
-              <button
+              <AmpButton
                 type="submit"
                 disabled={loading || !question.trim()}
-                className="amp-focus-ring-on-navy inline-flex items-center justify-center w-10 h-10 rounded transition-colors disabled:opacity-50"
-                style={{ backgroundColor: "#F85C70", color: "#181F4F" }}
+                size="sm"
+                className="!h-10 !w-10 !shrink-0 !px-0"
                 aria-label="Send question"
                 data-testid="button-ask-amplified-send"
               >
                 <Send className="h-4 w-4" />
-              </button>
+              </AmpButton>
             </div>
-            <p className="font-mono text-[10px] uppercase tracking-[0.1em]" style={{ color: "#9092A4" }}>
+            <p className="font-mono text-[10px] uppercase tracking-[0.1em] text-[#9092A4]">
               AI assistant · answers grounded in this site
             </p>
           </form>
