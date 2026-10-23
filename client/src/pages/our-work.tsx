@@ -1,6 +1,6 @@
 'use client';
 
-import { memo, useEffect } from "react";
+import { memo, useEffect, type ReactNode } from "react";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -16,6 +16,22 @@ import {
   Award,
   TrendingUp,
 } from "lucide-react";
+import {
+  AmpButton,
+  BorderCell,
+  BorderGrid,
+  BreadcrumbBar,
+  ContentCard,
+  CtaBand,
+  Eyebrow,
+  Grid,
+  PageHero,
+  PageShell,
+  Section,
+  Stack,
+  Surface,
+  Text,
+} from "@/components/system";
 
 interface OurWorkProps {
   onOpenConsultation?: (serviceType?: string) => void;
@@ -67,15 +83,14 @@ const websiteBuilds = [
 const appBuilds = [
   {
     name: "Scout Social",
-    url: null,
-    domain: null,
+    url: null as string | null,
+    domain: null as string | null,
     category: "Social Discovery App",
     desc: "A social discovery platform built to surface authentic, interest-driven connections. AI-assisted content surfacing, real-time feed, and community management tools designed to reward genuine engagement over reach.",
     tags: ["Mobile App", "Social", "AI Features"],
     status: "Live",
-    placeholderBg: "linear-gradient(135deg, #60266A 0%, #181F4F 100%)",
+    placeholderClass: "bg-gradient-to-br from-[#60266A] to-[#181F4F]",
     placeholderIcon: "👥",
-    placeholderAccent: "#F85C70",
   },
   {
     name: "Viralyz",
@@ -85,9 +100,8 @@ const appBuilds = [
     desc: "A viral content analytics platform for creators and brand teams. Tracks content performance across channels, identifies virality signals early, and generates actionable insight reports without the noise of traditional dashboards.",
     tags: ["Analytics", "Creator Tools", "Data"],
     status: "Live",
-    placeholderBg: "linear-gradient(135deg, #d94a5e 0%, #60266A 100%)",
+    placeholderClass: "bg-gradient-to-br from-[#d94a5e] to-[#60266A]",
     placeholderIcon: "📈",
-    placeholderAccent: "#ffffff",
   },
 ];
 
@@ -202,6 +216,46 @@ const charitableEfforts = [
   },
 ];
 
+const ampStoreFacts: [string, string][] = [
+  ["What it is", "A curated digital platform delivering practitioner-led learning resources aligned to each Amplified service line."],
+  ["Who it is for", "Delivery leads, product owners, technical leads, and senior leaders in regulated industries who need learning that applies to their actual context."],
+  ["How you access it", "Annual or rolling subscription. Module sets can be licensed per team or accessed as part of a broader Amplified engagement."],
+  ["What makes it different", "Every resource is built or reviewed by practitioners who have done the work. No generic content. Every module reflects real delivery experience."],
+];
+
+function SectionHeading({
+  icon: Icon,
+  eyebrow,
+  title,
+  lead,
+  dark = false,
+}: {
+  icon: typeof Globe;
+  eyebrow: string;
+  title: ReactNode;
+  lead?: string;
+  dark?: boolean;
+}) {
+  return (
+    <Stack gap="md" className="mb-12">
+      <Stack direction="row" gap="md" align="start">
+        <Icon className="mt-1 h-5 w-5 shrink-0 text-[#F85C70]" aria-hidden="true" />
+        <Stack gap="xs">
+          <Eyebrow className={dark ? undefined : "text-[#6B6E81]"}>{eyebrow}</Eyebrow>
+          <Text variant="h2" tone={dark ? "white" : "ink"}>
+            {title}
+          </Text>
+        </Stack>
+      </Stack>
+      {lead ? (
+        <Text variant="body" tone={dark ? "white-70" : "muted"} className="max-w-[600px]">
+          {lead}
+        </Text>
+      ) : null}
+    </Stack>
+  );
+}
+
 const OurWork = memo(function OurWork({ onOpenConsultation }: OurWorkProps) {
   useEffect(() => {
     const hash = window.location.hash;
@@ -220,597 +274,420 @@ const OurWork = memo(function OurWork({ onOpenConsultation }: OurWorkProps) {
   }, []);
 
   return (
-    <div className="min-h-screen font-sans" style={{ backgroundColor: "#ffffff" }}>
+    <PageShell>
+      <BreadcrumbBar items={[{ label: "Home", href: "/" }, { label: "Our Work" }]} />
 
-      {/* HERO */}
-      <section className="py-28 lg:py-36" style={{ backgroundColor: "#181F4F" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="font-mono text-xs uppercase tracking-[0.15em] mb-6" style={{ color: "#F85C70" }}>
-            Our Work
-          </p>
-          <h1
-            className="font-display text-5xl md:text-6xl text-white mb-8 leading-tight max-w-[760px]"
-            style={{ fontWeight: 400 }}
-            data-testid="text-page-title"
-          >
-            Clients, Products,<br />and Commitments
-          </h1>
-          <p className="font-sans text-lg max-w-[600px] leading-relaxed" style={{ color: "rgba(255,255,255,0.75)" }}>
-            The engagements we have delivered, the platforms we have built, and the values
-            we hold ourselves to beyond the client relationship.
-          </p>
+      <PageHero
+        eyebrow="Our Work"
+        title={
+          <span data-testid="text-page-title">
+            Clients, Products,
+            <br />
+            and Commitments
+          </span>
+        }
+        lead="The engagements we have delivered, the platforms we have built, and the values we hold ourselves to beyond the client relationship."
+        contentClassName="max-w-[760px]"
+      >
+        <Stack direction="row" gap="sm" className="mt-12 flex-wrap">
+          {[
+            { label: "Achievements", href: "#achievements" },
+            { label: "Client Work", href: "#client-work" },
+            { label: "Apps", href: "#apps" },
+            { label: "Transformation", href: "#transformation" },
+            { label: "ampStore", href: "#amp-store" },
+            { label: "Sustainability", href: "#sustainability" },
+            { label: "Charitable Efforts", href: "#charitable" },
+          ].map((item) => (
+            <a
+              key={item.label}
+              href={item.href}
+              className="inline-flex h-9 items-center gap-2 rounded border border-white/15 px-4 text-xs font-semibold text-white/70 transition-colors duration-200 hover:bg-white/10 hover:text-white"
+            >
+              {item.label}
+            </a>
+          ))}
+        </Stack>
+      </PageHero>
 
-          <div className="flex flex-wrap gap-3 mt-12">
-            {[
-              { label: "Achievements", href: "#achievements" },
-              { label: "Client Work", href: "#client-work" },
-              { label: "Apps", href: "#apps" },
-              { label: "Transformation", href: "#transformation" },
-              { label: "ampStore", href: "#amp-store" },
-              { label: "Sustainability", href: "#sustainability" },
-              { label: "Charitable Efforts", href: "#charitable" },
-            ].map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="inline-flex items-center gap-2 px-4 h-9 font-sans text-xs font-semibold rounded transition-colors duration-200"
-                style={{ border: "1px solid rgba(255,255,255,0.15)", color: "rgba(255,255,255,0.7)", backgroundColor: "transparent" }}
-                onMouseOver={(e) => { (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "rgba(255,255,255,0.08)"; (e.currentTarget as HTMLAnchorElement).style.color = "#ffffff"; }}
-                onMouseOut={(e) => { (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "transparent"; (e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.7)"; }}
-              >
-                {item.label}
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
+      <Section id="achievements" tone="mist" padding="md" className="scroll-mt-20">
+        <BorderGrid cols={4} className="border-l border-t border-[#E5E3EE]">
+          {credibilityStats.map((stat) => (
+            <BorderCell key={stat.label} className="border-[#E5E3EE] bg-white p-8 text-center">
+              <stat.icon className="mx-auto mb-4 h-5 w-5 text-[#F85C70]" aria-hidden="true" />
+              <Text variant="display" className="mb-1 text-4xl md:text-5xl">{stat.value}</Text>
+              {stat.sub ? <Eyebrow className="mb-2 justify-center">{stat.sub}</Eyebrow> : null}
+              <Text variant="caption" className="mb-2 font-bold uppercase tracking-[0.08em]">{stat.label}</Text>
+              <Text variant="caption" tone="muted">{stat.desc}</Text>
+            </BorderCell>
+          ))}
+        </BorderGrid>
+      </Section>
 
-      {/* ACHIEVEMENTS / SCORES */}
-      <section id="achievements" className="py-16 scroll-mt-20" style={{ backgroundColor: "#F2F0F7" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-0 border-l border-t" style={{ borderColor: "#E5E3EE" }}>
-            {credibilityStats.map((stat) => (
-              <div key={stat.label} className="p-8 border-r border-b text-center" style={{ borderColor: "#E5E3EE", backgroundColor: "#ffffff" }}>
-                <stat.icon className="h-5 w-5 mx-auto mb-4" style={{ color: "#F85C70" }} />
-                <p className="font-display text-4xl md:text-5xl mb-1" style={{ color: "#181F4F", fontWeight: 400 }}>
-                  {stat.value}
-                </p>
-                {stat.sub && (
-                  <p className="font-mono text-xs mb-2" style={{ color: "#F85C70" }}>{stat.sub}</p>
-                )}
-                <p className="font-sans text-xs font-bold uppercase tracking-[0.08em] mb-2" style={{ color: "#181F4F" }}>
-                  {stat.label}
-                </p>
-                <p className="font-sans text-xs leading-relaxed" style={{ color: "#65677B" }}>
-                  {stat.desc}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <Section id="client-work" tone="white" padding="lg" className="scroll-mt-20">
+        <SectionHeading
+          icon={Globe}
+          eyebrow="Website Builds"
+          title={
+            <>
+              Platforms and Websites
+              <br />
+              We Have Built
+            </>
+          }
+          lead="From marketplace platforms to editorial brand sites, these are products we have taken from brief to live. Each one built with the same rigour we bring to enterprise delivery."
+        />
 
-      {/* WEBSITE BUILDS */}
-      <section id="client-work" className="py-20 lg:py-28 bg-white scroll-mt-20">
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-start gap-4 mb-4">
-            <Globe className="h-5 w-5 flex-shrink-0 mt-1" style={{ color: "#F85C70" }} />
-            <div>
-              <p className="font-mono text-xs uppercase tracking-[0.12em] mb-1" style={{ color: "#6B6E81" }}>
-                Website Builds
-              </p>
-              <h2 className="font-display text-4xl md:text-5xl" style={{ color: "#181F4F", fontWeight: 400 }}>
-                Platforms and Websites<br />We Have Built
-              </h2>
-            </div>
-          </div>
-          <p className="font-sans text-base leading-relaxed max-w-[600px] mt-6 mb-12" style={{ color: "#65677B" }}>
-            From marketplace platforms to editorial brand sites, these are products we have taken from
-            brief to live. Each one built with the same rigour we bring to enterprise delivery.
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border-l border-t" style={{ borderColor: "#E5E3EE" }}>
-            {websiteBuilds.map((project) => (
-              <div
-                key={project.name}
-                className="border-r border-b flex flex-col overflow-hidden"
-                style={{ borderColor: "#E5E3EE" }}
-              >
-                {/* Browser chrome + screenshot */}
-                <div className="flex flex-col" style={{ backgroundColor: "#F2F0F7" }}>
-                  <div
-                    className="flex items-center gap-1.5 px-3 py-2 border-b"
-                    style={{ backgroundColor: "#E5E3EE", borderColor: "#d8d5e6" }}
-                  >
-                    <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: "#F85C70" }} />
-                    <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: "#60266A", opacity: 0.4 }} />
-                    <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: "#181F4F", opacity: 0.3 }} />
-                    <span
-                      className="ml-2 flex-1 font-mono text-xs px-2 py-0.5 rounded text-center"
-                      style={{ backgroundColor: "#ffffff", color: "#65677B", maxWidth: "200px" }}
-                    >
-                      {project.domain}
+        <BorderGrid cols={2} className="border-l border-t border-[#E5E3EE]">
+          {websiteBuilds.map((project) => (
+            <BorderCell key={project.name} className="flex h-full flex-col overflow-hidden border-[#E5E3EE] !p-0">
+              <div className="flex flex-col bg-[#F2F0F7]">
+                <div className="flex items-center gap-1.5 border-b border-[#d8d5e6] bg-[#E5E3EE] px-3 py-2">
+                  <span className="h-2.5 w-2.5 rounded-full bg-[#F85C70]" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-[#60266A]/40" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-[#181F4F]/30" />
+                  <span className="ml-2 max-w-[200px] flex-1 rounded bg-white px-2 py-0.5 text-center font-mono text-xs text-[#65677B]">
+                    {project.domain}
+                  </span>
+                </div>
+                <a
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative block h-[200px] overflow-hidden"
+                  aria-label={`Visit ${project.domain}`}
+                >
+                  <img
+                    src={`https://image.thum.io/get/width/640/crop/400/${project.url}`}
+                    alt={project.name}
+                    width={640}
+                    height={400}
+                    className="h-[200px] w-full object-cover object-top transition-transform duration-500 hover:scale-105"
+                    loading="lazy"
+                    onError={(e) => {
+                      const img = e.currentTarget as HTMLImageElement;
+                      img.classList.add("hidden");
+                      const parent = img.parentElement;
+                      if (parent && !parent.querySelector("[data-fallback]")) {
+                        parent.classList.add("flex", "items-center", "justify-center", "bg-[#F2F0F7]");
+                        const fallback = document.createElement("span");
+                        fallback.dataset.fallback = "true";
+                        fallback.className = "font-mono text-xs text-[#6B6E81]";
+                        fallback.textContent = project.domain;
+                        parent.appendChild(fallback);
+                      }
+                    }}
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center bg-[#181F4F]/60 opacity-0 transition-opacity duration-200 hover:opacity-100">
+                    <span className="flex items-center gap-2 font-sans text-sm font-semibold text-white">
+                      Visit site <ExternalLink className="h-4 w-4" />
                     </span>
                   </div>
+                </a>
+              </div>
+
+              <Stack gap="md" className="flex flex-1 flex-col p-7">
+                <div className="flex items-start justify-between">
+                  <Stack gap="xs">
+                    <Eyebrow>{project.category}</Eyebrow>
+                    <Text variant="h3">{project.name}</Text>
+                  </Stack>
                   <a
                     href={project.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block overflow-hidden relative"
-                    style={{ height: "200px" }}
-                    aria-label={`Visit ${project.domain}`}
+                    className="ml-3 flex h-7 shrink-0 items-center gap-1 rounded border border-[#E5E3EE] px-2.5 font-mono text-xs text-[#65677B] transition-colors duration-150 hover:border-[#F85C70] hover:text-[#F85C70]"
                   >
-                    <img
-                      src={`https://image.thum.io/get/width/640/crop/400/${project.url}`}
-                      alt={project.name}
-                      width={640}
-                      height={400}
-                      className="w-full object-cover object-top transition-transform duration-500 hover:scale-105"
-                      style={{ height: "200px" }}
-                      loading="lazy"
-                      onError={(e) => {
-                        const img = e.currentTarget as HTMLImageElement;
-                        img.style.display = "none";
-                        const parent = img.parentElement;
-                        if (parent) {
-                          parent.style.display = "flex";
-                          parent.style.alignItems = "center";
-                          parent.style.justifyContent = "center";
-                          parent.style.backgroundColor = "#F2F0F7";
-                          parent.innerHTML = `<span style="font-mono; font-size:12px; color:#6B6E81;">${project.domain}</span>`;
-                        }
-                      }}
-                    />
-                    <div
-                      className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-200 flex items-center justify-center"
-                      style={{ backgroundColor: "rgba(24,31,79,0.6)" }}
-                    >
-                      <span className="font-sans text-white text-sm font-semibold flex items-center gap-2">
-                        Visit site <ExternalLink className="h-4 w-4" />
-                      </span>
-                    </div>
+                    <ExternalLink className="h-3 w-3" />
                   </a>
                 </div>
-
-                {/* Content */}
-                <div className="p-7 flex flex-col flex-1">
-                  <div className="flex items-start justify-between mb-3">
-                    <div>
-                      <p className="font-mono text-xs uppercase tracking-[0.1em] mb-1" style={{ color: "#F85C70" }}>
-                        {project.category}
-                      </p>
-                      <h3 className="font-display text-xl" style={{ color: "#181F4F", fontWeight: 400 }}>
-                        {project.name}
-                      </h3>
-                    </div>
-                    <a
-                      href={project.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-shrink-0 flex items-center gap-1 font-mono text-xs px-2.5 h-7 rounded transition-colors duration-150 ml-3"
-                      style={{ border: "1px solid #E5E3EE", color: "#65677B" }}
-                      onMouseOver={(e) => { (e.currentTarget as HTMLAnchorElement).style.borderColor = "#F85C70"; (e.currentTarget as HTMLAnchorElement).style.color = "#F85C70"; }}
-                      onMouseOut={(e) => { (e.currentTarget as HTMLAnchorElement).style.borderColor = "#E5E3EE"; (e.currentTarget as HTMLAnchorElement).style.color = "#65677B"; }}
-                    >
-                      <ExternalLink className="h-3 w-3" />
-                    </a>
-                  </div>
-                  <p className="font-sans text-sm leading-relaxed mb-4 flex-1" style={{ color: "#65677B" }}>
-                    {project.desc}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="font-mono text-xs px-2.5 py-1 rounded"
-                        style={{ backgroundColor: "#F2F0F7", color: "#6B6E81" }}
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* APPS */}
-      <section id="apps" className="py-20 lg:py-28 scroll-mt-20" style={{ backgroundColor: "#181F4F" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-start gap-4 mb-4">
-            <Smartphone className="h-5 w-5 flex-shrink-0 mt-1" style={{ color: "#F85C70" }} />
-            <div>
-              <p className="font-mono text-xs uppercase tracking-[0.12em] mb-1" style={{ color: "#F85C70" }}>
-                Apps and Platforms
-              </p>
-              <h2 className="font-display text-4xl md:text-5xl text-white" style={{ fontWeight: 400 }}>
-                Products We Have<br />Designed and Shipped
-              </h2>
-            </div>
-          </div>
-          <p className="font-sans text-base leading-relaxed max-w-[600px] mt-6 mb-12" style={{ color: "rgba(255,255,255,0.65)" }}>
-            These are applications we have built end-to-end: product strategy, UX, engineering, and
-            go-to-market. Social platforms, analytics tools, and community products for real audiences.
-          </p>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-0 border-l border-t" style={{ borderColor: "rgba(255,255,255,0.08)" }}>
-            {appBuilds.map((app) => (
-              <div
-                key={app.name}
-                className="border-r border-b flex flex-col overflow-hidden"
-                style={{ borderColor: "rgba(255,255,255,0.08)" }}
-              >
-                {/* Styled placeholder card */}
-                <div
-                  className="relative flex flex-col items-center justify-center"
-                  style={{ background: app.placeholderBg, height: "180px" }}
-                >
-                  <div
-                    className="absolute inset-0 opacity-10"
-                    style={{
-                      backgroundImage: "repeating-linear-gradient(45deg, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 40px)",
-                    }}
-                  />
-                  <span className="text-5xl mb-3 relative z-10" role="img" aria-label={app.name}>
-                    {app.placeholderIcon}
-                  </span>
-                  <span
-                    className="font-display text-lg text-white relative z-10"
-                    style={{ fontWeight: 400, letterSpacing: "0.02em" }}
-                  >
-                    {app.name}
-                  </span>
-                  <span
-                    className="font-mono text-xs mt-2 px-2.5 py-0.5 rounded relative z-10"
-                    style={{ backgroundColor: "rgba(248,92,112,0.25)", color: "#F85C70" }}
-                  >
-                    {app.status}
-                  </span>
-                </div>
-
-                {/* Content */}
-                <div className="p-7 flex flex-col flex-1">
-                  <p className="font-mono text-xs uppercase tracking-[0.1em] mb-1" style={{ color: "#F85C70" }}>
-                    {app.category}
-                  </p>
-                  <h3 className="font-display text-xl text-white mb-4" style={{ fontWeight: 400 }}>
-                    {app.name}
-                  </h3>
-                  <p className="font-sans text-sm leading-relaxed mb-5 flex-1" style={{ color: "rgba(255,255,255,0.6)" }}>
-                    {app.desc}
-                  </p>
-                  <div className="flex flex-wrap gap-2 mb-5">
-                    {app.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="font-mono text-xs px-2.5 py-1 rounded"
-                        style={{ backgroundColor: "rgba(255,255,255,0.06)", color: "rgba(255,255,255,0.5)" }}
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  {app.url && (
-                    <a
-                      href={app.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 font-sans text-xs font-semibold transition-colors duration-150"
-                      style={{ color: "#F85C70" }}
-                      onMouseOver={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#ffffff")}
-                      onMouseOut={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#F85C70")}
-                    >
-                      Visit {app.domain} <ExternalLink className="h-3 w-3" />
-                    </a>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* DIGITAL TRANSFORMATION */}
-      <section id="transformation" className="py-20 lg:py-28 bg-white scroll-mt-20">
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-start gap-4 mb-4">
-            <Zap className="h-5 w-5 flex-shrink-0 mt-1" style={{ color: "#F85C70" }} />
-            <div>
-              <p className="font-mono text-xs uppercase tracking-[0.12em] mb-1" style={{ color: "#6B6E81" }}>
-                Digital Transformation
-              </p>
-              <h2 className="font-display text-4xl md:text-5xl" style={{ color: "#181F4F", fontWeight: 400 }}>
-                Enterprise Implementations<br />Across Five Sectors
-              </h2>
-            </div>
-          </div>
-          <p className="font-sans text-base leading-relaxed max-w-[600px] mt-6 mb-12" style={{ color: "#65677B" }}>
-            Selected examples of the consulting, implementation, and transformation work we have
-            delivered for clients in infrastructure, energy, financial services, public sector, and
-            technology. Client details are anonymised in line with confidentiality agreements.
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border-l border-t" style={{ borderColor: "#E5E3EE" }}>
-            {transformationProjects.map((project) => (
-              <div key={project.title} className="p-8 border-r border-b flex flex-col" style={{ borderColor: "#E5E3EE" }}>
-                <div className="w-0.5 h-5 mb-5 rounded" style={{ backgroundColor: "#F85C70" }} />
-                <p className="font-mono text-xs uppercase tracking-[0.1em] mb-2" style={{ color: "#F85C70" }}>
-                  {project.sector}
-                </p>
-                <h3 className="font-display text-xl mb-3 flex-1" style={{ color: "#181F4F", fontWeight: 400 }}>
-                  {project.title}
-                </h3>
-                <p className="font-sans text-sm leading-relaxed mb-5" style={{ color: "#65677B" }}>
+                <Text variant="small" tone="muted" className="flex-1">
                   {project.desc}
-                </p>
-                <div
-                  className="p-4 rounded mb-5"
-                  style={{ backgroundColor: "#F2F0F7" }}
-                >
-                  <p className="font-sans text-xs font-bold uppercase tracking-[0.06em] mb-1" style={{ color: "#60266A" }}>
-                    Outcome
-                  </p>
-                  <p className="font-sans text-sm" style={{ color: "#181F4F" }}>
-                    {project.outcome}
-                  </p>
-                </div>
-                <div className="flex flex-wrap gap-2">
+                </Text>
+                <Stack direction="row" gap="xs" className="flex-wrap">
                   {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="font-mono text-xs px-2.5 py-1 rounded"
-                      style={{ backgroundColor: "#F2F0F7", color: "#6B6E81" }}
-                    >
+                    <span key={tag} className="rounded bg-[#F2F0F7] px-2.5 py-1 font-mono text-xs text-[#6B6E81]">
                       {tag}
                     </span>
                   ))}
-                </div>
+                </Stack>
+              </Stack>
+            </BorderCell>
+          ))}
+        </BorderGrid>
+      </Section>
+
+      <Section id="apps" tone="navy" padding="lg" className="scroll-mt-20">
+        <SectionHeading
+          dark
+          icon={Smartphone}
+          eyebrow="Apps and Platforms"
+          title={
+            <>
+              Products We Have
+              <br />
+              Designed and Shipped
+            </>
+          }
+          lead="These are applications we have built end-to-end: product strategy, UX, engineering, and go-to-market. Social platforms, analytics tools, and community products for real audiences."
+        />
+
+        <BorderGrid cols={3} className="border-l border-t border-white/10">
+          {appBuilds.map((app) => (
+            <BorderCell key={app.name} className="flex h-full flex-col overflow-hidden border-white/10 !p-0">
+              <div className={`relative flex h-[180px] flex-col items-center justify-center ${app.placeholderClass}`}>
+                <div
+                  className="absolute inset-0 bg-[repeating-linear-gradient(45deg,rgba(255,255,255,0.05)_0px,rgba(255,255,255,0.05)_1px,transparent_1px,transparent_40px)] opacity-10"
+                  aria-hidden="true"
+                />
+                <span className="relative z-10 mb-3 text-5xl" role="img" aria-label={app.name}>
+                  {app.placeholderIcon}
+                </span>
+                <Text variant="h4" tone="white" className="relative z-10 tracking-[0.02em]">
+                  {app.name}
+                </Text>
+                <span className="relative z-10 mt-2 rounded bg-[#F85C70]/25 px-2.5 py-0.5 font-mono text-xs text-[#F85C70]">
+                  {app.status}
+                </span>
               </div>
-            ))}
-          </div>
 
-          <div className="mt-10 flex flex-wrap gap-4">
-            <button
-              onClick={() => onOpenConsultation?.("our-work")}
-              className="amp-focus-ring-on-navy inline-flex items-center gap-2 px-8 h-11 font-sans font-bold text-sm rounded transition-colors duration-200"
-              style={{ backgroundColor: "#F85C70", color: "#181F4F" }}
-              onMouseOver={(e) => ((e.currentTarget as HTMLButtonElement).style.backgroundColor = "#d94a5e")}
-              onMouseOut={(e) => ((e.currentTarget as HTMLButtonElement).style.backgroundColor = "#F85C70")}
-              data-testid="button-our-work-hero"
-            >
-              Discuss a Transformation <ArrowRight className="h-4 w-4" />
-            </button>
-          </div>
+              <Stack gap="md" className="flex flex-1 flex-col p-7">
+                <Eyebrow>{app.category}</Eyebrow>
+                <Text variant="h3" tone="white">
+                  {app.name}
+                </Text>
+                <Text variant="small" tone="white-70" className="flex-1">
+                  {app.desc}
+                </Text>
+                <Stack direction="row" gap="xs" className="flex-wrap">
+                  {app.tags.map((tag) => (
+                    <span key={tag} className="rounded bg-white/5 px-2.5 py-1 font-mono text-xs text-white/50">
+                      {tag}
+                    </span>
+                  ))}
+                </Stack>
+                {app.url ? (
+                  <a
+                    href={app.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 font-sans text-xs font-semibold text-[#F85C70] transition-colors duration-150 hover:text-white"
+                  >
+                    Visit {app.domain} <ExternalLink className="h-3 w-3" />
+                  </a>
+                ) : null}
+              </Stack>
+            </BorderCell>
+          ))}
+        </BorderGrid>
+      </Section>
+
+      <Section id="transformation" tone="white" padding="lg" className="scroll-mt-20">
+        <SectionHeading
+          icon={Zap}
+          eyebrow="Digital Transformation"
+          title={
+            <>
+              Enterprise Implementations
+              <br />
+              Across Five Sectors
+            </>
+          }
+          lead="Selected examples of the consulting, implementation, and transformation work we have delivered for clients in infrastructure, energy, financial services, public sector, and technology. Client details are anonymised in line with confidentiality agreements."
+        />
+
+        <BorderGrid cols={3} className="border-l border-t border-[#E5E3EE]">
+          {transformationProjects.map((project) => (
+            <BorderCell key={project.title} className="flex h-full flex-col border-[#E5E3EE]">
+              <div className="mb-5 h-5 w-0.5 rounded bg-[#F85C70]" />
+              <Eyebrow className="mb-2">{project.sector}</Eyebrow>
+              <Text variant="h3" className="mb-3 flex-1">{project.title}</Text>
+              <Text variant="small" tone="muted" className="mb-5">{project.desc}</Text>
+              <Surface variant="mist" padding="md" radius="sm" className="mb-5">
+                <Text variant="caption" className="mb-1 font-bold uppercase tracking-[0.06em] text-[#60266A]">
+                  Outcome
+                </Text>
+                <Text variant="small">{project.outcome}</Text>
+              </Surface>
+              <Stack direction="row" gap="xs" className="mt-auto flex-wrap">
+                {project.tags.map((tag) => (
+                  <span key={tag} className="rounded bg-[#F2F0F7] px-2.5 py-1 font-mono text-xs text-[#6B6E81]">
+                    {tag}
+                  </span>
+                ))}
+              </Stack>
+            </BorderCell>
+          ))}
+        </BorderGrid>
+
+        <div className="mt-10">
+          <AmpButton onClick={() => onOpenConsultation?.("our-work")} data-testid="button-our-work-hero">
+            Discuss a Transformation <ArrowRight className="h-4 w-4" />
+          </AmpButton>
         </div>
-      </section>
+      </Section>
 
-      {/* AMPSTORE */}
-      <section id="amp-store" className="py-20 lg:py-28 scroll-mt-20" style={{ backgroundColor: "#F2F0F7" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-start gap-4 mb-4">
-            <ShoppingBag className="h-5 w-5 flex-shrink-0 mt-1" style={{ color: "#F85C70" }} />
-            <div>
-              <p className="font-mono text-xs uppercase tracking-[0.12em] mb-1" style={{ color: "#6B6E81" }}>
-                ampStore
-              </p>
-              <h2 className="font-display text-4xl md:text-5xl" style={{ color: "#181F4F", fontWeight: 400 }}>
-                Practitioner Learning.<br />Built Into the Work.
-              </h2>
-            </div>
-          </div>
+      <Section id="amp-store" tone="mist" padding="lg" className="scroll-mt-20">
+        <SectionHeading
+          icon={ShoppingBag}
+          eyebrow="ampStore"
+          title={
+            <>
+              Practitioner Learning.
+              <br />
+              Built Into the Work.
+            </>
+          }
+        />
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mt-10 mb-12">
-            <div>
-              <p className="font-sans text-base leading-relaxed mb-4" style={{ color: "#65677B" }}>
-                ampStore is our curated learning platform designed for practitioners in regulated
-                industries. Not generic e-learning. Not certification for its own sake. Content
-                built by the people who deliver the work, for the people doing it.
-              </p>
-              <p className="font-sans text-base leading-relaxed mb-4" style={{ color: "#65677B" }}>
-                Each module aligns directly to one of our six AMP service lines. The tools,
-                frameworks, and playbooks in ampStore are the same ones our consultants use on live
-                engagements. No gap between theory and practice.
-              </p>
-              <p className="font-sans text-base leading-relaxed" style={{ color: "#65677B" }}>
-                Available as a standalone subscription, as part of a Capability Building engagement,
-                or integrated into a broader Amplified programme as a continuous development layer.
-              </p>
-            </div>
-            <div className="space-y-3">
-              {[
-                ["What it is", "A curated digital platform delivering practitioner-led learning resources aligned to each Amplified service line."],
-                ["Who it is for", "Delivery leads, product owners, technical leads, and senior leaders in regulated industries who need learning that applies to their actual context."],
-                ["How you access it", "Annual or rolling subscription. Module sets can be licensed per team or accessed as part of a broader Amplified engagement."],
-                ["What makes it different", "Every resource is built or reviewed by practitioners who have done the work. No generic content. Every module reflects real delivery experience."],
-              ].map(([label, value]) => (
-                <div key={label as string} className="p-5 rounded" style={{ backgroundColor: "#ffffff" }}>
-                  <p className="font-sans text-xs font-bold uppercase tracking-[0.08em] mb-1.5" style={{ color: "#60266A" }}>
-                    {label}
-                  </p>
-                  <p className="font-sans text-sm leading-relaxed" style={{ color: "#65677B" }}>{value}</p>
-                </div>
-              ))}
-            </div>
-          </div>
+        <Grid cols="2-lg" gap="xl" className="mb-12 items-start">
+          <Stack gap="md">
+            <Text variant="body" tone="muted">
+              ampStore is our curated learning platform designed for practitioners in regulated
+              industries. Not generic e-learning. Not certification for its own sake. Content
+              built by the people who deliver the work, for the people doing it.
+            </Text>
+            <Text variant="body" tone="muted">
+              Each module aligns directly to one of our six AMP service lines. The tools,
+              frameworks, and playbooks in ampStore are the same ones our consultants use on live
+              engagements. No gap between theory and practice.
+            </Text>
+            <Text variant="body" tone="muted">
+              Available as a standalone subscription, as part of a Capability Building engagement,
+              or integrated into a broader Amplified programme as a continuous development layer.
+            </Text>
+          </Stack>
+          <Stack gap="sm">
+            {ampStoreFacts.map(([label, value]) => (
+              <Surface key={label} variant="plain" padding="md" radius="sm" className="bg-white">
+                <Text variant="caption" className="mb-1.5 font-bold uppercase tracking-[0.08em] text-[#60266A]">
+                  {label}
+                </Text>
+                <Text variant="small" tone="muted">{value}</Text>
+              </Surface>
+            ))}
+          </Stack>
+        </Grid>
 
-          <div>
-            <p className="font-mono text-xs uppercase tracking-[0.12em] mb-8" style={{ color: "#6B6E81" }}>
-              Catalogue areas
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border-l border-t" style={{ borderColor: "#E5E3EE" }}>
-              {ampStoreAreas.map((area) => (
-                <div key={area.tag} className="p-7 border-r border-b" style={{ borderColor: "#E5E3EE", backgroundColor: "#ffffff" }}>
-                  <div className="flex items-center gap-3 mb-4">
-                    <span className="font-mono text-xs" style={{ color: "#F85C70" }}>{area.tag}</span>
-                    <span className="font-sans text-sm font-bold" style={{ color: "#181F4F" }}>{area.title}</span>
-                  </div>
-                  <ul className="space-y-2">
-                    {area.modules.map((mod) => (
-                      <li key={mod} className="flex items-start gap-2">
-                        <span className="flex-shrink-0 mt-1.5 w-1 h-1 rounded-full" style={{ backgroundColor: "#F85C70" }} />
-                        <span className="font-sans text-xs leading-relaxed" style={{ color: "#65677B" }}>{mod}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
+        <Eyebrow tone="subtle" className="mb-8">Catalogue areas</Eyebrow>
+        <BorderGrid cols={3} className="border-l border-t border-[#E5E3EE]">
+          {ampStoreAreas.map((area) => (
+            <BorderCell key={area.tag} className="border-[#E5E3EE] bg-white">
+              <Stack direction="row" gap="sm" align="center" className="mb-4">
+                <Eyebrow>{area.tag}</Eyebrow>
+                <Text variant="small" className="font-bold">{area.title}</Text>
+              </Stack>
+              <ul className="space-y-2">
+                {area.modules.map((mod) => (
+                  <li key={mod} className="flex items-start gap-2">
+                    <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-[#F85C70]" />
+                    <Text variant="caption" tone="muted">{mod}</Text>
+                  </li>
+                ))}
+              </ul>
+            </BorderCell>
+          ))}
+        </BorderGrid>
 
-          <div className="mt-10 flex flex-wrap gap-4">
+        <Stack direction="row-responsive" gap="md" className="mt-10 flex-wrap">
+          <AmpButton asChild data-testid="button-explore-amp-store">
             <Link href="/amp-store">
-              <button
-                className="amp-focus-ring-on-light inline-flex items-center gap-2 px-8 h-11 font-sans font-bold text-sm rounded transition-colors duration-200"
-                style={{ backgroundColor: "#F85C70", color: "#181F4F" }}
-                onMouseOver={(e) => ((e.currentTarget as HTMLButtonElement).style.backgroundColor = "#d94a5e")}
-                onMouseOut={(e) => ((e.currentTarget as HTMLButtonElement).style.backgroundColor = "#F85C70")}
-                data-testid="button-explore-amp-store"
-              >
-                Explore ampStore <ArrowRight className="h-4 w-4" />
-              </button>
+              Explore ampStore <ArrowRight className="h-4 w-4" />
             </Link>
-            <button
-              onClick={() => onOpenConsultation?.("amp-store")}
-              className="amp-focus-ring-on-light inline-flex items-center gap-2 px-8 h-11 font-sans font-bold text-sm rounded transition-colors duration-200"
-              style={{ border: "1px solid #E5E3EE", color: "#181F4F", backgroundColor: "transparent" }}
-              data-testid="button-amp-store-access"
-              onMouseOver={(e) => ((e.currentTarget as HTMLButtonElement).style.backgroundColor = "#ffffff")}
-              onMouseOut={(e) => ((e.currentTarget as HTMLButtonElement).style.backgroundColor = "transparent")}
-            >
-              Talk to us about access
-            </button>
-          </div>
-        </div>
-      </section>
+          </AmpButton>
+          <AmpButton variant="outlineDark" onClick={() => onOpenConsultation?.("amp-store")} data-testid="button-amp-store-access">
+            Talk to us about access
+          </AmpButton>
+        </Stack>
+      </Section>
 
-      {/* SUSTAINABILITY */}
-      <section id="sustainability" className="py-20 lg:py-28 scroll-mt-20" style={{ backgroundColor: "#181F4F" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-start gap-4 mb-4">
-            <Leaf className="h-5 w-5 flex-shrink-0 mt-1" style={{ color: "#F85C70" }} />
-            <div>
-              <p className="font-mono text-xs uppercase tracking-[0.12em] mb-1" style={{ color: "#F85C70" }}>
-                Sustainability
-              </p>
-              <h2 className="font-display text-4xl md:text-5xl text-white" style={{ fontWeight: 400 }}>
-                Our Commitments to<br />Sustainable Practice
-              </h2>
-            </div>
-          </div>
-          <p className="font-sans text-base leading-relaxed max-w-[580px] mt-6 mb-12" style={{ color: "rgba(255,255,255,0.65)" }}>
-            We do not make ambitious sustainability claims we cannot substantiate. What we can tell
-            you is what we actually do, why we do it, and what we are committed to improving.
-          </p>
+      <Section id="sustainability" tone="navy" padding="lg" className="scroll-mt-20">
+        <SectionHeading
+          dark
+          icon={Leaf}
+          eyebrow="Sustainability"
+          title={
+            <>
+              Our Commitments to
+              <br />
+              Sustainable Practice
+            </>
+          }
+          lead="We do not make ambitious sustainability claims we cannot substantiate. What we can tell you is what we actually do, why we do it, and what we are committed to improving."
+        />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border-l border-t" style={{ borderColor: "rgba(255,255,255,0.1)" }}>
-            {sustainabilityCommitments.map((item) => (
-              <div key={item.title} className="p-8 border-r border-b" style={{ borderColor: "rgba(255,255,255,0.1)" }}>
-                <div className="w-0.5 h-6 mb-5 rounded" style={{ backgroundColor: "#F85C70" }} />
-                <h3 className="font-display text-xl text-white mb-3" style={{ fontWeight: 400 }}>
-                  {item.title}
-                </h3>
-                <p className="font-sans text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.6)" }}>
-                  {item.body}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+        <BorderGrid cols={2} className="border-l border-t border-white/10">
+          {sustainabilityCommitments.map((item) => (
+            <BorderCell key={item.title} className="border-white/10">
+              <div className="mb-5 h-6 w-0.5 rounded bg-[#F85C70]" />
+              <Text variant="h3" tone="white" className="mb-3">{item.title}</Text>
+              <Text variant="small" tone="white-70">{item.body}</Text>
+            </BorderCell>
+          ))}
+        </BorderGrid>
+      </Section>
 
-      {/* CHARITABLE EFFORTS */}
-      <section id="charitable" className="py-20 lg:py-28 bg-white scroll-mt-20">
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-start gap-4 mb-4">
-            <Heart className="h-5 w-5 flex-shrink-0 mt-1" style={{ color: "#F85C70" }} />
-            <div>
-              <p className="font-mono text-xs uppercase tracking-[0.12em] mb-1" style={{ color: "#6B6E81" }}>
-                Charitable Efforts
-              </p>
-              <h2 className="font-display text-4xl md:text-5xl" style={{ color: "#181F4F", fontWeight: 400 }}>
-                Putting Expertise<br />Where It Matters
-              </h2>
-            </div>
-          </div>
-          <p className="font-sans text-base leading-relaxed max-w-[580px] mt-6 mb-12" style={{ color: "#65677B" }}>
-            Organisations with deep expertise have an obligation to share it. Our charitable
-            commitments are structured and deliberate, not ad hoc.
-          </p>
+      <Section id="charitable" tone="white" padding="lg" className="scroll-mt-20">
+        <SectionHeading
+          icon={Heart}
+          eyebrow="Charitable Efforts"
+          title={
+            <>
+              Putting Expertise
+              <br />
+              Where It Matters
+            </>
+          }
+          lead="Organisations with deep expertise have an obligation to share it. Our charitable commitments are structured and deliberate, not ad hoc."
+        />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border-l border-t" style={{ borderColor: "#E5E3EE" }}>
-            {charitableEfforts.map((item) => (
-              <div key={item.title} className="p-8 border-r border-b" style={{ borderColor: "#E5E3EE" }}>
-                <CheckCircle className="h-5 w-5 mb-4" style={{ color: "#F85C70" }} />
-                <h3 className="font-display text-xl mb-3" style={{ color: "#181F4F", fontWeight: 400 }}>
-                  {item.title}
-                </h3>
-                <p className="font-sans text-sm leading-relaxed" style={{ color: "#65677B" }}>
-                  {item.body}
-                </p>
-              </div>
-            ))}
-          </div>
+        <BorderGrid cols={3} className="border-l border-t border-[#E5E3EE]">
+          {charitableEfforts.map((item) => (
+            <ContentCard
+              key={item.title}
+              variant="bordered"
+              className="border-[#E5E3EE]"
+              title={item.title}
+              description={item.body}
+              eyebrow={<CheckCircle className="h-5 w-5 text-[#F85C70]" aria-hidden="true" />}
+              titleClamp={3}
+              descriptionClamp={6}
+            />
+          ))}
+        </BorderGrid>
 
-          <div className="mt-10 p-6 rounded flex items-start gap-4" style={{ backgroundColor: "#F2F0F7" }}>
-            <Heart className="h-5 w-5 flex-shrink-0 mt-0.5" style={{ color: "#F85C70" }} />
-            <div>
-              <p className="font-sans text-sm font-bold mb-1" style={{ color: "#181F4F" }}>
-                Work with a charity or social enterprise?
-              </p>
-              <p className="font-sans text-sm leading-relaxed" style={{ color: "#65677B" }}>
-                If you lead or work with a charitable organisation that could benefit from pro-bono
-                support in technology, AI governance, or structured delivery, contact us at{" "}
-                <a href="mailto:hello@amplified.co.uk" style={{ color: "#F85C70" }}>
-                  hello@amplified.co.uk
-                </a>{" "}
-                with a brief description of your organisation and the challenge you are working on.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+        <Surface variant="mist" padding="lg" radius="md" className="mt-10 flex items-start gap-4">
+          <Heart className="mt-0.5 h-5 w-5 shrink-0 text-[#F85C70]" aria-hidden="true" />
+          <Stack gap="xs">
+            <Text variant="small" className="font-bold">Work with a charity or social enterprise?</Text>
+            <Text variant="small" tone="muted">
+              If you lead or work with a charitable organisation that could benefit from pro-bono
+              support in technology, AI governance, or structured delivery, contact us at{" "}
+              <a href="mailto:hello@amplified.co.uk" className="text-[#F85C70] hover:underline">
+                hello@amplified.co.uk
+              </a>{" "}
+              with a brief description of your organisation and the challenge you are working on.
+            </Text>
+          </Stack>
+        </Surface>
+      </Section>
 
-      {/* CTA */}
-      <section className="py-24 text-center" style={{ backgroundColor: "#60266A" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="font-mono text-xs uppercase tracking-[0.15em] mb-6" style={{ color: "rgba(255,255,255,0.5)" }}>
-            Work with Amplified
-          </p>
-          <h2 className="font-display text-4xl md:text-5xl text-white mb-6" style={{ fontWeight: 400 }}>
-            Ready to Start Something?
-          </h2>
-          <p className="font-sans text-lg max-w-[480px] mx-auto mb-10" style={{ color: "rgba(255,255,255,0.8)" }}>
-            Whether you want to explore ampStore, discuss a transformation challenge, or find
-            out about our pro-bono programme, we would like to hear from you.
-          </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <button
-              onClick={() => onOpenConsultation?.("our-work")}
-              className="amp-focus-ring-on-navy inline-flex items-center gap-2 px-10 h-12 font-sans font-bold text-base rounded transition-colors duration-200"
-              style={{ backgroundColor: "#F85C70", color: "#181F4F" }}
-              onMouseOver={(e) => ((e.currentTarget as HTMLButtonElement).style.backgroundColor = "#d94a5e")}
-              onMouseOut={(e) => ((e.currentTarget as HTMLButtonElement).style.backgroundColor = "#F85C70")}
-              data-testid="button-cta"
-            >
-              Start a Conversation <ArrowRight className="h-4 w-4" />
-            </button>
-            <Link href="/amp-store">
-              <button
-                className="amp-focus-ring-on-navy inline-flex items-center gap-2 px-10 h-12 font-sans font-bold text-base rounded transition-colors duration-200"
-                style={{ border: "1px solid rgba(255,255,255,0.3)", color: "#FFFFFF", backgroundColor: "transparent" }}
-                onMouseOver={(e) => ((e.currentTarget as HTMLButtonElement).style.backgroundColor = "rgba(255,255,255,0.08)")}
-                onMouseOut={(e) => ((e.currentTarget as HTMLButtonElement).style.backgroundColor = "transparent")}
-                data-testid="button-browse-amp-store"
-              >
-                Browse ampStore
-              </button>
-            </Link>
-          </div>
-        </div>
-      </section>
-    </div>
+      <CtaBand
+        tone="purple"
+        eyebrow="Work with Amplified"
+        title="Ready to Start Something?"
+        lead="Whether you want to explore ampStore, discuss a transformation challenge, or find out about our pro-bono programme, we would like to hear from you."
+      >
+        <Stack direction="row-responsive" gap="md" className="justify-center">
+          <AmpButton onClick={() => onOpenConsultation?.("our-work")} data-testid="button-cta">
+            Start a Conversation <ArrowRight className="h-4 w-4" />
+          </AmpButton>
+          <AmpButton asChild variant="outlineLight" data-testid="button-browse-amp-store">
+            <Link href="/amp-store">Browse ampStore</Link>
+          </AmpButton>
+        </Stack>
+      </CtaBand>
+    </PageShell>
   );
 });
 

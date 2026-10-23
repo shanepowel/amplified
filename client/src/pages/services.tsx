@@ -3,6 +3,23 @@
 import { memo } from "react";
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
+import {
+  PageShell,
+  PageHero,
+  BreadcrumbBar,
+  CtaBand,
+  Container,
+  Section,
+  Stack,
+  Grid,
+  Text,
+  Eyebrow,
+  Surface,
+  AmpButton,
+  ContentCard,
+  BorderGrid,
+  BorderCell,
+} from "@/components/system";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { HexagonDecoration } from "@/components/hexagon-decoration";
@@ -126,9 +143,9 @@ const Services = memo(function Services({ onOpenConsultation }: ServicesProps) {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <PageShell className="bg-background">
       {/* Hero Section - Premium glassmorphic design */}
-      <section className="py-24 md:py-32 bg-gradient-to-br from-background via-muted/10 to-primary/5 relative overflow-hidden">
+      <Section className="py-24 md:py-32 bg-gradient-to-br from-background via-muted/10 to-primary/5 relative overflow-hidden">
         <div className="absolute inset-0 modern-pattern opacity-5"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -177,12 +194,12 @@ const Services = memo(function Services({ onOpenConsultation }: ServicesProps) {
             </div>
           </div>
         </div>
-      </section>
+      </Section>
 
       <div className="luminous-divider"></div>
 
       {/* Methodology Visual Section */}
-      <section className="py-24 md:py-32 bg-gradient-to-br from-primary/5 to-accent/5 relative overflow-hidden">
+      <Section className="py-24 md:py-32 bg-gradient-to-br from-primary/5 to-accent/5 relative overflow-hidden">
         <div className="absolute inset-0 modern-pattern opacity-5"></div>
         <HexagonDecoration className="top-5 right-10" size="lg" colour="primary" opacity={0.07} />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -221,12 +238,12 @@ const Services = memo(function Services({ onOpenConsultation }: ServicesProps) {
             </Card>
           </div>
         </div>
-      </section>
+      </Section>
 
       <div className="luminous-divider"></div>
 
       {/* Services Grid - Premium design */}
-      <section className="py-24 md:py-32 relative overflow-hidden">
+      <Section className="py-24 md:py-32 relative overflow-hidden">
         <div className="absolute inset-0 modern-pattern opacity-5"></div>
         <HexagonDecoration className="top-10 left-10" size="lg" colour="primary" opacity={0.08} />
         <HexagonDecoration className="bottom-20 right-20" size="md" colour="accent" opacity={0.06} />
@@ -314,12 +331,12 @@ const Services = memo(function Services({ onOpenConsultation }: ServicesProps) {
             })}
           </div>
         </div>
-      </section>
+      </Section>
 
       <div className="luminous-divider"></div>
 
       {/* Core Values Section */}
-      <section className="py-24 md:py-32 bg-gradient-to-b from-background to-muted/10 relative overflow-hidden">
+      <Section className="py-24 md:py-32 bg-gradient-to-b from-background to-muted/10 relative overflow-hidden">
         <div className="absolute inset-0 modern-pattern opacity-5"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
@@ -426,12 +443,12 @@ const Services = memo(function Services({ onOpenConsultation }: ServicesProps) {
             </p>
           </div>
         </div>
-      </section>
+      </Section>
 
       <div className="luminous-divider"></div>
 
       {/* Why Amplified Works Section */}
-      <section className="py-24 md:py-32 bg-gradient-to-br from-muted/20 to-primary/5 relative overflow-hidden">
+      <Section className="py-24 md:py-32 bg-gradient-to-br from-muted/20 to-primary/5 relative overflow-hidden">
         <div className="absolute inset-0 modern-pattern opacity-5"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
@@ -490,8 +507,8 @@ const Services = memo(function Services({ onOpenConsultation }: ServicesProps) {
             </Button>
           </div>
         </div>
-      </section>
-    </div>
+      </Section>
+    </PageShell>
   );
 });
 

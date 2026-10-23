@@ -6,53 +6,42 @@ import { memo } from "react";
 import { Linkedin, Mail } from "lucide-react";
 import { SiInstagram, SiYoutube, SiPinterest } from "react-icons/si";
 import amplifiedLogo from "@assets/amplified-logo-pink-purple.png";
+import { Container, Eyebrow, Grid, Stack, Text } from "@/components/system";
 
 const Footer = memo(function Footer() {
   return (
-    <footer
-      className="font-sans"
-      style={{ backgroundColor: "#181F4F", borderTop: "1px solid rgba(96,38,106,0.4)" }}
-    >
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Main footer content */}
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-10 mb-10 pb-10 border-b" style={{ borderColor: "rgba(96,38,106,0.3)" }}>
-          {/* Brand */}
-          <div className="md:col-span-2">
+    <footer className="border-t border-[#60266A]/40 bg-[#181F4F] font-sans">
+      <Container className="py-12">
+        <Grid
+          cols="12"
+          gap="lg"
+          equal={false}
+          className="mb-10 border-b border-[#60266A]/30 pb-10 lg:grid-cols-5"
+        >
+          <div className="lg:col-span-2">
             <Image
               src={amplifiedLogo}
               alt="Amplified"
               sizes="160px"
-              className="!h-10 !w-auto mb-4 brightness-200"
-              style={{ objectFit: "contain" }}
+              className="mb-4 !h-10 !w-auto object-contain brightness-200"
               data-testid="footer-logo"
             />
-            <p className="text-sm mb-2" style={{ color: "rgba(255,255,255,0.6)" }}>
+            <Text variant="small" className="mb-2 text-white/60">
               Built for industries where rigour is not optional.
-            </p>
-            <p className="text-sm mb-1" style={{ color: "rgba(255,255,255,0.4)" }}>
+            </Text>
+            <Text variant="small" className="mb-1 text-white/40">
               London, UK
-            </p>
+            </Text>
             <a
               href="mailto:hello@amplified.co.uk"
-              className="text-sm transition-colors"
-              style={{ color: "rgba(255,255,255,0.4)" }}
-              onMouseOver={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#F85C70")}
-              onMouseOut={(e) =>
-                ((e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.4)")
-              }
+              className="text-sm text-white/40 transition-colors hover:text-[#F85C70]"
             >
               hello@amplified.co.uk
             </a>
           </div>
 
-          {/* Services */}
           <div>
-            <p
-              className="font-mono text-xs uppercase tracking-[0.1em] mb-4"
-              style={{ color: "#F85C70" }}
-            >
-              Services
-            </p>
+            <Eyebrow className="mb-4">Services</Eyebrow>
             <ul className="space-y-2">
               {[
                 { label: "AI Governance", href: "/ai-governance" },
@@ -62,17 +51,7 @@ const Footer = memo(function Footer() {
                 { label: "Autonomous Organisations", href: "/org-design" },
               ].map((link) => (
                 <li key={link.label}>
-                  <Link
-                    href={link.href}
-                    className="text-sm transition-colors"
-                    style={{ color: "rgba(255,255,255,0.5)" }}
-                    onMouseOver={(e) =>
-                      ((e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.9)")
-                    }
-                    onMouseOut={(e) =>
-                      ((e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.5)")
-                    }
-                  >
+                  <Link href={link.href} className="text-sm text-white/50 transition-colors hover:text-white/90">
                     {link.label}
                   </Link>
                 </li>
@@ -80,14 +59,8 @@ const Footer = memo(function Footer() {
             </ul>
           </div>
 
-          {/* Company */}
           <div>
-            <p
-              className="font-mono text-xs uppercase tracking-[0.1em] mb-4"
-              style={{ color: "#F85C70" }}
-            >
-              Company
-            </p>
+            <Eyebrow className="mb-4">Company</Eyebrow>
             <ul className="space-y-2">
               {[
                 { label: "How We Work", href: "/how-we-work" },
@@ -97,17 +70,7 @@ const Footer = memo(function Footer() {
                 { label: "Contact", href: "/contact" },
               ].map((link) => (
                 <li key={link.label}>
-                  <Link
-                    href={link.href}
-                    className="text-sm transition-colors"
-                    style={{ color: "rgba(255,255,255,0.5)" }}
-                    onMouseOver={(e) =>
-                      ((e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.9)")
-                    }
-                    onMouseOut={(e) =>
-                      ((e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.5)")
-                    }
-                  >
+                  <Link href={link.href} className="text-sm text-white/50 transition-colors hover:text-white/90">
                     {link.label}
                   </Link>
                 </li>
@@ -115,14 +78,8 @@ const Footer = memo(function Footer() {
             </ul>
           </div>
 
-          {/* Who we work with */}
           <div>
-            <p
-              className="font-mono text-xs uppercase tracking-[0.1em] mb-4"
-              style={{ color: "#F85C70" }}
-            >
-              Who We Work With
-            </p>
+            <Eyebrow className="mb-4">Who We Work With</Eyebrow>
             <ul className="space-y-2">
               {[
                 { label: "For CIOs", href: "/for-cios" },
@@ -135,33 +92,19 @@ const Footer = memo(function Footer() {
                 { label: "Technology & Private Sector", href: "/sectors/technology" },
               ].map((link) => (
                 <li key={link.label}>
-                  <Link
-                    href={link.href}
-                    className="text-sm transition-colors"
-                    style={{ color: "rgba(255,255,255,0.5)" }}
-                    onMouseOver={(e) =>
-                      ((e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.9)")
-                    }
-                    onMouseOut={(e) =>
-                      ((e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.5)")
-                    }
-                  >
+                  <Link href={link.href} className="text-sm text-white/50 transition-colors hover:text-white/90">
                     {link.label}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
+        </Grid>
 
-        </div>
-
-        {/* Bottom row */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-6">
-            <p className="text-xs" style={{ color: "rgba(255,255,255,0.3)" }}>
-              © 2026 Amplified Ltd · London, UK · Company No. 08589016
-            </p>
-          </div>
+        <Stack direction="row-responsive" gap="md" justify="between" align="center" className="flex-wrap">
+          <Text variant="caption" className="text-white/30">
+            © 2026 Amplified Ltd · London, UK · Company No. 08589016
+          </Text>
 
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
             {[
@@ -170,25 +113,18 @@ const Footer = memo(function Footer() {
               { label: "Accessibility", href: "/accessibility" },
               { label: "Modern Slavery", href: "/modern-slavery" },
               { label: "Press", href: "/press" },
-            ].map((link, i) => (
+            ].map((link) => (
               <Link
                 key={link.label}
                 href={link.href}
-                className="text-xs transition-colors"
-                style={{ color: "rgba(255,255,255,0.3)" }}
-                onMouseOver={(e) =>
-                  ((e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.7)")
-                }
-                onMouseOut={(e) =>
-                  ((e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.3)")
-                }
+                className="text-xs text-white/30 transition-colors hover:text-white/70"
                 data-testid={`footer-link-${link.label.toLowerCase().replace(/\s+/g, "-")}`}
               >
                 {link.label}
               </Link>
             ))}
 
-            <div className="flex items-center gap-3 ml-2">
+            <div className="ml-2 flex items-center gap-3">
               {[
                 { href: "https://linkedin.com/company/amplifiedlimited/", label: "LinkedIn", icon: <Linkedin className="h-4 w-4" /> },
                 { href: "https://www.instagram.com/amplifiedguide", label: "Instagram", icon: <SiInstagram className="h-4 w-4" /> },
@@ -202,17 +138,15 @@ const Footer = memo(function Footer() {
                   target={s.href.startsWith("mailto") ? undefined : "_blank"}
                   rel={s.href.startsWith("mailto") ? undefined : "noopener noreferrer"}
                   aria-label={s.label}
-                  style={{ color: "rgba(255,255,255,0.3)" }}
-                  onMouseOver={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#F85C70")}
-                  onMouseOut={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.3)")}
+                  className="text-white/30 transition-colors hover:text-[#F85C70]"
                 >
                   {s.icon}
                 </a>
               ))}
             </div>
           </div>
-        </div>
-      </div>
+        </Stack>
+      </Container>
     </footer>
   );
 });

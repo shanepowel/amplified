@@ -27,25 +27,10 @@ export function ScrollProgress() {
   }, []);
 
   return (
-    <div
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        right: 0,
-        height: "3px",
-        zIndex: 9999,
-        backgroundColor: "rgba(248,92,112,0.15)",
-        pointerEvents: "none",
-      }}
-    >
+    <div className="pointer-events-none fixed left-0 right-0 top-0 z-[9999] h-[3px] bg-[#F85C70]/15">
       <div
-        style={{
-          height: "100%",
-          width: `${progress}%`,
-          backgroundColor: "#F85C70",
-          transition: "width 0.1s linear",
-        }}
+        className="h-full bg-[#F85C70] transition-[width] duration-100 ease-linear"
+        style={{ width: `${progress}%` }}
       />
     </div>
   );

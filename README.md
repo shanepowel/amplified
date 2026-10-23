@@ -124,11 +124,24 @@ the build.
 ```
 app/                 Next.js App Router routes, API handlers, /studio
 client/src/          UI components, pages, hooks, bundled engagement data
+client/src/components/system/  Amplified design-system primitives
 lib/                 services (CRM, email, CMS), Sanity client + content layer
 shared/              Drizzle schema and shared types
 studio/              Sanity schema types and Studio structure
 scripts/             seed scripts
 ```
+
+## Design system
+
+Layout and marketing surfaces should use the Amplified primitives in
+`@/components/system` rather than one-off inline styles:
+
+- `Container`, `Section`, `Stack`, `Grid` — consistent page width, spacing, equal-height grids
+- `Text`, `Eyebrow` — overflow-safe typography with optional line clamps
+- `Surface`, `ContentCard`, `AmpButton` — standard panels and CTAs with fixed heights
+
+These components enforce `min-w-0`, word wrapping, and equal card heights so
+sections stay aligned when copy lengths differ.
 
 ## Content conventions
 

@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, useCallback, memo } from "react";
 import Link from "next/link";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { AmpButton, Container, Eyebrow, Text } from "@/components/system";
 
 interface SpotlightService {
   tag: string;
@@ -162,44 +163,42 @@ const ServiceSpotlight = memo(function ServiceSpotlight({ onOpenConsultation }: 
 
   return (
     <section
-      className="py-0"
-      style={{ backgroundColor: "#181F4F" }}
+      className="bg-[#181F4F] py-0"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       aria-label="Service Spotlight"
     >
       {/* Tab navigation */}
-      <div
-        className="border-b overflow-x-auto"
-        style={{ borderColor: "rgba(255,255,255,0.08)" }}
-      >
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 flex">
+      <div className="overflow-x-auto border-b border-white/[0.08]">
+        <Container className="flex !px-4 sm:!px-6 lg:!px-8">
           {services.map((s, i) => (
             <button
               key={s.tag}
               onClick={() => goTo(i, i > active ? "next" : "prev")}
-              className="relative flex-shrink-0 flex flex-col items-center px-5 py-5 transition-colors duration-200 focus:outline-none"
-              style={{ color: active === i ? "#F85C70" : "rgba(255,255,255,0.4)" }}
+              className={`relative flex flex-shrink-0 flex-col items-center px-5 py-5 transition-colors duration-200 focus:outline-none ${
+                active === i ? "text-[#F85C70]" : "text-white/40"
+              }`}
               aria-pressed={active === i}
               aria-label={`${s.tag} ${s.title}`}
             >
-              <span className="font-mono text-xs tracking-[0.12em] mb-0.5">{s.tag}</span>
-              <span className="font-sans text-xs font-semibold hidden sm:block" style={{ color: active === i ? "#ffffff" : "rgba(255,255,255,0.4)" }}>
+              <span className="mb-0.5 font-mono text-xs tracking-[0.12em]">{s.tag}</span>
+              <span
+                className={`hidden font-sans text-xs font-semibold sm:block ${
+                  active === i ? "text-white" : "text-white/40"
+                }`}
+              >
                 {s.title}
               </span>
               {active === i && (
-                <span
-                  className="absolute bottom-0 left-0 right-0 h-0.5 rounded-t"
-                  style={{ backgroundColor: "#F85C70" }}
-                />
+                <span className="absolute bottom-0 left-0 right-0 h-0.5 rounded-t bg-[#F85C70]" />
               )}
             </button>
           ))}
-        </div>
+        </Container>
       </div>
 
       {/* Spotlight panel */}
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+      <Container className="py-16 lg:py-20">
         <div
           style={{
             opacity: animating ? 0 : 1,
@@ -209,78 +208,58 @@ const ServiceSpotlight = memo(function ServiceSpotlight({ onOpenConsultation }: 
             transition: "opacity 0.22s ease, transform 0.22s ease",
           }}
         >
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+          <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-16">
             {/* Left: tag + title */}
             <div className="lg:col-span-4">
               <div className="mb-6">
                 <span
-                  className="font-mono text-5xl md:text-6xl font-light"
-                  style={{ color: "rgba(255,255,255,0.08)", letterSpacing: "-0.02em" }}
+                  className="font-mono text-5xl font-light tracking-tight text-white/[0.08] md:text-6xl"
                   aria-hidden="true"
                 >
                   {current.tag.replace("AMP ", "")}
                 </span>
               </div>
-              <p className="font-mono text-xs uppercase tracking-[0.15em] mb-3" style={{ color: "#F85C70" }}>
-                {current.tag}
-              </p>
-              <h2
-                className="font-display text-3xl md:text-4xl text-white mb-3"
-                style={{ fontWeight: 400, lineHeight: 1.2 }}
-              >
+              <Eyebrow className="mb-3">{current.tag}</Eyebrow>
+              <Text variant="h3" tone="white" className="mb-3">
                 {current.title}
-              </h2>
-              <p className="font-sans text-sm mb-8" style={{ color: "rgba(255,255,255,0.5)" }}>
+              </Text>
+              <Text variant="small" className="mb-8 text-white/50">
                 {current.subtitle}
-              </p>
-              <div className="flex gap-3">
-                <Link href={current.href}>
-                  <button
-                    className="inline-flex items-center gap-2 px-6 h-10 font-sans text-sm font-bold rounded transition-colors duration-200"
-                    style={{ backgroundColor: "#F85C70", color: "#181F4F" }}
-                    onMouseOver={(e) => ((e.currentTarget as HTMLButtonElement).style.backgroundColor = "#d94a5e")}
-                    onMouseOut={(e) => ((e.currentTarget as HTMLButtonElement).style.backgroundColor = "#F85C70")}
-                  >
+              </Text>
+              <div className="flex flex-wrap gap-3">
+                <AmpButton asChild size="md" className="!h-10 !px-6 !text-sm">
+                  <Link href={current.href}>
                     Learn more about {current.title} <ArrowRight className="h-4 w-4" />
-                  </button>
-                </Link>
-                <button
+                  </Link>
+                </AmpButton>
+                <AmpButton
+                  size="md"
+                  variant="outlineLight"
+                  className="!h-10 !border-white/20 !px-6 !text-sm !font-semibold !text-white/80 hover:!border-white/40 hover:!bg-white/[0.06]"
                   onClick={() => onOpenConsultation(current.tag.toLowerCase().replace(" ", "-"))}
-                  className="inline-flex items-center gap-2 px-6 h-10 font-sans text-sm font-semibold rounded transition-colors duration-200"
-                  style={{ border: "1px solid rgba(255,255,255,0.2)", color: "rgba(255,255,255,0.8)", backgroundColor: "transparent" }}
-                  onMouseOver={(e) => { (e.currentTarget as HTMLButtonElement).style.backgroundColor = "rgba(255,255,255,0.06)"; (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,255,255,0.4)"; }}
-                  onMouseOut={(e) => { (e.currentTarget as HTMLButtonElement).style.backgroundColor = "transparent"; (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,255,255,0.2)"; }}
                 >
                   Discuss this
-                </button>
+                </AmpButton>
               </div>
             </div>
 
             {/* Right: description + bullets */}
             <div className="lg:col-span-8">
-              <p className="font-sans text-base leading-relaxed mb-4" style={{ color: "rgba(255,255,255,0.75)" }}>
+              <Text variant="body" tone="white-75" className="mb-4">
                 {current.body}
-              </p>
-              <p className="font-sans text-sm leading-relaxed mb-8" style={{ color: "rgba(255,255,255,0.5)" }}>
+              </Text>
+              <Text variant="small" className="mb-8 text-white/50">
                 {current.extended}
-              </p>
-              <div
-                className="p-6 rounded"
-                style={{ backgroundColor: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)" }}
-              >
-                <p className="font-mono text-xs uppercase tracking-[0.12em] mb-4" style={{ color: "#F85C70" }}>
-                  What this includes
-                </p>
+              </Text>
+              <div className="rounded border border-white/[0.08] bg-white/[0.04] p-6">
+                <Eyebrow className="mb-4">What this includes</Eyebrow>
                 <ul className="space-y-3">
                   {current.bullets.map((b) => (
                     <li key={b} className="flex items-start gap-3">
-                      <span
-                        className="flex-shrink-0 mt-2 w-1.5 h-1.5 rounded-full"
-                        style={{ backgroundColor: "#F85C70" }}
-                      />
-                      <span className="font-sans text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.7)" }}>
+                      <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[#F85C70]" />
+                      <Text variant="small" tone="white-70">
                         {b}
-                      </span>
+                      </Text>
                     </li>
                   ))}
                 </ul>
@@ -290,7 +269,7 @@ const ServiceSpotlight = memo(function ServiceSpotlight({ onOpenConsultation }: 
         </div>
 
         {/* Progress bar + nav */}
-        <div className="flex items-center justify-between mt-12 pt-8 border-t" style={{ borderColor: "rgba(255,255,255,0.08)" }}>
+        <div className="mt-12 flex items-center justify-between border-t border-white/[0.08] pt-8">
           {/* Progress dots */}
           <div className="flex items-center gap-2">
             {services.map((_, i) => (
@@ -298,12 +277,9 @@ const ServiceSpotlight = memo(function ServiceSpotlight({ onOpenConsultation }: 
                 key={i}
                 onClick={() => goTo(i, i > active ? "next" : "prev")}
                 aria-label={`Go to ${services[i].tag}`}
-                className="transition-all duration-300 rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
-                style={{
-                  width: active === i ? "24px" : "6px",
-                  height: "6px",
-                  backgroundColor: active === i ? "#F85C70" : "rgba(255,255,255,0.2)",
-                }}
+                className={`h-1.5 rounded-full transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-white ${
+                  active === i ? "w-6 bg-[#F85C70]" : "w-1.5 bg-white/20"
+                }`}
               />
             ))}
           </div>
@@ -313,26 +289,20 @@ const ServiceSpotlight = memo(function ServiceSpotlight({ onOpenConsultation }: 
             <button
               onClick={prev}
               aria-label="Previous service"
-              className="flex items-center justify-center w-10 h-10 rounded transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
-              style={{ border: "1px solid rgba(255,255,255,0.15)", color: "rgba(255,255,255,0.6)" }}
-              onMouseOver={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,255,255,0.4)"; (e.currentTarget as HTMLButtonElement).style.color = "#ffffff"; }}
-              onMouseOut={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,255,255,0.15)"; (e.currentTarget as HTMLButtonElement).style.color = "rgba(255,255,255,0.6)"; }}
+              className="flex h-10 w-10 items-center justify-center rounded border border-white/15 text-white/60 transition-colors duration-200 hover:border-white/40 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
             >
               <ChevronLeft className="h-4 w-4" />
             </button>
             <button
               onClick={next}
               aria-label="Next service"
-              className="flex items-center justify-center w-10 h-10 rounded transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
-              style={{ border: "1px solid rgba(255,255,255,0.15)", color: "rgba(255,255,255,0.6)" }}
-              onMouseOver={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,255,255,0.4)"; (e.currentTarget as HTMLButtonElement).style.color = "#ffffff"; }}
-              onMouseOut={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,255,255,0.15)"; (e.currentTarget as HTMLButtonElement).style.color = "rgba(255,255,255,0.6)"; }}
+              className="flex h-10 w-10 items-center justify-center rounded border border-white/15 text-white/60 transition-colors duration-200 hover:border-white/40 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
             >
               <ChevronRight className="h-4 w-4" />
             </button>
           </div>
         </div>
-      </div>
+      </Container>
     </section>
   );
 });

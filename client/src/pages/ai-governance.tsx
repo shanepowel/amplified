@@ -6,6 +6,22 @@ import heroImg from "@assets/stock_images/ai-governance-hero.webp";
 import Image from 'next/image';
 import { ArrowRight, CheckCircle, Shield } from "lucide-react";
 import { ServiceSchema, StructuredData } from "@/components/structured-data";
+import {
+  PageShell,
+  BreadcrumbBar,
+  CtaBand,
+  Container,
+  Section,
+  Stack,
+  Grid,
+  Text,
+  Eyebrow,
+  Surface,
+  AmpButton,
+  ContentCard,
+  BorderGrid,
+  BorderCell,
+} from "@/components/system";
 import { aiGovernanceFAQSchema, createBreadcrumbSchema } from "@/lib/schemas";
 import { FurtherReading } from "@/components/further-reading";
 
@@ -60,289 +76,140 @@ const gaps = [
 
 const AiGovernance = memo(function AiGovernance({ onOpenConsultation }: AiGovernanceProps) {
   return (
-    <div className="min-h-screen font-sans" style={{ backgroundColor: "#ffffff" }}>
+    <PageShell>
       <ServiceSchema name="AI Governance" description="Responsible AI governance frameworks, policies, and assurance structures for infrastructure, energy, financial services and public sector organisations. EU AI Act, FCA, GDS aligned." url="https://amplified.co.uk/ai-governance" />
       <StructuredData data={aiGovernanceFAQSchema} id="ai-governance-faq-schema" />
       <StructuredData data={createBreadcrumbSchema([{ name: 'Home', url: 'https://amplified.co.uk/' }, { name: 'AI Governance', url: 'https://amplified.co.uk/ai-governance' }])} id="ai-governance-breadcrumb" />
 
-      {/* Breadcrumb */}
-      <nav aria-label="Breadcrumb" className="border-b border-gray-100">
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-3">
-          <ol className="flex items-center gap-2 text-xs text-gray-500 flex-wrap">
-            <li><Link href="/" className="hover:text-gray-800 transition-colors">Home</Link></li>
-            <li aria-hidden="true">/</li>
-            <li aria-current="page" className="text-gray-800 font-medium">AI Governance</li>
-          </ol>
-        </div>
-      </nav>
+      <BreadcrumbBar items={[{ label: "Home", href: "/" }, { label: "AI Governance" }]} />
 
-      {/* Hero */}
-      <section
-        className="py-28 lg:py-36 relative overflow-hidden"
-        style={{ backgroundColor: "#181F4F" }}
-      >
-        <div className="hidden lg:block absolute inset-y-0 right-0 w-[48%] pointer-events-none" aria-hidden="true">
-          <Image src={heroImg} alt="" aria-hidden="true" fill className="object-cover" style={{ opacity: 0.3 }} priority sizes="48vw" />
-          <div className="absolute inset-0" style={{ background: "linear-gradient(to right, #181F4F 0%, transparent 60%)" }} />
+      <Section tone="navy" padding="xl" className="relative overflow-hidden" contained={false}>
+        <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-[48%] lg:block" aria-hidden="true">
+          <Image src={heroImg} alt="" aria-hidden="true" fill className="object-cover opacity-30" priority sizes="48vw" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#181F4F] via-[#181F4F]/80 to-transparent" />
         </div>
-        <div className="relative max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <p
-            className="font-mono text-xs uppercase tracking-[0.15em] mb-6"
-            style={{ color: "#F85C70" }}
-          >
-            AMP 01
-          </p>
-          <h1
-            className="font-display text-5xl md:text-6xl text-white mb-8 max-w-[720px] leading-tight"
-            style={{ fontWeight: 400 }}
-          >
-            AI Governance
-          </h1>
-          <p
-            className="font-sans text-lg max-w-[580px] leading-relaxed mb-6"
-            style={{ color: "rgba(255,255,255,0.75)" }}
-          >
-            AI implementation without governance isn't innovation. In a regulated industry, it's a
-            liability.
-          </p>
-          <p
-            className="font-sans text-lg max-w-[580px] leading-relaxed"
-            style={{ color: "rgba(255,255,255,0.75)" }}
-          >
-            Amplified builds the governance frameworks, policies, and assurance structures your
-            organisation needs to adopt AI with confidence, before your board asks the question.
-          </p>
-          <blockquote
-            className="mt-10 p-6 border-l-4 max-w-[540px]"
-            style={{ borderColor: "#F85C70", backgroundColor: "rgba(248,92,112,0.08)" }}
-          >
-            <p
-              className="font-display text-xl text-white italic"
-              style={{ fontWeight: 400 }}
-            >
-              "The question isn't whether to adopt AI. It's whether your governance can support it."
-            </p>
-          </blockquote>
-        </div>
-      </section>
+        <Container className="relative">
+          <Stack gap="lg" className="max-w-[720px]">
+            <Eyebrow>AMP 01</Eyebrow>
+            <Text variant="display" tone="white">AI Governance</Text>
+            <Text variant="lead" tone="white-75">
+              AI implementation without governance isn&apos;t innovation. In a regulated industry, it&apos;s a
+              liability.
+            </Text>
+            <Text variant="lead" tone="white-75">
+              Amplified builds the governance frameworks, policies, and assurance structures your
+              organisation needs to adopt AI with confidence, before your board asks the question.
+            </Text>
+            <Surface variant="inset" padding="md" radius="sm" className="max-w-[540px] border-l-4 border-[#F85C70] bg-[rgba(248,92,112,0.08)]">
+              <Text variant="h4" tone="white" className="italic font-normal">
+                &ldquo;The question isn&apos;t whether to adopt AI. It&apos;s whether your governance can support it.&rdquo;
+              </Text>
+            </Surface>
+          </Stack>
+        </Container>
+      </Section>
 
-      {/* The governance gap */}
-      <section
-        className="py-20 lg:py-28"
-        style={{ backgroundColor: "#F2F0F7" }}
-      >
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-            <div>
-              <p
-                className="font-mono text-xs uppercase tracking-[0.12em] mb-6"
-                style={{ color: "#60266A" }}
-              >
-                The governance gap most AI consultancies ignore
-              </p>
-              <h2
-                className="font-display text-3xl md:text-4xl mb-8 leading-tight"
-                style={{ color: "#181F4F", fontWeight: 400 }}
-              >
-                Most AI consultancies are built for tech companies and scale-ups. They know how to
-                ship fast. They don't always know how to ship accountably.
-              </h2>
-              <p
-                className="font-sans text-base leading-relaxed"
-                style={{ color: "#65677B" }}
-              >
-                Project-driven organisations operate under fundamentally different constraints:
-              </p>
-            </div>
-            <div className="space-y-4 pt-8 lg:pt-16">
-              {gaps.map((gap) => (
-                <div
-                  key={gap}
-                  className="flex items-start gap-3 p-4 rounded"
-                  style={{ backgroundColor: "#ffffff" }}
-                >
-                  <Shield
-                    className="h-5 w-5 flex-shrink-0 mt-0.5"
-                    style={{ color: "#F85C70" }}
-                  />
-                  <span className="font-sans text-sm leading-relaxed" style={{ color: "#65677B" }}>
-                    {gap}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      <Section tone="mist" padding="lg">
+        <Grid cols="2-lg" gap="xl" equal={false}>
+          <Stack gap="md">
+            <Eyebrow tone="subtle" className="text-[#60266A]">
+              The governance gap most AI consultancies ignore
+            </Eyebrow>
+            <Text variant="h2">
+              Most AI consultancies are built for tech companies and scale-ups. They know how to
+              ship fast. They don&apos;t always know how to ship accountably.
+            </Text>
+            <Text variant="body" tone="muted">
+              Project-driven organisations operate under fundamentally different constraints:
+            </Text>
+          </Stack>
+          <Stack gap="sm" className="pt-8 lg:pt-16">
+            {gaps.map((gap) => (
+              <Surface key={gap} variant="plain" padding="md" radius="sm" className="flex items-start gap-3">
+                <Shield className="mt-0.5 h-5 w-5 shrink-0 text-[#F85C70]" aria-hidden="true" />
+                <Text variant="small" tone="muted">{gap}</Text>
+              </Surface>
+            ))}
+          </Stack>
+        </Grid>
+      </Section>
 
-      {/* Services */}
-      <section className="py-20 lg:py-28 bg-white">
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <p
-            className="font-mono text-xs uppercase tracking-[0.12em] mb-4"
-            style={{ color: "#6B6E81" }}
-          >
-            What we deliver
-          </p>
-          <h2
-            className="font-display text-4xl md:text-5xl mb-16"
-            style={{ color: "#181F4F", fontWeight: 400 }}
-          >
-            AI Governance Services
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border-l border-t" style={{ borderColor: "#E5E3EE" }}>
+      <Section tone="white" padding="lg">
+        <Stack gap="xl">
+          <Eyebrow tone="subtle">What we deliver</Eyebrow>
+          <Text variant="h2">AI Governance Services</Text>
+          <BorderGrid cols={3} className="border-l border-t border-[#E5E3EE]">
             {services.map((service) => (
-              <div
-                key={service.title}
-                className="p-8 border-r border-b"
-                style={{ borderColor: "#E5E3EE" }}
-              >
-                <div
-                  className="w-1 h-8 mb-6 rounded"
-                  style={{ backgroundColor: "#F85C70" }}
-                />
-                <h3
-                  className="font-display text-2xl mb-4"
-                  style={{ color: "#181F4F", fontWeight: 400 }}
-                >
-                  {service.title}
-                </h3>
-                <p
-                  className="font-sans text-sm leading-relaxed mb-3"
-                  style={{ color: "#65677B" }}
-                >
-                  {service.body}
-                </p>
-                {service.deliverable && (
-                  <p
-                    className="font-sans text-xs italic"
-                    style={{ color: "#60266A" }}
-                  >
-                    {service.deliverable}
-                  </p>
-                )}
-              </div>
+              <BorderCell key={service.title} className="flex h-full flex-col border-[#E5E3EE]">
+                <div className="mb-6 h-8 w-1 rounded bg-[#F85C70]" />
+                <Text variant="h3" className="mb-4">{service.title}</Text>
+                <Text variant="small" tone="muted" className="mb-3 flex-1">{service.body}</Text>
+                {service.deliverable ? (
+                  <Text variant="caption" className="italic text-[#60266A]">{service.deliverable}</Text>
+                ) : null}
+              </BorderCell>
             ))}
-          </div>
-        </div>
-      </section>
+          </BorderGrid>
+        </Stack>
+      </Section>
 
-      {/* Standards */}
-      <section
-        className="py-20 lg:py-28"
-        style={{ backgroundColor: "#181F4F" }}
-      >
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <p
-            className="font-mono text-xs uppercase tracking-[0.12em] mb-4"
-            style={{ color: "#F85C70" }}
-          >
-            Standards we align to
-          </p>
-          <h2
-            className="font-display text-4xl text-white mb-12"
-            style={{ fontWeight: 400 }}
-          >
-            Regulatory Alignment
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <Section tone="navy" padding="lg">
+        <Stack gap="lg">
+          <Eyebrow>Standards we align to</Eyebrow>
+          <Text variant="h2" tone="white">Regulatory Alignment</Text>
+          <Grid cols={2} gap="md">
             {standards.map((standard) => (
-              <div
+              <Surface
                 key={standard}
-                className="flex items-start gap-3 p-4 rounded border"
-                style={{ borderColor: "rgba(255,255,255,0.1)", backgroundColor: "rgba(255,255,255,0.04)" }}
+                variant="inset"
+                padding="md"
+                radius="sm"
+                className="flex items-start gap-3 border border-white/10"
               >
-                <CheckCircle
-                  className="h-4 w-4 flex-shrink-0 mt-0.5"
-                  style={{ color: "#F85C70" }}
-                />
-                <span
-                  className="font-sans text-sm leading-relaxed"
-                  style={{ color: "rgba(255,255,255,0.75)" }}
-                >
-                  {standard}
-                </span>
-              </div>
+                <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-[#F85C70]" aria-hidden="true" />
+                <Text variant="small" tone="white-75">{standard}</Text>
+              </Surface>
             ))}
-          </div>
-        </div>
-      </section>
+          </Grid>
+        </Stack>
+      </Section>
 
       <FurtherReading tags={["AI Governance", "Regulated Industries", "AI Capability"]} maxArticles={3} />
 
-      {/* Role pages cross-link */}
-      <section className="py-12" style={{ backgroundColor: "#F2F0F7" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="font-sans text-sm mb-4" style={{ color: "#65677B" }}>
+      <Section tone="mist" padding="md">
+        <Stack gap="md">
+          <Text variant="small" tone="muted">
             This service is designed for specific roles. Read more about how we work with:
-          </p>
-          <div className="flex flex-wrap gap-3">
+          </Text>
+          <Stack direction="row" gap="sm" className="flex-wrap">
             {[
               { label: "Chief Information Officers", href: "/for-cios" },
               { label: "Digital Leads", href: "/for-digital-leads" },
             ].map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                className="inline-flex items-center gap-2 px-5 h-9 font-sans text-sm font-semibold rounded transition-colors duration-200"
-                style={{ backgroundColor: "#181F4F", color: "#ffffff" }}
-                onMouseOver={(e) =>
-                  ((e.currentTarget as HTMLAnchorElement).style.backgroundColor = "#60266A")
-                }
-                onMouseOut={(e) =>
-                  ((e.currentTarget as HTMLAnchorElement).style.backgroundColor = "#181F4F")
-                }
-              >
-                {link.label} &rarr;
-              </Link>
+              <AmpButton key={link.label} asChild variant="navy" size="sm">
+                <Link href={link.href}>{link.label} &rarr;</Link>
+              </AmpButton>
             ))}
-          </div>
-        </div>
-      </section>
+          </Stack>
+        </Stack>
+      </Section>
 
-      {/* CTA */}
-      <section
-        className="py-24 text-center"
-        style={{ backgroundColor: "#60266A" }}
-      >
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <h2
-            className="font-display text-4xl md:text-5xl text-white mb-6"
-            style={{ fontWeight: 400 }}
-          >
-            Ready to Build Your Governance?
-          </h2>
-          <p
-            className="font-sans text-lg max-w-[480px] mx-auto mb-10"
-            style={{ color: "rgba(255,255,255,0.8)" }}
-          >
-            Start with an AI Readiness Assessment. We'll tell you exactly where you are and what
+      <Section tone="purple" padding="lg">
+        <Stack gap="lg" align="center" className="text-center">
+          <Text variant="h2" tone="white">Ready to Build Your Governance?</Text>
+          <Text variant="lead" tone="white-80" className="max-w-[480px]">
+            Start with an AI Readiness Assessment. We&apos;ll tell you exactly where you are and what
             needs to happen before you implement.
-          </p>
-          <Link href="/contact">
-            <button
-              className="amp-focus-ring-on-navy inline-flex items-center gap-2 px-10 h-12 font-sans font-bold text-base rounded transition-colors duration-200"
-              style={{ backgroundColor: "#F85C70", color: "#181F4F" }}
-              data-testid="button-ai-governance-cta"
-              onMouseOver={(e) =>
-                ((e.currentTarget as HTMLButtonElement).style.backgroundColor = "#d94a5e")
-              }
-              onMouseOut={(e) =>
-                ((e.currentTarget as HTMLButtonElement).style.backgroundColor = "#F85C70")
-              }
-            >
+          </Text>
+          <AmpButton asChild size="xl" data-testid="button-ai-governance-cta">
+            <Link href="/contact">
               Start a Conversation <ArrowRight className="h-4 w-4" />
-            </button>
-          </Link>
-          <p
-            className="font-sans text-sm mt-6"
-            style={{ color: "rgba(255,255,255,0.5)" }}
-          >
-            No pitch. No deck. Just a 30-minute call.
-          </p>
-        </div>
-      </section>
-    </div>
+            </Link>
+          </AmpButton>
+          <Text variant="small" tone="white-45">No pitch. No deck. Just a 30-minute call.</Text>
+        </Stack>
+      </Section>
+    </PageShell>
   );
 });
 

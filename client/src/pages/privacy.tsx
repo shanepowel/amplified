@@ -1,5 +1,7 @@
 'use client';
 
+import { LegalDocumentLayout } from "@/components/system";
+
 const LAST_UPDATED = "1 March 2026";
 
 const sections = [
@@ -99,90 +101,19 @@ You also have the right to lodge a complaint with the Information Commissioner's
 
 export default function Privacy() {
   return (
-    <div className="min-h-screen font-sans" style={{ backgroundColor: "#ffffff" }}>
-
-      <section className="py-20 lg:py-28" style={{ backgroundColor: "#181F4F" }}>
-        <div className="max-w-[860px] mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="font-mono text-xs uppercase tracking-[0.15em] mb-5" style={{ color: "#F85C70" }}>
-            Legal
-          </p>
-          <h1
-            className="font-display text-4xl md:text-5xl text-white mb-5"
-            style={{ fontWeight: 400 }}
-            data-testid="text-privacy-title"
-          >
-            Privacy Policy
-          </h1>
-          <p className="font-sans text-sm" style={{ color: "rgba(255,255,255,0.45)" }}>
-            Last updated: {LAST_UPDATED}
-          </p>
-        </div>
-      </section>
-
-      <div className="max-w-[860px] mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
-        <div className="space-y-14">
-          {sections.map((section) => (
-            <section key={section.title}>
-              <div className="flex items-start gap-4 mb-5">
-                <div className="w-0.5 h-7 rounded flex-shrink-0 mt-0.5" style={{ backgroundColor: "#F85C70" }} />
-                <h2
-                  className="font-display text-2xl"
-                  style={{ color: "#181F4F", fontWeight: 400 }}
-                >
-                  {section.title}
-                </h2>
-              </div>
-              {section.body && (
-                <div className="pl-[calc(0.5rem+1rem)] space-y-4">
-                  {section.body.split("\n\n").map((para, i) => (
-                    <p key={i} className="font-sans text-base leading-relaxed" style={{ color: "#65677B" }}>
-                      {para}
-                    </p>
-                  ))}
-                </div>
-              )}
-              {section.list && (
-                <ul className="pl-[calc(0.5rem+1rem)] mt-3 space-y-3">
-                  {section.list.map((item) => (
-                    <li key={item} className="flex items-start gap-3">
-                      <span
-                        className="flex-shrink-0 mt-2 w-1.5 h-1.5 rounded-full"
-                        style={{ backgroundColor: "#F85C70" }}
-                      />
-                      <span className="font-sans text-base leading-relaxed" style={{ color: "#65677B" }}>
-                        {item}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </section>
-          ))}
-        </div>
-      </div>
-
-      <section className="py-12" style={{ backgroundColor: "#F2F0F7" }}>
-        <div className="max-w-[860px] mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="font-mono text-xs uppercase tracking-[0.12em] mb-6" style={{ color: "#6B6E81" }}>
-            Company information
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {[
-              ["Legal name", "AMPLIFIED LTD"],
-              ["Company number", "08589016"],
-              ["Registered office", "7 Bell Yard, London WC2A 2JR"],
-              ["Incorporated", "28 June 2013"],
-              ["Nature of business", "Information technology consultancy (SIC 62020)"],
-              ["Data protection contact", "privacy@amplified.co.uk"],
-            ].map(([label, value]) => (
-              <div key={label}>
-                <p className="font-sans text-xs uppercase tracking-[0.08em] mb-1" style={{ color: "#9597A5" }}>{label}</p>
-                <p className="font-sans text-sm" style={{ color: "#181F4F" }}>{value}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-    </div>
+    <LegalDocumentLayout
+      title="Privacy Policy"
+      titleTestId="text-privacy-title"
+      lastUpdated={LAST_UPDATED}
+      sections={sections}
+      companyInfo={[
+        ["Legal name", "AMPLIFIED LTD"],
+        ["Company number", "08589016"],
+        ["Registered office", "7 Bell Yard, London WC2A 2JR"],
+        ["Incorporated", "28 June 2013"],
+        ["Nature of business", "Information technology consultancy (SIC 62020)"],
+        ["Data protection contact", "privacy@amplified.co.uk"],
+      ]}
+    />
   );
 }
