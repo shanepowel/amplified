@@ -3,15 +3,24 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
 import { ArrowLeft, Calendar, Clock, Download, Share2, BookOpen, TrendingUp, Users, Shield, ArrowRight, ChevronDown, ChevronUp } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import Image from "next/image";
 import { StructuredData } from "@/components/structured-data";
 import { createArticleSchema, createBreadcrumbSchema, createFAQSchema } from "@/lib/schemas";
 import DOMPurify from 'isomorphic-dompurify';
+import {
+  AmpButton,
+  BreadcrumbBar,
+  Container,
+  CtaBand,
+  Eyebrow,
+  PageShell,
+  Section,
+  Stack,
+  Surface,
+  Text,
+} from "@/components/system";
 
 interface FAQItem {
   question: string;
@@ -126,35 +135,31 @@ function FAQAccordion({ faqs }: { faqs: FAQItem[] }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <div className="space-y-3">
+    <Stack gap="sm">
       {faqs.map((faq, index) => (
-        <div
-          key={index}
-          className="rounded-lg overflow-hidden"
-          style={{ border: "1px solid #E5E3EE", backgroundColor: "#FFFFFF" }}
-        >
+        <Surface key={index} variant="bordered" padding="none" radius="md" className="overflow-hidden">
           <button
-            className="amp-focus-ring-on-light w-full text-left px-6 py-5 flex items-start justify-between gap-4 transition-colors duration-150 hover:bg-gray-50"
+            className="amp-focus-ring-on-light flex w-full items-start justify-between gap-4 px-6 py-5 text-left transition-colors duration-150 hover:bg-gray-50"
             onClick={() => setOpenIndex(openIndex === index ? null : index)}
             aria-expanded={openIndex === index}
           >
-            <span className="font-sans text-base font-semibold leading-snug" style={{ color: "#181F4F" }}>
+            <Text as="span" variant="body" className="font-semibold leading-snug">
               {faq.question}
-            </span>
-            <span className="flex-shrink-0 mt-0.5" style={{ color: "#F85C70" }}>
+            </Text>
+            <span className="mt-0.5 shrink-0 text-[#F85C70]">
               {openIndex === index ? <ChevronUp className="h-5 w-5" /> : <ChevronDown className="h-5 w-5" />}
             </span>
           </button>
           {openIndex === index && (
-            <div className="px-6 pb-5 border-t" style={{ borderColor: "#E5E3EE" }}>
-              <p className="font-sans text-sm leading-relaxed pt-4" style={{ color: "#65677B" }}>
+            <div className="border-t border-[#E5E3EE] px-6 pb-5">
+              <Text variant="small" tone="muted" className="pt-4">
                 {faq.answer}
-              </p>
+              </Text>
             </div>
           )}
-        </div>
+        </Surface>
       ))}
-    </div>
+    </Stack>
   );
 }
 
@@ -185,7 +190,6 @@ export default function ArticleDetail({ onOpenConsultation }: ArticleDetailProps
     fetchArticle();
   }, [slug]);
 
-  const articleUrl = article ? `https://amplified.co.uk/insights/${article.slug}` : undefined;
   const articleTags = article?.content?.tags || [];
   const articleFaqs = article?.content?.faq || [];
   const articleRelatedServices = article?.content?.relatedServices || defaultRelatedServices;
@@ -210,39 +214,43 @@ export default function ArticleDetail({ onOpenConsultation }: ArticleDetailProps
 
   if (isLoading) {
     return (
-      <div className="min-h-screen py-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="animate-pulse space-y-8">
-            <div className="h-8 bg-muted rounded w-1/4"></div>
-            <div className="h-12 bg-muted rounded w-3/4"></div>
-            <div className="h-64 bg-muted rounded"></div>
-            <div className="space-y-4">
-              <div className="h-4 bg-muted rounded"></div>
-              <div className="h-4 bg-muted rounded"></div>
-              <div className="h-4 bg-muted rounded w-5/6"></div>
+      <PageShell className="bg-background">
+        <Section tone="transparent" padding="md" contained={false}>
+          <Container size="narrow">
+            <div className="animate-pulse space-y-8 py-20">
+              <div className="h-8 w-1/4 rounded bg-muted" />
+              <div className="h-12 w-3/4 rounded bg-muted" />
+              <div className="h-64 rounded bg-muted" />
+              <div className="space-y-4">
+                <div className="h-4 rounded bg-muted" />
+                <div className="h-4 rounded bg-muted" />
+                <div className="h-4 w-5/6 rounded bg-muted" />
+              </div>
             </div>
-          </div>
-        </div>
-      </div>
+          </Container>
+        </Section>
+      </PageShell>
     );
   }
 
   if (error || !article) {
     return (
-      <div className="min-h-screen py-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Article Not Found</h1>
-          <p className="text-base md:text-lg text-muted-foreground mb-8">
-            The article you are looking for does not exist or has been removed.
-          </p>
-          <Link href="/insights">
-            <Button data-testid="button-back-to-insights">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Insights
-            </Button>
-          </Link>
-        </div>
-      </div>
+      <PageShell className="bg-background">
+        <Section tone="transparent" padding="md" contained={false}>
+          <Container size="narrow" className="py-20 text-center">
+            <Text variant="h2" className="mb-4">Article Not Found</Text>
+            <Text variant="lead" tone="muted" className="mb-8">
+              The article you are looking for does not exist or has been removed.
+            </Text>
+            <AmpButton asChild data-testid="button-back-to-insights">
+              <Link href="/insights">
+                <ArrowLeft className="h-4 w-4" />
+                Back to Insights
+              </Link>
+            </AmpButton>
+          </Container>
+        </Section>
+      </PageShell>
     );
   }
 
@@ -274,240 +282,178 @@ export default function ArticleDetail({ onOpenConsultation }: ArticleDetailProps
   const faqSchema = articleFaqs.length > 0 ? createFAQSchema(articleFaqs) : null;
 
   return (
-    <div className="min-h-screen py-20 bg-background relative overflow-hidden">
+    <PageShell className="relative overflow-hidden bg-background">
       <StructuredData data={articleSchema} id="article-schema" />
       <StructuredData data={breadcrumbSchema} id="article-breadcrumb" />
       {faqSchema && <StructuredData data={faqSchema} id="article-faq-schema" />}
 
-      <div className="absolute inset-0 modern-pattern opacity-5"></div>
-      
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="absolute inset-0 modern-pattern opacity-5" aria-hidden="true" />
 
-        {/* Breadcrumb nav */}
-        <nav aria-label="Breadcrumb" className="mb-6">
-          <ol className="flex items-center gap-2 text-sm text-muted-foreground flex-wrap">
-            <li>
-              <Link href="/" className="hover:text-foreground transition-colors">Home</Link>
-            </li>
-            <li aria-hidden="true">/</li>
-            <li>
-              <Link href="/insights" className="hover:text-foreground transition-colors">Insights</Link>
-            </li>
-            <li aria-hidden="true">/</li>
-            <li aria-current="page" className="text-foreground truncate max-w-[200px] sm:max-w-none">
-              {article.title}
-            </li>
-          </ol>
-        </nav>
+      <BreadcrumbBar
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Insights", href: "/insights" },
+          { label: article.title },
+        ]}
+      />
 
-        {/* Back Button */}
-        <Link href="/insights">
-          <Button variant="ghost" className="mb-8 hover:bg-primary/5" data-testid="button-back">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Insights
-          </Button>
-        </Link>
+      <Section tone="transparent" padding="md" contained={false} className="relative z-10">
+        <Container size="narrow">
+          <AmpButton asChild variant="ghostDark" size="sm" className="mb-8" data-testid="button-back">
+            <Link href="/insights">
+              <ArrowLeft className="h-4 w-4" />
+              Back to Insights
+            </Link>
+          </AmpButton>
 
-        {/* Article Header */}
-        <div className="mb-12">
-          <div className="flex flex-wrap gap-2 mb-6">
-            <Badge className="bg-primary/90 text-white backdrop-blur-sm border-0">
-              <Icon className="h-4 w-4 mr-2" />
-              {article.type}
-            </Badge>
-            {articleTags.map((tag) => (
-              <Badge key={tag} variant="outline" className="text-xs border-primary/20 text-muted-foreground">
-                {tag}
-              </Badge>
-            ))}
-          </div>
+          <Stack gap="lg" className="mb-12">
+            <div className="flex flex-wrap gap-2">
+              <Surface variant="navy" padding="sm" radius="sm" className="inline-flex items-center gap-2 text-sm">
+                <Icon className="h-4 w-4" />
+                {article.type}
+              </Surface>
+              {articleTags.map((tag) => (
+                <Surface key={tag} variant="bordered" padding="sm" radius="sm" className="text-xs text-[#65677B]">
+                  {tag}
+                </Surface>
+              ))}
+            </div>
 
-          <h1 className="text-3xl md:text-4xl text-foreground mb-8 leading-tight" data-testid="text-article-title">
-            {article.title}
-          </h1>
+            <Text variant="h1" data-testid="text-article-title">{article.title}</Text>
 
-          {article.content?.description && (
-            <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-8">
-              {article.content.description}
-            </p>
+            {article.content?.description && (
+              <Text variant="lead" tone="muted">{article.content.description}</Text>
+            )}
+
+            <Stack direction="row-responsive" gap="lg" className="flex-wrap border-b border-border/50 pb-8 text-sm text-muted-foreground">
+              {dateDisplay && (
+                <Stack direction="row" gap="xs" align="center">
+                  <Calendar className="h-4 w-4 text-[#F85C70]" />
+                  <time dateTime={dateIso} className="font-medium">{dateDisplay}</time>
+                </Stack>
+              )}
+              {article.content?.readTime && (
+                <Stack direction="row" gap="xs" align="center">
+                  <Clock className="h-4 w-4 text-[#F85C70]" />
+                  <span className="font-medium">{article.content.readTime}</span>
+                </Stack>
+              )}
+              {article.content?.author && (
+                <Stack direction="row" gap="xs" align="center">
+                  <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#F85C70]" aria-hidden="true" />
+                  <span>
+                    By{' '}
+                    <Link href="/about/team" className="amp-focus-ring-on-light font-semibold text-foreground hover:text-[#F85C70] transition-colors">
+                      {article.content.author}
+                    </Link>
+                  </span>
+                </Stack>
+              )}
+            </Stack>
+
+            <Stack direction="row-responsive" gap="sm" className="flex-wrap">
+              <AmpButton onClick={handleDownload} data-testid="button-download-article">
+                <Download className="h-4 w-4" />
+                Download PDF
+              </AmpButton>
+              <AmpButton variant="outlineDark" onClick={handleShare} data-testid="button-share-article">
+                <Share2 className="h-4 w-4" />
+                Share
+              </AmpButton>
+              <AmpButton variant="outlineDark" onClick={() => onOpenConsultation()} data-testid="button-discuss-article">
+                Discuss with Expert
+              </AmpButton>
+            </Stack>
+          </Stack>
+
+          {article.content?.image && (
+            <div className="mb-12 overflow-hidden rounded-2xl border border-border/50 bg-muted shadow-medium crystalline-border">
+              <Image
+                src={article.content.image}
+                alt={article.title}
+                className="h-auto w-full object-cover"
+                data-testid="img-article-featured"
+                priority
+                fetchPriority="high"
+                sizes="(max-width: 1024px) 100vw, 800px"
+                width={800}
+                height={600}
+              />
+            </div>
           )}
 
-          <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground mb-8 pb-8 border-b border-border/50">
-            {dateDisplay && (
-              <div className="flex items-center gap-2">
-                <Calendar className="h-4 w-4 text-primary" />
-                <time dateTime={dateIso} className="font-medium">{dateDisplay}</time>
-              </div>
-            )}
-            {article.content?.readTime && (
-              <div className="flex items-center gap-2">
-                <Clock className="h-4 w-4 text-primary" />
-                <span className="font-medium">{article.content.readTime}</span>
-              </div>
-            )}
-            {article.content?.author && (
-              <div className="flex items-center gap-2">
-                <span className="inline-block w-1.5 h-1.5 bg-primary rounded-full" aria-hidden="true"></span>
-                <span>
-                  By{' '}
-                  <Link href="/about/team" className="amp-focus-ring-on-light font-semibold text-foreground hover:text-primary transition-colors">
-                    {article.content.author}
-                  </Link>
-                </span>
-              </div>
-            )}
-          </div>
-
-          <div className="flex flex-wrap gap-3">
-            <Button 
-              onClick={handleDownload} 
-              className="shadow-soft hover-lift bg-gradient-to-r from-primary to-primary/90"
-              data-testid="button-download-article"
-            >
-              <Download className="h-4 w-4 mr-2" />
-              Download PDF
-            </Button>
-            <Button 
-              variant="outline" 
-              onClick={handleShare} 
-              className="shadow-soft hover-lift border-primary/20"
-              data-testid="button-share-article"
-            >
-              <Share2 className="h-4 w-4 mr-2" />
-              Share
-            </Button>
-            <Button 
-              variant="outline" 
-              onClick={() => onOpenConsultation()} 
-              className="shadow-soft hover-lift border-primary/20"
-              data-testid="button-discuss-article"
-            >
-              Discuss with Expert
-            </Button>
-          </div>
-        </div>
-
-        {/* Featured Image */}
-        {article.content?.image && (
-          <div className="mb-12 rounded-2xl overflow-hidden shadow-medium crystalline-border bg-muted">
-            <Image
-              src={article.content.image}
-              alt={article.title}
-              className="w-full h-auto object-cover"
-              data-testid="img-article-featured"
-              priority
-              fetchPriority="high"
-              sizes="(max-width: 1024px) 100vw, 800px"
-              width={800}
-              height={600}
-            />
-          </div>
-        )}
-
-        {/* Key Takeaways */}
-        {article.content?.keyTakeaways && article.content.keyTakeaways.length > 0 && (
-          <Card className="mb-12 bg-gradient-to-r from-primary/5 to-accent/5 border-primary/20 shadow-soft crystalline-border">
-            <CardContent className="p-8">
-              <h2 className="text-2xl md:text-3xl text-foreground mb-6">Key Points</h2>
-              <div className="space-y-4 text-base text-foreground leading-relaxed">
+          {article.content?.keyTakeaways && article.content.keyTakeaways.length > 0 && (
+            <Surface variant="mist" padding="lg" radius="lg" border="hairline" className="mb-12 border-[#F85C70]/20">
+              <Text variant="h2" className="mb-6">Key Points</Text>
+              <Stack gap="md">
                 {article.content.keyTakeaways.map((takeaway, index) => (
-                  <p key={index} className="flex items-start gap-4">
-                    <span className="inline-block w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" aria-hidden="true"></span>
-                    <span>{takeaway}</span>
-                  </p>
+                  <Stack key={index} direction="row" gap="md" align="start">
+                    <span className="mt-2 inline-block h-2 w-2 shrink-0 rounded-full bg-[#F85C70]" aria-hidden="true" />
+                    <Text variant="body">{takeaway}</Text>
+                  </Stack>
                 ))}
-              </div>
-            </CardContent>
-          </Card>
-        )}
+              </Stack>
+            </Surface>
+          )}
 
-        {/* Article Body */}
-        {article.content?.body && (
-          <div className="prose prose-lg prose-headings:font-bold prose-headings:text-foreground prose-h2:text-2xl md:text-3xl prose-h2:mt-8 prose-h2:mb-4 prose-h3:text-xl md:text-2xl prose-h3:mt-6 prose-h3:mb-3 prose-p:text-foreground prose-p:leading-relaxed prose-p:text-base prose-p:mb-6 prose-strong:text-foreground prose-strong:font-semibold prose-ul:text-foreground prose-ul:my-6 prose-ol:text-foreground prose-ol:my-6 prose-li:text-foreground prose-li:text-base prose-li:leading-relaxed prose-li:mb-2 prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:bg-primary/5 prose-blockquote:text-foreground prose-blockquote:italic prose-blockquote:pl-6 prose-blockquote:py-4 prose-blockquote:my-6 prose-code:text-accent prose-code:bg-muted prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:text-sm prose-pre:bg-muted prose-pre:border prose-pre:border-border prose-pre:overflow-x-auto prose-pre:my-6 prose-hr:my-8 prose-hr:border-border max-w-none mb-12" data-testid="text-article-body">
-            <div 
-              className="article-content [&_h2]:scroll-mt-20 [&_h3]:scroll-mt-20"
-              dangerouslySetInnerHTML={{ __html: formatArticleContent(article.content.body) }}
-            />
-          </div>
-        )}
-
-        {/* FAQ Section */}
-        {articleFaqs.length > 0 && (
-          <div className="mb-12">
-            <div className="mb-6">
-              <p className="font-mono text-xs uppercase tracking-[0.12em] mb-2" style={{ color: "#F85C70" }}>
-                Frequently Asked Questions
-              </p>
-              <h2 className="font-display text-2xl md:text-3xl" style={{ color: "#181F4F", fontWeight: 400 }}>
-                Common Questions
-              </h2>
+          {article.content?.body && (
+            <div className="prose prose-lg prose-headings:font-bold prose-headings:text-foreground prose-h2:text-2xl md:prose-h2:text-3xl prose-h2:mt-8 prose-h2:mb-4 prose-h3:text-xl md:prose-h3:text-2xl prose-h3:mt-6 prose-h3:mb-3 prose-p:text-foreground prose-p:leading-relaxed prose-p:text-base prose-p:mb-6 prose-strong:text-foreground prose-strong:font-semibold prose-ul:text-foreground prose-ul:my-6 prose-ol:text-foreground prose-ol:my-6 prose-li:text-foreground prose-li:text-base prose-li:leading-relaxed prose-li:mb-2 prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:bg-primary/5 prose-blockquote:text-foreground prose-blockquote:italic prose-blockquote:pl-6 prose-blockquote:py-4 prose-blockquote:my-6 prose-code:text-accent prose-code:bg-muted prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:text-sm prose-pre:bg-muted prose-pre:border prose-pre:border-border prose-pre:overflow-x-auto prose-pre:my-6 prose-hr:my-8 prose-hr:border-border mb-12 max-w-none" data-testid="text-article-body">
+              <div 
+                className="article-content [&_h2]:scroll-mt-20 [&_h3]:scroll-mt-20"
+                dangerouslySetInnerHTML={{ __html: formatArticleContent(article.content.body) }}
+              />
             </div>
-            <FAQAccordion faqs={articleFaqs} />
-          </div>
-        )}
+          )}
 
-        {/* Related Services */}
-        <div className="mb-12 rounded-2xl p-6 border border-border/50" style={{ backgroundColor: "#F2F0F7" }}>
-          <p className="text-sm font-semibold uppercase tracking-widest mb-4" style={{ color: "#F85C70", fontFamily: "monospace" }}>Related Services</p>
-          <div className="flex flex-wrap gap-3">
-            {articleRelatedServices.map((s) => (
-              <Link
-                key={s.href}
-                href={s.href}
-                className="amp-focus-ring-on-light inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium transition-all hover:opacity-80"
-                style={{ backgroundColor: "#181F4F", color: "#ffffff" }}
-              >
-                {s.label}
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-            ))}
-          </div>
-        </div>
+          {articleFaqs.length > 0 && (
+            <Stack gap="md" className="mb-12">
+              <Stack gap="xs">
+                <Eyebrow>Frequently Asked Questions</Eyebrow>
+                <Text variant="h2">Common Questions</Text>
+              </Stack>
+              <FAQAccordion faqs={articleFaqs} />
+            </Stack>
+          )}
 
-        {/* Sources */}
-        {article.content?.sources && (
-          <Card className="mb-12 border-border/50 shadow-soft">
-            <CardContent className="p-6 bg-muted/30">
-              <h3 className="text-lg font-bold text-foreground mb-3 uppercase tracking-wider">Research Sources</h3>
-              <p className="text-sm text-muted-foreground italic leading-relaxed">
+          <Surface variant="mist" padding="md" radius="lg" className="mb-12">
+            <Eyebrow className="mb-4">Related Services</Eyebrow>
+            <div className="flex flex-wrap gap-3">
+              {articleRelatedServices.map((s) => (
+                <AmpButton key={s.href} asChild size="sm" variant="navy">
+                  <Link href={s.href}>
+                    {s.label}
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </Link>
+                </AmpButton>
+              ))}
+            </div>
+          </Surface>
+
+          {article.content?.sources && (
+            <Surface variant="bordered" padding="md" className="mb-12">
+              <Text variant="h4" className="mb-3 uppercase tracking-wider">Research Sources</Text>
+              <Text variant="small" tone="muted" className="italic">
                 {article.content.sources}
-              </p>
-            </CardContent>
-          </Card>
-        )}
+              </Text>
+            </Surface>
+          )}
+        </Container>
+      </Section>
 
-        {/* CTA Section */}
-        <Card className="mt-16 bg-gradient-to-r from-primary/5 via-primary/10 to-accent/10 border-primary/20 shadow-medium crystalline-border">
-          <CardContent className="p-12 text-center">
-            <h2 className="text-2xl md:text-3xl text-foreground mb-6">
-              Ready to implement this?
-            </h2>
-            <p className="text-base md:text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
-              Our partners can help you apply these ideas inside your programme. Book a consultation to discuss your specific situation.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                size="lg" 
-                onClick={() => onOpenConsultation()} 
-                className="shadow-soft hover-lift bg-gradient-to-r from-primary to-primary/90"
-                data-testid="button-book-consultation"
-              >
-                Book a Consultation
-              </Button>
-              <Link href="/insights">
-                <Button 
-                  size="lg" 
-                  variant="outline" 
-                  className="shadow-soft hover-lift border-primary/20"
-                  data-testid="button-more-insights"
-                >
-                  Explore More Insights
-                </Button>
-              </Link>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-    </div>
+      <CtaBand
+        title="Ready to implement this?"
+        lead="Our partners can help you apply these ideas inside your programme. Book a consultation to discuss your specific situation."
+        className="relative z-10"
+      >
+        <Stack direction="row-responsive" gap="md" justify="center" className="flex-wrap">
+          <AmpButton size="lg" onClick={() => onOpenConsultation()} data-testid="button-book-consultation">
+            Book a Consultation
+          </AmpButton>
+          <AmpButton asChild size="lg" variant="outlineLight" data-testid="button-more-insights">
+            <Link href="/insights">Explore More Insights</Link>
+          </AmpButton>
+        </Stack>
+      </CtaBand>
+    </PageShell>
   );
 }

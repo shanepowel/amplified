@@ -4,6 +4,20 @@ import { memo } from "react";
 import Link from "next/link";
 import { ArrowRight, CheckCircle, AlertTriangle } from "lucide-react";
 import { StructuredData } from "@/components/structured-data";
+import {
+  PageShell,
+  PageHero,
+  BreadcrumbBar,
+  CtaBand,
+  Section,
+  Stack,
+  Grid,
+  Text,
+  Eyebrow,
+  Surface,
+  AmpButton,
+  ContentCard,
+} from "@/components/system";
 import { deliveryDirectorsFAQSchema, createBreadcrumbSchema } from "@/lib/schemas";
 
 interface ForDeliveryDirectorsProps {
@@ -73,439 +87,208 @@ const faqs = [
   },
 ];
 
-const ForDeliveryDirectors = memo(function ForDeliveryDirectors({
-  onOpenConsultation,
-}: ForDeliveryDirectorsProps) {
+const outcomes = [
+  "A governance framework that produces real confidence, not managed perception",
+  "Accountability that is clear across every delivery partner and vendor",
+  "Teams stable enough to accumulate and retain institutional knowledge",
+  "Reporting that stakeholders trust because it reflects the real position",
+  "Stage gates that test readiness rather than evidence of process compliance",
+  "A recovery plan you can defend under proper scrutiny",
+];
 
+const ForDeliveryDirectors = memo(function ForDeliveryDirectors({ onOpenConsultation }: ForDeliveryDirectorsProps) {
   return (
-    <div className="min-h-screen font-sans" style={{ backgroundColor: "#ffffff" }}>
+    <PageShell>
       <StructuredData data={deliveryDirectorsFAQSchema} id="delivery-directors-faq-schema" />
       <StructuredData
         data={createBreadcrumbSchema([
           { name: "Home", url: "https://amplified.co.uk/" },
           { name: "For Delivery Directors", url: "https://amplified.co.uk/for-delivery-directors" },
         ])}
-        id="delivery-directors-breadcrumb"
+        id="cios-breadcrumb"
       />
 
-      {/* Breadcrumb */}
-      <nav
-        aria-label="Breadcrumb"
-        className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-0"
-      >
-        <ol className="flex items-center gap-2 text-sm" style={{ color: "#65677B" }}>
-          <li>
-            <Link href="/" className="hover:underline" style={{ color: "#65677B" }}>
-              Home
-            </Link>
-          </li>
-          <li aria-hidden="true" className="text-xs">
-            /
-          </li>
-          <li aria-current="page" style={{ color: "#181F4F" }}>
-            For Delivery Directors
-          </li>
-        </ol>
-      </nav>
+      <BreadcrumbBar items={[{ label: "Home", href: "/" }, { label: "For Delivery Directors" }]} />
 
-      {/* Hero */}
-      <section
-        style={{ backgroundColor: "#181F4F" }}
-        className="relative py-24 lg:py-32 overflow-hidden"
-      >
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            backgroundImage:
-              "repeating-linear-gradient(135deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 60px)",
-          }}
-          aria-hidden="true"
-        />
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <p
-            className="font-mono text-xs uppercase tracking-[0.15em] mb-5"
-            style={{ color: "#F85C70" }}
-          >
-            Who We Work With
-          </p>
-          <h1
-            className="font-display text-5xl md:text-6xl lg:text-7xl text-white mb-6"
-            style={{ fontWeight: 400, lineHeight: 1.05 }}
-          >
+      <PageHero
+        eyebrow="Who We Work With"
+        title={
+          <>
             For Delivery Directors
             <br />
             and Programme Directors
-          </h1>
-          <p
-            className="font-sans text-xl max-w-[600px] mb-10 leading-relaxed"
-            style={{ color: "rgba(255,255,255,0.75)" }}
-          >
-            Deliver at pace without losing control. Governance that enables rather than
-            impedes. Teams that are stable. Accountability that is visible.
-          </p>
-          <div className="flex flex-wrap gap-4">
-            <button
-              onClick={() => onOpenConsultation?.("structured-delivery")}
-              className="amp-focus-ring-on-navy inline-flex items-center gap-2 px-8 h-12 font-sans font-bold text-base rounded transition-colors duration-200"
-              style={{ backgroundColor: "#F85C70", color: "#181F4F" }}
-              onMouseOver={(e) =>
-                ((e.currentTarget as HTMLButtonElement).style.backgroundColor = "#d94a5e")
-              }
-              onMouseOut={(e) =>
-                ((e.currentTarget as HTMLButtonElement).style.backgroundColor = "#F85C70")
-              }
-            >
-              Talk to Us <ArrowRight className="h-4 w-4" />
-            </button>
-            <Link href="/structured-delivery">
-              <button
-                className="amp-focus-ring-on-navy inline-flex items-center gap-2 px-8 h-12 font-sans font-bold text-base rounded transition-colors duration-200"
-                style={{
-                  border: "1px solid rgba(255,255,255,0.3)",
-                  color: "#FFFFFF",
-                  backgroundColor: "transparent",
-                }}
-                onMouseOver={(e) =>
-                  ((e.currentTarget as HTMLButtonElement).style.backgroundColor =
-                    "rgba(255,255,255,0.08)")
-                }
-                onMouseOut={(e) =>
-                  ((e.currentTarget as HTMLButtonElement).style.backgroundColor = "transparent")
-                }
-              >
-                View Structured Delivery
-              </button>
-            </Link>
-          </div>
-        </div>
-      </section>
+          </>
+        }
+        lead="Deliver at pace without losing control. Governance that enables rather than impedes. Teams that are stable. Accountability that is visible."
+      >
+        <Stack direction="row-responsive" gap="md" className="flex-wrap">
+          <AmpButton onClick={() => onOpenConsultation?.("structured-delivery")}>
+            Talk to Us <ArrowRight className="h-4 w-4" />
+          </AmpButton>
+          <AmpButton asChild variant="outlineLight" size="lg">
+            <Link href="/structured-delivery">View Structured Delivery</Link>
+          </AmpButton>
+        </Stack>
+      </PageHero>
 
-      {/* Intro */}
-      <section className="py-20" style={{ backgroundColor: "#F2F0F7" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-[760px]">
-            <h2
-              className="font-display text-4xl md:text-5xl mb-6"
-              style={{ color: "#181F4F", fontWeight: 400 }}
-            >
-              The delivery director's dilemma
-            </h2>
-            <p className="font-sans text-lg leading-relaxed mb-6" style={{ color: "#65677B" }}>
-              You are accountable for programmes that span multiple vendors, complex technology
-              stacks, and governance environments that were not designed for the way you are
-              delivering. Pace is demanded. Rigour is required. The two feel like they are in
-              permanent tension.
-            </p>
-            <p className="font-sans text-lg leading-relaxed" style={{ color: "#65677B" }}>
-              Amplified works with delivery directors and programme directors in infrastructure,
-              energy, financial services, and public sector to build the delivery governance
-              frameworks, stable team structures, and accountability models that let programmes
-              move fast without losing control. We have been in the delivery seats you are in.
-              We know what the pressure feels like.
-            </p>
-          </div>
-        </div>
-      </section>
+      <Section tone="mist" padding="lg" containerClassName="max-w-[760px]">
+        <Stack gap="md">
+          <Text variant="h2">The delivery director's dilemma</Text>
+          <Text variant="lead" tone="muted">
+            You are accountable for programmes that span multiple vendors, complex technology
+            stacks, and governance environments that were not designed for the way you are
+            delivering. Pace is demanded. Rigour is required. The two feel like they are in
+            permanent tension.
+          </Text>
+          <Text variant="lead" tone="muted">
+            Amplified works with delivery directors and programme directors in infrastructure,
+            energy, financial services, and public sector to build the delivery governance
+            frameworks, stable team structures, and accountability models that let programmes
+            move fast without losing control. We have been in the delivery seats you are in.
+            We know what the pressure feels like.
+          </Text>
+        </Stack>
+      </Section>
 
-      {/* Challenges */}
-      <section className="py-20" style={{ backgroundColor: "#ffffff" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <p
-            className="font-mono text-xs uppercase tracking-[0.1em] mb-3"
-            style={{ color: "#F85C70" }}
-          >
-            What delivery directors deal with
-          </p>
-          <h2
-            className="font-display text-4xl md:text-5xl mb-14"
-            style={{ color: "#181F4F", fontWeight: 400 }}
-          >
-            What you are navigating
-          </h2>
-          <div className="grid md:grid-cols-2 gap-8">
+      <Section tone="white" padding="lg">
+        <Stack gap="xl">
+          <Eyebrow>What delivery directors deal with</Eyebrow>
+          <Text variant="h2">What you are navigating</Text>
+          <Grid cols={2} gap="md">
             {challenges.map((item) => (
-              <div
+              <Surface
                 key={item.title}
-                className="p-8 rounded-lg"
-                style={{ backgroundColor: "#F2F0F7", border: "1px solid #E5E3EE" }}
+                variant="mist"
+                padding="lg"
+                radius="lg"
+                className="flex items-start gap-4"
               >
-                <div className="flex items-start gap-4">
-                  <AlertTriangle
-                    className="h-5 w-5 flex-shrink-0 mt-1"
-                    style={{ color: "#F85C70" }}
-                  />
-                  <div>
-                    <h3
-                      className="font-sans text-lg font-bold mb-3"
-                      style={{ color: "#181F4F" }}
-                    >
-                      {item.title}
-                    </h3>
-                    <p
-                      className="font-sans text-base leading-relaxed"
-                      style={{ color: "#65677B" }}
-                    >
-                      {item.body}
-                    </p>
-                  </div>
-                </div>
-              </div>
+                <AlertTriangle className="mt-1 h-5 w-5 shrink-0 text-[#F85C70]" aria-hidden="true" />
+                <Stack gap="sm">
+                  <Text variant="h4">{item.title}</Text>
+                  <Text variant="body" tone="muted">{item.body}</Text>
+                </Stack>
+              </Surface>
             ))}
-          </div>
-        </div>
-      </section>
+          </Grid>
+        </Stack>
+      </Section>
 
-      {/* How we help */}
-      <section className="py-20" style={{ backgroundColor: "#F2F0F7" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <p
-            className="font-mono text-xs uppercase tracking-[0.1em] mb-3"
-            style={{ color: "#F85C70" }}
-          >
-            What Amplified delivers
-          </p>
-          <h2
-            className="font-display text-4xl md:text-5xl mb-14"
-            style={{ color: "#181F4F", fontWeight: 400 }}
-          >
-            How we help delivery directors
-          </h2>
-          <div className="grid md:grid-cols-3 gap-8">
+      <Section tone="mist" padding="lg">
+        <Stack gap="xl">
+          <Eyebrow>What Amplified delivers</Eyebrow>
+          <Text variant="h2">How we help delivery directors</Text>
+          <Grid cols={3} gap="md">
             {howWeHelp.map((item) => (
-              <div
+              <ContentCard
                 key={item.service}
-                className="p-8 rounded-lg bg-white"
-                style={{ border: "1px solid #E5E3EE" }}
-              >
-                <Link
-                  href={item.href}
-                  className="font-mono text-xs uppercase tracking-[0.1em] mb-4 block transition-colors"
-                  style={{ color: "#60266A" }}
-                  onMouseOver={(e) =>
-                    ((e.currentTarget as HTMLAnchorElement).style.color = "#F85C70")
-                  }
-                  onMouseOut={(e) =>
-                    ((e.currentTarget as HTMLAnchorElement).style.color = "#60266A")
-                  }
-                >
-                  {item.service} &rarr;
-                </Link>
-                <h3
-                  className="font-sans text-lg font-bold mb-3"
-                  style={{ color: "#181F4F" }}
-                >
-                  {item.title}
-                </h3>
-                <p className="font-sans text-base leading-relaxed" style={{ color: "#65677B" }}>
-                  {item.body}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Case example */}
-      <section className="py-20" style={{ backgroundColor: "#ffffff" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-[760px]">
-            <p
-              className="font-mono text-xs uppercase tracking-[0.1em] mb-3"
-              style={{ color: "#F85C70" }}
-            >
-              Example engagement
-            </p>
-            <h2
-              className="font-display text-4xl md:text-5xl mb-8"
-              style={{ color: "#181F4F", fontWeight: 400 }}
-            >
-              Stabilising a programme in distress
-            </h2>
-            <p className="font-sans text-lg leading-relaxed mb-6" style={{ color: "#65677B" }}>
-              A major infrastructure programme had been reporting amber-to-green for three
-              consecutive quarters. The delivery director knew the real position was red. A
-              contract renewal review was three months away, and the existing governance
-              artefacts would not survive proper scrutiny.
-            </p>
-            <p className="font-sans text-lg leading-relaxed mb-6" style={{ color: "#65677B" }}>
-              Amplified ran a two-week rapid diagnostic. We mapped the genuine delivery position,
-              identified the accountability gaps between the three system integrators, and built
-              a recovery plan that the delivery director could present to the SRO with confidence.
-              The plan was honest about the position and credible about the path forward.
-            </p>
-            <p className="font-sans text-lg leading-relaxed mb-8" style={{ color: "#65677B" }}>
-              The contract renewal review was passed. The programme moved from distress to
-              controlled delivery over the following 90 days. The governance framework remained
-              in place and was subsequently adopted across two other programmes in the same
-              organisation.
-            </p>
-            <div
-              className="p-6 rounded-lg"
-              style={{ backgroundColor: "#F2F0F7", borderLeft: "3px solid #60266A" }}
-            >
-              <p
-                className="font-sans text-base leading-relaxed font-medium"
-                style={{ color: "#181F4F" }}
-              >
-                "For the first time in two years, I had a governance pack I could present without
-                caveating every line. That changed the conversation with the SRO entirely."
-              </p>
-              <p className="font-sans text-sm mt-3" style={{ color: "#65677B" }}>
-                Delivery Director, UK infrastructure programme
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* What good looks like */}
-      <section className="py-20" style={{ backgroundColor: "#F2F0F7" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <p
-            className="font-mono text-xs uppercase tracking-[0.1em] mb-3"
-            style={{ color: "#F85C70" }}
-          >
-            The outcome
-          </p>
-          <h2
-            className="font-display text-4xl md:text-5xl mb-10"
-            style={{ color: "#181F4F", fontWeight: 400 }}
-          >
-            What good looks like for a delivery director
-          </h2>
-          <div className="grid md:grid-cols-2 gap-4 max-w-[760px]">
-            {[
-              "A governance framework that produces real confidence, not managed perception",
-              "Accountability that is clear across every delivery partner and vendor",
-              "Teams stable enough to accumulate and retain institutional knowledge",
-              "Reporting that stakeholders trust because it reflects the real position",
-              "Stage gates that test readiness rather than evidence of process compliance",
-              "A recovery plan you can defend under proper scrutiny",
-            ].map((item) => (
-              <div key={item} className="flex items-start gap-3">
-                <CheckCircle
-                  className="h-5 w-5 flex-shrink-0 mt-0.5"
-                  style={{ color: "#60266A" }}
-                />
-                <p
-                  className="font-sans text-base leading-relaxed"
-                  style={{ color: "#181F4F" }}
-                >
-                  {item}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="py-20" style={{ backgroundColor: "#ffffff" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <p
-            className="font-mono text-xs uppercase tracking-[0.1em] mb-3"
-            style={{ color: "#F85C70" }}
-          >
-            Common questions
-          </p>
-          <h2
-            className="font-display text-4xl md:text-5xl mb-12"
-            style={{ color: "#181F4F", fontWeight: 400 }}
-          >
-            Questions from delivery directors
-          </h2>
-          <div className="max-w-[760px] divide-y" style={{ borderColor: "#E5E3EE" }}>
-            {faqs.map((item) => (
-              <details key={item.q} className="group py-5">
-                <summary
-                  className="flex items-center justify-between gap-4 cursor-pointer list-none font-sans font-semibold text-base"
-                  style={{ color: "#181F4F" }}
-                >
-                  {item.q}
-                  <span
-                    className="flex-shrink-0 text-2xl transition-transform duration-200 group-open:rotate-45"
-                    style={{ color: "#F85C70" }}
+                variant="plain"
+                eyebrow={
+                  <Link
+                    href={item.href}
+                    className="text-[#60266A] transition-colors hover:text-[#F85C70]"
                   >
+                    {item.service} &rarr;
+                  </Link>
+                }
+                title={item.title}
+                description={item.body}
+                titleClamp={3}
+                descriptionClamp={6}
+              />
+            ))}
+          </Grid>
+        </Stack>
+      </Section>
+
+      <Section tone="white" padding="lg" containerClassName="max-w-[760px]">
+        <Stack gap="md">
+          <Eyebrow>Example engagement</Eyebrow>
+          <Text variant="h2">Stabilising a programme in distress</Text>
+          <Text variant="lead" tone="muted">
+            A major infrastructure programme had been reporting amber-to-green for three
+            consecutive quarters. The delivery director knew the real position was red. A
+            contract renewal review was three months away, and the existing governance
+            artefacts would not survive proper scrutiny.
+          </Text>
+          <Text variant="lead" tone="muted">
+            Amplified ran a two-week rapid diagnostic. We mapped the genuine delivery position,
+            identified the accountability gaps between the three system integrators, and built
+            a recovery plan that the delivery director could present to the SRO with confidence.
+            The plan was honest about the position and credible about the path forward.
+          </Text>
+          <Text variant="lead" tone="muted">
+            The contract renewal review was passed. The programme moved from distress to
+            controlled delivery over the following 90 days. The governance framework remained
+            in place and was subsequently adopted across two other programmes in the same
+            organisation.
+          </Text>
+          <Surface variant="mist" padding="lg" radius="lg" className="border-l-4 border-[#60266A]">
+            <Text variant="body" className="font-medium">
+              &ldquo;For the first time in two years, I had a governance pack I could present without
+              caveating every line. That changed the conversation with the SRO entirely.&rdquo;
+            </Text>
+            <Text variant="small" tone="muted" className="mt-3">
+              Delivery Director, UK infrastructure programme
+            </Text>
+          </Surface>
+        </Stack>
+      </Section>
+
+      <Section tone="mist" padding="lg" containerClassName="max-w-[760px]">
+        <Stack gap="lg">
+          <Eyebrow>The outcome</Eyebrow>
+          <Text variant="h2">What good looks like for a delivery director</Text>
+          <Grid cols={2} gap="sm">
+            {outcomes.map((item) => (
+              <Stack key={item} direction="row" gap="sm" align="start">
+                <CheckCircle className="mt-0.5 h-5 w-5 shrink-0 text-[#60266A]" aria-hidden="true" />
+                <Text variant="body">{item}</Text>
+              </Stack>
+            ))}
+          </Grid>
+        </Stack>
+      </Section>
+
+      <Section tone="white" padding="lg" containerSize="narrow" containerClassName="max-w-[900px]">
+        <Stack gap="lg">
+          <Eyebrow>Common questions</Eyebrow>
+          <Text variant="h2">Questions from delivery directors</Text>
+          <Stack gap="md">
+            {faqs.map((item) => (
+              <details
+                key={item.q}
+                className="group cursor-pointer rounded-xl border border-[#E5E3EE] bg-white p-6"
+              >
+                <summary className="amp-focus-ring-on-light flex cursor-pointer list-none items-center justify-between gap-4 text-base font-semibold text-[#181F4F]">
+                  {item.q}
+                  <span className="shrink-0 text-2xl text-[#F85C70] transition-transform duration-200 group-open:rotate-45">
                     +
                   </span>
                 </summary>
-                <p
-                  className="font-sans text-base leading-relaxed mt-4"
-                  style={{ color: "#65677B" }}
-                >
-                  {item.a}
-                </p>
+                <Text variant="body" tone="muted" className="mt-4">{item.a}</Text>
               </details>
             ))}
-          </div>
-        </div>
-      </section>
+          </Stack>
+        </Stack>
+      </Section>
 
-      {/* CTA */}
-      <section className="py-24 text-center" style={{ backgroundColor: "#181F4F" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <p
-            className="font-mono text-xs uppercase tracking-[0.15em] mb-5"
-            style={{ color: "#F85C70" }}
-          >
-            Next step
-          </p>
-          <h2
-            className="font-display text-4xl md:text-5xl text-white mb-6"
-            style={{ fontWeight: 400 }}
-          >
-            Start with an honest delivery conversation
-          </h2>
-          <p
-            className="font-sans text-lg max-w-[520px] mx-auto mb-10"
-            style={{ color: "rgba(255,255,255,0.75)" }}
-          >
-            Thirty minutes. Tell us where the programme is, not where the reporting says it is.
-            We will give you an honest view of the options.
-          </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <button
-              onClick={() => onOpenConsultation?.("structured-delivery")}
-              className="amp-focus-ring-on-navy inline-flex items-center gap-2 px-10 h-12 font-sans font-bold text-base rounded transition-colors duration-200"
-              style={{ backgroundColor: "#F85C70", color: "#181F4F" }}
-              onMouseOver={(e) =>
-                ((e.currentTarget as HTMLButtonElement).style.backgroundColor = "#d94a5e")
-              }
-              onMouseOut={(e) =>
-                ((e.currentTarget as HTMLButtonElement).style.backgroundColor = "#F85C70")
-              }
-            >
-              Book a Conversation <ArrowRight className="h-4 w-4" />
-            </button>
-            <Link href="/structured-delivery">
-              <button
-                className="amp-focus-ring-on-navy inline-flex items-center gap-2 px-10 h-12 font-sans font-bold text-base rounded transition-colors duration-200"
-                style={{
-                  border: "1px solid rgba(255,255,255,0.3)",
-                  color: "#FFFFFF",
-                  backgroundColor: "transparent",
-                }}
-                onMouseOver={(e) =>
-                  ((e.currentTarget as HTMLButtonElement).style.backgroundColor =
-                    "rgba(255,255,255,0.08)")
-                }
-                onMouseOut={(e) =>
-                  ((e.currentTarget as HTMLButtonElement).style.backgroundColor = "transparent")
-                }
-              >
-                View Structured Delivery
-              </button>
-            </Link>
-          </div>
-          <p
-            className="font-sans text-sm mt-6"
-            style={{ color: "rgba(255,255,255,0.4)" }}
-          >
-            No pitch. No deck. Just a conversation.
-          </p>
-        </div>
-      </section>
-    </div>
+      <CtaBand
+        eyebrow="Next step"
+        title="Start with an honest delivery conversation"
+        lead="Thirty minutes. Tell us where the programme is, not where the reporting says it is. We will give you an honest view of the options."
+      >
+        <Stack direction="row-responsive" gap="md" align="center" justify="center" className="flex-wrap">
+          <AmpButton onClick={() => onOpenConsultation?.("structured-delivery")}>
+            Book a Conversation <ArrowRight className="h-4 w-4" />
+          </AmpButton>
+          <AmpButton asChild variant="outlineLight" size="lg">
+            <Link href="/structured-delivery">View Structured Delivery</Link>
+          </AmpButton>
+        </Stack>
+        <Text variant="small" tone="white-45">No pitch. No deck. Just a conversation.</Text>
+      </CtaBand>
+    </PageShell>
   );
 });
 

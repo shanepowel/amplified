@@ -4,6 +4,17 @@ import Link from "next/link";
 import { memo } from "react";
 import { ArrowRight, CheckCircle, Users, Clock, TrendingUp, Award, type LucideIcon } from "lucide-react";
 import { caseStudies as caseStudiesFallback, type CaseStudy, type CaseStudyIconKey } from "@/lib/case-studies";
+import {
+  AmpButton,
+  Eyebrow,
+  Grid,
+  PageHero,
+  PageShell,
+  Section,
+  Stack,
+  Surface,
+  Text,
+} from "@/components/system";
 
 interface CaseStudiesProps {
   onOpenConsultation: (serviceType?: string) => void;
@@ -25,169 +36,123 @@ function StatIcon({ name, className }: { name: CaseStudyIconKey; className?: str
 export default memo(function CaseStudies({ onOpenConsultation, items }: CaseStudiesProps) {
   const caseStudies = items && items.length > 0 ? items : caseStudiesFallback;
   return (
-    <div className="min-h-screen font-sans" style={{ backgroundColor: "#ffffff" }}>
-
-      {/* HERO */}
-      <section className="py-28 lg:py-36" style={{ backgroundColor: "#181F4F" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="font-mono text-xs uppercase tracking-[0.15em] mb-6" style={{ color: "#F85C70" }}>
-            Case Studies
-          </p>
-          <h1
-            className="font-display text-5xl md:text-6xl text-white mb-8 leading-tight max-w-[720px]"
-            style={{ fontWeight: 400 }}
-            data-testid="text-ourwork-title"
-          >
+    <PageShell>
+      <PageHero
+        eyebrow="Case Studies"
+        title={
+          <span data-testid="text-ourwork-title">
             Delivered in the field.<br />Measured at board level.
-          </h1>
-          <p className="font-sans text-lg max-w-[580px] leading-relaxed" style={{ color: "rgba(255,255,255,0.75)" }}>
+          </span>
+        }
+        lead={
+          <>
             Real engagements with named outcomes. Every case study below reflects work that
             was scoped, delivered, and handed over by Amplified practitioners operating inside
             the client organisation.
-          </p>
-        </div>
-      </section>
+          </>
+        }
+        contentClassName="max-w-[720px]"
+      />
 
-      {/* CASE STUDIES */}
-      <section className="py-24 lg:py-32">
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 space-y-0">
+      <Section tone="white" padding="lg" className="py-24 lg:py-32">
+        <Stack gap="none">
           {caseStudies.map((study, i) => (
             <div
               key={study.id}
-              className="grid grid-cols-1 lg:grid-cols-5 gap-0 border-b"
-              style={{ borderColor: "#E5E3EE" }}
+              className="grid grid-cols-1 border-b border-[#E5E3EE] lg:grid-cols-5"
               data-testid={`card-case-study-${study.id}`}
             >
-              {/* Left: sector / stats panel */}
-              <div
-                className="lg:col-span-2 p-10 lg:p-14"
-                style={{ backgroundColor: i % 2 === 0 ? "#181F4F" : "#60266A" }}
+              <Surface
+                variant={i % 2 === 0 ? "navy" : "purple"}
+                padding="xl"
+                className="lg:col-span-2"
               >
-                <p className="font-mono text-xs uppercase tracking-[0.12em] mb-2" style={{ color: "rgba(255,255,255,0.45)" }}>
+                <Text as="span" variant="mono" tone="white-45" className="mb-2 block tracking-[0.12em]">
                   {study.sector}
-                </p>
-                <h2
-                  className="font-display text-3xl lg:text-4xl text-white mb-3 leading-tight"
-                  style={{ fontWeight: 400 }}
+                </Text>
+                <Text
+                  variant="h2"
+                  tone="white"
+                  className="mb-3"
                   data-testid={`text-case-study-${study.id}-title`}
                 >
                   {study.company}
-                </h2>
-                <p className="font-mono text-xs uppercase tracking-[0.1em] mb-10" style={{ color: "#F85C70" }}>
-                  {study.service}
-                </p>
+                </Text>
+                <Eyebrow className="mb-10">{study.service}</Eyebrow>
 
-                <div className="space-y-6 pt-6 border-t" style={{ borderColor: "rgba(255,255,255,0.12)" }}>
+                <Stack gap="lg" className="border-t border-white/10 pt-6">
                   {study.stats.map((stat) => (
-                    <div key={stat.label} className="flex items-center gap-4">
-                      <div
-                        className="w-10 h-10 rounded flex items-center justify-center flex-shrink-0"
-                        style={{ backgroundColor: "rgba(255,255,255,0.1)" }}
-                      >
+                    <Stack key={stat.label} direction="row" gap="md" align="center">
+                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded bg-white/10">
                         <StatIcon name={stat.icon} className="h-4 w-4 text-white" />
                       </div>
                       <div>
-                        <p className="font-display text-2xl text-white" style={{ fontWeight: 400 }}>{stat.value}</p>
-                        <p className="font-sans text-xs" style={{ color: "rgba(255,255,255,0.55)" }}>{stat.label}</p>
+                        <Text variant="h4" tone="white">{stat.value}</Text>
+                        <Text variant="caption" tone="white-45">{stat.label}</Text>
                       </div>
-                    </div>
+                    </Stack>
                   ))}
-                </div>
-              </div>
+                </Stack>
+              </Surface>
 
-              {/* Right: detail panel */}
-              <div className="lg:col-span-3 p-10 lg:p-14">
-                <div className="mb-10">
-                  <p className="font-mono text-xs uppercase tracking-[0.12em] mb-3" style={{ color: "#6B6E81" }}>
-                    The challenge
-                  </p>
-                  <p className="font-sans text-base leading-relaxed" style={{ color: "#65677B" }}>
-                    {study.challenge}
-                  </p>
-                </div>
-
-                <div className="mb-10">
-                  <p className="font-mono text-xs uppercase tracking-[0.12em] mb-3" style={{ color: "#6B6E81" }}>
-                    What we did
-                  </p>
-                  <p className="font-sans text-base leading-relaxed" style={{ color: "#65677B" }}>
-                    {study.solution}
-                  </p>
-                </div>
-
-                <div className="mb-8">
-                  <p className="font-mono text-xs uppercase tracking-[0.12em] mb-4" style={{ color: "#6B6E81" }}>
-                    Results
-                  </p>
-                  <ul className="space-y-3">
-                    {study.results.map((result) => (
-                      <li key={result} className="flex items-start gap-3">
-                        <CheckCircle className="h-4 w-4 flex-shrink-0 mt-0.5" style={{ color: "#F85C70" }} />
-                        <span className="font-sans text-sm leading-relaxed" style={{ color: "#181F4F" }}>{result}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div
-                  className="p-4 rounded border-l-2"
-                  style={{ backgroundColor: "#F2F0F7", borderLeftColor: "#F85C70" }}
-                >
-                  <p className="font-sans text-sm italic" style={{ color: "#65677B" }}>
-                    {study.outcome}
-                  </p>
-                </div>
-              </div>
+              <Surface variant="plain" padding="xl" className="lg:col-span-3">
+                <Stack gap="lg">
+                  <div>
+                    <Eyebrow tone="subtle" className="mb-3">The challenge</Eyebrow>
+                    <Text variant="body" tone="muted">{study.challenge}</Text>
+                  </div>
+                  <div>
+                    <Eyebrow tone="subtle" className="mb-3">What we did</Eyebrow>
+                    <Text variant="body" tone="muted">{study.solution}</Text>
+                  </div>
+                  <div>
+                    <Eyebrow tone="subtle" className="mb-4">Results</Eyebrow>
+                    <ul className="space-y-3">
+                      {study.results.map((result) => (
+                        <li key={result} className="flex items-start gap-3">
+                          <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-[#F85C70]" />
+                          <Text variant="small">{result}</Text>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <Surface variant="mist" padding="sm" className="border-l-2 border-l-[#F85C70]">
+                    <Text variant="small" tone="muted" className="italic">{study.outcome}</Text>
+                  </Surface>
+                </Stack>
+              </Surface>
             </div>
           ))}
-        </div>
-      </section>
+        </Stack>
+      </Section>
 
-      {/* CTA BAND */}
-      <section className="py-24" style={{ backgroundColor: "#181F4F" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <p className="font-mono text-xs uppercase tracking-[0.15em] mb-4" style={{ color: "#F85C70" }}>
-                Start a conversation
-              </p>
-              <h2 className="font-display text-4xl text-white" style={{ fontWeight: 400 }}>
-                Ready to discuss your engagement?
-              </h2>
-            </div>
-            <div className="space-y-4">
-              <p className="font-sans text-base leading-relaxed" style={{ color: "rgba(255,255,255,0.7)" }}>
-                Every engagement starts with a structured discovery conversation. No slide decks,
-                no proposals before we understand your situation. Just a straight conversation
-                about what you are trying to do and whether we are the right fit.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 pt-2">
-                <button
-                  onClick={() => onOpenConsultation()}
-                  className="amp-focus-ring-on-navy inline-flex items-center gap-2 px-8 h-11 font-sans font-bold text-sm rounded transition-colors duration-200"
-                  style={{ backgroundColor: "#F85C70", color: "#181F4F" }}
-                  onMouseOver={(e) => { (e.currentTarget as HTMLButtonElement).style.backgroundColor = "#d94a5e"; }}
-                  onMouseOut={(e) => { (e.currentTarget as HTMLButtonElement).style.backgroundColor = "#F85C70"; }}
-                  data-testid="button-case-studies-consultation"
-                >
-                  Book a Discovery Call <ArrowRight className="h-4 w-4" />
-                </button>
-                <Link
-                  href="/our-work"
-                  className="amp-focus-ring-on-navy inline-flex items-center gap-2 px-8 h-11 font-sans font-semibold text-sm rounded border transition-colors duration-200"
-                  style={{ border: "1px solid rgba(255,255,255,0.25)", color: "rgba(255,255,255,0.85)", backgroundColor: "transparent" }}
-                  data-testid="button-case-studies-our-work"
-                  onMouseOver={(e) => { (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255,255,255,0.6)"; }}
-                  onMouseOut={(e) => { (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255,255,255,0.25)"; }}
-                >
-                  See all our work
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-    </div>
+      <Section tone="navy" padding="lg">
+        <Grid cols="2-lg" gap="xl" className="items-center">
+          <Stack gap="md">
+            <Eyebrow>Start a conversation</Eyebrow>
+            <Text variant="h2" tone="white">Ready to discuss your engagement?</Text>
+          </Stack>
+          <Stack gap="md">
+            <Text variant="body" tone="white-70">
+              Every engagement starts with a structured discovery conversation. No slide decks,
+              no proposals before we understand your situation. Just a straight conversation
+              about what you are trying to do and whether we are the right fit.
+            </Text>
+            <Stack direction="row-responsive" gap="md" className="pt-2">
+              <AmpButton
+                size="md"
+                onClick={() => onOpenConsultation()}
+                data-testid="button-case-studies-consultation"
+              >
+                Book a Discovery Call <ArrowRight className="h-4 w-4" />
+              </AmpButton>
+              <AmpButton asChild variant="outlineLight" size="md" data-testid="button-case-studies-our-work">
+                <Link href="/our-work">See all our work</Link>
+              </AmpButton>
+            </Stack>
+          </Stack>
+        </Grid>
+      </Section>
+    </PageShell>
   );
 });

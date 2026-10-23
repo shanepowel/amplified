@@ -6,6 +6,17 @@ import { ArrowRight, CheckCircle } from "lucide-react";
 import { StructuredData } from "@/components/structured-data";
 import { howWeWorkSchema, createBreadcrumbSchema } from "@/lib/schemas";
 import { FurtherReading } from "@/components/further-reading";
+import {
+  AmpButton,
+  Eyebrow,
+  Grid,
+  PageHero,
+  PageShell,
+  Section,
+  Stack,
+  Surface,
+  Text,
+} from "@/components/system";
 
 interface HowWeWorkProps {
   onOpenConsultation: (serviceType?: string) => void;
@@ -61,156 +72,79 @@ const HowWeWork = memo(function HowWeWork({ onOpenConsultation }: HowWeWorkProps
     <>
       <StructuredData data={howWeWorkSchema as Record<string, unknown>} id="how-we-work-schema" />
       <StructuredData data={breadcrumb as Record<string, unknown>} id="how-we-work-breadcrumb" />
-    <div className="min-h-screen font-sans" style={{ backgroundColor: "#ffffff" }}>
-      {/* Hero */}
-      <section
-        className="py-28 lg:py-36"
-        style={{ backgroundColor: "#181F4F" }}
-      >
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <p
-            className="font-mono text-xs uppercase tracking-[0.15em] mb-6"
-            style={{ color: "#F85C70" }}
-          >
-            The Amp Model
-          </p>
-          <h1
-            className="font-display text-5xl md:text-6xl text-white mb-8 max-w-[720px] leading-tight"
-            style={{ fontWeight: 400 }}
-          >
-            How We Work
-          </h1>
-          <p
-            className="font-sans text-xl mb-4"
-            style={{ color: "#F85C70" }}
-          >
-            Digital transformation, delivered with discipline.
-          </p>
-          <p
-            className="font-sans text-lg max-w-[580px] leading-relaxed"
-            style={{ color: "rgba(255,255,255,0.75)" }}
-          >
-            We don't arrive with a methodology and leave you to figure out the rest. Every
-            digital transformation engagement runs through three clear phases, each with defined
-            outputs, governance checkpoints, and a built-in transfer of capability to your team.
-          </p>
-        </div>
-      </section>
+      <PageShell>
+        <PageHero
+          eyebrow="The Amp Model"
+          title="How We Work"
+          subtitle="Digital transformation, delivered with discipline."
+          lead="We don't arrive with a methodology and leave you to figure out the rest. Every digital transformation engagement runs through three clear phases, each with defined outputs, governance checkpoints, and a built-in transfer of capability to your team."
+        />
 
-      {/* Three phases */}
-      <section className="py-20 lg:py-28">
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 space-y-0">
-          {phases.map((phase, i) => (
-            <div
-              key={phase.tag}
-              className="grid grid-cols-1 lg:grid-cols-2 gap-12 py-16 border-b"
-              style={{ borderColor: "#E5E3EE" }}
-            >
-              <div>
-                <p
-                  className="font-mono text-xs uppercase tracking-[0.15em] mb-6"
-                  style={{ color: "#F85C70" }}
-                >
-                  {phase.tag}
-                </p>
-                <h2
-                  className="font-display text-3xl md:text-4xl mb-6 leading-tight"
-                  style={{ color: "#181F4F", fontWeight: 400 }}
-                >
-                  {phase.title}
-                </h2>
-                <p
-                  className="font-sans text-base leading-relaxed mb-4"
-                  style={{ color: "#65677B" }}
-                >
-                  {phase.body}
-                </p>
-                {phase.note && (
-                  <p
-                    className="font-sans text-sm italic"
-                    style={{ color: "#60266A" }}
-                  >
-                    {phase.note}
-                  </p>
-                )}
-              </div>
-              <div
-                className="p-8 rounded"
-                style={{ backgroundColor: "#F2F0F7" }}
+        <Section tone="white" padding="lg">
+          <Stack gap="none">
+            {phases.map((phase) => (
+              <Grid
+                key={phase.tag}
+                cols={2}
+                gap="xl"
+                className="border-b border-[#E5E3EE] py-16 lg:grid-cols-2"
               >
-                <p
-                  className="font-mono text-xs uppercase tracking-[0.12em] mb-5"
-                  style={{ color: "#60266A" }}
-                >
-                  Outputs
-                </p>
-                <ul className="space-y-4">
-                  {phase.outputs.map((output) => (
-                    <li key={output} className="flex items-start gap-3">
-                      <CheckCircle
-                        className="h-5 w-5 flex-shrink-0 mt-0.5"
-                        style={{ color: "#F85C70" }}
-                      />
-                      <span
-                        className="font-sans text-sm leading-relaxed"
-                        style={{ color: "#65677B" }}
-                      >
-                        {output}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+                <Stack gap="md">
+                  <Eyebrow>{phase.tag}</Eyebrow>
+                  <Text variant="h2" tone="ink">
+                    {phase.title}
+                  </Text>
+                  <Text variant="body" tone="muted">
+                    {phase.body}
+                  </Text>
+                  {phase.note ? (
+                    <Text variant="small" className="italic text-[#60266A]">
+                      {phase.note}
+                    </Text>
+                  ) : null}
+                </Stack>
+                <Surface variant="mist" padding="lg" radius="md">
+                  <Eyebrow className="mb-5 text-[#60266A]">
+                    Outputs
+                  </Eyebrow>
+                  <ul className="space-y-4">
+                    {phase.outputs.map((output) => (
+                      <li key={output} className="flex items-start gap-3">
+                        <CheckCircle className="h-5 w-5 shrink-0 mt-0.5 text-[#F85C70]" />
+                        <Text as="span" variant="small" tone="muted">
+                          {output}
+                        </Text>
+                      </li>
+                    ))}
+                  </ul>
+                </Surface>
+              </Grid>
+            ))}
+          </Stack>
+        </Section>
 
-      <FurtherReading tags={["Digital Transformation", "Structured Delivery", "Governance"]} maxArticles={3} />
+        <FurtherReading tags={["Digital Transformation", "Structured Delivery", "Governance"]} maxArticles={3} />
 
-      {/* CTA */}
-      <section
-        className="py-24 text-center"
-        style={{ backgroundColor: "#60266A" }}
-      >
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <h2
-            className="font-display text-4xl md:text-5xl text-white mb-6"
-            style={{ fontWeight: 400 }}
-          >
-            Ready to Amp Up?
-          </h2>
-          <p
-            className="font-sans text-lg max-w-[480px] mx-auto mb-10"
-            style={{ color: "rgba(255,255,255,0.8)" }}
-          >
-            Whether you're starting an AI strategy or untangling a delivery model, we'll give you
-            a straight answer on where to begin.
-          </p>
-          <Link href="/contact">
-            <button
-              className="amp-focus-ring-on-navy inline-flex items-center gap-2 px-10 h-12 font-sans font-bold text-base rounded transition-colors duration-200"
-              style={{ backgroundColor: "#F85C70", color: "#181F4F" }}
-              data-testid="button-how-we-work-cta"
-              onMouseOver={(e) =>
-                ((e.currentTarget as HTMLButtonElement).style.backgroundColor = "#d94a5e")
-              }
-              onMouseOut={(e) =>
-                ((e.currentTarget as HTMLButtonElement).style.backgroundColor = "#F85C70")
-              }
-            >
-              Start a Conversation <ArrowRight className="h-4 w-4" />
-            </button>
-          </Link>
-          <p
-            className="font-sans text-sm mt-6"
-            style={{ color: "rgba(255,255,255,0.5)" }}
-          >
-            No pitch. No deck. Just a 30-minute call.
-          </p>
-        </div>
-      </section>
-    </div>
+        <Section tone="purple" padding="lg">
+          <Stack gap="lg" align="center" className="text-center">
+            <Text variant="h2" tone="white">
+              Ready to Amp Up?
+            </Text>
+            <Text variant="lead" tone="white-80" className="max-w-[480px]">
+              Whether you're starting an AI strategy or untangling a delivery model, we'll give you
+              a straight answer on where to begin.
+            </Text>
+            <AmpButton asChild size="xl" data-testid="button-how-we-work-cta">
+              <Link href="/contact">
+                Start a Conversation <ArrowRight className="h-4 w-4" />
+              </Link>
+            </AmpButton>
+            <Text variant="small" tone="white-45">
+              No pitch. No deck. Just a 30-minute call.
+            </Text>
+          </Stack>
+        </Section>
+      </PageShell>
     </>
   );
 });

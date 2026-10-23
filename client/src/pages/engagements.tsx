@@ -7,8 +7,9 @@ import { memo } from "react";
 import { ArrowRight, Clock, Tag } from "lucide-react";
 import {
   AmpButton,
-  Container,
+  BreadcrumbBar,
   Eyebrow,
+  PageShell,
   Section,
   Stack,
   Surface,
@@ -26,22 +27,8 @@ export default memo(function Engagements({ onOpenConsultation, engagements: enga
   const engagements = engagementsProp ?? fallbackEngagements;
 
   return (
-    <div className="min-h-screen min-w-0 overflow-x-clip bg-white font-sans">
-      <div className="bg-[#F2F0F7] py-5">
-        <Container>
-          <nav aria-label="Breadcrumb" className="font-mono text-xs uppercase tracking-[0.1em]">
-            <ol className="flex min-w-0 flex-wrap items-center gap-2 text-[#6B6E81]">
-              <li>
-                <Link href="/" className="hover:underline">
-                  Home
-                </Link>
-              </li>
-              <li aria-hidden="true">/</li>
-              <li className="text-[#181F4F]">Engagements</li>
-            </ol>
-          </nav>
-        </Container>
-      </div>
+    <PageShell>
+      <BreadcrumbBar items={[{ label: "Home", href: "/" }, { label: "Engagements" }]} />
 
       <Section tone="navy" padding="xl">
         <Stack gap="lg" className="max-w-[920px]">
@@ -181,6 +168,6 @@ export default memo(function Engagements({ onOpenConsultation, engagements: enga
           </AmpButton>
         </Stack>
       </Section>
-    </div>
+    </PageShell>
   );
 });

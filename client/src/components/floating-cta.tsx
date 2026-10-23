@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
 import { Calendar, X, MessageCircle } from "lucide-react";
+import { AmpButton, Stack, Surface, Text } from "@/components/system";
 
 interface FloatingCTAProps {
   onOpenConsultation: () => void;
@@ -29,51 +29,55 @@ export function FloatingCTA({ onOpenConsultation }: FloatingCTAProps) {
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
       {isExpanded && (
-        <div className="bg-background/95 backdrop-blur-lg rounded-2xl shadow-strong border border-border/50 p-4 animate-in slide-in-from-bottom-2 fade-in duration-300">
-          <div className="flex items-center justify-between mb-3">
-            <span className="text-sm font-medium text-foreground">Ready to get amplified?</span>
-            <button
-              onClick={() => setIsExpanded(false)}
-              className="amp-focus-ring text-muted-foreground hover:text-foreground transition-colors rounded p-0.5"
-              aria-label="Close consultation menu"
-              data-testid="floating-cta-close"
-            >
-              <X className="h-4 w-4" />
-            </button>
-          </div>
-          <div className="flex flex-col gap-2">
-            <Button
+        <Surface
+          variant="bordered"
+          padding="md"
+          radius="lg"
+          className="animate-in slide-in-from-bottom-2 fade-in border-border/50 bg-background/95 shadow-strong backdrop-blur-lg duration-300"
+        >
+          <Stack gap="sm">
+            <div className="flex items-center justify-between">
+              <Text variant="small" className="font-medium">
+                Ready to get amplified?
+              </Text>
+              <button
+                onClick={() => setIsExpanded(false)}
+                className="amp-focus-ring rounded p-0.5 text-muted-foreground transition-colors hover:text-foreground"
+                aria-label="Close consultation menu"
+                data-testid="floating-cta-close"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            </div>
+            <AmpButton
               size="sm"
-              className="bg-primary text-primary-foreground hover:bg-primary/90 w-full justify-start"
+              fullWidth
+              className="justify-start"
               onClick={() => {
                 onOpenConsultation();
                 setIsExpanded(false);
               }}
               data-testid="floating-cta-book-call"
             >
-              <Calendar className="h-4 w-4 mr-2" />
+              <Calendar className="h-4 w-4" />
               Book Discovery Call
-            </Button>
-            <p className="text-xs text-muted-foreground text-center">
+            </AmpButton>
+            <Text variant="caption" tone="subtle" className="text-center">
               Response within 2 hours
-            </p>
-          </div>
-        </div>
+            </Text>
+          </Stack>
+        </Surface>
       )}
-      
-      <Button
+
+      <AmpButton
         size="lg"
-        className="rounded-full h-14 w-14 bg-primary text-primary-foreground hover:bg-primary/90 shadow-glow hover:shadow-strong transition-all duration-300 hover:scale-105"
+        className="!h-14 !w-14 !rounded-full !p-0 shadow-glow transition-all duration-300 hover:scale-105 hover:shadow-strong"
         onClick={() => setIsExpanded(!isExpanded)}
         aria-label="Book consultation"
         data-testid="floating-cta-trigger"
       >
-        {isExpanded ? (
-          <X className="h-6 w-6" />
-        ) : (
-          <MessageCircle className="h-6 w-6" />
-        )}
-      </Button>
+        {isExpanded ? <X className="h-6 w-6" /> : <MessageCircle className="h-6 w-6" />}
+      </AmpButton>
     </div>
   );
 }

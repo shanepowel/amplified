@@ -4,6 +4,20 @@ import { memo } from "react";
 import Link from "next/link";
 import { ArrowRight, CheckCircle, AlertTriangle } from "lucide-react";
 import { StructuredData } from "@/components/structured-data";
+import {
+  PageShell,
+  PageHero,
+  BreadcrumbBar,
+  CtaBand,
+  Section,
+  Stack,
+  Grid,
+  Text,
+  Eyebrow,
+  Surface,
+  AmpButton,
+  ContentCard,
+} from "@/components/system";
 import { digitalLeadsFAQSchema, createBreadcrumbSchema } from "@/lib/schemas";
 
 interface ForDigitalLeadsProps {
@@ -73,436 +87,207 @@ const faqs = [
   },
 ];
 
-const ForDigitalLeads = memo(function ForDigitalLeads({ onOpenConsultation }: ForDigitalLeadsProps) {
+const outcomes = [
+  "An AI adoption programme that moves from pilot to scale without reverting",
+  "Internal teams that own, operate, and build on the technology",
+  "A governance framework your regulator and board can see into",
+  "Capability that is genuinely embedded rather than performed for a review",
+  "No consultant dependency after the engagement ends",
+  "A Centre of Excellence that outlasts the project that created it",
+];
 
+const ForDigitalLeads = memo(function ForDigitalLeads({ onOpenConsultation }: ForDigitalLeadsProps) {
   return (
-    <div className="min-h-screen font-sans" style={{ backgroundColor: "#ffffff" }}>
+    <PageShell>
       <StructuredData data={digitalLeadsFAQSchema} id="digital-leads-faq-schema" />
       <StructuredData
         data={createBreadcrumbSchema([
           { name: "Home", url: "https://amplified.co.uk/" },
           { name: "For Digital Leads", url: "https://amplified.co.uk/for-digital-leads" },
         ])}
-        id="digital-leads-breadcrumb"
+        id="cios-breadcrumb"
       />
 
-      {/* Breadcrumb */}
-      <nav
-        aria-label="Breadcrumb"
-        className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-0"
-      >
-        <ol className="flex items-center gap-2 text-sm" style={{ color: "#65677B" }}>
-          <li>
-            <Link href="/" className="hover:underline" style={{ color: "#65677B" }}>
-              Home
-            </Link>
-          </li>
-          <li aria-hidden="true" className="text-xs">
-            /
-          </li>
-          <li aria-current="page" style={{ color: "#181F4F" }}>
-            For Digital Leads
-          </li>
-        </ol>
-      </nav>
+      <BreadcrumbBar items={[{ label: "Home", href: "/" }, { label: "For Digital Leads" }]} />
 
-      {/* Hero */}
-      <section
-        style={{ backgroundColor: "#181F4F" }}
-        className="relative py-24 lg:py-32 overflow-hidden"
-      >
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            backgroundImage:
-              "repeating-linear-gradient(135deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 60px)",
-          }}
-          aria-hidden="true"
-        />
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <p
-            className="font-mono text-xs uppercase tracking-[0.15em] mb-5"
-            style={{ color: "#F85C70" }}
-          >
-            Who We Work With
-          </p>
-          <h1
-            className="font-display text-5xl md:text-6xl lg:text-7xl text-white mb-6"
-            style={{ fontWeight: 400, lineHeight: 1.05 }}
-          >
+      <PageHero
+        eyebrow="Who We Work With"
+        title={
+          <>
             For Digital Leads
             <br />
             and Heads of Digital
-          </h1>
-          <p
-            className="font-sans text-xl max-w-[600px] mb-10 leading-relaxed"
-            style={{ color: "rgba(255,255,255,0.75)" }}
-          >
-            Build it in, not bolted on. Capability that stays when the consultants leave. AI
-            adoption that scales because the foundation is right.
-          </p>
-          <div className="flex flex-wrap gap-4">
-            <button
-              onClick={() => onOpenConsultation?.("capability")}
-              className="amp-focus-ring-on-navy inline-flex items-center gap-2 px-8 h-12 font-sans font-bold text-base rounded transition-colors duration-200"
-              style={{ backgroundColor: "#F85C70", color: "#181F4F" }}
-              onMouseOver={(e) =>
-                ((e.currentTarget as HTMLButtonElement).style.backgroundColor = "#d94a5e")
-              }
-              onMouseOut={(e) =>
-                ((e.currentTarget as HTMLButtonElement).style.backgroundColor = "#F85C70")
-              }
-            >
-              Talk to Us <ArrowRight className="h-4 w-4" />
-            </button>
-            <Link href="/capability">
-              <button
-                className="amp-focus-ring-on-navy inline-flex items-center gap-2 px-8 h-12 font-sans font-bold text-base rounded transition-colors duration-200"
-                style={{
-                  border: "1px solid rgba(255,255,255,0.3)",
-                  color: "#FFFFFF",
-                  backgroundColor: "transparent",
-                }}
-                onMouseOver={(e) =>
-                  ((e.currentTarget as HTMLButtonElement).style.backgroundColor =
-                    "rgba(255,255,255,0.08)")
-                }
-                onMouseOut={(e) =>
-                  ((e.currentTarget as HTMLButtonElement).style.backgroundColor = "transparent")
-                }
-              >
-                View Capability Building
-              </button>
-            </Link>
-          </div>
-        </div>
-      </section>
+          </>
+        }
+        lead="Build it in, not bolted on. Capability that stays when the consultants leave. AI adoption that scales because the foundation is right."
+      >
+        <Stack direction="row-responsive" gap="md" className="flex-wrap">
+          <AmpButton onClick={() => onOpenConsultation?.("capability")}>
+            Talk to Us <ArrowRight className="h-4 w-4" />
+          </AmpButton>
+          <AmpButton asChild variant="outlineLight" size="lg">
+            <Link href="/capability">View Capability Building</Link>
+          </AmpButton>
+        </Stack>
+      </PageHero>
 
-      {/* Intro */}
-      <section className="py-20" style={{ backgroundColor: "#F2F0F7" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-[760px]">
-            <h2
-              className="font-display text-4xl md:text-5xl mb-6"
-              style={{ color: "#181F4F", fontWeight: 400 }}
-            >
-              The capability gap digital leads inherit
-            </h2>
-            <p className="font-sans text-lg leading-relaxed mb-6" style={{ color: "#65677B" }}>
-              You are leading digital transformation in an organisation where the capability to
-              sustain that transformation is still being built. External consultants know things
-              your teams do not yet know. Technology is being implemented faster than the skills
-              to own and operate it are developing.
-            </p>
-            <p className="font-sans text-lg leading-relaxed" style={{ color: "#65677B" }}>
-              Amplified works with digital leads, heads of digital, and CDOs in infrastructure,
-              energy, financial services, and public sector to close the gap between what has been
-              deployed and what internal teams can own. Every engagement is designed to make us
-              unnecessary. The skills transfer. The dependency does not.
-            </p>
-          </div>
-        </div>
-      </section>
+      <Section tone="mist" padding="lg" containerClassName="max-w-[760px]">
+        <Stack gap="md">
+          <Text variant="h2">The capability gap digital leads inherit</Text>
+                    <Text variant="lead" tone="muted">
+            You are leading digital transformation in an organisation where the capability to
+            sustain that transformation is still being built. External consultants know things
+            your teams do not yet know. Technology is being implemented faster than the skills
+            to own and operate it are developing.
+          </Text>
+          <Text variant="lead" tone="muted">
+            Amplified works with digital leads, heads of digital, and CDOs in infrastructure,
+            energy, financial services, and public sector to close the gap between what has been
+            deployed and what internal teams can own. Every engagement is designed to make us
+            unnecessary. The skills transfer. The dependency does not.
+          </Text>
+        </Stack>
+      </Section>
 
-      {/* Challenges */}
-      <section className="py-20" style={{ backgroundColor: "#ffffff" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <p
-            className="font-mono text-xs uppercase tracking-[0.1em] mb-3"
-            style={{ color: "#F85C70" }}
-          >
-            What digital leads deal with
-          </p>
-          <h2
-            className="font-display text-4xl md:text-5xl mb-14"
-            style={{ color: "#181F4F", fontWeight: 400 }}
-          >
-            What you are navigating
-          </h2>
-          <div className="grid md:grid-cols-2 gap-8">
+      <Section tone="white" padding="lg">
+        <Stack gap="xl">
+          <Eyebrow>What digital leads deal with</Eyebrow>
+          <Text variant="h2">What you are navigating</Text>
+          <Grid cols={2} gap="md">
             {challenges.map((item) => (
-              <div
+              <Surface
                 key={item.title}
-                className="p-8 rounded-lg"
-                style={{ backgroundColor: "#F2F0F7", border: "1px solid #E5E3EE" }}
+                variant="mist"
+                padding="lg"
+                radius="lg"
+                className="flex items-start gap-4"
               >
-                <div className="flex items-start gap-4">
-                  <AlertTriangle
-                    className="h-5 w-5 flex-shrink-0 mt-1"
-                    style={{ color: "#F85C70" }}
-                  />
-                  <div>
-                    <h3
-                      className="font-sans text-lg font-bold mb-3"
-                      style={{ color: "#181F4F" }}
-                    >
-                      {item.title}
-                    </h3>
-                    <p
-                      className="font-sans text-base leading-relaxed"
-                      style={{ color: "#65677B" }}
-                    >
-                      {item.body}
-                    </p>
-                  </div>
-                </div>
-              </div>
+                <AlertTriangle className="mt-1 h-5 w-5 shrink-0 text-[#F85C70]" aria-hidden="true" />
+                <Stack gap="sm">
+                  <Text variant="h4">{item.title}</Text>
+                  <Text variant="body" tone="muted">{item.body}</Text>
+                </Stack>
+              </Surface>
             ))}
-          </div>
-        </div>
-      </section>
+          </Grid>
+        </Stack>
+      </Section>
 
-      {/* How we help */}
-      <section className="py-20" style={{ backgroundColor: "#F2F0F7" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <p
-            className="font-mono text-xs uppercase tracking-[0.1em] mb-3"
-            style={{ color: "#F85C70" }}
-          >
-            What Amplified delivers
-          </p>
-          <h2
-            className="font-display text-4xl md:text-5xl mb-14"
-            style={{ color: "#181F4F", fontWeight: 400 }}
-          >
-            How we help digital leads
-          </h2>
-          <div className="grid md:grid-cols-3 gap-8">
+      <Section tone="mist" padding="lg">
+        <Stack gap="xl">
+          <Eyebrow>What Amplified delivers</Eyebrow>
+          <Text variant="h2">How we help digital leads</Text>
+          <Grid cols={3} gap="md">
             {howWeHelp.map((item) => (
-              <div
+              <ContentCard
                 key={item.service}
-                className="p-8 rounded-lg bg-white"
-                style={{ border: "1px solid #E5E3EE" }}
-              >
-                <Link
-                  href={item.href}
-                  className="font-mono text-xs uppercase tracking-[0.1em] mb-4 block transition-colors"
-                  style={{ color: "#60266A" }}
-                  onMouseOver={(e) =>
-                    ((e.currentTarget as HTMLAnchorElement).style.color = "#F85C70")
-                  }
-                  onMouseOut={(e) =>
-                    ((e.currentTarget as HTMLAnchorElement).style.color = "#60266A")
-                  }
-                >
-                  {item.service} &rarr;
-                </Link>
-                <h3
-                  className="font-sans text-lg font-bold mb-3"
-                  style={{ color: "#181F4F" }}
-                >
-                  {item.title}
-                </h3>
-                <p className="font-sans text-base leading-relaxed" style={{ color: "#65677B" }}>
-                  {item.body}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Case example */}
-      <section className="py-20" style={{ backgroundColor: "#ffffff" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-[760px]">
-            <p
-              className="font-mono text-xs uppercase tracking-[0.1em] mb-3"
-              style={{ color: "#F85C70" }}
-            >
-              Example engagement
-            </p>
-            <h2
-              className="font-display text-4xl md:text-5xl mb-8"
-              style={{ color: "#181F4F", fontWeight: 400 }}
-            >
-              Moving from AI pilots to embedded practice
-            </h2>
-            <p className="font-sans text-lg leading-relaxed mb-6" style={{ color: "#65677B" }}>
-              A head of digital at a financial services organisation had run three successful AI
-              pilots in twelve months. All three had stalled at scale. The technology worked.
-              The governance framework was not in place. The internal teams did not have the
-              capability to own the tools beyond the pilot environment. A fourth pilot was being
-              proposed by the board.
-            </p>
-            <p className="font-sans text-lg leading-relaxed mb-6" style={{ color: "#65677B" }}>
-              Amplified worked with the head of digital to build the capability foundation before
-              the next pilot began. An AI literacy programme for the governance and operational
-              teams. A usage policy framework. A Centre of Excellence model for AI ownership.
-              Embedded practitioners who coached the internal team through the implementation
-              rather than doing it for them.
-            </p>
-            <p className="font-sans text-lg leading-relaxed mb-8" style={{ color: "#65677B" }}>
-              The fourth pilot moved to scaled deployment. The internal team owned the tool,
-              the governance, and the ongoing development. Amplified left. The capability stayed.
-            </p>
-            <div
-              className="p-6 rounded-lg"
-              style={{ backgroundColor: "#F2F0F7", borderLeft: "3px solid #60266A" }}
-            >
-              <p
-                className="font-sans text-base leading-relaxed font-medium"
-                style={{ color: "#181F4F" }}
-              >
-                "Every other consultancy had helped us run the pilot. Amplified helped us work
-                out why the pilots kept failing and then built the thing that made scale possible."
-              </p>
-              <p className="font-sans text-sm mt-3" style={{ color: "#65677B" }}>
-                Head of Digital, UK financial services organisation
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* What good looks like */}
-      <section className="py-20" style={{ backgroundColor: "#F2F0F7" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <p
-            className="font-mono text-xs uppercase tracking-[0.1em] mb-3"
-            style={{ color: "#F85C70" }}
-          >
-            The outcome
-          </p>
-          <h2
-            className="font-display text-4xl md:text-5xl mb-10"
-            style={{ color: "#181F4F", fontWeight: 400 }}
-          >
-            What good looks like for a digital lead
-          </h2>
-          <div className="grid md:grid-cols-2 gap-4 max-w-[760px]">
-            {[
-              "An AI adoption programme that moves from pilot to scale without reverting",
-              "Internal teams that own, operate, and build on the technology",
-              "A governance framework your regulator and board can see into",
-              "Capability that is genuinely embedded rather than performed for a review",
-              "No consultant dependency after the engagement ends",
-              "A Centre of Excellence that outlasts the project that created it",
-            ].map((item) => (
-              <div key={item} className="flex items-start gap-3">
-                <CheckCircle
-                  className="h-5 w-5 flex-shrink-0 mt-0.5"
-                  style={{ color: "#60266A" }}
-                />
-                <p
-                  className="font-sans text-base leading-relaxed"
-                  style={{ color: "#181F4F" }}
-                >
-                  {item}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="py-20" style={{ backgroundColor: "#ffffff" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <p
-            className="font-mono text-xs uppercase tracking-[0.1em] mb-3"
-            style={{ color: "#F85C70" }}
-          >
-            Common questions
-          </p>
-          <h2
-            className="font-display text-4xl md:text-5xl mb-12"
-            style={{ color: "#181F4F", fontWeight: 400 }}
-          >
-            Questions from digital leads
-          </h2>
-          <div className="max-w-[760px] divide-y" style={{ borderColor: "#E5E3EE" }}>
-            {faqs.map((item) => (
-              <details key={item.q} className="group py-5">
-                <summary
-                  className="flex items-center justify-between gap-4 cursor-pointer list-none font-sans font-semibold text-base"
-                  style={{ color: "#181F4F" }}
-                >
-                  {item.q}
-                  <span
-                    className="flex-shrink-0 text-2xl transition-transform duration-200 group-open:rotate-45"
-                    style={{ color: "#F85C70" }}
+                variant="plain"
+                eyebrow={
+                  <Link
+                    href={item.href}
+                    className="text-[#60266A] transition-colors hover:text-[#F85C70]"
                   >
+                    {item.service} &rarr;
+                  </Link>
+                }
+                title={item.title}
+                description={item.body}
+                titleClamp={3}
+                descriptionClamp={6}
+              />
+            ))}
+          </Grid>
+        </Stack>
+      </Section>
+
+      <Section tone="white" padding="lg" containerClassName="max-w-[760px]">
+        <Stack gap="md">
+          <Eyebrow>Example engagement</Eyebrow>
+          <Text variant="h2">Moving from AI pilots to embedded practice</Text>
+          <Text variant="lead" tone="muted">
+            A head of digital at a financial services organisation had run three successful AI
+            pilots in twelve months. All three had stalled at scale. The technology worked.
+            The governance framework was not in place. The internal teams did not have the
+            capability to own the tools beyond the pilot environment. A fourth pilot was being
+            proposed by the board.
+          </Text>
+          <Text variant="lead" tone="muted">
+            Amplified worked with the head of digital to build the capability foundation before
+            the next pilot began. An AI literacy programme for the governance and operational
+            teams. A usage policy framework. A Centre of Excellence model for AI ownership.
+            Embedded practitioners who coached the internal team through the implementation
+            rather than doing it for them.
+          </Text>
+          <Text variant="lead" tone="muted">
+            The fourth pilot moved to scaled deployment. The internal team owned the tool,
+            the governance, and the ongoing development. Amplified left. The capability stayed.
+          </Text>
+          <Surface variant="mist" padding="lg" radius="lg" className="border-l-4 border-[#60266A]">
+                        <Text variant="body" className="font-medium">
+              &ldquo;Every other consultancy had helped us run the pilot. Amplified helped us work
+              out why the pilots kept failing and then built the thing that made scale possible.&rdquo;
+            </Text>
+            <Text variant="small" tone="muted" className="mt-3">
+              Head of Digital, UK financial services organisation
+            </Text>
+          </Surface>
+        </Stack>
+      </Section>
+
+      <Section tone="mist" padding="lg" containerClassName="max-w-[760px]">
+        <Stack gap="lg">
+          <Eyebrow>The outcome</Eyebrow>
+          <Text variant="h2">What good looks like for a digital lead</Text>
+          <Grid cols={2} gap="sm">
+            {outcomes.map((item) => (
+              <Stack key={item} direction="row" gap="sm" align="start">
+                <CheckCircle className="mt-0.5 h-5 w-5 shrink-0 text-[#60266A]" aria-hidden="true" />
+                <Text variant="body">{item}</Text>
+              </Stack>
+            ))}
+          </Grid>
+        </Stack>
+      </Section>
+
+      <Section tone="white" padding="lg" containerSize="narrow" containerClassName="max-w-[900px]">
+        <Stack gap="lg">
+          <Eyebrow>Common questions</Eyebrow>
+          <Text variant="h2">Questions from digital leads</Text>
+          <Stack gap="md">
+            {faqs.map((item) => (
+              <details
+                key={item.q}
+                className="group cursor-pointer rounded-xl border border-[#E5E3EE] bg-white p-6"
+              >
+                <summary className="amp-focus-ring-on-light flex cursor-pointer list-none items-center justify-between gap-4 text-base font-semibold text-[#181F4F]">
+                  {item.q}
+                  <span className="shrink-0 text-2xl text-[#F85C70] transition-transform duration-200 group-open:rotate-45">
                     +
                   </span>
                 </summary>
-                <p
-                  className="font-sans text-base leading-relaxed mt-4"
-                  style={{ color: "#65677B" }}
-                >
-                  {item.a}
-                </p>
+                <Text variant="body" tone="muted" className="mt-4">{item.a}</Text>
               </details>
             ))}
-          </div>
-        </div>
-      </section>
+          </Stack>
+        </Stack>
+      </Section>
 
-      {/* CTA */}
-      <section className="py-24 text-center" style={{ backgroundColor: "#181F4F" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <p
-            className="font-mono text-xs uppercase tracking-[0.15em] mb-5"
-            style={{ color: "#F85C70" }}
-          >
-            Next step
-          </p>
-          <h2
-            className="font-display text-4xl md:text-5xl text-white mb-6"
-            style={{ fontWeight: 400 }}
-          >
-            Start a capability conversation
-          </h2>
-          <p
-            className="font-sans text-lg max-w-[520px] mx-auto mb-10"
-            style={{ color: "rgba(255,255,255,0.75)" }}
-          >
-            Thirty minutes. Tell us where your teams are and where they need to be. We will tell
-            you honestly what a real capability programme looks like for your context.
-          </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <button
-              onClick={() => onOpenConsultation?.("capability")}
-              className="amp-focus-ring-on-navy inline-flex items-center gap-2 px-10 h-12 font-sans font-bold text-base rounded transition-colors duration-200"
-              style={{ backgroundColor: "#F85C70", color: "#181F4F" }}
-              onMouseOver={(e) =>
-                ((e.currentTarget as HTMLButtonElement).style.backgroundColor = "#d94a5e")
-              }
-              onMouseOut={(e) =>
-                ((e.currentTarget as HTMLButtonElement).style.backgroundColor = "#F85C70")
-              }
-            >
-              Book a Conversation <ArrowRight className="h-4 w-4" />
-            </button>
-            <Link href="/capability">
-              <button
-                className="amp-focus-ring-on-navy inline-flex items-center gap-2 px-10 h-12 font-sans font-bold text-base rounded transition-colors duration-200"
-                style={{
-                  border: "1px solid rgba(255,255,255,0.3)",
-                  color: "#FFFFFF",
-                  backgroundColor: "transparent",
-                }}
-                onMouseOver={(e) =>
-                  ((e.currentTarget as HTMLButtonElement).style.backgroundColor =
-                    "rgba(255,255,255,0.08)")
-                }
-                onMouseOut={(e) =>
-                  ((e.currentTarget as HTMLButtonElement).style.backgroundColor = "transparent")
-                }
-              >
-                View Capability Building
-              </button>
-            </Link>
-          </div>
-          <p
-            className="font-sans text-sm mt-6"
-            style={{ color: "rgba(255,255,255,0.4)" }}
-          >
-            No pitch. No deck. Just a conversation.
-          </p>
-        </div>
-      </section>
-    </div>
+      <CtaBand
+        eyebrow="Next step"
+        title="Start a capability conversation"
+        lead="Thirty minutes. Tell us where your teams are and where they need to be. We will tell you honestly what a real capability programme looks like for your context."
+      >
+        <Stack direction="row-responsive" gap="md" align="center" justify="center" className="flex-wrap">
+          <AmpButton onClick={() => onOpenConsultation?.("capability")}>
+            Book a Conversation <ArrowRight className="h-4 w-4" />
+          </AmpButton>
+          <AmpButton asChild variant="outlineLight" size="lg">
+            <Link href="/capability">View Capability Building</Link>
+          </AmpButton>
+        </Stack>
+        <Text variant="small" tone="white-45">No pitch. No deck. Just a conversation.</Text>
+      </CtaBand>
+    </PageShell>
   );
 });
 
