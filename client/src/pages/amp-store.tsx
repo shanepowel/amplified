@@ -1,8 +1,23 @@
 'use client';
 
 import { memo } from "react";
-import Link from "next/link";
-import { ArrowRight, CheckCircle, ExternalLink, BookOpen, Layers, Target, Users, Zap, Award } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight, CheckCircle, ExternalLink, BookOpen, Layers, Target, Users, Zap } from "lucide-react";
+import {
+  PageShell,
+  PageHero,
+  BreadcrumbBar,
+  CtaBand,
+  Section,
+  Stack,
+  Grid,
+  Text,
+  Eyebrow,
+  Surface,
+  AmpButton,
+  BorderGrid,
+  BorderCell,
+} from "@/components/system";
 import workspaceImage from "@assets/66_1760470632126.webp";
 import networkImage from "@assets/46_1760470581285.webp";
 
@@ -72,240 +87,215 @@ const whyAmpStore = [
   },
 ];
 
+const accessWays = [
+  {
+    num: "01",
+    title: "Self-serve access",
+    body: "Individuals and teams can access the catalogue directly via theampstore.co.uk. Create an account and browse by AMP service line.",
+  },
+  {
+    num: "02",
+    title: "Embedded in a consulting engagement",
+    body: "When Amplified is working with your organisation, ampStore resources are integrated into the delivery so your team builds capability alongside the work, not after it.",
+  },
+  {
+    num: "03",
+    title: "Organisational licence",
+    body: "For organisations wanting to embed ampStore across multiple teams or a whole function, we offer organisational access with facilitated onboarding and progress tracking.",
+  },
+];
+
 const AmpStore = memo(function AmpStore({ onOpenConsultation }: AmpStoreProps) {
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "#FAFAF9" }}>
+    <PageShell>
+      <BreadcrumbBar items={[{ label: "Home", href: "/" }, { label: "ampStore" }]} />
 
-      {/* HERO */}
-      <section className="pt-32 pb-20 lg:pt-40 lg:pb-28" style={{ backgroundColor: "#60266A" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <p className="font-mono text-xs uppercase tracking-[0.14em] mb-6" style={{ color: "rgba(255,255,255,0.6)" }}>
-                The Amplified Ecosystem
-              </p>
-              <h1
-                className="font-display text-5xl lg:text-6xl mb-8 leading-tight"
-                style={{ color: "#FFFFFF", fontWeight: 400 }}
-                data-testid="text-ampstore-title"
-              >
-                ampStore
-              </h1>
-              <p className="font-sans text-xl mb-4 leading-relaxed" style={{ color: "rgba(255,255,255,0.85)" }}>
-                Practitioner-grade capability resources, curated for regulated and complex industries.
-              </p>
-              <p className="font-sans text-base leading-relaxed mb-10" style={{ color: "rgba(255,255,255,0.55)" }}>
-                Not a training platform. Not an eLearning library. The ampStore is a curated catalogue of
-                frameworks, tools, playbooks, and learning resources built directly around the six AMP
-                service lines. Everything your teams need to build lasting capability, not just pass a module.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <a
-                  href="https://theampstore.co.uk"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="amp-focus-ring-on-navy inline-flex items-center gap-2 px-8 h-11 font-sans font-bold text-sm rounded transition-colors duration-200"
-                  style={{ backgroundColor: "#F85C70", color: "#181F4F" }}
-                  onMouseOver={(e) => { (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "#d94a5e"; }}
-                  onMouseOut={(e) => { (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "#F85C70"; }}
-                  data-testid="link-ampstore-login"
-                >
-                  <ExternalLink className="h-4 w-4" />
-                  Access ampStore
-                </a>
-                <button
-                  onClick={() => onOpenConsultation("amp-store")}
-                  className="amp-focus-ring-on-navy inline-flex items-center gap-2 px-8 h-11 font-sans font-bold text-sm rounded transition-colors duration-200"
-                  style={{ border: "1px solid rgba(255,255,255,0.3)", color: "#FFFFFF", backgroundColor: "transparent" }}
-                  onMouseOver={(e) => { (e.currentTarget as HTMLButtonElement).style.backgroundColor = "rgba(255,255,255,0.07)"; }}
-                  onMouseOut={(e) => { (e.currentTarget as HTMLButtonElement).style.backgroundColor = "transparent"; }}
-                >
-                  Talk to Us About Access
-                </button>
-              </div>
-            </div>
-            <div className="hidden lg:block">
-              <div className="rounded overflow-hidden" style={{ aspectRatio: "4/3" }}>
-                <img
-                  src={workspaceImage.src}
-                  alt="Practitioners using ampStore resources"
-                  className="w-full h-full object-cover"
-                  data-testid="img-ampstore-hero"
-                />
-              </div>
-            </div>
-          </div>
+      <PageHero
+        className="bg-[#60266A]"
+        eyebrow="The Amplified Ecosystem"
+        title={<span data-testid="text-ampstore-title">ampStore</span>}
+        subtitle="Practitioner-grade capability resources, curated for regulated and complex industries."
+        lead="Not a training platform. Not an eLearning library. The ampStore is a curated catalogue of frameworks, tools, playbooks, and learning resources built directly around the six AMP service lines. Everything your teams need to build lasting capability, not just pass a module."
+      >
+        <Stack direction="row-responsive" gap="md" className="flex-wrap">
+          <AmpButton asChild data-testid="link-ampstore-login">
+            <a href="https://theampstore.co.uk" target="_blank" rel="noopener noreferrer">
+              <ExternalLink className="h-4 w-4" />
+              Access ampStore
+            </a>
+          </AmpButton>
+          <AmpButton
+            variant="outlineLight"
+            size="lg"
+            onClick={() => onOpenConsultation("amp-store")}
+          >
+            Talk to Us About Access
+          </AmpButton>
+        </Stack>
+      </PageHero>
+
+      <Section tone="white" padding="md" className="border-b border-[#E5E3EE]">
+        <div className="relative mx-auto hidden aspect-[4/3] max-w-[720px] overflow-hidden rounded lg:block">
+          <Image
+            src={workspaceImage}
+            alt="Practitioners using ampStore resources"
+            fill
+            className="object-cover"
+            priority
+            sizes="720px"
+            data-testid="img-ampstore-hero"
+          />
         </div>
-      </section>
+      </Section>
 
-      {/* WHY AMPSTORE */}
-      <section className="py-24 lg:py-32 border-b" style={{ borderColor: "#E5E3EE" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="font-mono text-xs uppercase tracking-[0.12em] mb-4" style={{ color: "#6B6E81" }}>
-            Why ampStore
-          </p>
-          <h2 className="font-display text-4xl mb-6" style={{ color: "#181F4F", fontWeight: 400 }}>
-            Capability that sticks because it is built for the work
-          </h2>
-          <p className="font-sans text-base max-w-[560px] mb-16 leading-relaxed" style={{ color: "#65677B" }}>
-            Generic training does not change how teams work. Resources built around your actual delivery
-            context do.
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border-l border-t" style={{ borderColor: "#E5E3EE" }}>
-            {whyAmpStore.map((item, i) => {
+      <Section tone="white" padding="lg" className="border-b border-[#E5E3EE]">
+        <Stack gap="xl">
+          <Eyebrow tone="subtle">Why ampStore</Eyebrow>
+          <Text variant="h2">Capability that sticks because it is built for the work</Text>
+          <Text variant="body" tone="muted" className="max-w-[560px]">
+            Generic training does not change how teams work. Resources built around your actual
+            delivery context do.
+          </Text>
+          <BorderGrid cols={2} className="border-l border-t border-[#E5E3EE]">
+            {whyAmpStore.map((item) => {
               const Icon = item.icon;
               return (
-                <div key={i} className="p-8 border-r border-b" style={{ borderColor: "#E5E3EE" }}>
-                  <Icon className="h-5 w-5 mb-5" style={{ color: "#60266A" }} />
-                  <h3 className="font-display text-xl mb-3" style={{ color: "#181F4F", fontWeight: 400 }}>
+                <BorderCell key={item.title} className="border-[#E5E3EE] p-8">
+                  <Icon className="mb-5 h-5 w-5 text-[#60266A]" aria-hidden="true" />
+                  <Text variant="h4" className="mb-3">
                     {item.title}
-                  </h3>
-                  <p className="font-sans text-sm leading-relaxed" style={{ color: "#65677B" }}>
+                  </Text>
+                  <Text variant="small" tone="muted">
                     {item.body}
-                  </p>
-                </div>
+                  </Text>
+                </BorderCell>
               );
             })}
-          </div>
-        </div>
-      </section>
+          </BorderGrid>
+        </Stack>
+      </Section>
 
-      {/* CATALOGUE */}
-      <section className="py-24 lg:py-32" style={{ backgroundColor: "#F2F0F7" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="font-mono text-xs uppercase tracking-[0.12em] mb-4" style={{ color: "#6B6E81" }}>
-            The Catalogue
-          </p>
-          <h2 className="font-display text-4xl mb-6" style={{ color: "#181F4F", fontWeight: 400 }}>
-            Six areas. One joined-up capability system.
-          </h2>
-          <p className="font-sans text-base max-w-[540px] mb-16 leading-relaxed" style={{ color: "#65677B" }}>
+      <Section tone="mist" padding="lg">
+        <Stack gap="xl">
+          <Eyebrow tone="subtle">The Catalogue</Eyebrow>
+          <Text variant="h2">Six areas. One joined-up capability system.</Text>
+          <Text variant="body" tone="muted" className="max-w-[540px]">
             Every resource maps to a specific AMP service line. Teams build capability in the same
             areas their consultancy engagement is structured around.
-          </p>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 border-l border-t" style={{ borderColor: "#C8C4D8" }}>
-            {catalogueAreas.map((area, i) => (
-              <div key={i} className="p-8 border-r border-b" style={{ borderColor: "#C8C4D8" }}>
-                <div className="flex items-center gap-3 mb-4">
-                  <span className="font-mono text-xs uppercase tracking-[0.1em]" style={{ color: "#F85C70" }}>
-                    {area.tag}
-                  </span>
-                  <BookOpen className="h-3.5 w-3.5" style={{ color: "#C8C4D8" }} />
-                  <span className="font-sans text-sm font-semibold" style={{ color: "#181F4F" }}>
+          </Text>
+          <BorderGrid cols={2} className="border-l border-t border-[#C8C4D8]">
+            {catalogueAreas.map((area) => (
+              <BorderCell key={area.tag} className="border-[#C8C4D8] p-8">
+                <Stack direction="row" gap="sm" align="center" className="mb-4">
+                  <Eyebrow>{area.tag}</Eyebrow>
+                  <BookOpen className="h-3.5 w-3.5 text-[#C8C4D8]" aria-hidden="true" />
+                  <Text variant="small" className="font-semibold">
                     {area.title}
-                  </span>
-                </div>
-                <p className="font-sans text-sm leading-relaxed mb-5" style={{ color: "#65677B" }}>
+                  </Text>
+                </Stack>
+                <Text variant="small" tone="muted" className="mb-5">
                   {area.desc}
-                </p>
+                </Text>
                 <ul className="space-y-2">
-                  {area.modules.map((mod, j) => (
-                    <li key={j} className="flex items-center gap-2">
-                      <CheckCircle className="h-3.5 w-3.5 flex-shrink-0" style={{ color: "#60266A" }} />
-                      <span className="font-sans text-xs" style={{ color: "#65677B" }}>{mod}</span>
+                  {area.modules.map((mod) => (
+                    <li key={mod} className="flex items-center gap-2">
+                      <CheckCircle
+                        className="h-3.5 w-3.5 shrink-0 text-[#60266A]"
+                        aria-hidden="true"
+                      />
+                      <Text variant="caption" tone="muted">
+                        {mod}
+                      </Text>
                     </li>
                   ))}
                 </ul>
-              </div>
+              </BorderCell>
             ))}
-          </div>
-        </div>
-      </section>
+          </BorderGrid>
+        </Stack>
+      </Section>
 
-      {/* HOW TO ACCESS */}
-      <section className="py-24 lg:py-32 border-t" style={{ borderColor: "#E5E3EE" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-            <div>
-              <p className="font-mono text-xs uppercase tracking-[0.12em] mb-4" style={{ color: "#6B6E81" }}>
-                How to Access
-              </p>
-              <h2 className="font-display text-4xl mb-6" style={{ color: "#181F4F", fontWeight: 400 }}>
-                Three ways to bring ampStore into your organisation
-              </h2>
-
-              <div className="space-y-8 mt-10">
-                {[
-                  {
-                    num: "01",
-                    title: "Self-serve access",
-                    body: "Individuals and teams can access the catalogue directly via theampstore.co.uk. Create an account and browse by AMP service line.",
-                  },
-                  {
-                    num: "02",
-                    title: "Embedded in a consulting engagement",
-                    body: "When Amplified is working with your organisation, ampStore resources are integrated into the delivery so your team builds capability alongside the work, not after it.",
-                  },
-                  {
-                    num: "03",
-                    title: "Organisational licence",
-                    body: "For organisations wanting to embed ampStore across multiple teams or a whole function, we offer organisational access with facilitated onboarding and progress tracking.",
-                  },
-                ].map((item, i) => (
-                  <div key={i} className="flex gap-6">
-                    <p className="font-mono text-3xl flex-shrink-0 leading-none mt-0.5" style={{ color: "#DDD9EA", fontWeight: 400 }}>
-                      {item.num}
-                    </p>
-                    <div>
-                      <h3 className="font-sans text-base font-semibold mb-2" style={{ color: "#181F4F" }}>{item.title}</h3>
-                      <p className="font-sans text-sm leading-relaxed" style={{ color: "#65677B" }}>{item.body}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <img
-                src={networkImage.src}
-                alt="Connected learning and capability building"
-                className="w-full rounded mb-8"
-                loading="lazy"
-              />
-              <div
-                className="p-10 rounded"
-                style={{ backgroundColor: "#181F4F" }}
-              >
-                <p className="font-mono text-xs uppercase tracking-[0.12em] mb-4" style={{ color: "#F85C70" }}>
-                  Access the Store
-                </p>
-                <p className="font-display text-2xl mb-6" style={{ color: "#FFFFFF", fontWeight: 400 }}>
-                  Login or create an account at theampstore.co.uk
-                </p>
-                <div className="flex flex-wrap gap-4">
-                  <a
-                    href="https://theampstore.co.uk"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="amp-focus-ring-on-navy inline-flex items-center gap-2 px-8 h-11 font-sans font-bold text-sm rounded transition-colors duration-200"
-                    style={{ backgroundColor: "#F85C70", color: "#181F4F" }}
-                    onMouseOver={(e) => { (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "#d94a5e"; }}
-                    onMouseOut={(e) => { (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "#F85C70"; }}
-                    data-testid="button-get-access"
-                  >
+      <Section tone="white" padding="lg" className="border-t border-[#E5E3EE]">
+        <Grid cols="2-lg" gap="xl" equal={false}>
+          <Stack gap="lg">
+            <Eyebrow tone="subtle">How to Access</Eyebrow>
+            <Text variant="h2">Three ways to bring ampStore into your organisation</Text>
+            <Stack gap="xl" className="mt-4">
+              {accessWays.map((item) => (
+                <Stack key={item.num} direction="row" gap="lg" align="start">
+                  <Text variant="display" className="shrink-0 text-3xl leading-none text-[#DDD9EA]">
+                    {item.num}
+                  </Text>
+                  <Stack gap="xs">
+                    <Text variant="body" className="font-semibold">
+                      {item.title}
+                    </Text>
+                    <Text variant="small" tone="muted">
+                      {item.body}
+                    </Text>
+                  </Stack>
+                </Stack>
+              ))}
+            </Stack>
+          </Stack>
+          <Stack gap="lg">
+            <Image
+              src={networkImage}
+              alt="Connected learning and capability building"
+              className="h-auto w-full rounded"
+              loading="lazy"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
+            <Surface variant="navy" padding="xl" radius="sm">
+              <Eyebrow className="mb-4">Access the Store</Eyebrow>
+              <Text variant="h3" tone="white" className="mb-6">
+                Login or create an account at theampstore.co.uk
+              </Text>
+              <Stack direction="row-responsive" gap="md" className="flex-wrap">
+                <AmpButton asChild data-testid="button-get-access">
+                  <a href="https://theampstore.co.uk" target="_blank" rel="noopener noreferrer">
                     <ExternalLink className="h-4 w-4" />
                     Go to ampStore
                   </a>
-                  <button
-                    onClick={() => onOpenConsultation("amp-store")}
-                    className="amp-focus-ring-on-navy inline-flex items-center gap-2 px-8 h-11 font-sans font-bold text-sm rounded transition-colors duration-200"
-                    style={{ border: "1px solid rgba(255,255,255,0.2)", color: "#FFFFFF", backgroundColor: "transparent" }}
-                    onMouseOver={(e) => { (e.currentTarget as HTMLButtonElement).style.backgroundColor = "rgba(255,255,255,0.07)"; }}
-                    onMouseOut={(e) => { (e.currentTarget as HTMLButtonElement).style.backgroundColor = "transparent"; }}
-                    data-testid="button-schedule-demo"
-                  >
-                    Talk About Org Access
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+                </AmpButton>
+                <AmpButton
+                  variant="outlineLight"
+                  size="lg"
+                  onClick={() => onOpenConsultation("amp-store")}
+                  data-testid="button-schedule-demo"
+                >
+                  Talk About Org Access
+                </AmpButton>
+              </Stack>
+            </Surface>
+          </Stack>
+        </Grid>
+      </Section>
 
-    </div>
+      <CtaBand
+        tone="purple"
+        title="Ready to build lasting capability?"
+        lead="Access the catalogue directly, or talk to us about organisational licences and embedded learning."
+      >
+        <Stack direction="row-responsive" gap="md" align="center" justify="center" className="flex-wrap">
+          <AmpButton asChild size="xl">
+            <a href="https://theampstore.co.uk" target="_blank" rel="noopener noreferrer">
+              Access ampStore <ArrowRight className="h-4 w-4" />
+            </a>
+          </AmpButton>
+          <AmpButton
+            variant="outlineLight"
+            size="lg"
+            onClick={() => onOpenConsultation("amp-store")}
+          >
+            Talk to Us
+          </AmpButton>
+        </Stack>
+        <Text variant="small" tone="white-45">
+          No pitch. No deck. Just a conversation.
+        </Text>
+      </CtaBand>
+    </PageShell>
   );
 });
 

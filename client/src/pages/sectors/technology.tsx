@@ -4,6 +4,20 @@ import { memo } from "react";
 import Link from "next/link";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import { StructuredData } from "@/components/structured-data";
+import {
+  PageShell,
+  PageHero,
+  BreadcrumbBar,
+  CtaBand,
+  Section,
+  Stack,
+  Grid,
+  Text,
+  Eyebrow,
+  Surface,
+  AmpButton,
+  ContentCard,
+} from "@/components/system";
 import { createBreadcrumbSchema, technologySectorFAQSchema } from "@/lib/schemas";
 
 interface Props {
@@ -57,10 +71,50 @@ const challenges = [
   "Scaling from a single product squad to a multi-team organisation creates accountability gaps. What worked when everyone was in the same room stops working when four squads are building on the same platform.",
 ];
 
-const SectorTechnology = memo(function SectorTechnology({ onOpenConsultation }: Props) {
+const engagementPhases = [
+  {
+    phase: "Weeks 1-2",
+    title: "Discovery and diagnostic",
+    body: "We review your current AI use, delivery governance, and accountability structures. We identify the specific gaps between where you are and where your customers, investors, or target markets expect you to be. For technology companies entering regulated markets, this includes a regulatory landscape mapping of the obligations that will apply.",
+  },
+  {
+    phase: "Weeks 3-10",
+    title: "Framework design and delivery setup",
+    body: "We build the governance framework, accountability structures, and delivery operating model your context requires. For AI governance engagements this includes risk assessment templates, model inventory documentation, usage policies, and board-facing reporting. For delivery engagements this includes squad governance, escalation pathways, and stakeholder reporting.",
+  },
+  {
+    phase: "Ongoing",
+    title: "Embedding and handover",
+    body: "We support your team through the first implementation cycle, train the people who will own the framework, and structure a clean handover so the capability stays internal. The goal is always for your team to own and operate what we have built without needing us to maintain it.",
+  },
+];
 
+const faqs = [
+  {
+    q: "Does Amplified only work with regulated industries, or do you work with technology companies too?",
+    a: "Amplified works with technology companies, scale-ups, and private sector organisations as well as regulated industries. Our methods and governance frameworks are designed for environments where rigour matters, whether that rigour is imposed by a regulator or by the demands of operating at scale. Many of our technology clients are moving into regulated markets, building AI-native products, or operating inside enterprises where delivery accountability has become critical.",
+  },
+  {
+    q: "What does AI governance look like for a technology company that is not yet in a regulated market?",
+    a: "For technology companies not yet subject to external regulation, AI governance is primarily about internal accountability, product risk management, and preparing for the regulatory landscape you will inevitably enter. We help you build governance frameworks that are proportionate to your current context but designed to scale into the FCA, ICO, EU AI Act, or sector-specific frameworks your product trajectory will require.",
+  },
+  {
+    q: "We already have strong engineering processes. What does Amplified add?",
+    a: "Most strong engineering organisations have excellent delivery processes at the squad or product level. The gaps we address are typically governance above the squad level: how AI decisions are made and documented, how accountability flows from engineering to product to board, how you demonstrate responsible AI use to enterprise customers, regulators, or investors, and how you build the leadership capability to govern technology at scale.",
+  },
+  {
+    q: "Can you work within our existing product and engineering culture?",
+    a: "Yes. We do not impose delivery frameworks that conflict with engineering culture. We work within your existing rituals and tooling, identifying the governance and accountability gaps without adding unnecessary process. Our goal is to make your teams more effective, not to slow them down with frameworks built for a different context.",
+  },
+  {
+    q: "What does a Tech Build engagement with Amplified look like?",
+    a: "Tech Build engagements start with a clear brief: what you need to build, the constraints you are working within, and the accountability you need to maintain. We build alongside your team or independently depending on your preference, with a strong emphasis on architecture that is maintainable and governance that satisfies your enterprise and regulatory obligations. We document as we go so the handover is clean.",
+  },
+];
+
+const SectorTechnology = memo(function SectorTechnology({ onOpenConsultation }: Props) {
   return (
-    <div className="min-h-screen font-sans" style={{ backgroundColor: "#ffffff" }}>
+    <PageShell>
       <StructuredData data={technologySectorFAQSchema} id="technology-faq-schema" />
       <StructuredData
         data={createBreadcrumbSchema([
@@ -71,376 +125,162 @@ const SectorTechnology = memo(function SectorTechnology({ onOpenConsultation }: 
         id="technology-breadcrumb"
       />
 
-      {/* Breadcrumb */}
-      <nav
-        aria-label="Breadcrumb"
-        className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-0"
-      >
-        <ol className="flex items-center gap-2 text-sm" style={{ color: "#65677B" }}>
-          <li>
-            <Link href="/" className="hover:underline" style={{ color: "#65677B" }}>
-              Home
-            </Link>
-          </li>
-          <li aria-hidden="true" className="text-xs">/</li>
-          <li>
-            <Link href="/sectors/infrastructure" className="hover:underline" style={{ color: "#65677B" }}>
-              Sectors
-            </Link>
-          </li>
-          <li aria-hidden="true" className="text-xs">/</li>
-          <li aria-current="page" style={{ color: "#181F4F" }}>
-            Technology & Private Sector
-          </li>
-        </ol>
-      </nav>
+      <BreadcrumbBar
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Sectors", href: "/sectors/infrastructure" },
+          { label: "Technology & Private Sector" },
+        ]}
+      />
 
-      {/* Hero */}
-      <section
-        className="relative py-24 lg:py-32 overflow-hidden"
-        style={{ backgroundColor: "#181F4F" }}
-      >
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            backgroundImage:
-              "repeating-linear-gradient(135deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 60px)",
-          }}
-          aria-hidden="true"
-        />
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <p
-            className="font-mono text-xs uppercase tracking-[0.15em] mb-5"
-            style={{ color: "#F85C70" }}
-          >
-            Sector
-          </p>
-          <h1
-            className="font-display text-5xl md:text-6xl lg:text-7xl text-white mb-6"
-            style={{ fontWeight: 400, lineHeight: 1.05 }}
-          >
+      <PageHero
+        padding="hero"
+        eyebrow="Sector"
+        title={
+          <>
             Technology &
             <br />
             Private Sector
-          </h1>
-          <p
-            className="font-sans text-xl max-w-[640px] leading-relaxed mb-10"
-            style={{ color: "rgba(255,255,255,0.75)" }}
+          </>
+        }
+        lead="Private sector organisations move fast. Governance gaps compound fast too. We help technology companies and commercial enterprises build AI delivery that keeps pace without creating the liabilities that stall enterprise sales or attract regulatory attention."
+      >
+        <Stack direction="row-responsive" gap="md" className="flex-wrap">
+          <AmpButton
+            onClick={() => onOpenConsultation("Technology AI Governance")}
+            data-testid="button-technology-hero"
           >
-            Private sector organisations move fast. Governance gaps compound fast too. We help
-            technology companies and commercial enterprises build AI delivery that keeps pace
-            without creating the liabilities that stall enterprise sales or attract regulatory
-            attention.
-          </p>
-          <div className="flex flex-wrap gap-4">
-            <button
-              onClick={() => onOpenConsultation("Technology AI Governance")}
-              className="amp-focus-ring-on-navy inline-flex items-center gap-2 px-8 h-12 font-sans font-bold text-base rounded transition-colors duration-200"
-              style={{ backgroundColor: "#F85C70", color: "#181F4F" }}
-              data-testid="button-technology-hero"
-              onMouseOver={(e) =>
-                ((e.currentTarget as HTMLButtonElement).style.backgroundColor = "#d94a5e")
-              }
-              onMouseOut={(e) =>
-                ((e.currentTarget as HTMLButtonElement).style.backgroundColor = "#F85C70")
-              }
-            >
-              Book a consultation <ArrowRight className="h-4 w-4" />
-            </button>
-            <Link
-              href="/ai-governance"
-              className="amp-focus-ring-on-navy inline-flex items-center gap-2 px-8 h-12 font-sans font-bold text-base rounded transition-colors duration-200"
-              style={{
-                border: "1px solid rgba(255,255,255,0.3)",
-                color: "#FFFFFF",
-                backgroundColor: "transparent",
-              }}
-              data-testid="button-technology-ai-governance"
-              onMouseOver={(e) =>
-                ((e.currentTarget as HTMLAnchorElement).style.backgroundColor =
-                  "rgba(255,255,255,0.08)")
-              }
-              onMouseOut={(e) =>
-                ((e.currentTarget as HTMLAnchorElement).style.backgroundColor = "transparent")
-              }
-            >
+            Book a consultation <ArrowRight className="h-4 w-4" />
+          </AmpButton>
+          <AmpButton asChild variant="outlineLight" size="lg">
+            <Link href="/ai-governance" data-testid="button-technology-ai-governance">
               AI Governance service
             </Link>
-          </div>
-        </div>
-      </section>
+          </AmpButton>
+        </Stack>
+      </PageHero>
 
-      {/* The challenge */}
-      <section className="py-20 lg:py-24" style={{ backgroundColor: "#F2F0F7" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-[760px]">
-            <p
-              className="font-mono text-xs uppercase tracking-[0.15em] mb-4"
-              style={{ color: "#F85C70" }}
-            >
-              The challenge
-            </p>
-            <h2
-              className="font-display text-4xl md:text-5xl mb-8"
-              style={{ color: "#181F4F", fontWeight: 400 }}
-            >
-              Velocity and governance are not opposites. But you have to build them together.
-            </h2>
-            <p className="font-sans text-lg leading-relaxed mb-6" style={{ color: "#65677B" }}>
-              Technology companies often encounter AI governance as a problem for the first time
-              when an enterprise customer asks a question they cannot answer, a regulator sends
-              a letter, or an investor asks for a due diligence pack that should have existed
-              twelve months ago. By then, the governance debt is real and the work to address
-              it is disruptive.
-            </p>
-            <p className="font-sans text-lg leading-relaxed" style={{ color: "#65677B" }}>
-              Amplified works with technology companies, scale-ups, and private sector
-              organisations that want to build accountability frameworks before they become
-              urgent, and delivery structures that scale beyond the founding team's ability
-              to hold everything in their heads.
-            </p>
-          </div>
-        </div>
-      </section>
+      <Section tone="mist" padding="lg" containerClassName="max-w-[760px]">
+        <Stack gap="md">
+          <Eyebrow>The challenge</Eyebrow>
+          <Text variant="h2">
+            Velocity and governance are not opposites. But you have to build them together.
+          </Text>
+          <Text variant="lead" tone="muted">
+            Technology companies often encounter AI governance as a problem for the first time
+            when an enterprise customer asks a question they cannot answer, a regulator sends
+            a letter, or an investor asks for a due diligence pack that should have existed
+            twelve months ago. By then, the governance debt is real and the work to address
+            it is disruptive.
+          </Text>
+          <Text variant="lead" tone="muted">
+            Amplified works with technology companies, scale-ups, and private sector
+            organisations that want to build accountability frameworks before they become
+            urgent, and delivery structures that scale beyond the founding team's ability
+            to hold everything in their heads.
+          </Text>
+        </Stack>
+      </Section>
 
-      {/* Challenges */}
-      <section className="py-20 lg:py-24" style={{ backgroundColor: "#ffffff" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <p
-            className="font-mono text-xs uppercase tracking-[0.15em] mb-4"
-            style={{ color: "#F85C70" }}
-          >
-            Common challenges
-          </p>
-          <h2
-            className="font-display text-4xl md:text-5xl mb-10"
-            style={{ color: "#181F4F", fontWeight: 400 }}
-          >
-            What technology organisations navigate
-          </h2>
-          <ul className="space-y-4 max-w-[840px]">
-            {challenges.map((c, i) => (
-              <li key={i} className="flex items-start gap-4">
-                <CheckCircle
-                  className="h-5 w-5 flex-shrink-0 mt-1"
-                  style={{ color: "#60266A" }}
-                />
-                <p className="font-sans text-base leading-relaxed" style={{ color: "#65677B" }}>
-                  {c}
-                </p>
-              </li>
+      <Section tone="white" padding="lg">
+        <Stack gap="lg">
+          <Eyebrow>Common challenges</Eyebrow>
+          <Text variant="h2">What technology organisations navigate</Text>
+          <Stack gap="md" className="max-w-[840px]">
+            {challenges.map((c) => (
+              <Stack key={c} direction="row" gap="md" align="start">
+                <CheckCircle className="mt-1 h-5 w-5 shrink-0 text-[#60266A]" aria-hidden="true" />
+                <Text variant="body" tone="muted">{c}</Text>
+              </Stack>
             ))}
-          </ul>
-        </div>
-      </section>
+          </Stack>
+        </Stack>
+      </Section>
 
-      {/* What we deliver */}
-      <section className="py-20 lg:py-24" style={{ backgroundColor: "#F2F0F7" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <p
-            className="font-mono text-xs uppercase tracking-[0.15em] mb-4"
-            style={{ color: "#F85C70" }}
-          >
-            What we deliver
-          </p>
-          <h2
-            className="font-display text-4xl md:text-5xl mb-12"
-            style={{ color: "#181F4F", fontWeight: 400 }}
-          >
-            Services for technology and private sector organisations
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <Section tone="mist" padding="lg">
+        <Stack gap="lg">
+          <Eyebrow>What we deliver</Eyebrow>
+          <Text variant="h2">Services for technology and private sector organisations</Text>
+          <Grid cols={3} gap="md">
             {deliverables.map((item) => (
-              <div
+              <ContentCard
                 key={item.title}
-                className="rounded-lg p-7 bg-white"
-                style={{ border: "1px solid #E5E3EE" }}
-              >
-                <h3
-                  className="font-sans text-base font-bold mb-3"
-                  style={{ color: "#181F4F" }}
-                >
-                  {item.title}
-                </h3>
-                <p
-                  className="font-sans text-sm leading-relaxed mb-5"
-                  style={{ color: "#65677B" }}
-                >
-                  {item.body}
-                </p>
-                <Link
-                  href={item.link}
-                  className="amp-focus-ring-on-light inline-flex items-center gap-1.5 text-sm font-semibold hover:opacity-80 transition-opacity"
-                  style={{ color: "#F85C70" }}
-                >
-                  {item.linkLabel}
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </Link>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* How we work */}
-      <section className="py-20 lg:py-24" style={{ backgroundColor: "#181F4F" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <p
-            className="font-mono text-xs uppercase tracking-[0.15em] mb-4"
-            style={{ color: "#F85C70" }}
-          >
-            How we work
-          </p>
-          <h2
-            className="font-display text-4xl md:text-5xl mb-10 text-white"
-            style={{ fontWeight: 400 }}
-          >
-            What an engagement looks like
-          </h2>
-          <div className="grid lg:grid-cols-3 gap-6 mt-10">
-            {[
-              {
-                phase: "Weeks 1-2",
-                title: "Discovery and diagnostic",
-                body: "We review your current AI use, delivery governance, and accountability structures. We identify the specific gaps between where you are and where your customers, investors, or target markets expect you to be. For technology companies entering regulated markets, this includes a regulatory landscape mapping of the obligations that will apply.",
-              },
-              {
-                phase: "Weeks 3-10",
-                title: "Framework design and delivery setup",
-                body: "We build the governance framework, accountability structures, and delivery operating model your context requires. For AI governance engagements this includes risk assessment templates, model inventory documentation, usage policies, and board-facing reporting. For delivery engagements this includes squad governance, escalation pathways, and stakeholder reporting.",
-              },
-              {
-                phase: "Ongoing",
-                title: "Embedding and handover",
-                body: "We support your team through the first implementation cycle, train the people who will own the framework, and structure a clean handover so the capability stays internal. The goal is always for your team to own and operate what we have built without needing us to maintain it.",
-              },
-            ].map((phase) => (
-              <div
-                key={phase.phase}
-                className="rounded-2xl p-7"
-                style={{
-                  backgroundColor: "rgba(255,255,255,0.06)",
-                  border: "1px solid rgba(255,255,255,0.12)",
-                }}
-              >
-                <p
-                  className="font-mono text-xs uppercase tracking-[0.15em] mb-3"
-                  style={{ color: "#F85C70" }}
-                >
-                  {phase.phase}
-                </p>
-                <h3 className="font-bold mb-3 text-white">{phase.title}</h3>
-                <p className="text-base leading-relaxed" style={{ color: "#E5E3EE" }}>
-                  {phase.body}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="py-20 lg:py-24" style={{ backgroundColor: "#F2F0F7" }}>
-        <div className="max-w-[900px] mx-auto px-4 sm:px-6 lg:px-8">
-          <p
-            className="font-mono text-xs uppercase tracking-[0.15em] mb-4"
-            style={{ color: "#F85C70" }}
-          >
-            Common questions
-          </p>
-          <h2
-            className="font-display text-4xl md:text-5xl mb-10"
-            style={{ color: "#181F4F", fontWeight: 400 }}
-          >
-            Questions technology companies ask
-          </h2>
-          <div className="space-y-4">
-            {[
-              {
-                q: "Does Amplified only work with regulated industries, or do you work with technology companies too?",
-                a: "Amplified works with technology companies, scale-ups, and private sector organisations as well as regulated industries. Our methods and governance frameworks are designed for environments where rigour matters, whether that rigour is imposed by a regulator or by the demands of operating at scale. Many of our technology clients are moving into regulated markets, building AI-native products, or operating inside enterprises where delivery accountability has become critical.",
-              },
-              {
-                q: "What does AI governance look like for a technology company that is not yet in a regulated market?",
-                a: "For technology companies not yet subject to external regulation, AI governance is primarily about internal accountability, product risk management, and preparing for the regulatory landscape you will inevitably enter. We help you build governance frameworks that are proportionate to your current context but designed to scale into the FCA, ICO, EU AI Act, or sector-specific frameworks your product trajectory will require.",
-              },
-              {
-                q: "We already have strong engineering processes. What does Amplified add?",
-                a: "Most strong engineering organisations have excellent delivery processes at the squad or product level. The gaps we address are typically governance above the squad level: how AI decisions are made and documented, how accountability flows from engineering to product to board, how you demonstrate responsible AI use to enterprise customers, regulators, or investors, and how you build the leadership capability to govern technology at scale.",
-              },
-              {
-                q: "Can you work within our existing product and engineering culture?",
-                a: "Yes. We do not impose delivery frameworks that conflict with engineering culture. We work within your existing rituals and tooling, identifying the governance and accountability gaps without adding unnecessary process. Our goal is to make your teams more effective, not to slow them down with frameworks built for a different context.",
-              },
-              {
-                q: "What does a Tech Build engagement with Amplified look like?",
-                a: "Tech Build engagements start with a clear brief: what you need to build, the constraints you are working within, and the accountability you need to maintain. We build alongside your team or independently depending on your preference, with a strong emphasis on architecture that is maintainable and governance that satisfies your enterprise and regulatory obligations. We document as we go so the handover is clean.",
-              },
-            ].map((item, i) => (
-              <details
-                key={i}
-                className="bg-white rounded-xl p-6 cursor-pointer"
-                style={{ border: "1px solid #E5E3EE" }}
-              >
-                <summary
-                  className="amp-focus-ring-on-light font-semibold text-base list-none flex items-center justify-between cursor-pointer"
-                  style={{ color: "#181F4F" }}
-                >
-                  {item.q}
-                  <span
-                    className="text-lg ml-4 flex-shrink-0"
-                    style={{ color: "#F85C70" }}
+                variant="panel"
+                className="border border-[#E5E3EE]"
+                title={item.title}
+                description={item.body}
+                titleClamp={4}
+                descriptionClamp={6}
+                footer={
+                  <Link
+                    href={item.link}
+                    className="amp-focus-ring-on-light inline-flex items-center gap-1.5 text-sm font-semibold text-[#F85C70] transition-opacity hover:opacity-80"
                   >
-                    +
-                  </span>
+                    {item.linkLabel}
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </Link>
+                }
+              />
+            ))}
+          </Grid>
+        </Stack>
+      </Section>
+
+      <Section tone="navy" padding="lg">
+        <Stack gap="lg">
+          <Eyebrow>How we work</Eyebrow>
+          <Text variant="h2" tone="white">What an engagement looks like</Text>
+          <Grid cols="3-lg" gap="md" className="mt-4">
+            {engagementPhases.map((phase) => (
+              <Surface key={phase.phase} variant="inset" padding="md" radius="lg">
+                <Eyebrow className="mb-3">{phase.phase}</Eyebrow>
+                <Text variant="h4" tone="white" className="mb-3 font-bold">{phase.title}</Text>
+                <Text variant="body" tone="white-75">{phase.body}</Text>
+              </Surface>
+            ))}
+          </Grid>
+        </Stack>
+      </Section>
+
+      <Section tone="mist" padding="lg" containerSize="narrow" containerClassName="max-w-[900px]">
+        <Stack gap="lg">
+          <Eyebrow>Common questions</Eyebrow>
+          <Text variant="h2">Questions technology companies ask</Text>
+          <Stack gap="md">
+            {faqs.map((item) => (
+              <details
+                key={item.q}
+                className="cursor-pointer rounded-xl border border-[#E5E3EE] bg-white p-6"
+              >
+                <summary className="amp-focus-ring-on-light flex cursor-pointer list-none items-center justify-between gap-4 text-base font-semibold text-[#181F4F]">
+                  {item.q}
+                  <span className="ml-4 shrink-0 text-lg text-[#F85C70]">+</span>
                 </summary>
-                <p className="mt-4 text-base leading-relaxed" style={{ color: "#65677B" }}>
-                  {item.a}
-                </p>
+                <Text variant="body" tone="muted" className="mt-4">{item.a}</Text>
               </details>
             ))}
-          </div>
-        </div>
-      </section>
+          </Stack>
+        </Stack>
+      </Section>
 
-      {/* CTA */}
-      <section className="py-20 lg:py-24" style={{ backgroundColor: "#181F4F" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2
-            className="font-display text-4xl md:text-5xl mb-6 text-white"
-            style={{ fontWeight: 400 }}
+      <CtaBand
+        title="Discuss your technology or private sector programme"
+        lead="Whether you are building AI governance into a commercial product, scaling a delivery organisation, or preparing for regulated market entry, we can help you do it with the rigour that enterprise customers and regulators will expect."
+      >
+        <Stack direction="row-responsive" gap="md" align="center" justify="center" className="flex-wrap">
+          <AmpButton
+            onClick={() => onOpenConsultation("Technology AI Governance")}
+            data-testid="button-technology-consultation"
           >
-            Discuss your technology or private sector programme
-          </h2>
-          <p
-            className="font-sans text-xl mb-10 max-w-2xl mx-auto"
-            style={{ color: "rgba(255,255,255,0.75)" }}
-          >
-            Whether you are building AI governance into a commercial product, scaling a delivery
-            organisation, or preparing for regulated market entry, we can help you do it with
-            the rigour that enterprise customers and regulators will expect.
-          </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <button
-              onClick={() => onOpenConsultation("Technology AI Governance")}
-              className="amp-focus-ring-on-navy inline-flex items-center gap-2 px-8 py-4 rounded-lg font-semibold text-white transition-all hover:opacity-90"
-              style={{ backgroundColor: "#F85C70" }}
-              data-testid="button-technology-consultation"
-            >
-              Book a consultation
-              <ArrowRight className="w-4 h-4" />
-            </button>
-            <Link
-              href="/ai-governance"
-              className="amp-focus-ring-on-navy inline-flex items-center gap-2 px-8 py-4 rounded-lg font-semibold border transition-all hover:bg-white/10"
-              style={{ color: "#ffffff", borderColor: "rgba(255,255,255,0.3)" }}
-            >
-              AI Governance service
-            </Link>
-          </div>
-        </div>
-      </section>
-    </div>
+            Book a consultation
+            <ArrowRight className="h-4 w-4" />
+          </AmpButton>
+          <AmpButton asChild variant="outlineLight" size="lg">
+            <Link href="/ai-governance">AI Governance service</Link>
+          </AmpButton>
+        </Stack>
+      </CtaBand>
+    </PageShell>
   );
 });
 

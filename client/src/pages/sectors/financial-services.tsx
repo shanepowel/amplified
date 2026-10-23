@@ -3,9 +3,23 @@
 import { memo } from "react";
 import Link from "next/link";
 import heroImg from "@assets/stock_images/financial-services-sector.webp";
-import Image from 'next/image';
+import Image from "next/image";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import { StructuredData } from "@/components/structured-data";
+import {
+  PageShell,
+  Section,
+  Container,
+  Stack,
+  Grid,
+  Text,
+  Eyebrow,
+  Surface,
+  AmpButton,
+  ContentCard,
+  CtaBand,
+  BreadcrumbBar,
+} from "@/components/system";
 import { createServiceSchema, createBreadcrumbSchema, financialServicesFAQSchema } from "@/lib/schemas";
 
 interface Props {
@@ -79,258 +93,251 @@ const breadcrumbSchema = createBreadcrumbSchema([
   { name: 'Financial Services', url: 'https://amplified.co.uk/sectors/financial-services' },
 ]);
 
+
 const SectorFinancialServices = memo(function SectorFinancialServices({ onOpenConsultation }: Props) {
   return (
-    <div className="min-h-screen font-sans" style={{ backgroundColor: "#ffffff" }}>
+    <PageShell>
       <StructuredData data={fsSchema} id="financial-services-schema" />
       <StructuredData data={breadcrumbSchema} id="financial-services-breadcrumb" />
       <StructuredData data={financialServicesFAQSchema} id="financial-services-faq" />
 
-      {/* Hero */}
-      <section className="py-28 lg:py-36 relative overflow-hidden" style={{ backgroundColor: "#181F4F" }}>
-        <div className="hidden lg:block absolute inset-y-0 right-0 w-[48%] pointer-events-none" aria-hidden="true">
-          <Image src={heroImg} alt="" aria-hidden="true" fill className="object-cover" style={{ opacity: 0.3 }} priority sizes="48vw" />
-          <div className="absolute inset-0" style={{ background: "linear-gradient(to right, #181F4F 0%, transparent 60%)" }} />
-        </div>
-        <div className="relative max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <nav className="mb-8" aria-label="Breadcrumb">
-            <ol className="flex items-center gap-2 text-sm" style={{ color: "#65677B" }}>
-              <li><Link href="/" className="hover:text-white transition-colors">Home</Link></li>
-              <li style={{ color: "#65677B" }}>/</li>
-              <li style={{ color: "#F85C70" }}>Financial Services</li>
-            </ol>
-          </nav>
-          <p className="font-mono text-xs uppercase tracking-[0.15em] mb-6" style={{ color: "#F85C70" }}>
-            Sector Focus
-          </p>
-          <h1
-            className="font-bold leading-[1.1] mb-8"
-            style={{ fontSize: "clamp(2.2rem, 5vw, 3.5rem)", color: "#ffffff" }}
-          >
-            AI Governance for<br />Financial Services Organisations
-          </h1>
-          <p className="text-xl leading-relaxed mb-10 max-w-2xl" style={{ color: "#E5E3EE" }}>
-            Banks, insurers, and regulated financial services firms face the most demanding AI governance environment of any sector. FCA principles, Consumer Duty, SMCR, EU AI Act, SR 11-7 model risk standards. We build governance frameworks that satisfy all of them, without creating a parallel compliance process that slows down your technology programme.
-          </p>
-          <div className="flex flex-wrap gap-4">
-            <button
-              onClick={() => onOpenConsultation("Financial Services AI Governance")}
-              className="amp-focus-ring-on-navy inline-flex items-center gap-2 px-7 py-3.5 rounded-lg font-semibold text-white transition-all hover:opacity-90"
-              style={{ backgroundColor: "#F85C70" }}
-              data-testid="button-financial-services-hero"
-            >
-              Discuss your AI programme
-              <ArrowRight className="w-4 h-4" />
-            </button>
-            <Link
-              href="/ai-governance"
-              className="amp-focus-ring-on-navy inline-flex items-center gap-2 px-7 py-3.5 rounded-lg font-semibold border transition-all hover:bg-white/10"
-              style={{ color: "#ffffff", borderColor: "rgba(255,255,255,0.3)" }}
-            >
-              AI Governance service
-            </Link>
-          </div>
-        </div>
-      </section>
+      <BreadcrumbBar
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Sectors", href: "/sectors/infrastructure" },
+          { label: "Financial Services" },
+        ]}
+      />
 
-      {/* Intro */}
-      <section className="py-20 lg:py-24" style={{ backgroundColor: "#ffffff" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
-            <div>
-              <h2 className="font-bold mb-6" style={{ fontSize: "clamp(1.6rem, 3vw, 2.4rem)", color: "#181F4F" }}>
-                Why generic AI governance fails in financial services
-              </h2>
-              <p className="text-lg leading-relaxed mb-6" style={{ color: "#65677B" }}>
-                The AI governance frameworks published by technology vendors, most consulting firms, and even regulators are written for organisations where failure is recoverable. In financial services, AI failure can mean regulatory enforcement, customer harm at scale, or individual accountability under SMCR. The tolerance for error is different. The governance framework must reflect that.
-              </p>
-              <p className="text-lg leading-relaxed mb-6" style={{ color: "#65677B" }}>
-                We build AI governance specifically for firms where the regulatory context, FCA Principles, Consumer Duty, EU AI Act, Senior Managers and Certification Regime, is the governing constraint, not a compliance checkbox. This means governance that is built into your operating model, not bolted on top of it.
-              </p>
-              <p className="text-lg leading-relaxed" style={{ color: "#65677B" }}>
-                Our partners have worked inside regulated financial services organisations. We understand the difference between what passes a model risk review and what a CRO will actually sign off. We build to the higher standard.
-              </p>
-            </div>
-            <div>
-              <div className="rounded-2xl p-8" style={{ backgroundColor: "#F2F0F7" }}>
-                <h3 className="font-bold mb-6" style={{ color: "#181F4F", fontSize: "1.1rem" }}>
-                  Regulatory frameworks we align to
-                </h3>
-                <ul className="space-y-3">
-                  {[
-                    "FCA Principles for Businesses (Principles 3, 6, 7, 9, 11, 12)",
-                    "Consumer Duty (fair outcomes, price and value, understanding, support)",
-                    "SMCR (Senior Manager accountability, individual responsibility)",
-                    "EU AI Act (risk classification, conformity assessments, high-risk applications)",
-                    "UK AI Regulatory Framework (DSIT, cross-sector guidance)",
-                    "SR 11-7 (model risk management principles, validation standards)",
-                    "UK GDPR Article 22 (automated decision-making rights)",
-                  ].map((item) => (
-                    <li key={item} className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 mt-0.5 flex-shrink-0" style={{ color: "#F85C70" }} />
-                      <span className="text-sm leading-relaxed" style={{ color: "#65677B" }}>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
+      <Section tone="navy" padding="xl" className="relative overflow-hidden" contained={false}>
+        <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-[48%] lg:block" aria-hidden="true">
+          <Image
+            src={heroImg}
+            alt=""
+            aria-hidden="true"
+            fill
+            className="object-cover opacity-30"
+            priority
+            sizes="48vw"
+          />
+          <div
+            className="absolute inset-0 bg-gradient-to-r from-[#181F4F] via-[#181F4F]/60 to-transparent"
+            aria-hidden="true"
+          />
         </div>
-      </section>
+        <Container className="relative">
+          <Stack gap="lg" className="max-w-[920px]">
+            <Eyebrow>Sector Focus</Eyebrow>
+            <Text variant="display" tone="white">
+              AI Governance for
+              <br />
+              Financial Services Organisations
+            </Text>
+            <Text variant="lead" tone="white-75" className="max-w-2xl">
+              Banks, insurers, and regulated financial services firms face the most demanding AI governance
+              environment of any sector. FCA principles, Consumer Duty, SMCR, EU AI Act, SR 11-7 model risk
+              standards. We build governance frameworks that satisfy all of them, without creating a parallel
+              compliance process that slows down your technology programme.
+            </Text>
+            <Stack direction="row-responsive" gap="md" className="flex-wrap">
+              <AmpButton
+                onClick={() => onOpenConsultation("Financial Services AI Governance")}
+                data-testid="button-financial-services-hero"
+              >
+                Discuss your AI programme
+                <ArrowRight className="h-4 w-4" />
+              </AmpButton>
+              <AmpButton asChild variant="outlineLight" size="lg">
+                <Link href="/ai-governance">AI Governance service</Link>
+              </AmpButton>
+            </Stack>
+          </Stack>
+        </Container>
+      </Section>
 
-      {/* The Challenge */}
-      <section className="py-20 lg:py-24" style={{ backgroundColor: "#F2F0F7" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="font-mono text-xs uppercase tracking-[0.15em] mb-4" style={{ color: "#F85C70" }}>
-            The Challenge
-          </p>
-          <h2 className="font-bold mb-6" style={{ fontSize: "clamp(1.6rem, 3vw, 2.4rem)", color: "#181F4F" }}>
-            What makes financial services AI governance harder
-          </h2>
-          <div className="space-y-4">
+      <Section tone="white" padding="lg">
+        <Grid cols="2-lg" gap="xl" equal={false}>
+          <Stack gap="md">
+            <Text variant="h2">Why generic AI governance fails in financial services</Text>
+            <Text variant="lead" tone="muted">
+              The AI governance frameworks published by technology vendors, most consulting firms, and even
+              regulators are written for organisations where failure is recoverable. In financial services, AI
+              failure can mean regulatory enforcement, customer harm at scale, or individual accountability
+              under SMCR. The tolerance for error is different. The governance framework must reflect that.
+            </Text>
+            <Text variant="lead" tone="muted">
+              We build AI governance specifically for firms where the regulatory context, FCA Principles,
+              Consumer Duty, EU AI Act, Senior Managers and Certification Regime, is the governing
+              constraint, not a compliance checkbox. This means governance that is built into your operating
+              model, not bolted on top of it.
+            </Text>
+            <Text variant="lead" tone="muted">
+              Our partners have worked inside regulated financial services organisations. We understand the
+              difference between what passes a model risk review and what a CRO will actually sign off. We
+              build to the higher standard.
+            </Text>
+          </Stack>
+          <Surface variant="mist" padding="lg" radius="lg">
+            <Text variant="h4" className="mb-6 font-bold">
+              Regulatory frameworks we align to
+            </Text>
+            <ul className="space-y-3">
+              {[
+                "FCA Principles for Businesses (Principles 3, 6, 7, 9, 11, 12)",
+                "Consumer Duty (fair outcomes, price and value, understanding, support)",
+                "SMCR (Senior Manager accountability, individual responsibility)",
+                "EU AI Act (risk classification, conformity assessments, high-risk applications)",
+                "UK AI Regulatory Framework (DSIT, cross-sector guidance)",
+                "SR 11-7 (model risk management principles, validation standards)",
+                "UK GDPR Article 22 (automated decision-making rights)",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-3">
+                  <CheckCircle className="mt-0.5 h-5 w-5 shrink-0 text-[#F85C70]" />
+                  <Text variant="body" tone="muted">{item}</Text>
+                </li>
+              ))}
+            </ul>
+          </Surface>
+        </Grid>
+      </Section>
+
+      <Section tone="mist" padding="lg">
+        <Stack gap="lg">
+          <Eyebrow>The Challenge</Eyebrow>
+          <Text variant="h2">What makes financial services AI governance harder</Text>
+          <Stack gap="md">
             {challenges.map((item, i) => (
-              <div key={i} className="flex items-start gap-4 bg-white rounded-xl p-5" style={{ border: "1px solid #E5E3EE" }}>
-                <span className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold text-white mt-0.5" style={{ backgroundColor: "#F85C70" }}>
+              <Surface key={i} variant="bordered" padding="md" radius="lg" className="flex items-start gap-4">
+                <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#F85C70] text-xs font-bold text-white">
                   {i + 1}
                 </span>
-                <p className="text-base leading-relaxed" style={{ color: "#65677B" }}>{item}</p>
-              </div>
+                <Text variant="body" tone="muted">{item}</Text>
+              </Surface>
             ))}
-          </div>
-        </div>
-      </section>
+          </Stack>
+        </Stack>
+      </Section>
 
-      {/* What We Deliver */}
-      <section className="py-20 lg:py-24" style={{ backgroundColor: "#ffffff" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="font-mono text-xs uppercase tracking-[0.15em] mb-4" style={{ color: "#F85C70" }}>
-            What Amplified Delivers
-          </p>
-          <h2 className="font-bold mb-6" style={{ fontSize: "clamp(1.6rem, 3vw, 2.4rem)", color: "#181F4F" }}>
-            Services for financial services organisations
-          </h2>
-          <div className="grid md:grid-cols-2 gap-6">
+      <Section tone="white" padding="lg">
+        <Stack gap="lg">
+          <Eyebrow>What Amplified Delivers</Eyebrow>
+          <Text variant="h2">Services for financial services organisations</Text>
+          <Grid cols={2} gap="md">
             {deliverables.map((item) => (
-              <div key={item.title} className="rounded-2xl p-7" style={{ backgroundColor: "#F2F0F7", border: "1px solid #E5E3EE" }}>
-                <h3 className="font-bold mb-3" style={{ color: "#181F4F", fontSize: "1.1rem" }}>{item.title}</h3>
-                <p className="text-base leading-relaxed mb-4" style={{ color: "#65677B" }}>{item.body}</p>
-                <Link href={item.link} className="amp-focus-ring-on-light inline-flex items-center gap-1.5 text-sm font-semibold hover:opacity-80 transition-opacity" style={{ color: "#F85C70" }}>
-                  {item.linkLabel}
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </Link>
-              </div>
+              <ContentCard
+                key={item.title}
+                variant="mist"
+                title={item.title}
+                description={item.body}
+                titleClamp={4}
+                descriptionClamp={6}
+                footer={
+                  <Link
+                    href={item.link}
+                    className="amp-focus-ring-on-light inline-flex items-center gap-1.5 text-sm font-semibold text-[#F85C70] transition-opacity hover:opacity-80"
+                  >
+                    {item.linkLabel}
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </Link>
+                }
+              />
             ))}
-          </div>
-        </div>
-      </section>
+          </Grid>
+        </Stack>
+      </Section>
 
-      {/* How We Work */}
-      <section className="py-20 lg:py-24" style={{ backgroundColor: "#181F4F" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="font-mono text-xs uppercase tracking-[0.15em] mb-4" style={{ color: "#F85C70" }}>
-            How We Work
-          </p>
-          <h2 className="font-bold mb-6" style={{ fontSize: "clamp(1.6rem, 3vw, 2.4rem)", color: "#ffffff" }}>
-            What an engagement looks like
-          </h2>
-          <div className="grid lg:grid-cols-3 gap-6 mt-10">
+      <Section tone="navy" padding="lg">
+        <Stack gap="lg">
+          <Eyebrow>How We Work</Eyebrow>
+          <Text variant="h2" tone="white">What an engagement looks like</Text>
+          <Grid cols="3-lg" gap="md" className="mt-4">
             {[
               {
                 phase: "Weeks 1–4",
                 title: "Regulatory and AI landscape mapping",
-                body: "We map your current AI use against the regulatory frameworks that apply, identify the highest-risk systems for immediate governance attention, and agree the scope and structure of the governance framework. We work with your Compliance, Risk, and Technology leads from the start so the framework reflects operational reality.",
+                body:
+                  "We map your current AI use against the regulatory frameworks that apply, identify the highest-risk systems for immediate governance attention, and agree the scope and structure of the governance framework. We work with your Compliance, Risk, and Technology leads from the start so the framework reflects operational reality.",
               },
               {
                 phase: "Weeks 5–12",
                 title: "Framework design and documentation",
-                body: "We build the governance framework, including accountability mapping, risk assessment templates, model risk documentation, board reporting structures, and change management processes. All outputs go through review by your second-line functions before finalisation. The framework is built to last, not to be replaced in the next regulatory cycle.",
+                body:
+                  "We build the governance framework, including accountability mapping, risk assessment templates, model risk documentation, board reporting structures, and change management processes. All outputs go through review by your second-line functions before finalisation. The framework is built to last, not to be replaced in the next regulatory cycle.",
               },
               {
                 phase: "Ongoing",
                 title: "Embedding and assurance",
-                body: "We support the implementation of the framework within your change management process, train the teams who will use it, and provide retained advisory support through your first AI deployment cycle. The goal is for your Compliance and Technology teams to own and operate the framework independently within twelve months.",
+                body:
+                  "We support the implementation of the framework within your change management process, train the teams who will use it, and provide retained advisory support through your first AI deployment cycle. The goal is for your Compliance and Technology teams to own and operate the framework independently within twelve months.",
               },
             ].map((phase) => (
-              <div key={phase.phase} className="rounded-2xl p-7" style={{ backgroundColor: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)" }}>
-                <p className="font-mono text-xs uppercase tracking-[0.15em] mb-3" style={{ color: "#F85C70" }}>{phase.phase}</p>
-                <h3 className="font-bold mb-3 text-white">{phase.title}</h3>
-                <p className="text-base leading-relaxed" style={{ color: "#E5E3EE" }}>{phase.body}</p>
-              </div>
+              <Surface key={phase.phase} variant="inset" padding="md" radius="lg">
+                <Eyebrow className="mb-3">{phase.phase}</Eyebrow>
+                <Text variant="h4" tone="white" className="mb-3 font-bold">{phase.title}</Text>
+                <Text variant="body" tone="white-75">{phase.body}</Text>
+              </Surface>
             ))}
-          </div>
-        </div>
-      </section>
+          </Grid>
+        </Stack>
+      </Section>
 
-      {/* FAQ */}
-      <section className="py-20 lg:py-24" style={{ backgroundColor: "#F2F0F7" }}>
-        <div className="max-w-[900px] mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="font-mono text-xs uppercase tracking-[0.15em] mb-4" style={{ color: "#F85C70" }}>
-            Common Questions
-          </p>
-          <h2 className="font-bold mb-10" style={{ fontSize: "clamp(1.6rem, 3vw, 2.4rem)", color: "#181F4F" }}>
-            Questions financial services firms ask
-          </h2>
-          <div className="space-y-4">
+      <Section tone="mist" padding="lg" containerSize="narrow" containerClassName="max-w-[900px]">
+        <Stack gap="lg">
+          <Eyebrow>Common Questions</Eyebrow>
+          <Text variant="h2">Questions financial services firms ask</Text>
+          <Stack gap="md">
             {[
               {
                 q: "What does FCA-aligned AI governance look like in practice?",
-                a: "FCA-aligned AI governance means every AI system used in regulated activities has a documented accountability owner, a model risk assessment aligned to SR 11-7 principles, explainability standards that satisfy Principle 6 (fair treatment of customers), and a change management process that triggers regulatory notification where required. It also means your board can answer questions about your AI systems if the FCA asks.",
+                a:
+                  "FCA-aligned AI governance means every AI system used in regulated activities has a documented accountability owner, a model risk assessment aligned to SR 11-7 principles, explainability standards that satisfy Principle 6 (fair treatment of customers), and a change management process that triggers regulatory notification where required. It also means your board can answer questions about your AI systems if the FCA asks.",
               },
               {
                 q: "How does the EU AI Act affect UK financial services firms?",
-                a: "UK financial services firms operating in EU markets, offering products to EU customers, or processing data from EU subjects must comply with the EU AI Act. High-risk AI applications in credit scoring, insurance underwriting, and employment decisions face the strictest requirements. Amplified builds dual-compliance frameworks that satisfy both UK FCA requirements and EU AI Act obligations.",
+                a:
+                  "UK financial services firms operating in EU markets, offering products to EU customers, or processing data from EU subjects must comply with the EU AI Act. High-risk AI applications in credit scoring, insurance underwriting, and employment decisions face the strictest requirements. Amplified builds dual-compliance frameworks that satisfy both UK FCA requirements and EU AI Act obligations.",
               },
               {
                 q: "What is SMCR accountability for AI systems?",
-                a: "Under SMCR, Senior Managers are individually accountable for the areas they oversee, including technology and AI systems. This means a named Senior Manager must own every material AI system, understand its risk profile, and be able to demonstrate adequate oversight if the FCA investigates. Amplified structures AI governance frameworks to satisfy SMCR accountability requirements explicitly.",
+                a:
+                  "Under SMCR, Senior Managers are individually accountable for the areas they oversee, including technology and AI systems. This means a named Senior Manager must own every material AI system, understand its risk profile, and be able to demonstrate adequate oversight if the FCA investigates. Amplified structures AI governance frameworks to satisfy SMCR accountability requirements explicitly.",
               },
               {
                 q: "How quickly can Amplified implement an AI governance framework?",
-                a: "For most financial services organisations, an initial AI governance framework covering existing systems and controls can be delivered in eight to twelve weeks. This includes a risk assessment of current AI use, an accountability mapping exercise, policy documentation, and board reporting templates. Ongoing assurance and monitoring is then structured as a retained service.",
+                a:
+                  "For most financial services organisations, an initial AI governance framework covering existing systems and controls can be delivered in eight to twelve weeks. This includes a risk assessment of current AI use, an accountability mapping exercise, policy documentation, and board reporting templates. Ongoing assurance and monitoring is then structured as a retained service.",
               },
             ].map((item, i) => (
-              <details key={i} className="bg-white rounded-xl p-6 cursor-pointer" style={{ border: "1px solid #E5E3EE" }}>
-                <summary className="amp-focus-ring-on-light font-semibold text-base list-none flex items-center justify-between cursor-pointer" style={{ color: "#181F4F" }}>
+              <details key={i} className="cursor-pointer rounded-xl border border-[#E5E3EE] bg-white p-6">
+                <summary className="amp-focus-ring-on-light flex cursor-pointer list-none items-center justify-between text-base font-semibold text-[#181F4F]">
                   {item.q}
-                  <span className="text-lg ml-4 flex-shrink-0" style={{ color: "#F85C70" }}>+</span>
+                  <span className="ml-4 shrink-0 text-lg text-[#F85C70]">+</span>
                 </summary>
-                <p className="mt-4 text-base leading-relaxed" style={{ color: "#65677B" }}>{item.a}</p>
+                <Text variant="body" tone="muted" className="mt-4">{item.a}</Text>
               </details>
             ))}
-          </div>
-        </div>
-      </section>
+          </Stack>
+        </Stack>
+      </Section>
 
-      {/* CTA */}
-      <section className="py-20 lg:py-24" style={{ backgroundColor: "#181F4F" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="font-bold mb-6 text-white" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
-            Discuss your financial services AI governance programme
-          </h2>
-          <p className="text-xl mb-10 max-w-2xl mx-auto" style={{ color: "#E5E3EE" }}>
-            Whether you are preparing for your first FCA question about AI or building a governance framework for a major AI implementation programme, we can help you get it right before it becomes a regulatory issue.
-          </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <button
-              onClick={() => onOpenConsultation("Financial Services AI Governance")}
-              className="amp-focus-ring-on-navy inline-flex items-center gap-2 px-8 py-4 rounded-lg font-semibold text-white transition-all hover:opacity-90"
-              style={{ backgroundColor: "#F85C70" }}
-              data-testid="button-financial-services-consultation"
-            >
-              Book a consultation
-              <ArrowRight className="w-4 h-4" />
-            </button>
-            <Link
-              href="/ai-governance"
-              className="amp-focus-ring-on-navy inline-flex items-center gap-2 px-8 py-4 rounded-lg font-semibold border transition-all hover:bg-white/10"
-              style={{ color: "#ffffff", borderColor: "rgba(255,255,255,0.3)" }}
-            >
-              AI Governance service
-            </Link>
-          </div>
-        </div>
-      </section>
-    </div>
+      <CtaBand
+        title="Discuss your financial services AI governance programme"
+        lead="Whether you are preparing for your first FCA question about AI or building a governance framework for a major AI implementation programme, we can help you get it right before it becomes a regulatory issue."
+      >
+        <Stack direction="row-responsive" gap="md" align="center" justify="center" className="flex-wrap">
+          <AmpButton
+            onClick={() => onOpenConsultation("Financial Services AI Governance")}
+            data-testid="button-financial-services-consultation"
+          >
+            Book a consultation
+            <ArrowRight className="h-4 w-4" />
+          </AmpButton>
+          <AmpButton asChild variant="outlineLight" size="lg">
+            <Link href="/ai-governance">AI Governance service</Link>
+          </AmpButton>
+        </Stack>
+      </CtaBand>
+    </PageShell>
   );
 });
 

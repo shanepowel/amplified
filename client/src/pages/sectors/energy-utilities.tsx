@@ -3,9 +3,23 @@
 import { memo } from "react";
 import Link from "next/link";
 import heroImg from "@assets/stock_images/energy-sector.webp";
-import Image from 'next/image';
+import Image from "next/image";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import { StructuredData } from "@/components/structured-data";
+import {
+  PageShell,
+  Section,
+  Container,
+  Stack,
+  Grid,
+  Text,
+  Eyebrow,
+  Surface,
+  AmpButton,
+  ContentCard,
+  CtaBand,
+  BreadcrumbBar,
+} from "@/components/system";
 import { createServiceSchema, createBreadcrumbSchema, energyFAQSchema } from "@/lib/schemas";
 
 interface Props {
@@ -79,258 +93,252 @@ const breadcrumbSchema = createBreadcrumbSchema([
   { name: 'Energy & Utilities', url: 'https://amplified.co.uk/sectors/energy-utilities' },
 ]);
 
+
 const SectorEnergyUtilities = memo(function SectorEnergyUtilities({ onOpenConsultation }: Props) {
   return (
-    <div className="min-h-screen font-sans" style={{ backgroundColor: "#ffffff" }}>
+    <PageShell>
       <StructuredData data={energySchema} id="energy-service-schema" />
       <StructuredData data={breadcrumbSchema} id="energy-breadcrumb" />
       <StructuredData data={energyFAQSchema} id="energy-faq" />
 
-      {/* Hero */}
-      <section className="py-28 lg:py-36 relative overflow-hidden" style={{ backgroundColor: "#181F4F" }}>
-        <div className="hidden lg:block absolute inset-y-0 right-0 w-[48%] pointer-events-none" aria-hidden="true">
-          <Image src={heroImg} alt="" aria-hidden="true" fill className="object-cover" style={{ opacity: 0.3 }} priority sizes="48vw" />
-          <div className="absolute inset-0" style={{ background: "linear-gradient(to right, #181F4F 0%, transparent 60%)" }} />
-        </div>
-        <div className="relative max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <nav className="mb-8" aria-label="Breadcrumb">
-            <ol className="flex items-center gap-2 text-sm" style={{ color: "#65677B" }}>
-              <li><Link href="/" className="hover:text-white transition-colors">Home</Link></li>
-              <li style={{ color: "#65677B" }}>/</li>
-              <li style={{ color: "#F85C70" }}>Energy & Utilities</li>
-            </ol>
-          </nav>
-          <p className="font-mono text-xs uppercase tracking-[0.15em] mb-6" style={{ color: "#F85C70" }}>
-            Sector Focus
-          </p>
-          <h1
-            className="font-bold leading-[1.1] mb-8"
-            style={{ fontSize: "clamp(2.2rem, 5vw, 3.5rem)", color: "#ffffff" }}
-          >
-            AI Governance for<br />Energy & Utilities Organisations
-          </h1>
-          <p className="text-xl leading-relaxed mb-10 max-w-2xl" style={{ color: "#E5E3EE" }}>
-            Energy and utilities organisations operate AI in environments where failure has physical consequences. Safety-critical systems, Ofgem-regulated activities, distributed operational teams, and a regulatory environment that is evolving faster than most governance frameworks can keep up with. We build AI governance that works in operational reality, not just in policy documents.
-          </p>
-          <div className="flex flex-wrap gap-4">
-            <button
-              onClick={() => onOpenConsultation("Energy Sector AI Governance")}
-              className="amp-focus-ring-on-navy inline-flex items-center gap-2 px-7 py-3.5 rounded-lg font-semibold text-white transition-all hover:opacity-90"
-              style={{ backgroundColor: "#F85C70" }}
-              data-testid="button-energy-utilities-hero"
-            >
-              Discuss your programme
-              <ArrowRight className="w-4 h-4" />
-            </button>
-            <Link
-              href="/ai-governance"
-              className="amp-focus-ring-on-navy inline-flex items-center gap-2 px-7 py-3.5 rounded-lg font-semibold border transition-all hover:bg-white/10"
-              style={{ color: "#ffffff", borderColor: "rgba(255,255,255,0.3)" }}
-            >
-              AI Governance service
-            </Link>
-          </div>
-        </div>
-      </section>
+      <BreadcrumbBar
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Sectors", href: "/sectors/infrastructure" },
+          { label: "Energy & Utilities" },
+        ]}
+      />
 
-      {/* Intro */}
-      <section className="py-20 lg:py-24" style={{ backgroundColor: "#ffffff" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
-            <div>
-              <h2 className="font-bold mb-6" style={{ fontSize: "clamp(1.6rem, 3vw, 2.4rem)", color: "#181F4F" }}>
-                Why AI governance must be built for the energy sector specifically
-              </h2>
-              <p className="text-lg leading-relaxed mb-6" style={{ color: "#65677B" }}>
-                The AI governance challenge in energy and utilities is fundamentally different from other regulated sectors. Your systems do not just affect customers financially. They affect physical infrastructure, supply reliability, safety, and in the case of network operators, the grid itself. The accountability structures must reflect that.
-              </p>
-              <p className="text-lg leading-relaxed mb-6" style={{ color: "#65677B" }}>
-                Most AI governance frameworks were built for software or financial services environments. They do not account for the OT and IT boundary, the safety management integration requirements, the Ofgem-specific obligations around transparency and customer outcomes, or the operational workforce realities of a sector where many of the people affected by AI decisions are in the field, not at a desk.
-              </p>
-              <p className="text-lg leading-relaxed" style={{ color: "#65677B" }}>
-                We build governance that works in your operational context. Not frameworks that satisfy a policy review but fail when tested against a real failure scenario.
-              </p>
-            </div>
-            <div>
-              <div className="rounded-2xl p-8" style={{ backgroundColor: "#F2F0F7" }}>
-                <h3 className="font-bold mb-6" style={{ color: "#181F4F", fontSize: "1.1rem" }}>
-                  Subsectors we work with
-                </h3>
-                <ul className="space-y-3">
-                  {[
-                    "Electricity transmission and distribution",
-                    "Gas transmission, distribution, and storage",
-                    "Water and wastewater utilities",
-                    "Renewable energy generation and storage",
-                    "Smart metering and demand-side response",
-                    "Energy retail and customer services",
-                    "Nuclear and specialist regulated generation",
-                  ].map((item) => (
-                    <li key={item} className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 mt-0.5 flex-shrink-0" style={{ color: "#F85C70" }} />
-                      <span className="text-sm leading-relaxed" style={{ color: "#65677B" }}>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
+      <Section tone="navy" padding="xl" className="relative overflow-hidden" contained={false}>
+        <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-[48%] lg:block" aria-hidden="true">
+          <Image
+            src={heroImg}
+            alt=""
+            aria-hidden="true"
+            fill
+            className="object-cover opacity-30"
+            priority
+            sizes="48vw"
+          />
+          <div
+            className="absolute inset-0 bg-gradient-to-r from-[#181F4F] via-[#181F4F]/60 to-transparent"
+            aria-hidden="true"
+          />
         </div>
-      </section>
+        <Container className="relative">
+          <Stack gap="lg" className="max-w-[920px]">
+            <Eyebrow>Sector Focus</Eyebrow>
+            <Text variant="display" tone="white">
+              AI Governance for
+              <br />
+              Energy & Utilities Organisations
+            </Text>
+            <Text variant="lead" tone="white-75" className="max-w-2xl">
+              Energy and utilities organisations operate AI in environments where failure has physical
+              consequences. Safety-critical systems, Ofgem-regulated activities, distributed operational
+              teams, and a regulatory environment that is evolving faster than most governance frameworks
+              can keep up with. We build AI governance that works in operational reality, not just in policy
+              documents.
+            </Text>
+            <Stack direction="row-responsive" gap="md" className="flex-wrap">
+              <AmpButton
+                onClick={() => onOpenConsultation("Energy Sector AI Governance")}
+                data-testid="button-energy-utilities-hero"
+              >
+                Discuss your programme
+                <ArrowRight className="h-4 w-4" />
+              </AmpButton>
+              <AmpButton asChild variant="outlineLight" size="lg">
+                <Link href="/ai-governance">AI Governance service</Link>
+              </AmpButton>
+            </Stack>
+          </Stack>
+        </Container>
+      </Section>
 
-      {/* The Challenge */}
-      <section className="py-20 lg:py-24" style={{ backgroundColor: "#F2F0F7" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="font-mono text-xs uppercase tracking-[0.15em] mb-4" style={{ color: "#F85C70" }}>
-            The Challenge
-          </p>
-          <h2 className="font-bold mb-6" style={{ fontSize: "clamp(1.6rem, 3vw, 2.4rem)", color: "#181F4F" }}>
-            What makes energy sector AI governance harder
-          </h2>
-          <div className="space-y-4">
+      <Section tone="white" padding="lg">
+        <Grid cols="2-lg" gap="xl" equal={false}>
+          <Stack gap="md">
+            <Text variant="h2">Why AI governance must be built for the energy sector specifically</Text>
+            <Text variant="lead" tone="muted">
+              The AI governance challenge in energy and utilities is fundamentally different from other
+              regulated sectors. Your systems do not just affect customers financially. They affect physical
+              infrastructure, supply reliability, safety, and in the case of network operators, the grid
+              itself. The accountability structures must reflect that.
+            </Text>
+            <Text variant="lead" tone="muted">
+              Most AI governance frameworks were built for software or financial services environments. They
+              do not account for the OT and IT boundary, the safety management integration requirements, the
+              Ofgem-specific obligations around transparency and customer outcomes, or the operational
+              workforce realities of a sector where many of the people affected by AI decisions are in the
+              field, not at a desk.
+            </Text>
+            <Text variant="lead" tone="muted">
+              We build governance that works in your operational context. Not frameworks that satisfy a
+              policy review but fail when tested against a real failure scenario.
+            </Text>
+          </Stack>
+          <Surface variant="mist" padding="lg" radius="lg">
+            <Text variant="h4" className="mb-6 font-bold">
+              Subsectors we work with
+            </Text>
+            <ul className="space-y-3">
+              {[
+                "Electricity transmission and distribution",
+                "Gas transmission, distribution, and storage",
+                "Water and wastewater utilities",
+                "Renewable energy generation and storage",
+                "Smart metering and demand-side response",
+                "Energy retail and customer services",
+                "Nuclear and specialist regulated generation",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-3">
+                  <CheckCircle className="mt-0.5 h-5 w-5 shrink-0 text-[#F85C70]" />
+                  <Text variant="body" tone="muted">{item}</Text>
+                </li>
+              ))}
+            </ul>
+          </Surface>
+        </Grid>
+      </Section>
+
+      <Section tone="mist" padding="lg">
+        <Stack gap="lg">
+          <Eyebrow>The Challenge</Eyebrow>
+          <Text variant="h2">What makes energy sector AI governance harder</Text>
+          <Stack gap="md">
             {challenges.map((item, i) => (
-              <div key={i} className="flex items-start gap-4 bg-white rounded-xl p-5" style={{ border: "1px solid #E5E3EE" }}>
-                <span className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold text-white mt-0.5" style={{ backgroundColor: "#F85C70" }}>
+              <Surface key={i} variant="bordered" padding="md" radius="lg" className="flex items-start gap-4">
+                <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#F85C70] text-xs font-bold text-white">
                   {i + 1}
                 </span>
-                <p className="text-base leading-relaxed" style={{ color: "#65677B" }}>{item}</p>
-              </div>
+                <Text variant="body" tone="muted">{item}</Text>
+              </Surface>
             ))}
-          </div>
-        </div>
-      </section>
+          </Stack>
+        </Stack>
+      </Section>
 
-      {/* What We Deliver */}
-      <section className="py-20 lg:py-24" style={{ backgroundColor: "#ffffff" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="font-mono text-xs uppercase tracking-[0.15em] mb-4" style={{ color: "#F85C70" }}>
-            What Amplified Delivers
-          </p>
-          <h2 className="font-bold mb-6" style={{ fontSize: "clamp(1.6rem, 3vw, 2.4rem)", color: "#181F4F" }}>
-            Services for energy and utilities organisations
-          </h2>
-          <div className="grid md:grid-cols-2 gap-6">
+      <Section tone="white" padding="lg">
+        <Stack gap="lg">
+          <Eyebrow>What Amplified Delivers</Eyebrow>
+          <Text variant="h2">Services for energy and utilities organisations</Text>
+          <Grid cols={2} gap="md">
             {deliverables.map((item) => (
-              <div key={item.title} className="rounded-2xl p-7" style={{ backgroundColor: "#F2F0F7", border: "1px solid #E5E3EE" }}>
-                <h3 className="font-bold mb-3" style={{ color: "#181F4F", fontSize: "1.1rem" }}>{item.title}</h3>
-                <p className="text-base leading-relaxed mb-4" style={{ color: "#65677B" }}>{item.body}</p>
-                <Link href={item.link} className="amp-focus-ring-on-light inline-flex items-center gap-1.5 text-sm font-semibold hover:opacity-80 transition-opacity" style={{ color: "#F85C70" }}>
-                  {item.linkLabel}
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </Link>
-              </div>
+              <ContentCard
+                key={item.title}
+                variant="mist"
+                title={item.title}
+                description={item.body}
+                titleClamp={4}
+                descriptionClamp={6}
+                footer={
+                  <Link
+                    href={item.link}
+                    className="amp-focus-ring-on-light inline-flex items-center gap-1.5 text-sm font-semibold text-[#F85C70] transition-opacity hover:opacity-80"
+                  >
+                    {item.linkLabel}
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </Link>
+                }
+              />
             ))}
-          </div>
-        </div>
-      </section>
+          </Grid>
+        </Stack>
+      </Section>
 
-      {/* How We Work */}
-      <section className="py-20 lg:py-24" style={{ backgroundColor: "#181F4F" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="font-mono text-xs uppercase tracking-[0.15em] mb-4" style={{ color: "#F85C70" }}>
-            How We Work
-          </p>
-          <h2 className="font-bold mb-6" style={{ fontSize: "clamp(1.6rem, 3vw, 2.4rem)", color: "#ffffff" }}>
-            What an engagement looks like
-          </h2>
-          <div className="grid lg:grid-cols-3 gap-6 mt-10">
+      <Section tone="navy" padding="lg">
+        <Stack gap="lg">
+          <Eyebrow>How We Work</Eyebrow>
+          <Text variant="h2" tone="white">What an engagement looks like</Text>
+          <Grid cols="3-lg" gap="md" className="mt-4">
             {[
               {
                 phase: "Weeks 1–3",
                 title: "Operational and regulatory landscape",
-                body: "We map your AI use cases against your regulatory obligations, safety management framework, and operational context. We review your existing governance structures, meet your OT and IT leads, and identify where AI governance gaps create the greatest risk. We agree the scope with your regulatory and operations leads, not just your technology team.",
+                body:
+                  "We map your AI use cases against your regulatory obligations, safety management framework, and operational context. We review your existing governance structures, meet your OT and IT leads, and identify where AI governance gaps create the greatest risk. We agree the scope with your regulatory and operations leads, not just your technology team.",
               },
               {
                 phase: "Weeks 4–10",
                 title: "Framework design",
-                body: "We build the governance framework integrated with your safety management system, produce the risk documentation your regulator and board require, and design the accountability structures that map to your existing operating model. All outputs are reviewed by your operations, safety, and compliance leads before finalisation.",
+                body:
+                  "We build the governance framework integrated with your safety management system, produce the risk documentation your regulator and board require, and design the accountability structures that map to your existing operating model. All outputs are reviewed by your operations, safety, and compliance leads before finalisation.",
               },
               {
                 phase: "Ongoing",
                 title: "Embedding and capability transfer",
-                body: "We support implementation across both your corporate and operational teams, provide training that is adapted for field and control room environments, and build the internal capability for your teams to maintain and evolve the framework. Handover is planned from the start of the engagement.",
+                body:
+                  "We support implementation across both your corporate and operational teams, provide training that is adapted for field and control room environments, and build the internal capability for your teams to maintain and evolve the framework. Handover is planned from the start of the engagement.",
               },
             ].map((phase) => (
-              <div key={phase.phase} className="rounded-2xl p-7" style={{ backgroundColor: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)" }}>
-                <p className="font-mono text-xs uppercase tracking-[0.15em] mb-3" style={{ color: "#F85C70" }}>{phase.phase}</p>
-                <h3 className="font-bold mb-3 text-white">{phase.title}</h3>
-                <p className="text-base leading-relaxed" style={{ color: "#E5E3EE" }}>{phase.body}</p>
-              </div>
+              <Surface key={phase.phase} variant="inset" padding="md" radius="lg">
+                <Eyebrow className="mb-3">{phase.phase}</Eyebrow>
+                <Text variant="h4" tone="white" className="mb-3 font-bold">{phase.title}</Text>
+                <Text variant="body" tone="white-75">{phase.body}</Text>
+              </Surface>
             ))}
-          </div>
-        </div>
-      </section>
+          </Grid>
+        </Stack>
+      </Section>
 
-      {/* FAQ */}
-      <section className="py-20 lg:py-24" style={{ backgroundColor: "#F2F0F7" }}>
-        <div className="max-w-[900px] mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="font-mono text-xs uppercase tracking-[0.15em] mb-4" style={{ color: "#F85C70" }}>
-            Common Questions
-          </p>
-          <h2 className="font-bold mb-10" style={{ fontSize: "clamp(1.6rem, 3vw, 2.4rem)", color: "#181F4F" }}>
-            Questions energy organisations ask
-          </h2>
-          <div className="space-y-4">
+      <Section tone="mist" padding="lg" containerSize="narrow" containerClassName="max-w-[900px]">
+        <Stack gap="lg">
+          <Eyebrow>Common Questions</Eyebrow>
+          <Text variant="h2">Questions energy organisations ask</Text>
+          <Stack gap="md">
             {[
               {
                 q: "What AI governance requirements apply to Ofgem-regulated organisations?",
-                a: "Ofgem has issued guidance on AI use in regulated energy activities, with particular focus on customer-facing AI systems, algorithmic pricing, and smart grid management. Organisations must be able to demonstrate that AI systems used in regulated activities meet transparency, accountability, and non-discrimination standards. Amplified builds governance frameworks that align to Ofgem guidance while satisfying broader UK AI regulatory requirements.",
+                a:
+                  "Ofgem has issued guidance on AI use in regulated energy activities, with particular focus on customer-facing AI systems, algorithmic pricing, and smart grid management. Organisations must be able to demonstrate that AI systems used in regulated activities meet transparency, accountability, and non-discrimination standards. Amplified builds governance frameworks that align to Ofgem guidance while satisfying broader UK AI regulatory requirements.",
               },
               {
                 q: "How is AI being used in energy and utilities programmes?",
-                a: "The most mature AI use cases in energy and utilities include predictive maintenance for grid infrastructure, demand forecasting and load balancing, smart meter data analytics, customer service automation, and real-time network monitoring. Each of these has distinct governance requirements depending on whether they affect regulated activities, safety-critical systems, or customer outcomes.",
+                a:
+                  "The most mature AI use cases in energy and utilities include predictive maintenance for grid infrastructure, demand forecasting and load balancing, smart meter data analytics, customer service automation, and real-time network monitoring. Each of these has distinct governance requirements depending on whether they affect regulated activities, safety-critical systems, or customer outcomes.",
               },
               {
                 q: "What makes AI governance different for a safety-critical environment?",
-                a: "Safety-critical environments require AI governance to integrate with existing safety management systems, not sit alongside them. Every AI system that could affect physical safety must have a documented failure mode analysis, a human override procedure, and a clear accountability chain that extends to operational teams on the ground. Amplified builds AI governance that satisfies both regulatory and safety management standards simultaneously.",
+                a:
+                  "Safety-critical environments require AI governance to integrate with existing safety management systems, not sit alongside them. Every AI system that could affect physical safety must have a documented failure mode analysis, a human override procedure, and a clear accountability chain that extends to operational teams on the ground. Amplified builds AI governance that satisfies both regulatory and safety management standards simultaneously.",
               },
               {
                 q: "How does Amplified work alongside existing operational technology teams?",
-                a: "Amplified embeds within your existing programme and OT team structures rather than operating as an external advisory layer. This means governance frameworks are built with the people who will use them, accountability structures map to existing roles, and training is practical rather than theoretical. Handover is planned from day one so your teams own the capability when we leave.",
+                a:
+                  "Amplified embeds within your existing programme and OT team structures rather than operating as an external advisory layer. This means governance frameworks are built with the people who will use them, accountability structures map to existing roles, and training is practical rather than theoretical. Handover is planned from day one so your teams own the capability when we leave.",
               },
             ].map((item, i) => (
-              <details key={i} className="bg-white rounded-xl p-6 cursor-pointer" style={{ border: "1px solid #E5E3EE" }}>
-                <summary className="amp-focus-ring-on-light font-semibold text-base list-none flex items-center justify-between cursor-pointer" style={{ color: "#181F4F" }}>
+              <details key={i} className="cursor-pointer rounded-xl border border-[#E5E3EE] bg-white p-6">
+                <summary className="amp-focus-ring-on-light flex cursor-pointer list-none items-center justify-between text-base font-semibold text-[#181F4F]">
                   {item.q}
-                  <span className="text-lg ml-4 flex-shrink-0" style={{ color: "#F85C70" }}>+</span>
+                  <span className="ml-4 shrink-0 text-lg text-[#F85C70]">+</span>
                 </summary>
-                <p className="mt-4 text-base leading-relaxed" style={{ color: "#65677B" }}>{item.a}</p>
+                <Text variant="body" tone="muted" className="mt-4">{item.a}</Text>
               </details>
             ))}
-          </div>
-        </div>
-      </section>
+          </Stack>
+        </Stack>
+      </Section>
 
-      {/* CTA */}
-      <section className="py-20 lg:py-24" style={{ backgroundColor: "#181F4F" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="font-bold mb-6 text-white" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
-            Discuss your energy sector AI programme
-          </h2>
-          <p className="text-xl mb-10 max-w-2xl mx-auto" style={{ color: "#E5E3EE" }}>
-            Whether you are building governance for a new AI deployment or addressing gaps identified by Ofgem or your safety regulator, we can help you build a framework that works in operational reality.
-          </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <button
-              onClick={() => onOpenConsultation("Energy Sector AI Governance")}
-              className="amp-focus-ring-on-navy inline-flex items-center gap-2 px-8 py-4 rounded-lg font-semibold text-white transition-all hover:opacity-90"
-              style={{ backgroundColor: "#F85C70" }}
-              data-testid="button-energy-utilities-consultation"
-            >
-              Book a consultation
-              <ArrowRight className="w-4 h-4" />
-            </button>
-            <Link
-              href="/ai-governance"
-              className="amp-focus-ring-on-navy inline-flex items-center gap-2 px-8 py-4 rounded-lg font-semibold border transition-all hover:bg-white/10"
-              style={{ color: "#ffffff", borderColor: "rgba(255,255,255,0.3)" }}
-            >
-              AI Governance service
-            </Link>
-          </div>
-        </div>
-      </section>
-    </div>
+      <CtaBand
+        title="Discuss your energy sector AI programme"
+        lead="Whether you are building governance for a new AI deployment or addressing gaps identified by Ofgem or your safety regulator, we can help you build a framework that works in operational reality."
+      >
+        <Stack direction="row-responsive" gap="md" align="center" justify="center" className="flex-wrap">
+          <AmpButton
+            onClick={() => onOpenConsultation("Energy Sector AI Governance")}
+            data-testid="button-energy-utilities-consultation"
+          >
+            Book a consultation
+            <ArrowRight className="h-4 w-4" />
+          </AmpButton>
+          <AmpButton asChild variant="outlineLight" size="lg">
+            <Link href="/ai-governance">AI Governance service</Link>
+          </AmpButton>
+        </Stack>
+      </CtaBand>
+    </PageShell>
   );
 });
 

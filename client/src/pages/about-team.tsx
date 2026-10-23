@@ -3,6 +3,17 @@
 import { memo } from "react";
 import Link from "next/link";
 import { ArrowRight, ArrowLeft } from "lucide-react";
+import {
+  AmpButton,
+  BorderCell,
+  BorderGrid,
+  Eyebrow,
+  Grid,
+  PageShell,
+  Section,
+  Stack,
+  Text,
+} from "@/components/system";
 
 interface AboutTeamProps {
   onOpenConsultation: (serviceType?: string) => void;
@@ -16,7 +27,8 @@ const partners = [
     bio: "Twenty years building and running delivery functions inside regulated organisations. Brings a PMO director's instinct for accountability to every AI engagement. Believes that governance is not a constraint on delivery. It is what makes delivery trustworthy.",
     philosophy: "We build the governance structure before anyone writes a line of code. Every other sequence is just optimism.",
     specialties: ["Governance Framework Design", "PMO Transformation", "AI Readiness Assessment", "Regulatory Alignment"],
-    accentColor: "#181F4F",
+    accentClass: "bg-[#181F4F]",
+    quoteBorderClass: "border-[#60266A]",
   },
   {
     initial: "B",
@@ -25,7 +37,8 @@ const partners = [
     bio: "Hands-on technical leader with deep experience in AI implementation across financial services and energy sectors. Brings the rigour of a regulated-industry background to every architectural decision. Knows that AI systems that cannot be explained cannot be trusted.",
     philosophy: "AI without accountability is just risk wearing a suit. We build systems that can answer for themselves.",
     specialties: ["AI Implementation", "Cloud-Native Architecture", "Responsible AI Design", "Technical Due Diligence"],
-    accentColor: "#60266A",
+    accentClass: "bg-[#60266A]",
+    quoteBorderClass: "border-[#60266A]",
   },
   {
     initial: "C",
@@ -34,7 +47,8 @@ const partners = [
     bio: "Career programme director with a track record across major infrastructure and public sector programmes. Designed the hybrid agile model that sits at the heart of Amplified's structured delivery practice. Has run delivery at scale under some of the toughest governance environments in the UK.",
     philosophy: "Speed without structure is expensive chaos. The organisations we respect most move fast inside a governance envelope that never breaks.",
     specialties: ["Hybrid Delivery Design", "Agile at Scale", "Programme Governance", "Stage Gate Management"],
-    accentColor: "#F85C70",
+    accentClass: "bg-[#F85C70]",
+    quoteBorderClass: "border-[#F85C70]",
   },
   {
     initial: "D",
@@ -43,7 +57,8 @@ const partners = [
     bio: "Organisation development specialist who has built internal capability programmes for some of the UK's largest regulated employers. Focuses on the human side of AI adoption: the knowledge, the confidence, and the culture that organisations need to govern AI themselves.",
     philosophy: "The measure of a good engagement is whether you need us twelve months later. We build capability, not dependency.",
     specialties: ["Capability Programme Design", "AI Literacy", "Leadership Development", "Change Management"],
-    accentColor: "#181F4F",
+    accentClass: "bg-[#181F4F]",
+    quoteBorderClass: "border-[#60266A]",
   },
 ];
 
@@ -58,292 +73,160 @@ const values = [
 
 const AboutTeam = memo(function AboutTeam({ onOpenConsultation }: AboutTeamProps) {
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "#FAFAF9" }}>
+    <PageShell className="bg-[#FAFAF9]">
+      <Section tone="navy" padding="hero" className="pt-40 pb-28">
+        <Link href="/">
+          <span className="mb-12 inline-flex cursor-pointer items-center gap-2 text-sm text-white/45">
+            <ArrowLeft className="h-4 w-4" />
+            Back to home
+          </span>
+        </Link>
 
-      {/* HERO */}
-      <section
-        className="pt-40 pb-28"
-        style={{ backgroundColor: "#181F4F" }}
-      >
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <Link href="/">
-            <span
-              className="inline-flex items-center gap-2 text-sm mb-12 cursor-pointer"
-              style={{ color: "rgba(255,255,255,0.45)" }}
+        <Grid cols={2} gap="xl" className="items-end lg:grid-cols-2">
+          <Stack gap="lg">
+            <Eyebrow>The Partnership</Eyebrow>
+            <Text variant="h1" tone="white" className="font-semibold">
+              Built by leaders who have done it.
+            </Text>
+            <Text variant="lead" tone="white-70">
+              A partnership of seasoned practitioners from all walks of life. What they share
+              is not a background: it is deep experience inside regulated organisations, a commitment
+              to rigour, and the ability to adapt to what each client genuinely needs.
+            </Text>
+          </Stack>
+          <div className="border-l border-white/10 lg:pl-16">
+            <Stack gap="md">
+              {["20+ years combined programme leadership", "Regulated industries only", "Built for accountability, not just delivery", "We practise what we preach on AI"].map((item) => (
+                <div key={item} className="flex items-center gap-4">
+                  <div className="h-1 w-1 shrink-0 rounded-full bg-[#F85C70]" />
+                  <Text variant="body" tone="white-70">{item}</Text>
+                </div>
+              ))}
+            </Stack>
+          </div>
+        </Grid>
+      </Section>
+
+      <Section tone="transparent" padding="lg" className="bg-[#FAFAF9]">
+        <Stack gap="lg" className="mb-12">
+          <Eyebrow>The partnership</Eyebrow>
+          <Text variant="h2" tone="ink" className="font-semibold">
+            Senior practitioners,
+            <br />
+            named accountabilities.
+          </Text>
+        </Stack>
+        <Stack gap="md">
+          {partners.map((p, i) => (
+            <PartnerCard key={i} partner={p} />
+          ))}
+        </Stack>
+      </Section>
+
+      <Section tone="mist" padding="lg">
+        <Stack gap="lg" className="mb-16">
+          <Eyebrow>What we stand for</Eyebrow>
+          <Text variant="h2" tone="ink" className="font-semibold">
+            Six values.
+            <br />
+            Zero compromises.
+          </Text>
+        </Stack>
+        <BorderGrid cols={3} className="gap-px bg-[#DDD9EA]">
+          {values.map((v, i) => (
+            <BorderCell
+              key={i}
+              className="group bg-[#F2F0F7] p-10 transition-all duration-300 hover:bg-[#181F4F]"
             >
-              <ArrowLeft className="h-4 w-4" />
-              Back to home
-            </span>
-          </Link>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-end">
-            <div>
-              <p
-                className="font-mono text-xs uppercase tracking-[0.14em] mb-6"
-                style={{ color: "#F85C70" }}
-              >
-                The Partnership
+              <p className="val-label mb-3 text-xl font-semibold text-[#181F4F] transition-colors duration-300 group-hover:text-white">
+                {v.label}
               </p>
-              <h1
-                className="text-5xl md:text-6xl leading-tight mb-8"
-                style={{ color: "#FFFFFF", fontWeight: 600 }}
-              >
-                Built by leaders who have done it.
-              </h1>
-              <p
-                className="text-lg leading-relaxed"
-                style={{ color: "rgba(255,255,255,0.6)" }}
-              >
-                A partnership of seasoned practitioners from all walks of life. What they share
-                is not a background: it is deep experience inside regulated organisations, a commitment
-                to rigour, and the ability to adapt to what each client genuinely needs.
+              <p className="val-desc text-sm leading-relaxed text-[#65677B] transition-colors duration-300 group-hover:text-white/65">
+                {v.desc}
               </p>
-            </div>
-            <div
-              className="lg:pl-16"
-              style={{ borderLeft: "1px solid rgba(255,255,255,0.1)" }}
-            >
-              <div className="space-y-6">
-                {["20+ years combined programme leadership", "Regulated industries only", "Built for accountability, not just delivery", "We practise what we preach on AI"].map((item) => (
-                  <div key={item} className="flex items-center gap-4">
-                    <div
-                      className="w-1 h-1 rounded-full flex-shrink-0"
-                      style={{ backgroundColor: "#F85C70" }}
-                    />
-                    <span
-                      className="text-base"
-                      style={{ color: "rgba(255,255,255,0.7)" }}
-                    >
-                      {item}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+            </BorderCell>
+          ))}
+        </BorderGrid>
+      </Section>
 
-      {/* PARTNERS */}
-      <section className="py-28" style={{ backgroundColor: "#FAFAF9" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-12">
-            <p
-              className="font-mono text-xs uppercase tracking-[0.14em] mb-4"
-              style={{ color: "#F85C70" }}
-            >
-              The partnership
-            </p>
-            <h2
-              className="text-4xl md:text-5xl"
-              style={{ color: "#181F4F", fontWeight: 600 }}
-            >
-              Senior practitioners,<br />named accountabilities.
-            </h2>
-          </div>
-          <div className="space-y-6">
-            {partners.map((p, i) => (
-              <PartnerCard key={i} partner={p} index={i} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* VALUES WALL */}
-      <section className="py-28" style={{ backgroundColor: "#F2F0F7" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-16">
-            <p
-              className="font-mono text-xs uppercase tracking-[0.14em] mb-4"
-              style={{ color: "#F85C70" }}
-            >
-              What we stand for
-            </p>
-            <h2
-              className="text-4xl md:text-5xl"
-              style={{ color: "#181F4F", fontWeight: 600 }}
-            >
-              Six values.<br />Zero compromises.
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px" style={{ backgroundColor: "#DDD9EA" }}>
-            {values.map((v, i) => (
-              <div
-                key={i}
-                className="p-10 group transition-all duration-300"
-                style={{ backgroundColor: "#F2F0F7" }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.backgroundColor = "#181F4F";
-                  (e.currentTarget.querySelector(".val-label") as HTMLElement)!.style.color = "#FFFFFF";
-                  (e.currentTarget.querySelector(".val-desc") as HTMLElement)!.style.color = "rgba(255,255,255,0.65)";
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.backgroundColor = "#F2F0F7";
-                  (e.currentTarget.querySelector(".val-label") as HTMLElement)!.style.color = "#181F4F";
-                  (e.currentTarget.querySelector(".val-desc") as HTMLElement)!.style.color = "#65677B";
-                }}
-              >
-                <p
-                  className="val-label text-xl font-semibold mb-3 transition-colors duration-300"
-                  style={{ color: "#181F4F" }}
-                >
-                  {v.label}
-                </p>
-                <p
-                  className="val-desc text-sm leading-relaxed transition-colors duration-300"
-                  style={{ color: "#65677B" }}
-                >
-                  {v.desc}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* COLLECTIVE STATEMENT */}
-      <section className="py-28" style={{ backgroundColor: "#FFFFFF" }}>
-        <div className="max-w-[800px] mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p
-            className="font-mono text-xs uppercase tracking-[0.14em] mb-8"
-            style={{ color: "#F85C70" }}
-          >
-            Our commitment
-          </p>
-          <blockquote
-            className="text-3xl md:text-4xl leading-relaxed mb-12"
-            style={{ color: "#181F4F", fontWeight: 400 }}
-          >
-            "We are not here to make AI adoption sound easy.
-            We are here to make it work, in industries where getting it wrong has consequences."
+      <Section tone="white" padding="lg">
+        <Stack gap="lg" align="center" className="mx-auto max-w-[800px] text-center">
+          <Eyebrow>Our commitment</Eyebrow>
+          <blockquote>
+            <Text variant="h2" tone="ink" className="leading-relaxed">
+              "We are not here to make AI adoption sound easy.
+              We are here to make it work, in industries where getting it wrong has consequences."
+            </Text>
           </blockquote>
-          <div
-            className="w-12 h-px mx-auto mb-12"
-            style={{ backgroundColor: "#F85C70" }}
-          />
-          <p
-            className="text-lg leading-relaxed"
-            style={{ color: "#65677B" }}
-          >
+          <div className="mx-auto h-px w-12 bg-[#F85C70]" />
+          <Text variant="lead" tone="muted">
             Every engagement we take on is with an organisation that operates under genuine
             governance pressure. Our job is to make AI adoption rigorous enough to survive that pressure.
             Not to persuade you the pressure does not matter.
-          </p>
-        </div>
-      </section>
+          </Text>
+        </Stack>
+      </Section>
 
-      {/* CTA */}
-      <section className="py-28" style={{ backgroundColor: "#60266A" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <h2
-                className="text-4xl md:text-5xl text-white mb-6"
-                style={{ fontWeight: 600 }}
-              >
-                Ready to meet the team properly?
-              </h2>
-              <p
-                className="text-lg leading-relaxed"
-                style={{ color: "rgba(255,255,255,0.65)" }}
-              >
-                Book a first conversation. No pitch deck. Just an honest discussion
-                about where you are, what you need, and whether we are the right fit.
-              </p>
-            </div>
-            <div className="lg:flex lg:justify-end">
-              <button
-                onClick={() => onOpenConsultation()}
-                className="amp-focus-ring-on-navy inline-flex items-center gap-3 px-10 py-5 text-base font-semibold transition-all duration-200 hover:gap-4"
-                style={{
-                  backgroundColor: "#F85C70",
-                  color: "#FFFFFF",
-                  borderRadius: "4px",
-                }}
-                data-testid="button-about-team-cta"
-              >
-                Book a conversation
-                <ArrowRight className="h-5 w-5" />
-              </button>
-            </div>
+      <Section tone="purple" padding="lg">
+        <Grid cols={2} gap="xl" className="items-center lg:grid-cols-2">
+          <Stack gap="md">
+            <Text variant="h2" tone="white" className="font-semibold">
+              Ready to meet the team properly?
+            </Text>
+            <Text variant="lead" tone="white-70">
+              Book a first conversation. No pitch deck. Just an honest discussion
+              about where you are, what you need, and whether we are the right fit.
+            </Text>
+          </Stack>
+          <div className="lg:flex lg:justify-end">
+            <AmpButton
+              size="xl"
+              onClick={() => onOpenConsultation()}
+              data-testid="button-about-team-cta"
+              className="gap-3 px-10 py-5"
+            >
+              Book a conversation
+              <ArrowRight className="h-5 w-5" />
+            </AmpButton>
           </div>
-        </div>
-      </section>
-    </div>
+        </Grid>
+      </Section>
+    </PageShell>
   );
 });
 
-function PartnerCard({ partner, index }: { partner: typeof partners[0]; index: number }) {
-  const isEven = index % 2 === 0;
-
+function PartnerCard({ partner }: { partner: typeof partners[0] }) {
   return (
     <div
-      className="grid grid-cols-1 lg:grid-cols-12 overflow-hidden transition-all duration-500 group"
-      style={{
-        backgroundColor: "#FFFFFF",
-        border: "1px solid #E8E4F0",
-        borderRadius: "8px",
-      }}
+      className="grid grid-cols-1 overflow-hidden rounded-lg border border-[#E8E4F0] bg-white transition-all duration-500 lg:grid-cols-12"
     >
-      {/* Avatar block */}
       <div
-        className="lg:col-span-3 flex items-center justify-center p-12 relative overflow-hidden"
-        style={{ backgroundColor: partner.accentColor, minHeight: "280px" }}
+        className={`relative flex min-h-[280px] items-center justify-center overflow-hidden p-12 lg:col-span-3 ${partner.accentClass}`}
       >
         <div
-          className="absolute inset-0 opacity-10"
-          style={{
-            backgroundImage: `radial-gradient(circle at 70% 30%, rgba(255,255,255,0.4) 0%, transparent 60%)`,
-          }}
+          className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(255,255,255,0.4)_0%,transparent_60%)] opacity-10"
+          aria-hidden="true"
         />
-        <div
-          className="relative z-10 flex flex-col items-center"
-        >
-          <div
-            className="w-20 h-20 rounded-full flex items-center justify-center mb-6"
-            style={{
-              border: "1.5px solid rgba(255,255,255,0.3)",
-              color: "#FFFFFF",
-              fontSize: "2rem",
-              fontWeight: 700,
-              letterSpacing: "-0.02em",
-            }}
-          >
+        <div className="relative z-10 flex flex-col items-center">
+          <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full border border-white/30 text-[2rem] font-bold tracking-tight text-white">
             {partner.initial}
           </div>
-          <p
-            className="font-mono text-xs uppercase tracking-[0.12em] text-center"
-            style={{ color: "rgba(255,255,255,0.55)" }}
-          >
+          <Text variant="mono" tone="white-45" className="text-center">
             {partner.focus}
-          </p>
+          </Text>
         </div>
       </div>
 
-      {/* Content block */}
-      <div className="lg:col-span-9 p-10 lg:p-12 flex flex-col justify-between">
+      <div className="flex flex-col justify-between p-10 lg:col-span-9 lg:p-12">
         <div>
-          <div className="flex items-start justify-between gap-6 mb-6">
-            <h3
-              className="text-2xl"
-              style={{ color: "#181F4F", fontWeight: 600 }}
-            >
-              {partner.role}
-            </h3>
-          </div>
-          <p
-            className="text-base leading-relaxed mb-8"
-            style={{ color: "#65677B" }}
-          >
+          <Text variant="h3" tone="ink" className="mb-6 font-semibold">
+            {partner.role}
+          </Text>
+          <Text variant="body" tone="muted" className="mb-8">
             {partner.bio}
-          </p>
+          </Text>
           <blockquote
-            className="text-base italic mb-8 pl-5"
-            style={{
-              color: "#60266A",
-              borderLeft: `3px solid ${partner.accentColor === "#F85C70" ? "#F85C70" : "#60266A"}`,
-              fontWeight: 400,
-            }}
+            className={`mb-8 border-l-[3px] pl-5 text-base italic font-normal text-[#60266A] ${partner.quoteBorderClass}`}
           >
             "{partner.philosophy}"
           </blockquote>
@@ -352,14 +235,7 @@ function PartnerCard({ partner, index }: { partner: typeof partners[0]; index: n
           {partner.specialties.map((s) => (
             <span
               key={s}
-              className="text-xs px-3 py-1.5"
-              style={{
-                backgroundColor: "#F2F0F7",
-                color: "#181F4F",
-                borderRadius: "3px",
-                fontWeight: 500,
-                letterSpacing: "0.01em",
-              }}
+              className="rounded-sm bg-[#F2F0F7] px-3 py-1.5 text-xs font-medium tracking-wide text-[#181F4F]"
             >
               {s}
             </span>

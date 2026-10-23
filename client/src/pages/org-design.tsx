@@ -2,8 +2,23 @@
 
 import { memo } from "react";
 import Link from "next/link";
-import { ArrowRight, CheckCircle, Layers, Cpu, Users, Zap, Calendar, Repeat, Shield } from "lucide-react";
+import { ArrowRight, CheckCircle, Layers, Cpu, Users, Zap, Repeat, Shield } from "lucide-react";
 import { ServiceSchema } from "@/components/structured-data";
+import {
+  PageShell,
+  PageHero,
+  BreadcrumbBar,
+  CtaBand,
+  Section,
+  Stack,
+  Grid,
+  Text,
+  Eyebrow,
+  Surface,
+  AmpButton,
+  BorderGrid,
+  BorderCell,
+} from "@/components/system";
 
 interface OrgDesignProps {
   onOpenConsultation: (serviceType?: string) => void;
@@ -108,340 +123,251 @@ const whyPoints = [
   "We are not selling a methodology off a shelf. We are working from direct experience of what makes self-managing organisations function and what causes them to fail.",
 ];
 
+const resultPoints = [
+  "Faster decision cycles at every level",
+  "Higher team engagement and ownership",
+  "Better product outcomes and delivery speed",
+  "Significant reduction in coordination overhead",
+];
+
 const OrgDesign = memo(function OrgDesign({ onOpenConsultation }: OrgDesignProps) {
   return (
-    <div className="min-h-screen font-sans" style={{ backgroundColor: "#ffffff" }}>
-      <ServiceSchema name="Autonomous Organisations" description="Amplified helps ambitious organisations replace slow hierarchies with self-managing, product-led operating models powered by AI. Holacracy, product org design, and AI integration." url="https://amplified.co.uk/org-design" />
+    <PageShell>
+      <ServiceSchema
+        name="Autonomous Organisations"
+        description="Amplified helps ambitious organisations replace slow hierarchies with self-managing, product-led operating models powered by AI. Holacracy, product org design, and AI integration."
+        url="https://amplified.co.uk/org-design"
+      />
 
-      {/* HERO */}
-      <section className="py-28 lg:py-36" style={{ backgroundColor: "#181F4F" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="font-mono text-xs uppercase tracking-[0.15em] mb-6" style={{ color: "#F85C70" }}>
-            AMP 07 / Autonomous Organisations
-          </p>
-          <h1
-            className="font-display text-5xl md:text-6xl lg:text-7xl text-white mb-8 leading-tight max-w-[800px]"
-            style={{ fontWeight: 400 }}
-            data-testid="text-page-title"
-          >
-            The organisation of the future runs itself.
-          </h1>
-          <p className="font-sans text-lg md:text-xl max-w-[600px] leading-relaxed mb-12" style={{ color: "rgba(255,255,255,0.7)" }}>
-            We help leadership teams move from slow, manager-dependent hierarchies to product-led,
-            self-managing organisations powered by AI. Less coordination overhead. Faster decisions.
-            Teams that know what to do without being told.
-          </p>
-          <div className="flex flex-wrap gap-4">
-            <button
-              onClick={() => onOpenConsultation("org-design")}
-              className="amp-focus-ring-on-navy inline-flex items-center gap-2 px-8 h-12 font-sans font-bold text-base rounded transition-colors duration-200"
-              style={{ backgroundColor: "#F85C70", color: "#181F4F" }}
-              onMouseOver={(e) => ((e.currentTarget as HTMLButtonElement).style.backgroundColor = "#d94a5e")}
-              onMouseOut={(e) => ((e.currentTarget as HTMLButtonElement).style.backgroundColor = "#F85C70")}
-              data-testid="button-hero-cta"
-            >
-              Start the Conversation <ArrowRight className="h-4 w-4" />
-            </button>
-            <a
-              href="#how-it-works"
-              className="inline-flex items-center gap-2 px-8 h-12 font-sans font-semibold text-base rounded transition-colors duration-200"
-              style={{ border: "1px solid rgba(255,255,255,0.25)", color: "rgba(255,255,255,0.85)", backgroundColor: "transparent" }}
-              onMouseOver={(e) => { (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "rgba(255,255,255,0.08)"; }}
-              onMouseOut={(e) => { (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "transparent"; }}
-            >
-              See How It Works
-            </a>
-          </div>
-        </div>
-      </section>
+      <BreadcrumbBar
+        items={[{ label: "Home", href: "/" }, { label: "Autonomous Organisations" }]}
+      />
 
-      {/* THE PROBLEM */}
-      <section className="py-20 lg:py-28 bg-white">
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-            <div>
-              <p className="font-mono text-xs uppercase tracking-[0.12em] mb-5" style={{ color: "#6B6E81" }}>
-                The Problem
-              </p>
-              <h2 className="font-display text-4xl md:text-5xl mb-6" style={{ color: "#181F4F", fontWeight: 400 }}>
-                Most growing organisations hit the same wall.
-              </h2>
-              <p className="font-sans text-base leading-relaxed mb-4" style={{ color: "#65677B" }}>
-                The real issue is not your people. It is the model. Traditional hierarchies were
-                built for a world where information was scarce and decisions needed to flow upward
-                to be made well. That world no longer exists.
-              </p>
-              <p className="font-sans text-base leading-relaxed" style={{ color: "#65677B" }}>
-                Every attempt to fix it within the existing structure (a new process, a new
-                framework, a new tool) adds complexity without changing the underlying
-                architecture. The only way out is to redesign the architecture itself.
-              </p>
-            </div>
-            <div className="space-y-0 border-l-2" style={{ borderColor: "#F85C70" }}>
-              {problemPoints.map((point, i) => (
-                <div
-                  key={i}
-                  className="pl-6 py-5 border-b"
-                  style={{ borderColor: "#E5E3EE" }}
-                >
-                  <p className="font-sans text-sm leading-relaxed" style={{ color: "#65677B" }}>
-                    {point}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="AMP 07 / Autonomous Organisations"
+        title="The organisation of the future runs itself."
+        lead="We help leadership teams move from slow, manager-dependent hierarchies to product-led, self-managing organisations powered by AI. Less coordination overhead. Faster decisions. Teams that know what to do without being told."
+      >
+        <Stack direction="row-responsive" gap="md" className="flex-wrap">
+          <AmpButton onClick={() => onOpenConsultation("org-design")} data-testid="button-hero-cta">
+            Start the Conversation <ArrowRight className="h-4 w-4" />
+          </AmpButton>
+          <AmpButton asChild variant="outlineLight" size="lg">
+            <a href="#how-it-works">See How It Works</a>
+          </AmpButton>
+        </Stack>
+      </PageHero>
 
-      {/* WHAT WE DO */}
-      <section id="how-it-works" className="py-20 lg:py-28 scroll-mt-20" style={{ backgroundColor: "#181F4F" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="font-mono text-xs uppercase tracking-[0.12em] mb-5" style={{ color: "#F85C70" }}>
-            What We Do
-          </p>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-end mb-16">
-            <h2 className="font-display text-4xl md:text-5xl text-white" style={{ fontWeight: 400 }}>
+      <Section tone="white" padding="lg">
+        <Grid cols="2-lg" gap="xl" equal={false}>
+          <Stack gap="md">
+            <Eyebrow tone="subtle">The Problem</Eyebrow>
+            <Text variant="h2" data-testid="text-page-title">
+              Most growing organisations hit the same wall.
+            </Text>
+            <Text variant="body" tone="muted">
+              The real issue is not your people. It is the model. Traditional hierarchies were built
+              for a world where information was scarce and decisions needed to flow upward to be made
+              well. That world no longer exists.
+            </Text>
+            <Text variant="body" tone="muted">
+              Every attempt to fix it within the existing structure (a new process, a new framework, a
+              new tool) adds complexity without changing the underlying architecture. The only way out
+              is to redesign the architecture itself.
+            </Text>
+          </Stack>
+          <Stack gap="none" className="border-l-2 border-[#F85C70]">
+            {problemPoints.map((point) => (
+              <div key={point} className="border-b border-[#E5E3EE] py-5 pl-6">
+                <Text variant="small" tone="muted">
+                  {point}
+                </Text>
+              </div>
+            ))}
+          </Stack>
+        </Grid>
+      </Section>
+
+      <Section id="how-it-works" tone="navy" padding="lg" className="scroll-mt-20">
+        <Stack gap="xl">
+          <Eyebrow>What We Do</Eyebrow>
+          <Grid cols="2-lg" gap="xl" equal={false} className="items-end">
+            <Text variant="h2" tone="white">
               Three proven approaches. One coherent system.
-            </h2>
-            <p className="font-sans text-base leading-relaxed" style={{ color: "rgba(255,255,255,0.65)" }}>
+            </Text>
+            <Text variant="body" tone="white-70">
               Together, these create an organisation that is genuinely self-managing. Authority sits
-              with the people closest to the work. AI handles the coordination load. Leadership
-              focuses on strategy rather than traffic management.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-0 border-l border-t" style={{ borderColor: "rgba(255,255,255,0.08)" }}>
+              with the people closest to the work. AI handles the coordination load. Leadership focuses
+              on strategy rather than traffic management.
+            </Text>
+          </Grid>
+          <BorderGrid cols={3} className="border-l border-t border-white/10">
             {approachPillars.map((pillar) => (
-              <div key={pillar.label} className="p-8 border-r border-b" style={{ borderColor: "rgba(255,255,255,0.08)" }}>
-                <pillar.icon className="h-6 w-6 mb-5" style={{ color: "#F85C70" }} />
-                <p className="font-mono text-xs uppercase tracking-[0.12em] mb-2" style={{ color: "#F85C70" }}>
-                  {pillar.label}
-                </p>
-                <h3 className="font-display text-2xl text-white mb-4" style={{ fontWeight: 400 }}>
+              <BorderCell key={pillar.label} className="border-white/10 p-8">
+                <pillar.icon className="mb-5 h-6 w-6 text-[#F85C70]" aria-hidden="true" />
+                <Eyebrow className="mb-2">{pillar.label}</Eyebrow>
+                <Text variant="h3" tone="white" className="mb-4">
                   {pillar.title}
-                </h3>
-                <p className="font-sans text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.6)" }}>
+                </Text>
+                <Text variant="small" tone="white-70">
                   {pillar.body}
-                </p>
-              </div>
+                </Text>
+              </BorderCell>
             ))}
-          </div>
-        </div>
-      </section>
+          </BorderGrid>
+        </Stack>
+      </Section>
 
-      {/* WHO THIS IS FOR */}
-      <section className="py-20 lg:py-28" style={{ backgroundColor: "#F2F0F7" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="font-mono text-xs uppercase tracking-[0.12em] mb-5" style={{ color: "#6B6E81" }}>
-            Who This Is For
-          </p>
-          <h2 className="font-display text-4xl md:text-5xl mb-12" style={{ color: "#181F4F", fontWeight: 400 }}>
+      <Section tone="mist" padding="lg">
+        <Stack gap="xl">
+          <Eyebrow tone="subtle">Who This Is For</Eyebrow>
+          <Text variant="h2">
             Organisations ready to think differently about how they operate.
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border-l border-t" style={{ borderColor: "#E5E3EE" }}>
+          </Text>
+          <BorderGrid cols={2} className="border-l border-t border-[#E5E3EE]">
             {audiences.map((audience) => (
-              <div key={audience.title} className="p-8 border-r border-b" style={{ borderColor: "#E5E3EE", backgroundColor: "#ffffff" }}>
-                <div className="w-0.5 h-6 mb-5 rounded" style={{ backgroundColor: "#F85C70" }} />
-                <h3 className="font-display text-xl mb-3" style={{ color: "#181F4F", fontWeight: 400 }}>
+              <BorderCell key={audience.title} className="border-[#E5E3EE] bg-white p-8">
+                <div className="mb-5 h-6 w-0.5 rounded bg-[#F85C70]" />
+                <Text variant="h4" className="mb-3">
                   {audience.title}
-                </h3>
-                <p className="font-sans text-sm leading-relaxed" style={{ color: "#65677B" }}>
+                </Text>
+                <Text variant="small" tone="muted">
                   {audience.body}
-                </p>
-              </div>
+                </Text>
+              </BorderCell>
             ))}
-          </div>
-        </div>
-      </section>
+          </BorderGrid>
+        </Stack>
+      </Section>
 
-      {/* SERVICES */}
-      <section className="py-20 lg:py-28 bg-white">
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="font-mono text-xs uppercase tracking-[0.12em] mb-5" style={{ color: "#6B6E81" }}>
-            Our Services
-          </p>
-          <h2 className="font-display text-4xl md:text-5xl mb-12" style={{ color: "#181F4F", fontWeight: 400 }}>
-            Three ways to engage.
-          </h2>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-0 border-l border-t" style={{ borderColor: "#E5E3EE" }}>
+      <Section tone="white" padding="lg">
+        <Stack gap="xl">
+          <Eyebrow tone="subtle">Our Services</Eyebrow>
+          <Text variant="h2">Three ways to engage.</Text>
+          <BorderGrid cols={3} className="border-l border-t border-[#E5E3EE]">
             {services.map((service, i) => (
-              <div key={service.title} className="p-8 border-r border-b flex flex-col" style={{ borderColor: "#E5E3EE" }}>
-                <div className="flex items-start justify-between mb-5">
-                  <service.icon className="h-5 w-5" style={{ color: "#F85C70" }} />
-                  <span
-                    className="font-mono text-xs px-2.5 py-1 rounded"
-                    style={{ backgroundColor: "#F2F0F7", color: "#60266A" }}
-                  >
+              <BorderCell
+                key={service.title}
+                className="flex h-full flex-col border-[#E5E3EE] p-8"
+              >
+                <div className="mb-5 flex items-start justify-between gap-3">
+                  <service.icon className="h-5 w-5 text-[#F85C70]" aria-hidden="true" />
+                  <span className="rounded bg-[#F2F0F7] px-2.5 py-1 font-mono text-xs text-[#60266A]">
                     {service.label}
                   </span>
                 </div>
-                <h3 className="font-display text-2xl mb-4" style={{ color: "#181F4F", fontWeight: 400 }}>
+                <Text variant="h3" className="mb-4">
                   {service.title}
-                </h3>
-                <p className="font-sans text-sm leading-relaxed mb-6" style={{ color: "#65677B" }}>
+                </Text>
+                <Text variant="small" tone="muted" className="mb-6">
                   {service.body}
-                </p>
-                <div className="mt-auto pt-5 border-t" style={{ borderColor: "#E5E3EE" }}>
-                  <p className="font-mono text-xs uppercase tracking-[0.1em] mb-3" style={{ color: "#6B6E81" }}>
+                </Text>
+                <div className="mt-auto border-t border-[#E5E3EE] pt-5">
+                  <Eyebrow tone="subtle" className="mb-3">
                     {i === 0 ? "Outputs include" : "What this covers"}
-                  </p>
+                  </Eyebrow>
                   <ul className="space-y-2">
                     {service.outputs.map((output) => (
                       <li key={output} className="flex items-start gap-2.5">
-                        <CheckCircle className="h-3.5 w-3.5 flex-shrink-0 mt-0.5" style={{ color: "#F85C70" }} />
-                        <span className="font-sans text-xs leading-relaxed" style={{ color: "#65677B" }}>
+                        <CheckCircle
+                          className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#F85C70]"
+                          aria-hidden="true"
+                        />
+                        <Text variant="caption" tone="muted">
                           {output}
-                        </span>
+                        </Text>
                       </li>
                     ))}
                   </ul>
                 </div>
+              </BorderCell>
+            ))}
+          </BorderGrid>
+          <AmpButton onClick={() => onOpenConsultation("org-design")}>
+            Book a 45-Minute Diagnostic Call <ArrowRight className="h-4 w-4" />
+          </AmpButton>
+        </Stack>
+      </Section>
+
+      <Section tone="navy" padding="lg">
+        <Grid cols="2-lg" gap="xl" equal={false}>
+          <Stack gap="md">
+            <Eyebrow>Why Amplified</Eyebrow>
+            <Text variant="h2" tone="white">
+              We have built and run these models. Not just designed them.
+            </Text>
+            <Text variant="body" tone="white-70">
+              Our background spans agile delivery transformation, squad-based operating models in
+              complex infrastructure and digital programmes, and practical AI implementation at team
+              and organisational level.
+            </Text>
+            <AmpButton onClick={() => onOpenConsultation("org-design")}>
+              Start a Conversation <ArrowRight className="h-4 w-4" />
+            </AmpButton>
+          </Stack>
+          <Stack gap="none">
+            {whyPoints.map((point) => (
+              <div
+                key={point}
+                className="flex items-start gap-4 border-b border-white/10 py-5"
+              >
+                <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-[#F85C70]/30 bg-[#F85C70]/15">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#F85C70]" />
+                </span>
+                <Text variant="small" tone="white-70">
+                  {point}
+                </Text>
               </div>
             ))}
-          </div>
+          </Stack>
+        </Grid>
+      </Section>
 
-          <div className="mt-10 flex flex-wrap gap-4">
-            <button
-              onClick={() => onOpenConsultation("org-design")}
-              className="amp-focus-ring-on-light inline-flex items-center gap-2 px-8 h-11 font-sans font-bold text-sm rounded transition-colors duration-200"
-              style={{ backgroundColor: "#F85C70", color: "#181F4F" }}
-              onMouseOver={(e) => ((e.currentTarget as HTMLButtonElement).style.backgroundColor = "#d94a5e")}
-              onMouseOut={(e) => ((e.currentTarget as HTMLButtonElement).style.backgroundColor = "#F85C70")}
-            >
-              Book a 45-Minute Diagnostic Call <ArrowRight className="h-4 w-4" />
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* WHY AMPLIFIED */}
-      <section className="py-20 lg:py-28" style={{ backgroundColor: "#181F4F" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-            <div>
-              <p className="font-mono text-xs uppercase tracking-[0.12em] mb-5" style={{ color: "#F85C70" }}>
-                Why Amplified
-              </p>
-              <h2 className="font-display text-4xl md:text-5xl text-white mb-6" style={{ fontWeight: 400 }}>
-                We have built and run these models. Not just designed them.
-              </h2>
-              <p className="font-sans text-base leading-relaxed mb-6" style={{ color: "rgba(255,255,255,0.65)" }}>
-                Our background spans agile delivery transformation, squad-based operating models
-                in complex infrastructure and digital programmes, and practical AI implementation
-                at team and organisational level.
-              </p>
-              <button
-                onClick={() => onOpenConsultation("org-design")}
-                className="amp-focus-ring-on-light inline-flex items-center gap-2 px-7 h-11 font-sans font-bold text-sm rounded transition-colors duration-200"
-                style={{ backgroundColor: "#F85C70", color: "#181F4F" }}
-                onMouseOver={(e) => ((e.currentTarget as HTMLButtonElement).style.backgroundColor = "#d94a5e")}
-                onMouseOut={(e) => ((e.currentTarget as HTMLButtonElement).style.backgroundColor = "#F85C70")}
-              >
-                Start a Conversation <ArrowRight className="h-4 w-4" />
-              </button>
-            </div>
-
-            <div className="space-y-0">
-              {whyPoints.map((point, i) => (
-                <div
-                  key={i}
-                  className="flex items-start gap-4 py-5 border-b"
-                  style={{ borderColor: "rgba(255,255,255,0.08)" }}
-                >
-                  <span
-                    className="flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center mt-0.5"
-                    style={{ backgroundColor: "rgba(248,92,112,0.15)", border: "1px solid rgba(248,92,112,0.3)" }}
-                  >
-                    <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "#F85C70" }} />
-                  </span>
-                  <p className="font-sans text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.65)" }}>
-                    {point}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* RESULTS BAND */}
-      <section className="py-16" style={{ backgroundColor: "#F2F0F7", borderTop: "1px solid #E5E3EE" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
-            <div className="lg:col-span-2">
-              <p className="font-mono text-xs uppercase tracking-[0.12em] mb-3" style={{ color: "#6B6E81" }}>
-                Results
-              </p>
-              <p className="font-sans text-base leading-relaxed" style={{ color: "#65677B" }}>
-                Organisations that have moved to distributed authority and product-aligned structures
-                consistently report faster decision cycles, higher team engagement, and better product
-                outcomes. AI integration compounds these gains, reducing coordination overhead and
-                enabling smaller teams to operate at a scale previously requiring significantly more headcount.
-              </p>
-            </div>
-            <div className="p-6 rounded" style={{ backgroundColor: "#ffffff", border: "1px solid #E5E3EE" }}>
-              <p className="font-mono text-xs uppercase tracking-[0.1em] mb-4" style={{ color: "#F85C70" }}>
-                What organisations report
-              </p>
-              {[
-                "Faster decision cycles at every level",
-                "Higher team engagement and ownership",
-                "Better product outcomes and delivery speed",
-                "Significant reduction in coordination overhead",
-              ].map((result) => (
-                <div key={result} className="flex items-start gap-2.5 mb-3">
-                  <CheckCircle className="h-3.5 w-3.5 flex-shrink-0 mt-0.5" style={{ color: "#F85C70" }} />
-                  <span className="font-sans text-xs leading-relaxed" style={{ color: "#65677B" }}>
+      <Section tone="mist" padding="md" className="border-t border-[#E5E3EE]">
+        <Grid cols="3-lg" gap="lg" equal={false} className="items-center">
+          <Stack gap="sm" className="lg:col-span-2">
+            <Eyebrow tone="subtle">Results</Eyebrow>
+            <Text variant="body" tone="muted">
+              Organisations that have moved to distributed authority and product-aligned structures
+              consistently report faster decision cycles, higher team engagement, and better product
+              outcomes. AI integration compounds these gains, reducing coordination overhead and
+              enabling smaller teams to operate at a scale previously requiring significantly more
+              headcount.
+            </Text>
+          </Stack>
+          <Surface variant="bordered" padding="md" radius="sm">
+            <Eyebrow className="mb-4">What organisations report</Eyebrow>
+            <Stack gap="sm">
+              {resultPoints.map((result) => (
+                <Stack key={result} direction="row" gap="sm" align="start">
+                  <CheckCircle
+                    className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#F85C70]"
+                    aria-hidden="true"
+                  />
+                  <Text variant="caption" tone="muted">
                     {result}
-                  </span>
-                </div>
+                  </Text>
+                </Stack>
               ))}
-            </div>
-          </div>
-        </div>
-      </section>
+            </Stack>
+          </Surface>
+        </Grid>
+      </Section>
 
-      {/* CTA */}
-      <section className="py-24" style={{ backgroundColor: "#60266A" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="font-mono text-xs uppercase tracking-[0.15em] mb-6" style={{ color: "rgba(255,255,255,0.5)" }}>
-            Get Started
-          </p>
-          <h2 className="font-display text-4xl md:text-5xl text-white mb-6" style={{ fontWeight: 400 }}>
-            Ready to think differently about how your organisation operates?
-          </h2>
-          <p className="font-sans text-lg max-w-[520px] mx-auto mb-4" style={{ color: "rgba(255,255,255,0.75)" }}>
-            There is no sales process here. Just a direct discussion about where you are, what
-            you are trying to achieve, and whether we are the right people to help you get there.
-          </p>
-          <p className="font-sans text-sm mb-10" style={{ color: "rgba(255,255,255,0.5)" }}>
-            Book a 45-minute diagnostic call.
-          </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <button
-              onClick={() => onOpenConsultation("org-design")}
-              className="amp-focus-ring-on-navy inline-flex items-center gap-2 px-10 h-12 font-sans font-bold text-base rounded transition-colors duration-200"
-              style={{ backgroundColor: "#F85C70", color: "#181F4F" }}
-              onMouseOver={(e) => ((e.currentTarget as HTMLButtonElement).style.backgroundColor = "#d94a5e")}
-              onMouseOut={(e) => ((e.currentTarget as HTMLButtonElement).style.backgroundColor = "#F85C70")}
-              data-testid="button-cta"
-            >
-              Book a Diagnostic Call <ArrowRight className="h-4 w-4" />
-            </button>
-            <a
-              href="mailto:hello@amplified.co.uk"
-              className="inline-flex items-center gap-2 px-10 h-12 font-sans font-semibold text-base rounded transition-colors duration-200"
-              style={{ border: "1px solid rgba(255,255,255,0.3)", color: "#ffffff", backgroundColor: "transparent" }}
-              onMouseOver={(e) => { (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "rgba(255,255,255,0.08)"; }}
-              onMouseOut={(e) => { (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "transparent"; }}
-            >
-              hello@amplified.co.uk
-            </a>
-          </div>
-        </div>
-      </section>
-    </div>
+      <CtaBand
+        tone="purple"
+        title="Ready to think differently about how your organisation operates?"
+      >
+        <AmpButton asChild size="xl" data-testid="button-cta">
+          <Link href="/contact">
+            Start a Conversation <ArrowRight className="h-4 w-4" />
+          </Link>
+        </AmpButton>
+        <Text variant="small" tone="white-45">
+          No pitch. No deck. Just a 30-minute call.
+        </Text>
+      </CtaBand>
+    </PageShell>
   );
 });
 

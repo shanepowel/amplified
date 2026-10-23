@@ -1,9 +1,24 @@
 'use client';
 
 import { memo } from "react";
-import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, CheckCircle, ExternalLink } from "lucide-react";
 import { ServiceSchema } from "@/components/structured-data";
+import {
+  PageShell,
+  PageHero,
+  BreadcrumbBar,
+  CtaBand,
+  Section,
+  Stack,
+  Grid,
+  Text,
+  Eyebrow,
+  Surface,
+  AmpButton,
+  BorderGrid,
+  BorderCell,
+} from "@/components/system";
 import heroImage from "@assets/68_1760470836673.webp";
 import strategicThinkingImage from "@assets/50_1760470599806.webp";
 
@@ -57,280 +72,255 @@ const dimensions = [
   },
 ];
 
+const whoFor = [
+  "Delivery directors whose programmes are underperforming despite good people",
+  "CIOs who have restructured but not seen the performance shift they expected",
+  "Transformation leads who need teams to hold pace across a multi-year programme",
+  "Technology organisations scaling squads and losing consistency across them",
+  "Regulated industries where team instability creates governance and compliance risk",
+];
+
+const notPoints = [
+  "It is not a recruitment solution",
+  "It is not a training programme bolted on after the fact",
+  "It is not a culture survey with an action plan",
+  "It is not a reorg wrapped in different language",
+];
+
 const Teams = memo(function Teams({ onOpenConsultation }: TeamsProps) {
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "#FAFAF9" }}>
-      <ServiceSchema name="Stable Teams" description="Stable Teams is a trademarked framework from AmplifiedTeams that helps organisations rebaseline their teams and operations to achieve sustained high performance. Not recruitment." url="https://amplified.co.uk/teams" />
+    <PageShell>
+      <ServiceSchema
+        name="Stable Teams"
+        description="Stable Teams is a trademarked framework from AmplifiedTeams that helps organisations rebaseline their teams and operations to achieve sustained high performance. Not recruitment."
+        url="https://amplified.co.uk/teams"
+      />
 
-      {/* HERO */}
-      <section className="pt-32 pb-20 lg:pt-40 lg:pb-28" style={{ backgroundColor: "#181F4F" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <div className="flex items-center gap-3 mb-6">
-                <p className="font-mono text-xs uppercase tracking-[0.14em]" style={{ color: "#F85C70" }}>
-                  AmplifiedTeams
-                </p>
-                <span
-                  className="font-mono text-xs px-2 py-1 rounded"
-                  style={{ backgroundColor: "rgba(248,92,112,0.15)", color: "#F85C70", border: "1px solid rgba(248,92,112,0.3)" }}
-                >
-                  Trademarked Framework
-                </span>
-              </div>
-              <h1
-                className="font-display text-5xl lg:text-6xl mb-8 leading-tight"
-                style={{ color: "#FFFFFF", fontWeight: 400 }}
-                data-testid="text-teams-title"
-              >
-                Stable Teams&trade;
-              </h1>
-              <p className="font-sans text-xl mb-4 leading-relaxed" style={{ color: "rgba(255,255,255,0.85)" }}>
-                A structured framework for rebaselining teams and operations to achieve sustained high performance.
-              </p>
-              <p className="font-sans text-base leading-relaxed mb-10" style={{ color: "rgba(255,255,255,0.55)" }}>
-                Most team problems are not recruitment problems. They are clarity problems, cadence problems,
-                accountability problems. Stable Teams addresses the conditions that determine whether a team
-                performs, not just who is on it.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <button
-                  onClick={() => onOpenConsultation("stable-teams")}
-                  className="amp-focus-ring-on-navy inline-flex items-center gap-2 px-8 h-11 font-sans font-bold text-sm rounded transition-colors duration-200"
-                  style={{ backgroundColor: "#F85C70", color: "#181F4F" }}
-                  onMouseOver={(e) => { (e.currentTarget as HTMLButtonElement).style.backgroundColor = "#d94a5e"; }}
-                  onMouseOut={(e) => { (e.currentTarget as HTMLButtonElement).style.backgroundColor = "#F85C70"; }}
-                  data-testid="button-stable-teams-cta"
-                >
-                  Start a Conversation
-                </button>
-                <a
-                  href="https://amplifiedteams.co.uk"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-8 h-11 font-sans font-bold text-sm rounded transition-colors duration-200"
-                  style={{ border: "1px solid rgba(255,255,255,0.25)", color: "#FFFFFF", backgroundColor: "transparent" }}
-                  onMouseOver={(e) => { (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "rgba(255,255,255,0.07)"; }}
-                  onMouseOut={(e) => { (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "transparent"; }}
-                >
-                  <ExternalLink className="h-4 w-4" />
-                  amplifiedteams.co.uk
-                </a>
-              </div>
-            </div>
-            <div className="hidden lg:block">
-              <div className="rounded overflow-hidden" style={{ aspectRatio: "4/3" }}>
-                <img
-                  src={heroImage.src}
-                  alt="Stable Teams framework in practice"
-                  className="w-full h-full object-cover"
-                  data-testid="img-teams-hero"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <BreadcrumbBar items={[{ label: "Home", href: "/" }, { label: "Stable Teams" }]} />
 
-      {/* THE PROBLEM */}
-      <section className="py-24 lg:py-32 border-b" style={{ borderColor: "#E5E3EE" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-            <div>
-              <p className="font-mono text-xs uppercase tracking-[0.12em] mb-4" style={{ color: "#6B6E81" }}>
-                The Problem
-              </p>
-              <h2 className="font-display text-4xl mb-6" style={{ color: "#181F4F", fontWeight: 400 }}>
-                Most team interventions treat symptoms, not causes
-              </h2>
-              <p className="font-sans text-base leading-relaxed mb-6" style={{ color: "#65677B" }}>
-                Organisations experiencing poor delivery often look for a people solution. They hire more,
-                restructure, or bring in contractors. The underlying dysfunction remains. New faces, same problems.
-              </p>
-              <p className="font-sans text-base leading-relaxed mb-6" style={{ color: "#65677B" }}>
-                The Stable Teams framework takes a different starting point. Before you change who is on the team,
-                understand why the team is not performing. In most cases, the answer is not a capability gap.
-                It is a structural one.
-              </p>
-              <p className="font-sans text-base leading-relaxed italic" style={{ color: "#65677B" }}>
-                Stable Teams was developed by AmplifiedTeams, a subsidiary of Amplified, to give organisations
-                a repeatable, evidence-based route to team performance that does not require a restructure to see results.
-              </p>
-            </div>
-            <div>
-              <img
-                src={strategicThinkingImage.src}
-                alt="Strategic team thinking and performance rebaselining"
-                className="w-full rounded mb-8"
-                loading="lazy"
+      <PageHero
+        eyebrow="AmplifiedTeams"
+        title={
+          <span data-testid="text-teams-title">
+            Stable Teams&trade;
+          </span>
+        }
+        subtitle="A structured framework for rebaselining teams and operations to achieve sustained high performance."
+        lead="Most team problems are not recruitment problems. They are clarity problems, cadence problems, accountability problems. Stable Teams addresses the conditions that determine whether a team performs, not just who is on it."
+      >
+        <span className="inline-flex w-fit rounded border border-[#F85C70]/30 bg-[#F85C70]/15 px-2 py-1 font-mono text-xs text-[#F85C70]">
+          Trademarked Framework
+        </span>
+        <Stack direction="row-responsive" gap="md" className="flex-wrap">
+          <AmpButton
+            onClick={() => onOpenConsultation("stable-teams")}
+            data-testid="button-stable-teams-cta"
+          >
+            Start a Conversation
+          </AmpButton>
+          <AmpButton asChild variant="outlineLight" size="lg">
+            <a href="https://amplifiedteams.co.uk" target="_blank" rel="noopener noreferrer">
+              <ExternalLink className="h-4 w-4" />
+              amplifiedteams.co.uk
+            </a>
+          </AmpButton>
+        </Stack>
+      </PageHero>
+
+      <Section tone="white" padding="lg" className="border-b border-[#E5E3EE]">
+        <Grid cols="2-lg" gap="xl" equal={false} className="items-center">
+          <Stack gap="md">
+            <Eyebrow tone="subtle">The Problem</Eyebrow>
+            <Text variant="h2">Most team interventions treat symptoms, not causes</Text>
+            <Text variant="body" tone="muted">
+              Organisations experiencing poor delivery often look for a people solution. They hire
+              more, restructure, or bring in contractors. The underlying dysfunction remains. New
+              faces, same problems.
+            </Text>
+            <Text variant="body" tone="muted">
+              The Stable Teams framework takes a different starting point. Before you change who is on
+              the team, understand why the team is not performing. In most cases, the answer is not a
+              capability gap. It is a structural one.
+            </Text>
+            <Text variant="body" tone="muted" className="italic">
+              Stable Teams was developed by AmplifiedTeams, a subsidiary of Amplified, to give
+              organisations a repeatable, evidence-based route to team performance that does not
+              require a restructure to see results.
+            </Text>
+          </Stack>
+          <Stack gap="lg">
+            <div className="relative aspect-[4/3] overflow-hidden rounded">
+              <Image
+                src={heroImage}
+                alt="Stable Teams framework in practice"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                data-testid="img-teams-hero"
               />
-              <div className="p-8 rounded" style={{ backgroundColor: "#F2F0F7", border: "1px solid #DDD9EA" }}>
-                <p className="font-mono text-xs uppercase tracking-[0.12em] mb-4" style={{ color: "#F85C70" }}>
-                  What Stable Teams is not
-                </p>
-                <ul className="space-y-3">
-                  {[
-                    "It is not a recruitment solution",
-                    "It is not a training programme bolted on after the fact",
-                    "It is not a culture survey with an action plan",
-                    "It is not a reorg wrapped in different language",
-                  ].map((item, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <span className="font-mono text-xs mt-1 flex-shrink-0" style={{ color: "#F85C70" }}>x</span>
-                      <p className="font-sans text-sm leading-relaxed" style={{ color: "#65677B" }}>{item}</p>
-                    </li>
-                  ))}
-                </ul>
-              </div>
             </div>
-          </div>
-        </div>
-      </section>
+            <Image
+              src={strategicThinkingImage}
+              alt="Strategic team thinking and performance rebaselining"
+              className="h-auto w-full rounded"
+              loading="lazy"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
+            <Surface variant="mist" padding="lg" radius="sm" className="border border-[#DDD9EA]">
+              <Eyebrow className="mb-4">What Stable Teams is not</Eyebrow>
+              <ul className="space-y-3">
+                {notPoints.map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <span className="mt-1 shrink-0 font-mono text-xs text-[#F85C70]">x</span>
+                    <Text variant="small" tone="muted">
+                      {item}
+                    </Text>
+                  </li>
+                ))}
+              </ul>
+            </Surface>
+          </Stack>
+        </Grid>
+      </Section>
 
-      {/* THE FRAMEWORK: FOUR STAGES */}
-      <section className="py-24 lg:py-32" style={{ backgroundColor: "#F2F0F7" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="font-mono text-xs uppercase tracking-[0.12em] mb-4" style={{ color: "#6B6E81" }}>
-            The Framework
-          </p>
-          <h2 className="font-display text-4xl mb-6" style={{ color: "#181F4F", fontWeight: 400 }}>
-            Four stages. One outcome.
-          </h2>
-          <p className="font-sans text-base max-w-[560px] mb-16 leading-relaxed" style={{ color: "#65677B" }}>
-            Stable Teams moves through four structured stages, each building on the last. The goal
-            is not a one-off intervention but a team that sustains high performance independently.
-          </p>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 border-l border-t" style={{ borderColor: "#C8C4D8" }}>
-            {stagesOfStableTeams.map((stage, i) => (
-              <div key={i} className="p-10 border-r border-b flex flex-col" style={{ borderColor: "#C8C4D8" }}>
-                <p className="font-mono text-4xl mb-4" style={{ color: "#DDD9EA", fontWeight: 400 }}>{stage.number}</p>
-                <h3 className="font-display text-2xl mb-4" style={{ color: "#181F4F", fontWeight: 400 }}>{stage.title}</h3>
-                <p className="font-sans text-base leading-relaxed" style={{ color: "#65677B" }}>{stage.body}</p>
-              </div>
+      <Section tone="mist" padding="lg">
+        <Stack gap="xl">
+          <Eyebrow tone="subtle">The Framework</Eyebrow>
+          <Text variant="h2">Four stages. One outcome.</Text>
+          <Text variant="body" tone="muted" className="max-w-[560px]">
+            Stable Teams moves through four structured stages, each building on the last. The goal is
+            not a one-off intervention but a team that sustains high performance independently.
+          </Text>
+          <BorderGrid cols={2} className="border-l border-t border-[#C8C4D8]">
+            {stagesOfStableTeams.map((stage) => (
+              <BorderCell key={stage.number} className="flex flex-col border-[#C8C4D8] p-10">
+                <Text variant="display" className="mb-4 text-4xl text-[#DDD9EA]">
+                  {stage.number}
+                </Text>
+                <Text variant="h3" className="mb-4">
+                  {stage.title}
+                </Text>
+                <Text variant="body" tone="muted">
+                  {stage.body}
+                </Text>
+              </BorderCell>
             ))}
-          </div>
-        </div>
-      </section>
+          </BorderGrid>
+        </Stack>
+      </Section>
 
-      {/* THE FIVE DIMENSIONS */}
-      <section className="py-24 lg:py-32 border-t" style={{ borderColor: "#E5E3EE" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="font-mono text-xs uppercase tracking-[0.12em] mb-4" style={{ color: "#6B6E81" }}>
-            What We Assess
-          </p>
-          <h2 className="font-display text-4xl mb-6" style={{ color: "#181F4F", fontWeight: 400 }}>
-            The five dimensions of team stability
-          </h2>
-          <p className="font-sans text-base max-w-[560px] mb-16 leading-relaxed" style={{ color: "#65677B" }}>
-            The diagnostic phase of the framework assesses each team across five interconnected dimensions.
-            Every rebaselining plan is built from the results.
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border-l border-t" style={{ borderColor: "#E5E3EE" }}>
-            {dimensions.map((dim, i) => (
-              <div key={i} className="p-8 border-r border-b" style={{ borderColor: "#E5E3EE" }}>
-                <div className="flex items-center gap-3 mb-4">
-                  <CheckCircle className="h-4 w-4 flex-shrink-0" style={{ color: "#F85C70" }} />
-                  <h3 className="font-display text-xl" style={{ color: "#181F4F", fontWeight: 400 }}>{dim.label}</h3>
-                </div>
-                <p className="font-sans text-sm leading-relaxed" style={{ color: "#65677B" }}>{dim.desc}</p>
-              </div>
+      <Section tone="white" padding="lg" className="border-t border-[#E5E3EE]">
+        <Stack gap="xl">
+          <Eyebrow tone="subtle">What We Assess</Eyebrow>
+          <Text variant="h2">The five dimensions of team stability</Text>
+          <Text variant="body" tone="muted" className="max-w-[560px]">
+            The diagnostic phase of the framework assesses each team across five interconnected
+            dimensions. Every rebaselining plan is built from the results.
+          </Text>
+          <BorderGrid cols={3} className="border-l border-t border-[#E5E3EE]">
+            {dimensions.map((dim) => (
+              <BorderCell key={dim.label} className="border-[#E5E3EE] p-8">
+                <Stack direction="row" gap="sm" align="center" className="mb-4">
+                  <CheckCircle className="h-4 w-4 shrink-0 text-[#F85C70]" aria-hidden="true" />
+                  <Text variant="h4">{dim.label}</Text>
+                </Stack>
+                <Text variant="small" tone="muted">
+                  {dim.desc}
+                </Text>
+              </BorderCell>
             ))}
-
-            {/* Sixth cell: outcomes panel */}
-            <div className="p-8 border-r border-b" style={{ borderColor: "#E5E3EE", backgroundColor: "#181F4F" }}>
-              <p className="font-mono text-xs uppercase tracking-[0.12em] mb-4" style={{ color: "#F85C70" }}>
-                The outcome
-              </p>
-              <p className="font-display text-xl mb-4" style={{ color: "#FFFFFF", fontWeight: 400 }}>
+            <BorderCell className="border-[#E5E3EE] bg-[#181F4F] p-8">
+              <Eyebrow className="mb-4">The outcome</Eyebrow>
+              <Text variant="h4" tone="white" className="mb-4">
                 A team that performs predictably, consistently, and independently
-              </p>
+              </Text>
               <button
+                type="button"
                 onClick={() => onOpenConsultation("stable-teams")}
-                className="amp-focus-ring-on-navy rounded inline-flex items-center gap-2 text-sm font-semibold hover:gap-3 transition-all duration-200"
-                style={{ color: "#F85C70" }}
+                className="amp-focus-ring-on-navy inline-flex items-center gap-2 rounded text-sm font-semibold text-[#F85C70] transition-all duration-200 hover:gap-3"
                 data-testid="button-discuss-framework"
               >
                 Discuss the framework <ArrowRight className="h-3 w-3" />
               </button>
-            </div>
-          </div>
-        </div>
-      </section>
+            </BorderCell>
+          </BorderGrid>
+        </Stack>
+      </Section>
 
-      {/* WHO IT IS FOR */}
-      <section className="py-24 lg:py-32 border-t" style={{ backgroundColor: "#F2F0F7", borderColor: "#DDD9EA" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-            <div>
-              <p className="font-mono text-xs uppercase tracking-[0.12em] mb-4" style={{ color: "#6B6E81" }}>
-                Who It Is For
-              </p>
-              <h2 className="font-display text-4xl mb-8" style={{ color: "#181F4F", fontWeight: 400 }}>
-                Built for organisations where team performance is non-negotiable
-              </h2>
-              <ul className="space-y-5">
-                {[
-                  "Delivery directors whose programmes are underperforming despite good people",
-                  "CIOs who have restructured but not seen the performance shift they expected",
-                  "Transformation leads who need teams to hold pace across a multi-year programme",
-                  "Technology organisations scaling squads and losing consistency across them",
-                  "Regulated industries where team instability creates governance and compliance risk",
-                ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-4">
-                    <CheckCircle className="h-5 w-5 flex-shrink-0 mt-0.5" style={{ color: "#F85C70" }} />
-                    <p className="font-sans text-base leading-relaxed" style={{ color: "#65677B" }}>{item}</p>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div
-              className="p-10 rounded"
-              style={{ backgroundColor: "#181F4F" }}
-            >
-              <p className="font-mono text-xs uppercase tracking-[0.12em] mb-6" style={{ color: "#F85C70" }}>
-                AmplifiedTeams
-              </p>
-              <h3 className="font-display text-2xl mb-4" style={{ color: "#FFFFFF", fontWeight: 400 }}>
-                The Stable Teams framework is delivered by AmplifiedTeams, our specialist team performance subsidiary
-              </h3>
-              <p className="font-sans text-base leading-relaxed mb-8" style={{ color: "rgba(255,255,255,0.6)" }}>
-                AmplifiedTeams works alongside the Amplified consulting partnership to deliver the framework
-                inside client environments. Where our consulting work diagnoses systemic issues, Stable Teams
-                provides the structured route to resolution at team level.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <button
-                  onClick={() => onOpenConsultation("stable-teams")}
-                  className="amp-focus-ring-on-navy inline-flex items-center gap-2 px-8 h-11 font-sans font-bold text-sm rounded transition-colors duration-200"
-                  style={{ backgroundColor: "#F85C70", color: "#181F4F" }}
-                  onMouseOver={(e) => { (e.currentTarget as HTMLButtonElement).style.backgroundColor = "#d94a5e"; }}
-                  onMouseOut={(e) => { (e.currentTarget as HTMLButtonElement).style.backgroundColor = "#F85C70"; }}
-                  data-testid="button-start-conversation"
-                >
-                  Start the Conversation
-                </button>
-                <a
-                  href="https://amplifiedteams.co.uk"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-8 h-11 font-sans font-bold text-sm rounded transition-colors duration-200"
-                  style={{ border: "1px solid rgba(255,255,255,0.2)", color: "#FFFFFF", backgroundColor: "transparent" }}
-                  onMouseOver={(e) => { (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "rgba(255,255,255,0.07)"; }}
-                  onMouseOut={(e) => { (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "transparent"; }}
-                  data-testid="button-visit-amplifiedteams"
-                >
+      <Section tone="mist" padding="lg" className="border-t border-[#DDD9EA]">
+        <Grid cols="2-lg" gap="xl" equal={false}>
+          <Stack gap="lg">
+            <Eyebrow tone="subtle">Who It Is For</Eyebrow>
+            <Text variant="h2">
+              Built for organisations where team performance is non-negotiable
+            </Text>
+            <ul className="space-y-5">
+              {whoFor.map((item) => (
+                <li key={item} className="flex items-start gap-4">
+                  <CheckCircle
+                    className="mt-0.5 h-5 w-5 shrink-0 text-[#F85C70]"
+                    aria-hidden="true"
+                  />
+                  <Text variant="body" tone="muted">
+                    {item}
+                  </Text>
+                </li>
+              ))}
+            </ul>
+          </Stack>
+          <Surface variant="navy" padding="xl" radius="sm">
+            <Eyebrow className="mb-6">AmplifiedTeams</Eyebrow>
+            <Text variant="h3" tone="white" className="mb-4">
+              The Stable Teams framework is delivered by AmplifiedTeams, our specialist team
+              performance subsidiary
+            </Text>
+            <Text variant="body" tone="white-70" className="mb-8">
+              AmplifiedTeams works alongside the Amplified consulting partnership to deliver the
+              framework inside client environments. Where our consulting work diagnoses systemic
+              issues, Stable Teams provides the structured route to resolution at team level.
+            </Text>
+            <Stack direction="row-responsive" gap="md" className="flex-wrap">
+              <AmpButton
+                onClick={() => onOpenConsultation("stable-teams")}
+                data-testid="button-start-conversation"
+              >
+                Start the Conversation
+              </AmpButton>
+              <AmpButton
+                asChild
+                variant="outlineLight"
+                size="lg"
+                data-testid="button-visit-amplifiedteams"
+              >
+                <a href="https://amplifiedteams.co.uk" target="_blank" rel="noopener noreferrer">
                   <ExternalLink className="h-4 w-4" />
                   amplifiedteams.co.uk
                 </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+              </AmpButton>
+            </Stack>
+          </Surface>
+        </Grid>
+      </Section>
 
-    </div>
+      <CtaBand
+        title="Ready to rebaseline your teams?"
+        lead="Thirty minutes. We will tell you honestly whether Stable Teams is the right fit for your organisation."
+      >
+        <Stack direction="row-responsive" gap="md" align="center" justify="center" className="flex-wrap">
+          <AmpButton onClick={() => onOpenConsultation("stable-teams")}>
+            Start a Conversation <ArrowRight className="h-4 w-4" />
+          </AmpButton>
+          <AmpButton asChild variant="outlineLight" size="lg">
+            <a href="https://amplifiedteams.co.uk" target="_blank" rel="noopener noreferrer">
+              Visit AmplifiedTeams
+            </a>
+          </AmpButton>
+        </Stack>
+        <Text variant="small" tone="white-45">
+          No pitch. No deck. Just a conversation.
+        </Text>
+      </CtaBand>
+    </PageShell>
   );
 });
 

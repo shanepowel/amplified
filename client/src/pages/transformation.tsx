@@ -2,9 +2,25 @@
 
 import { memo } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import transformImage from "@assets/59_1760471391711.webp";
 import { ServiceSchema } from "@/components/structured-data";
+import {
+  PageShell,
+  PageHero,
+  BreadcrumbBar,
+  CtaBand,
+  Section,
+  Stack,
+  Grid,
+  Text,
+  Eyebrow,
+  Surface,
+  AmpButton,
+  BorderGrid,
+  BorderCell,
+} from "@/components/system";
 import { FurtherReading } from "@/components/further-reading";
 
 interface TransformationProps {
@@ -74,266 +90,202 @@ const capabilities = [
   "Observability, reliability, and site reliability engineering",
 ];
 
+const related = [
+  {
+    tag: "AMP 01",
+    title: "AI Governance",
+    body: "Tech Build engagements involving AI systems are designed inside the governance frameworks we establish through AMP 01. Accountability and auditability are built in from the start.",
+    href: "/ai-governance",
+  },
+  {
+    tag: "AMP 02",
+    title: "AI Implementation",
+    body: "For organisations with an AI strategy already in place, Tech Build delivers the production systems. AMP 02 and AMP 06 frequently run as a single integrated engagement.",
+    href: "/ai-implementation",
+  },
+  {
+    tag: "AMP 03",
+    title: "Structured Delivery",
+    body: "Tech Build engagements are run inside delivery frameworks that provide the governance and accountability structures your organisation requires.",
+    href: "/structured-delivery",
+  },
+];
+
 const Transformation = memo(function Transformation({ onOpenConsultation }: TransformationProps) {
-
   return (
-    <div className="min-h-screen font-sans" style={{ backgroundColor: "#ffffff" }}>
-      <ServiceSchema name="Tech Build" description="Hands-on technology build from engineers and architects who embed inside your teams. Custom software, AI-native systems, platform engineering, and legacy modernisation for regulated industries." url="https://amplified.co.uk/transformation" serviceType="TechnologyService" />
+    <PageShell>
+      <ServiceSchema
+        name="Tech Build"
+        description="Hands-on technology build from engineers and architects who embed inside your teams. Custom software, AI-native systems, platform engineering, and legacy modernisation for regulated industries."
+        url="https://amplified.co.uk/transformation"
+        serviceType="TechnologyService"
+      />
 
-      {/* HERO */}
-      <section className="py-28 lg:py-36" style={{ backgroundColor: "#181F4F" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-end">
-            <div>
-              <p className="font-mono text-xs uppercase tracking-[0.15em] mb-6" style={{ color: "#F85C70" }}>
-                AMP 06
-              </p>
-              <h1
-                className="font-display text-5xl md:text-6xl text-white mb-8 leading-tight"
-                style={{ fontWeight: 400 }}
-                data-testid="text-page-title"
-              >
-                Tech Build
-              </h1>
-              <p className="font-sans text-xl mb-4" style={{ color: "#F85C70" }}>
-                Digital transformation, delivered in code.
-              </p>
-              <p className="font-sans text-lg max-w-[520px] leading-relaxed mb-6" style={{ color: "rgba(255,255,255,0.75)" }}>
-                Hands-on digital transformation delivery from engineers and architects who embed
-                inside your teams. We build custom software, AI-native systems, and data
-                platforms for regulated industries where getting it wrong is not an option.
-              </p>
-              <p className="font-sans text-lg max-w-[520px] leading-relaxed" style={{ color: "rgba(255,255,255,0.75)" }}>
-                We do not produce recommendations and leave. We write code, architect systems,
-                and carry joint accountability for what gets built.
-              </p>
-              <blockquote
-                className="mt-10 p-6 border-l-4 max-w-[520px]"
-                style={{ borderColor: "#F85C70", backgroundColor: "rgba(248,92,112,0.08)" }}
-              >
-                <p className="font-display text-xl text-white italic" style={{ fontWeight: 400 }}>
-                  "Built for industries where rigour isn't optional."
-                </p>
-              </blockquote>
-            </div>
-            <div className="hidden lg:block">
-              <div className="rounded overflow-hidden" style={{ aspectRatio: "4/3" }}>
-                <img
-                  src={transformImage.src}
-                  alt="Amplified Tech Build in practice"
-                  className="w-full h-full object-cover"
-                  loading="eager"
-                  data-testid="img-hero"
-                />
-              </div>
-            </div>
-          </div>
+      <BreadcrumbBar items={[{ label: "Home", href: "/" }, { label: "Tech Build" }]} />
+
+      <PageHero
+        eyebrow="AMP 06"
+        title={<span data-testid="text-page-title">Tech Build</span>}
+        subtitle="Digital transformation, delivered in code."
+        lead="Hands-on digital transformation delivery from engineers and architects who embed inside your teams. We build custom software, AI-native systems, and data platforms for regulated industries where getting it wrong is not an option."
+      >
+        <Text variant="lead" tone="white-75" className="max-w-[520px]">
+          We do not produce recommendations and leave. We write code, architect systems, and carry
+          joint accountability for what gets built.
+        </Text>
+        <Surface
+          variant="inset"
+          padding="md"
+          radius="sm"
+          className="max-w-[520px] border-l-4 border-[#F85C70] bg-[rgba(248,92,112,0.08)]"
+        >
+          <Text variant="h4" tone="white" className="font-normal italic">
+            &ldquo;Built for industries where rigour isn&apos;t optional.&rdquo;
+          </Text>
+        </Surface>
+        {onOpenConsultation ? (
+          <AmpButton onClick={() => onOpenConsultation("transformation")}>
+            Start a Conversation <ArrowRight className="h-4 w-4" />
+          </AmpButton>
+        ) : null}
+      </PageHero>
+
+      <Section tone="white" padding="md" className="border-b border-[#E5E3EE]">
+        <div className="relative mx-auto hidden aspect-[4/3] max-w-[720px] overflow-hidden rounded lg:block">
+          <Image
+            src={transformImage}
+            alt="Amplified Tech Build in practice"
+            fill
+            className="object-cover"
+            priority
+            sizes="720px"
+            data-testid="img-hero"
+          />
         </div>
-      </section>
+      </Section>
 
-      {/* WHAT WE BUILD */}
-      <section className="py-20 lg:py-28 bg-white">
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="font-mono text-xs uppercase tracking-[0.12em] mb-4" style={{ color: "#6B6E81" }}>
-            What we build
-          </p>
-          <h2
-            className="font-display text-4xl md:text-5xl mb-16"
-            style={{ color: "#181F4F", fontWeight: 400 }}
-          >
-            Technology That Has to Work in Production
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border-l border-t" style={{ borderColor: "#E5E3EE" }}>
+      <Section tone="white" padding="lg">
+        <Stack gap="xl">
+          <Eyebrow tone="subtle">What we build</Eyebrow>
+          <Text variant="h2">Technology That Has to Work in Production</Text>
+          <BorderGrid cols={3} className="border-l border-t border-[#E5E3EE]">
             {whatWeBuild.map((item) => (
-              <div key={item.title} className="p-8 border-r border-b" style={{ borderColor: "#E5E3EE" }}>
-                <div className="w-1 h-8 mb-6 rounded" style={{ backgroundColor: "#F85C70" }} />
-                <h3 className="font-display text-xl mb-4" style={{ color: "#181F4F", fontWeight: 400 }}>
+              <BorderCell key={item.title} className="border-[#E5E3EE] p-8">
+                <div className="mb-6 h-8 w-1 rounded bg-[#F85C70]" />
+                <Text variant="h4" className="mb-4">
                   {item.title}
-                </h3>
-                <p className="font-sans text-sm leading-relaxed" style={{ color: "#65677B" }}>
+                </Text>
+                <Text variant="small" tone="muted">
                   {item.body}
-                </p>
-              </div>
+                </Text>
+              </BorderCell>
             ))}
-          </div>
-        </div>
-      </section>
+          </BorderGrid>
+        </Stack>
+      </Section>
 
-      {/* HOW WE WORK */}
-      <section className="py-20 lg:py-28" style={{ backgroundColor: "#181F4F" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="font-mono text-xs uppercase tracking-[0.12em] mb-4" style={{ color: "#F85C70" }}>
-            Our approach
-          </p>
-          <h2
-            className="font-display text-4xl text-white mb-12"
-            style={{ fontWeight: 400 }}
-          >
+      <Section tone="navy" padding="lg">
+        <Stack gap="xl">
+          <Eyebrow>Our approach</Eyebrow>
+          <Text variant="h2" tone="white">
             How we work
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border-l border-t" style={{ borderColor: "rgba(255,255,255,0.1)" }}>
+          </Text>
+          <BorderGrid cols={2} className="border-l border-t border-white/10">
             {howWeWork.map((item) => (
-              <div
-                key={item.step}
-                className="p-8 border-r border-b"
-                style={{ borderColor: "rgba(255,255,255,0.1)" }}
-              >
-                <p
-                  className="font-mono text-3xl font-bold mb-4 block"
-                  style={{ color: "#F85C70", opacity: 0.5 }}
-                >
+              <BorderCell key={item.step} className="border-white/10 p-8">
+                <Text variant="mono" className="mb-4 block text-3xl font-bold text-[#F85C70]/50">
                   {item.step}
-                </p>
-                <h3 className="font-display text-xl text-white mb-3" style={{ fontWeight: 400 }}>
+                </Text>
+                <Text variant="h4" tone="white" className="mb-3">
                   {item.title}
-                </h3>
-                <p className="font-sans text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.6)" }}>
+                </Text>
+                <Text variant="small" tone="white-70">
                   {item.body}
-                </p>
-              </div>
+                </Text>
+              </BorderCell>
             ))}
-          </div>
-        </div>
-      </section>
+          </BorderGrid>
+        </Stack>
+      </Section>
 
-      {/* CAPABILITIES */}
-      <section className="py-20 lg:py-28" style={{ backgroundColor: "#F2F0F7" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-            <div>
-              <p className="font-mono text-xs uppercase tracking-[0.12em] mb-4" style={{ color: "#60266A" }}>
-                Technical depth
-              </p>
-              <h2
-                className="font-display text-4xl mb-6"
-                style={{ color: "#181F4F", fontWeight: 400 }}
+      <Section tone="mist" padding="lg">
+        <Grid cols="2-lg" gap="xl" equal={false}>
+          <Stack gap="md">
+            <Eyebrow tone="subtle" className="text-[#60266A]">
+              Technical depth
+            </Eyebrow>
+            <Text variant="h2">What our engineers bring to every engagement</Text>
+            <Text variant="body" tone="muted">
+              Our engineers and architects are practitioners with current, hands-on experience in
+              production systems. They are not generalists who can learn on the job at your expense.
+              They bring deep expertise in the platforms and practices that regulated industries
+              require.
+            </Text>
+            <Text variant="body" tone="muted">
+              Every Tech Build engagement is led by a senior engineer or architect who has operated at
+              this level before. They are supported by specialists across the capabilities below.
+            </Text>
+          </Stack>
+          <BorderGrid cols={1} className="border-l border-t border-[#E5E3EE]">
+            {capabilities.map((cap) => (
+              <BorderCell
+                key={cap}
+                className="flex items-center gap-4 border-[#E5E3EE] bg-white p-4"
               >
-                What our engineers bring to every engagement
-              </h2>
-              <p className="font-sans text-base leading-relaxed mb-6" style={{ color: "#65677B" }}>
-                Our engineers and architects are practitioners with current, hands-on experience
-                in production systems. They are not generalists who can learn on the job at your
-                expense. They bring deep expertise in the platforms and practices that regulated
-                industries require.
-              </p>
-              <p className="font-sans text-base leading-relaxed" style={{ color: "#65677B" }}>
-                Every Tech Build engagement is led by a senior engineer or architect who has operated
-                at this level before. They are supported by specialists across the capabilities below.
-              </p>
-            </div>
-            <div className="grid grid-cols-1 gap-0 border-l border-t" style={{ borderColor: "#E5E3EE" }}>
-              {capabilities.map((cap) => (
-                <div key={cap} className="flex items-center gap-4 p-4 border-r border-b" style={{ borderColor: "#E5E3EE", backgroundColor: "#ffffff" }}>
-                  <CheckCircle className="h-4 w-4 flex-shrink-0" style={{ color: "#F85C70" }} />
-                  <span className="font-sans text-sm" style={{ color: "#65677B" }}>
-                    {cap}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+                <CheckCircle className="h-4 w-4 shrink-0 text-[#F85C70]" aria-hidden="true" />
+                <Text variant="small" tone="muted">
+                  {cap}
+                </Text>
+              </BorderCell>
+            ))}
+          </BorderGrid>
+        </Grid>
+      </Section>
 
-      {/* RELATED */}
-      <section className="py-16 lg:py-20 border-b bg-white" style={{ borderColor: "#E5E3EE" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="font-mono text-xs uppercase tracking-[0.12em] mb-8" style={{ color: "#6B6E81" }}>
-            Works alongside
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border-l border-t" style={{ borderColor: "#E5E3EE" }}>
-            {[
-              {
-                tag: "AMP 01",
-                title: "AI Governance",
-                body: "Tech Build engagements involving AI systems are designed inside the governance frameworks we establish through AMP 01. Accountability and auditability are built in from the start.",
-                href: "/ai-governance",
-              },
-              {
-                tag: "AMP 02",
-                title: "AI Implementation",
-                body: "For organisations with an AI strategy already in place, Tech Build delivers the production systems. AMP 02 and AMP 06 frequently run as a single integrated engagement.",
-                href: "/ai-implementation",
-              },
-              {
-                tag: "AMP 03",
-                title: "Structured Delivery",
-                body: "Tech Build engagements are run inside delivery frameworks that provide the governance and accountability structures your organisation requires.",
-                href: "/structured-delivery",
-              },
-            ].map((item) => (
-              <Link href={item.href} key={item.tag} className="group block">
-                <div
-                  className="p-8 border-r border-b h-full flex flex-col transition-colors duration-150"
-                  style={{ borderColor: "#E5E3EE" }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = "#F9F8FC"; }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = "transparent"; }}
+      <Section tone="white" padding="md" className="border-b border-[#E5E3EE]">
+        <Stack gap="lg">
+          <Eyebrow tone="subtle">Works alongside</Eyebrow>
+          <BorderGrid cols={3} className="border-l border-t border-[#E5E3EE]">
+            {related.map((item) => (
+              <BorderCell key={item.tag} className="group border-[#E5E3EE] p-0">
+                <Link
+                  href={item.href}
+                  className="flex h-full flex-col p-8 transition-colors duration-150 hover:bg-[#F9F8FC]"
                 >
-                  <p className="font-mono text-xs uppercase tracking-[0.12em] mb-3" style={{ color: "#F85C70" }}>
-                    {item.tag}
-                  </p>
-                  <h3 className="font-display text-xl mb-3" style={{ color: "#181F4F", fontWeight: 400 }}>
+                  <Eyebrow className="mb-3">{item.tag}</Eyebrow>
+                  <Text variant="h4" className="mb-3">
                     {item.title}
-                  </h3>
-                  <p className="font-sans text-sm leading-relaxed mb-6 flex-1" style={{ color: "#65677B" }}>
+                  </Text>
+                  <Text variant="small" tone="muted" className="mb-6 flex-1">
                     {item.body}
-                  </p>
-                  <span
-                    className="inline-flex items-center gap-2 text-sm font-semibold group-hover:gap-3 transition-all duration-200"
-                    style={{ color: "#F85C70" }}
-                  >
+                  </Text>
+                  <span className="inline-flex items-center gap-2 text-sm font-semibold text-[#F85C70] transition-all duration-200 group-hover:gap-3">
                     Learn more <ArrowRight className="h-3 w-3" />
                   </span>
-                </div>
-              </Link>
+                </Link>
+              </BorderCell>
             ))}
-          </div>
-        </div>
-      </section>
+          </BorderGrid>
+        </Stack>
+      </Section>
 
       <FurtherReading tags={["Digital Transformation", "Governance", "Infrastructure"]} maxArticles={3} />
 
-      {/* CTA */}
-      <section className="py-24 text-center" style={{ backgroundColor: "#60266A" }}>
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <h2
-            className="font-display text-4xl md:text-5xl text-white mb-6"
-            style={{ fontWeight: 400 }}
-          >
-            Ready to Start Building?
-          </h2>
-          <p className="font-sans text-lg max-w-[480px] mx-auto mb-10" style={{ color: "rgba(255,255,255,0.8)" }}>
-            Tell us what you are trying to build and we will tell you honestly what it will take,
-            who you need, and whether we are the right people to help you build it.
-          </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <button
-              onClick={() => onOpenConsultation?.("tech-build")}
-              className="amp-focus-ring-on-navy inline-flex items-center gap-2 px-10 h-12 font-sans font-bold text-base rounded transition-colors duration-200"
-              style={{ backgroundColor: "#F85C70", color: "#181F4F" }}
-              onMouseOver={(e) => ((e.currentTarget as HTMLButtonElement).style.backgroundColor = "#d94a5e")}
-              onMouseOut={(e) => ((e.currentTarget as HTMLButtonElement).style.backgroundColor = "#F85C70")}
-              data-testid="button-cta"
-            >
-              Start a Conversation <ArrowRight className="h-4 w-4" />
-            </button>
-            <Link href="/ai-implementation">
-              <button
-                className="amp-focus-ring-on-navy inline-flex items-center gap-2 px-10 h-12 font-sans font-bold text-base rounded transition-colors duration-200"
-                style={{ border: "1px solid rgba(255,255,255,0.3)", color: "#FFFFFF", backgroundColor: "transparent" }}
-                onMouseOver={(e) => ((e.currentTarget as HTMLButtonElement).style.backgroundColor = "rgba(255,255,255,0.08)")}
-                onMouseOut={(e) => ((e.currentTarget as HTMLButtonElement).style.backgroundColor = "transparent")}
-              >
-                View AI Implementation (AMP 02)
-              </button>
-            </Link>
-          </div>
-          <p className="font-sans text-sm mt-6" style={{ color: "rgba(255,255,255,0.5)" }}>
-            No pitch. No deck. Just a 30-minute call.
-          </p>
-        </div>
-      </section>
-    </div>
+      <CtaBand
+        tone="purple"
+        title="Ready to Start Building?"
+        lead="Tell us what you are trying to build and we will tell you honestly what it will take, who you need, and whether we are the right people to help you build it."
+      >
+        <AmpButton asChild size="xl" data-testid="button-cta">
+          <Link href="/contact">
+            Start a Conversation <ArrowRight className="h-4 w-4" />
+          </Link>
+        </AmpButton>
+        <Text variant="small" tone="white-45">
+          No pitch. No deck. Just a 30-minute call.
+        </Text>
+      </CtaBand>
+    </PageShell>
   );
 });
 
