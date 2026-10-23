@@ -119,7 +119,7 @@ export const gridVariants = cva("grid min-w-0 w-full", {
       xl: "gap-10 lg:gap-16",
     },
     equal: {
-      true: "auto-rows-fr [&>*]:h-full [&>*]:min-h-0",
+      true: "auto-rows-[minmax(0,1fr)] [&>*]:h-full [&>*]:min-h-0",
       false: "",
     },
   },
@@ -130,7 +130,7 @@ export const gridVariants = cva("grid min-w-0 w-full", {
   },
 });
 
-export const textVariants = cva("min-w-0 max-w-full text-balance break-words", {
+export const textVariants = cva("min-w-0 max-w-full break-words [overflow-wrap:anywhere]", {
   variants: {
     variant: {
       display:
@@ -175,7 +175,7 @@ export const textVariants = cva("min-w-0 max-w-full text-balance break-words", {
 });
 
 export const surfaceVariants = cva(
-  "min-w-0 max-w-full overflow-hidden break-words [overflow-wrap:anywhere]",
+  "min-w-0 max-w-full overflow-x-clip break-words [overflow-wrap:anywhere]",
   {
     variants: {
       variant: {
@@ -226,7 +226,7 @@ export const ampButtonVariants = cva(
           "bg-[#F85C70] text-[#181F4F] hover:bg-[#d94a5e] amp-focus-ring-on-navy",
         navy: "bg-[#181F4F] text-white hover:bg-[#12183d] amp-focus-ring-on-light",
         outlineLight:
-          "border border-white/30 bg-transparent text-white hover:bg-white/8 amp-focus-ring-on-navy",
+          "border border-white/30 bg-transparent text-white hover:bg-white/10 amp-focus-ring-on-navy",
         outlineDark:
           "border border-[#181F4F]/30 bg-transparent text-[#181F4F] hover:bg-[#181F4F]/5 amp-focus-ring-on-light",
         ghostLight:
