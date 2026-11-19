@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, memo } from "react";
+import { memo } from "react";
 import Link from "next/link";
 import { CheckCircle, ArrowRight } from "lucide-react";
 import { useReveal } from "@/hooks/use-intersection-observer";
@@ -32,9 +32,9 @@ interface HomeProps {
 }
 
 const proofPoints = [
-  { metric: "40+", label: "Engagements delivered", detail: "Discovery to handover, no open-ended retainers" },
+  { metric: "40+", label: "Products and programmes shipped", detail: "Discover to handover — ideas made real, not open-ended retainers" },
   { metric: "5", label: "Regulated sectors", detail: "Infrastructure, energy, financial services, public sector, technology" },
-  { metric: "FCA · NCSC · EU AI Act", label: "Governance frameworks we work to", detail: "AI oversight aligned to the regulators that apply to you" },
+  { metric: "FCA · NCSC · EU AI Act", label: "Governance that sticks", detail: "Practical AI oversight aligned to the regulators that apply to you" },
   { metric: "UK & EU", label: "Remote-first, on the ground when it matters", detail: "London office at 7 Bell Yard, Porto operations" },
 ];
 
@@ -47,11 +47,11 @@ const sectorLinks = [
   { label: "Technology & Private Sector", href: "/sectors/technology" },
 ];
 
-const ampCards = [
+const capabilityCards = [
   {
-    tag: "AMP 01",
+    tag: "BMK 01",
     title: "AI Governance",
-    subtitle: "Responsible AI for serious organisations",
+    subtitle: "Responsible AI that ships with accountability",
     body: "We build the governance foundations AI adoption requires, before your teams write a line of code or sign a platform contract.",
     bullets: [
       "AI risk frameworks and readiness assessments",
@@ -63,10 +63,10 @@ const ampCards = [
     href: "/ai-governance",
   },
   {
-    tag: "AMP 02",
+    tag: "BMK 02",
     title: "AI Implementation",
-    subtitle: "End-to-end delivery built within your governance",
-    body: "We don't just advise. We embed with your teams and deliver AI capabilities that work inside your existing accountability structures.",
+    subtitle: "Practical AI, delivered inside your governance",
+    body: "We don't just advise. We embed with your teams and ship AI capabilities that work inside your existing accountability structures.",
     bullets: [
       "AI use case identification and prioritisation",
       "Proof of concept through to production",
@@ -77,7 +77,7 @@ const ampCards = [
     href: "/ai-implementation",
   },
   {
-    tag: "AMP 03",
+    tag: "BMK 03",
     title: "Structured Delivery",
     subtitle: "Agile without the chaos",
     body: "Squad-based delivery models designed for organisations where governance, auditability, and structured programme management are non-negotiable.",
@@ -91,10 +91,10 @@ const ampCards = [
     href: "/structured-delivery",
   },
   {
-    tag: "AMP 04",
+    tag: "BMK 04",
     title: "Capability Building",
     subtitle: "Build it in, not bolted on",
-    body: "We build lasting internal capability so your teams can run it themselves twelve months later.",
+    body: "We build lasting internal capability so your teams can run the product and the AI themselves twelve months later.",
     bullets: [
       "Product Owner and Product Manager development programmes",
       "Centre of Excellence design and setup",
@@ -105,10 +105,10 @@ const ampCards = [
     href: "/capability",
   },
   {
-    tag: "AMP 05",
+    tag: "BMK 05",
     title: "Coaching",
     subtitle: "At every level, from board to practitioner",
-    body: "Senior operators coaching leaders, teams and practitioners through technology adoption, organisational transformation and the realities of operating in regulated environments.",
+    body: "Senior operators coaching leaders, teams and practitioners through AI adoption, product delivery and the realities of operating in regulated environments.",
     bullets: [
       "Executive and board-level AI coaching",
       "Delivery lead and programme manager coaching",
@@ -119,9 +119,9 @@ const ampCards = [
     href: "/coaching",
   },
   {
-    tag: "AMP 06",
+    tag: "BMK 06",
     title: "Tech Build",
-    subtitle: "Custom software and platform delivery",
+    subtitle: "Digital products and AI-native platforms",
     body: "We design and build software that solves real problems. From greenfield digital products to platform modernisation and AI-native systems.",
     bullets: [
       "Custom software development",
@@ -139,21 +139,21 @@ const insightCards = [
     tag: "GOVERNANCE",
     readTime: "6 min read",
     title: "The AI Governance Gap in Infrastructure Delivery",
-    body: "Why complex delivery organisations need a different AI governance framework entirely, and why most AI consultancies won't tell you that.",
+    body: "Why complex delivery organisations need a different AI governance framework entirely, and why most AI partners won't tell you that.",
     href: "/insights/ai-governance-gap-infrastructure",
   },
   {
     tag: "AGILE",
     readTime: "8 min read",
     title: "Structured Agile: What It Actually Means for PM-Heavy Industries",
-    body: "Agile without the chaos, a practical guide to adapting squad models for governance-first organisations without losing delivery pace.",
+    body: "Agile without the chaos — a practical guide to adapting squad models for governance-first organisations without losing delivery pace.",
     href: "/insights/structured-agile-pm-industries",
   },
   {
     tag: "AI IMPLEMENTATION",
     readTime: "5 min read",
     title: "Before You Implement AI: A Readiness Checklist for Regulated Industries",
-    body: "The questions your governance board will ask before approving an AI implementation, answered before you're in the room.",
+    body: "The questions your governance board will ask before approving an AI build, answered before you're in the room.",
     href: "/insights/ai-readiness-checklist-regulated-industries",
   },
 ];
@@ -174,7 +174,7 @@ const Home = memo(function Home({ onOpenConsultation, engagements: engagementsPr
   }));
   const [heroRef, heroVisible] = useReveal(0.05);
   const [tensionRef, tensionVisible] = useReveal();
-  const [ampRef, ampVisible] = useReveal();
+  const [capabilitiesRef, capabilitiesVisible] = useReveal();
   const [sectorRef, sectorVisible] = useReveal();
   const [statsRef, statsVisible] = useReveal();
   const [insightsRef, insightsVisible] = useReveal();
@@ -207,21 +207,21 @@ const Home = memo(function Home({ onOpenConsultation, engagements: engagementsPr
                 transition: "opacity 0.7s ease, transform 0.7s ease",
               }}
             >
-              <Eyebrow>A productised digital consultancy</Eyebrow>
+              <Eyebrow>strategy · digital products · technology · ai</Eyebrow>
               <Text variant="display" tone="white">
-                Rigour for serious change, in the work and in the room.
+                Good ideas deserve better than a slide deck. We make them real.
               </Text>
               <Text variant="lead" tone="white-80" className="max-w-[560px]">
-                We partner with leaders accountable for AI, delivery, and the change that has to land in front of a board.
+                bmkrs is a holistic digital product and AI partner. We implement practical AI and ship products with the governance that makes change stick.
               </Text>
               <Stack direction="row-responsive" gap="md" align="start" className="pt-2">
                 <AmpButton asChild data-testid="button-hero-see-how-we-work">
-                  <a href="#how-we-work">
-                    See how we work <ArrowRight className="h-4 w-4" />
-                  </a>
+                  <Link href="/contact">
+                    Let&apos;s build something <ArrowRight className="h-4 w-4" />
+                  </Link>
                 </AmpButton>
                 <AmpButton asChild variant="outlineLight" data-testid="button-hero-talk-to-us">
-                  <Link href="/contact">Talk to us</Link>
+                  <a href="#how-we-work">Explore our work</a>
                 </AmpButton>
               </Stack>
             </Stack>
@@ -236,7 +236,7 @@ const Home = memo(function Home({ onOpenConsultation, engagements: engagementsPr
             >
               <Surface variant="inset" padding="md" radius="md" className="h-full">
                 <Eyebrow tone="white-45" className="mb-5">
-                  Three productised engagements
+                  Three productised engagements under Build
                 </Eyebrow>
                 <ul className="min-w-0 space-y-0">
                   {heroEngagements.map((eng) => (
@@ -281,7 +281,7 @@ const Home = memo(function Home({ onOpenConsultation, engagements: engagementsPr
         className="border-b border-[#E5E3EE]"
       >
         <Eyebrow tone="subtle" className="mb-6">
-          Built for industries where rigour is not optional
+          Built for industries where shipping and governance both matter
         </Eyebrow>
         <dl className="amp-border-grid grid grid-cols-2 lg:grid-cols-4" data-testid="list-home-proof-strip">
           {proofPoints.map((p) => (
@@ -309,7 +309,7 @@ const Home = memo(function Home({ onOpenConsultation, engagements: engagementsPr
         <Stack gap="md" className="mb-14 max-w-[820px]">
           <Eyebrow>How we work with you</Eyebrow>
           <Text variant="h2">
-            Three engagements. Each one named, scoped, and designed to leave your organisation with something concrete in hand.
+            Three named engagements under Build. Each one scoped to leave you with something concrete in hand.
           </Text>
           <Text variant="lead" tone="muted">
             An operating model, an evidence pack, a governance roadmap. Not a slide deck nobody opens again.
@@ -446,7 +446,7 @@ const Home = memo(function Home({ onOpenConsultation, engagements: engagementsPr
         <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 py-5">
           {[
             "10+ Years Delivery Leadership",
-            "Cross-Sector Delivery Experience",
+            "Cross-Sector Product & AI Experience",
             "AI Governance Specialists",
             "Structured Agile Practitioners",
           ].map((item, i) => (
@@ -484,17 +484,17 @@ const Home = memo(function Home({ onOpenConsultation, engagements: engagementsPr
         >
           <Stack gap="md">
             <Text variant="h2" className="mb-2">
-              &ldquo;Most technology consultancies were built for companies like theirs.
+              &ldquo;Most digital partners were built for companies like theirs.
               <br />
               Not yours.&rdquo;
             </Text>
             <Text variant="lead" tone="muted">
-              Your organisation runs on process, auditability, and governance. Agile
-              transformations often ignore that. Technology implementations frequently make it worse.
+              Your organisation runs on process, auditability, and governance. Product builds
+              and AI programmes often ignore that — or make it worse.
             </Text>
             <Text variant="lead" tone="muted">
-              Amplified bridges the gap, embedding new technologies and delivering structured change
-              that respects the way your industry actually works.
+              bmkrs bridges the gap. We implement practical AI and ship digital products with
+              structured change that respects how your industry actually works.
             </Text>
             <Link
               href="/how-we-work"
@@ -528,24 +528,24 @@ const Home = memo(function Home({ onOpenConsultation, engagements: engagementsPr
         </Grid>
       </Section>
 
-      {/* SECTION 4: AMP MODEL */}
-      <Section id="services" ref={ampRef} tone="white" padding="lg">
+      {/* SECTION 4: CAPABILITY MODEL */}
+      <Section id="services" ref={capabilitiesRef} tone="white" padding="lg">
         <Stack
           gap="sm"
           className="mb-16"
           style={{
-            opacity: ampVisible ? 1 : 0,
-            transform: ampVisible ? "translateY(0)" : "translateY(24px)",
+            opacity: capabilitiesVisible ? 1 : 0,
+            transform: capabilitiesVisible ? "translateY(0)" : "translateY(24px)",
             transition: "opacity 0.6s ease, transform 0.6s ease",
           }}
         >
           <Eyebrow tone="subtle">How We Work</Eyebrow>
-          <Text variant="h2">We Have an Amp for That</Text>
+          <Text variant="h2">Capabilities that make ideas real</Text>
         </Stack>
 
         <BorderGrid cols={3} className="border-l border-t border-[#C8C4D8]">
-          {ampCards.map((card, i) => (
-            <AmpCard key={card.tag} card={card} index={i} visible={ampVisible} />
+          {capabilityCards.map((card, i) => (
+            <CapabilityCard key={card.tag} card={card} index={i} visible={capabilitiesVisible} />
           ))}
         </BorderGrid>
       </Section>
@@ -553,19 +553,20 @@ const Home = memo(function Home({ onOpenConsultation, engagements: engagementsPr
       {/* SERVICE SPOTLIGHT */}
       <ServiceSpotlight onOpenConsultation={onOpenConsultation} />
 
-      {/* THE AMP MODEL BAND */}
+      {/* THE BMKRS METHOD BAND */}
       <Section tone="mist" padding="md" className="border-t border-[#DDD9EA]">
         <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-4">
           <Stack gap="xs" className="lg:col-span-1">
             <Eyebrow>Our Methodology</Eyebrow>
-            <Text variant="h4" className="font-semibold">The Amp Model</Text>
+            <Text variant="h4" className="font-semibold">discover → design → build → grow</Text>
           </Stack>
           <div className="flex items-center gap-0 lg:col-span-2">
             {[
-              { label: "Assess", desc: "Understand your current state" },
-              { label: "Implement", desc: "Build it with you, not for you" },
-              { label: "Amplify", desc: "Embed capability, exit with confidence" },
-            ].map((phase, i) => (
+              { label: "Discover", desc: "Understand the problem and the constraints" },
+              { label: "Design", desc: "Shape the product, AI, and operating model" },
+              { label: "Build", desc: "Ship it with you — governance included" },
+              { label: "Grow", desc: "Embed capability, exit with confidence" },
+            ].map((phase, i, arr) => (
               <div key={phase.label} className="flex flex-1 items-center">
                 <Surface
                   variant="plain"
@@ -577,7 +578,7 @@ const Home = memo(function Home({ onOpenConsultation, engagements: engagementsPr
                   <Text variant="small" className="font-semibold">{phase.label}</Text>
                   <Text variant="caption" tone="muted" className="mt-0.5">{phase.desc}</Text>
                 </Surface>
-                {i < 2 && (
+                {i < arr.length - 1 && (
                   <span className="flex-shrink-0 px-1 text-base text-[#C8C4D8]">→</span>
                 )}
               </div>
@@ -614,9 +615,9 @@ const Home = memo(function Home({ onOpenConsultation, engagements: engagementsPr
             Built for organisations that cannot afford to guess.
           </Text>
           <Text variant="lead" tone="muted" className="mb-4 max-w-[760px]">
-            We work across sectors and stages, wherever delivery is complex, accountability is real,
-            and the cost of getting it wrong is measured in more than a missed deadline. The
-            frameworks adapt to your context. The rigour does not.
+            We work across sectors and stages, wherever products and AI must ship into real
+            accountability, and the cost of getting it wrong is measured in more than a missed
+            deadline. The frameworks adapt to your context. The rigour does not.
           </Text>
           <div className="flex flex-wrap gap-x-8 gap-y-4 border-t border-[#E5E3EE] pt-6">
             {sectorLinks.map((s) => (
@@ -684,7 +685,7 @@ const Home = memo(function Home({ onOpenConsultation, engagements: engagementsPr
         >
           <Stack gap="sm">
             <Eyebrow tone="subtle">Insights</Eyebrow>
-            <Text variant="h2">Practical thinking for delivery-led organisations</Text>
+            <Text variant="h2">Practical thinking for product and AI-led organisations</Text>
           </Stack>
 
           <Grid cols={3} gap="lg">
@@ -720,25 +721,25 @@ const Home = memo(function Home({ onOpenConsultation, engagements: engagementsPr
         </Stack>
       </Section>
 
-      {/* SECTION 7B: AMPLIFIED ECOSYSTEM */}
+      {/* SECTION 7B: BMKRS ECOSYSTEM */}
       <Section tone="mist" padding="xl" className="border-t border-[#DDD9EA]">
         <Stack gap="sm" className="mb-16 max-w-[640px]">
-          <Eyebrow tone="subtle">The Amplified Ecosystem</Eyebrow>
+          <Eyebrow tone="subtle">The bmkrs ecosystem</Eyebrow>
           <Text variant="h2">Consulting is only part of the picture</Text>
           <Text variant="lead" tone="muted">
-            Alongside our six consulting service lines, we bring two specialist capabilities that extend what
+            Alongside our six capability lines, we bring two specialist offerings that extend what
             we can do for your organisation from day one.
           </Text>
         </Stack>
 
         <BorderGrid cols="2-lg" className="border-l border-t border-[#C8C4D8]">
           <BorderCell className="p-10">
-            <Eyebrow className="mb-6">AmplifiedTeams</Eyebrow>
+            <Eyebrow className="mb-6">bmkrs Teams</Eyebrow>
             <Text variant="h3" className="mb-4">
               Stable Teams&trade; Framework
             </Text>
             <Text variant="body" tone="muted" className="mb-8">
-              AmplifiedTeams delivers the Stable Teams framework, a structured approach to rebaselining
+              bmkrs Teams delivers the Stable Teams framework — a structured approach to rebaselining
               teams and operations so they achieve sustained high performance. Not a recruitment solution.
               A framework for getting the team you already have to perform at the level you need.
             </Text>
@@ -756,29 +757,27 @@ const Home = memo(function Home({ onOpenConsultation, engagements: engagementsPr
                 </li>
               ))}
             </ul>
-            <a
-              href="https://amplifiedteams.co.uk"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/about/team"
               className="inline-flex items-center gap-2 text-sm font-semibold text-[#F85C70] transition-all duration-200 hover:gap-3"
             >
-              Visit AmplifiedTeams <ArrowRight className="h-3 w-3" />
-            </a>
+              Learn about Stable Teams <ArrowRight className="h-3 w-3" />
+            </Link>
           </BorderCell>
 
           <BorderCell className="p-10">
-            <Eyebrow className="mb-6">ampStore</Eyebrow>
+            <Eyebrow className="mb-6">bmkrs Store</Eyebrow>
             <Text variant="h3" className="mb-4">
               Capability Through Practice
             </Text>
             <Text variant="body" tone="muted" className="mb-8">
-              Learning that sticks. The ampStore is our curated capability catalogue, structured
+              Learning that sticks. The bmkrs Store is our curated capability catalogue — structured
               learning experiences, tools, and frameworks your teams can use immediately. Built for
               practitioners, not classrooms.
             </Text>
             <ul className="mb-8 space-y-3">
               {[
-                "Curated modules aligned to each AMP service line",
+                "Curated modules aligned to each BMK capability line",
                 "AI literacy, governance, agile and delivery fundamentals",
                 "Self-paced and cohort formats",
                 "Assessments that benchmark where your team actually is",
@@ -794,7 +793,7 @@ const Home = memo(function Home({ onOpenConsultation, engagements: engagementsPr
               href="/amp-store"
               className="inline-flex items-center gap-2 text-sm font-semibold text-[#60266A] transition-all duration-200 hover:gap-3"
             >
-              Explore the ampStore <ArrowRight className="h-3 w-3" />
+              Explore the bmkrs Store <ArrowRight className="h-3 w-3" />
             </Link>
           </BorderCell>
         </BorderGrid>
@@ -825,8 +824,8 @@ const Home = memo(function Home({ onOpenConsultation, engagements: engagementsPr
             </Text>
             <Text variant="lead" tone="white-80">
               We are not a silver bullet, and neither are our people. A partnership of seasoned
-              practitioners who come from every kind of background, united by deep experience inside
-              the industries we serve and a refusal to apply off-the-shelf thinking to complex problems.
+              practitioners who ship products and implement AI with deep experience inside the
+              industries we serve — and a refusal to apply off-the-shelf thinking to complex problems.
             </Text>
             <Link
               href="/about/team"
@@ -838,10 +837,10 @@ const Home = memo(function Home({ onOpenConsultation, engagements: engagementsPr
 
           <Stack gap="md">
             {[
-              { initial: "A", role: "Operations & Governance Partner", focus: "AMP 01 / AMP 03" },
-              { initial: "B", role: "Technology & AI Partner", focus: "AMP 02" },
-              { initial: "C", role: "Structured Delivery Partner", focus: "AMP 03" },
-              { initial: "D", role: "Capability & Change Partner", focus: "AMP 04" },
+              { initial: "A", role: "Operations & Governance Partner", focus: "BMK 01 / BMK 03" },
+              { initial: "B", role: "Technology & AI Partner", focus: "BMK 02" },
+              { initial: "C", role: "Structured Delivery Partner", focus: "BMK 03" },
+              { initial: "D", role: "Capability & Change Partner", focus: "BMK 04" },
             ].map((p) => (
               <Link href="/about/team" key={p.initial} className="group block">
                 <div className="flex cursor-pointer items-center gap-5 rounded-lg border border-white/10 px-6 py-4 transition-all duration-200 hover:border-[#F85C70]/45 hover:bg-white/[0.04]">
@@ -864,32 +863,32 @@ const Home = memo(function Home({ onOpenConsultation, engagements: engagementsPr
         </Grid>
       </Section>
 
-      {/* SECTION 8b: WHY AMPLIFIED */}
+      {/* SECTION 8b: WHY BMKRS */}
       <Section tone="mist" padding="lg" className="border-t border-[#DDD9EA]">
         <Grid cols="12" gap="xl" equal={false}>
           <Stack gap="sm" className="lg:col-span-4">
-            <Eyebrow>Why Amplified</Eyebrow>
+            <Eyebrow>Why bmkrs</Eyebrow>
             <Text variant="h2">Smaller, more senior, and more practical.</Text>
           </Stack>
           <Stack gap="lg" className="lg:col-span-7 lg:col-start-6">
             <Text variant="lead" tone="muted">
-              We are smaller and more senior than the Big Four firms, more methodology-led
-              than the build shops, and more practical than the strategy houses. Every
+              We are smaller and more senior than the Big Four firms, more product-led
+              than the strategy houses, and more rigorous than the build shops. Every
               engagement is led by someone with seventeen years or more of delivery experience
               in complex change. The team supporting them is small enough that you will know
               everyone&apos;s name by the end of week one.
             </Text>
             <Text variant="lead" tone="muted">
-              We do not do generic transformation, capability uplift, or staff augmentation
-              under the Amplified brand. We do three things, well, for a specific kind of
-              buyer. Where genuine delivery capacity is what is needed, we run that through
-              AmplifiedTeams as a deliberately separate offering, with a different commercial
+              We do not do generic transformation or staff augmentation under the bmkrs brand.
+              We make ideas real through AI implementation and product build — with governance
+              that sticks. Where genuine delivery capacity is what is needed, we run that through
+              bmkrs Teams as a deliberately separate offering, with a different commercial
               model and a different team.
             </Text>
             <div className="pt-4">
-              <AmpButton asChild data-testid="button-why-amplified-talk">
+              <AmpButton asChild data-testid="button-why-bmkrs-talk">
                 <Link href="/contact">
-                  Talk to us <ArrowRight className="h-4 w-4" />
+                  Let&apos;s build something <ArrowRight className="h-4 w-4" />
                 </Link>
               </AmpButton>
             </div>
@@ -908,17 +907,17 @@ const Home = memo(function Home({ onOpenConsultation, engagements: engagementsPr
       >
         <CtaBand
           tone="purple"
-          title="Ready to Amp Up?"
-          lead="Whether you're starting an AI strategy or untangling a delivery model, we'll give you a straight answer on where to begin."
+          title="Let's build something"
+          lead="Whether you're starting an AI implementation or shipping a digital product, we'll give you a straight answer on where to begin — with the rigour to make it stick."
           className="py-28 lg:py-36"
         >
           <AmpButton asChild data-testid="button-final-cta-conversation">
             <Link href="/contact">
-              Start a Conversation <ArrowRight className="h-4 w-4" />
+              Let&apos;s build something <ArrowRight className="h-4 w-4" />
             </Link>
           </AmpButton>
           <Text variant="small" tone="white-45">
-            No pitch. No deck. Just a 30-minute call.
+            No pitch. No deck. Just a 30-minute call. hello@bmkrs.com
           </Text>
         </CtaBand>
       </div>
@@ -927,12 +926,12 @@ const Home = memo(function Home({ onOpenConsultation, engagements: engagementsPr
   );
 });
 
-function AmpCard({
+function CapabilityCard({
   card,
   index,
   visible,
 }: {
-  card: (typeof ampCards)[0];
+  card: (typeof capabilityCards)[0];
   index: number;
   visible: boolean;
 }) {
