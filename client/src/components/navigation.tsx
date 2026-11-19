@@ -2,14 +2,13 @@
 
 import { useState, memo, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from "@/components/ui/sheet";
+import { Button } from "@/components/ui/button";
 import { Menu, ChevronDown, X, ArrowRight, ShoppingBag, Leaf, Globe, TrendingUp } from "lucide-react";
-import amplifiedLogo from "@assets/amplified-logo-pink-purple.png";
-import amplifiedLogoCoral from "@assets/image_1772532881424.png";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { AmpButton, Container, Eyebrow, Text } from "@/components/system";
+import { brand } from "@/lib/brand";
 
 interface NavigationProps {
   onOpenConsultation: () => void;
@@ -17,25 +16,25 @@ interface NavigationProps {
 
 const consultingServices = [
   {
-    tag: "AMP 01",
+    tag: "BMK 01",
     name: "AI Governance",
     desc: "Responsible AI for regulated industries",
     href: "/ai-governance",
   },
   {
-    tag: "AMP 02",
+    tag: "BMK 02",
     name: "AI Implementation",
     desc: "End-to-end delivery within your governance",
     href: "/ai-implementation",
   },
   {
-    tag: "AMP 03",
+    tag: "BMK 03",
     name: "Structured Delivery",
     desc: "Agile without the chaos",
     href: "/structured-delivery",
   },
   {
-    tag: "AMP 04",
+    tag: "BMK 04",
     name: "Capability Building",
     desc: "Build it in, not bolted on",
     href: "/capability",
@@ -44,19 +43,19 @@ const consultingServices = [
 
 const buildAndCoachServices = [
   {
-    tag: "AMP 05",
+    tag: "BMK 05",
     name: "Coaching",
     desc: "Executive, team and practitioner coaching",
     href: "/coaching",
   },
   {
-    tag: "AMP 06",
+    tag: "BMK 06",
     name: "Tech Build",
     desc: "Custom software, platforms and AI systems",
     href: "/transformation",
   },
   {
-    tag: "AMP 07",
+    tag: "BMK 07",
     name: "Autonomous Organisations",
     desc: "Self-managing, product-led, AI-powered",
     href: "/org-design",
@@ -64,10 +63,10 @@ const buildAndCoachServices = [
 ];
 
 const companyLinks = [
-  { name: "About Amplified", desc: "Our story, values, and why we exist", href: "/about" },
+  { name: `About ${brand.name}`, desc: "Our story, values, and why we exist", href: "/about" },
   { name: "What We Believe", desc: "Five claims about how delivery should work", href: "/what-we-believe" },
   { name: "Our Team", desc: "Meet the partnership", href: "/about/team" },
-  { name: "How We Work", desc: "The Amp Model: Assess, Implement, Amplify", href: "/how-we-work" },
+  { name: "How We Work", desc: "The BMK Model: Assess, Implement, Amplify", href: "/how-we-work" },
   { name: "Careers", desc: "Work with us", href: "/careers" },
   { name: "Insights", desc: "Thinking for delivery-led organisations", href: "/insights" },
 ];
@@ -127,25 +126,15 @@ const Navigation = memo(function Navigation({ onOpenConsultation }: NavigationPr
           {/* Logo */}
           <Link
             href="/"
-            aria-label="Amplified, return to homepage"
-            className="group flex-shrink-0 relative block rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F85C70] focus-visible:ring-offset-4 focus-visible:ring-offset-[#181F4F] w-[130px] h-[26px] sm:w-[155px] sm:h-[31px] lg:w-[180px] lg:h-[36px]"
+            aria-label={`${brand.name}, return to homepage`}
+            className="group flex-shrink-0 relative block rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F85C70] focus-visible:ring-offset-4 focus-visible:ring-offset-[#181F4F]"
           >
-            <Image
-              src={amplifiedLogoCoral}
-              alt="Amplified"
-              priority
-              sizes="180px"
-              className="absolute top-0 left-0 !h-full !w-auto object-contain transition-opacity duration-500 opacity-100 group-hover:opacity-0"
+            <span
+              className="font-sans text-xl sm:text-2xl font-semibold tracking-tight text-white transition-colors duration-200 group-hover:text-[#F85C70]"
               data-testid="logo"
-            />
-            <Image
-              src={amplifiedLogo}
-              alt=""
-              aria-hidden="true"
-              priority
-              sizes="180px"
-              className="absolute top-0 left-0 !h-full !w-auto object-contain transition-opacity duration-500 opacity-0 group-hover:opacity-100"
-            />
+            >
+              {brand.name}
+            </span>
           </Link>
 
           {/* Desktop nav */}
@@ -268,7 +257,7 @@ const Navigation = memo(function Navigation({ onOpenConsultation }: NavigationPr
                       href: "/our-work#amp-store",
                       icon: ShoppingBag,
                       name: "ampStore",
-                      desc: "Practitioner learning platform, aligned to every AMP service line",
+                      desc: "Practitioner learning platform, aligned to every BMK service line",
                     },
                     {
                       href: "/our-work#sustainability",
@@ -397,7 +386,7 @@ const Navigation = memo(function Navigation({ onOpenConsultation }: NavigationPr
               className="!h-9 !border-2 !border-[#F85C70] !px-5 !font-semibold !text-[#F85C70] hover:!bg-[#F85C70] hover:!text-white"
               data-testid="button-get-in-touch"
             >
-              <Link href="/contact">Contact →</Link>
+              <Link href="/contact">{brand.ctaPrimary} →</Link>
             </AmpButton>
           </div>
 
@@ -406,28 +395,27 @@ const Navigation = memo(function Navigation({ onOpenConsultation }: NavigationPr
             <ThemeToggle />
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
-                <button
-                  className={`p-2 rounded transition-colors amp-focus-ring ${linkColor}`}
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className={`rounded amp-focus-ring ${linkColor} hover:bg-white/10`}
                   aria-label={isOpen ? "Close menu" : "Open menu"}
                   aria-expanded={isOpen}
                   data-testid="button-mobile-menu"
                 >
                   {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-                </button>
+                </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-80 sm:w-96 p-0" aria-describedby="mobile-nav-desc">
                 <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
                 <SheetDescription id="mobile-nav-desc" className="sr-only">
-                  Main navigation for Amplified
+                  Main navigation for {brand.name}
                 </SheetDescription>
                 <div className="flex flex-col h-full bg-white">
                   <div className="flex items-center justify-between p-6 border-b border-[#E5E3EE]">
-                    <Image
-                      src={amplifiedLogo}
-                      alt="Amplified"
-                      sizes="120px"
-                      className="!h-8 !w-auto object-contain"
-                    />
+                    <span className="font-sans text-xl font-semibold tracking-tight text-[#181F4F]">
+                      {brand.name}
+                    </span>
                   </div>
 
                   <div className="flex-1 overflow-y-auto p-6 space-y-4">
@@ -626,7 +614,7 @@ const Navigation = memo(function Navigation({ onOpenConsultation }: NavigationPr
                       data-testid="button-mobile-get-in-touch"
                     >
                       <Link href="/contact" onClick={() => setIsOpen(false)}>
-                        Start a Conversation →
+                        {brand.ctaPrimary} →
                       </Link>
                     </AmpButton>
                     <Text variant="caption" tone="subtle" className="mt-3 text-center">

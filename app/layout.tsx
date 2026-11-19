@@ -3,6 +3,7 @@ import { Inter, Fraunces } from 'next/font/google';
 import './globals.css';
 import { AnalyticsScripts, GoogleTagManagerNoScript } from '../client/src/components/analytics-scripts';
 import { Providers } from '../client/src/components/providers';
+import { brand } from '../client/src/lib/brand';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -24,19 +25,18 @@ const organisationJsonLd = {
   '@graph': [
     {
       '@type': 'ProfessionalService',
-      '@id': 'https://amplified.co.uk/#organisation',
-      name: 'Amplified',
-      legalName: 'Amplified Ltd',
-      url: 'https://amplified.co.uk',
+      '@id': `${brand.url}/#organisation`,
+      name: brand.name,
+      legalName: brand.legalName,
+      url: brand.url,
       logo: {
         '@type': 'ImageObject',
-        url: 'https://amplified.co.uk/favicon.png',
+        url: `${brand.url}/favicon.png`,
         width: 200,
         height: 60,
       },
-      description:
-        'Amplified helps organisations embed AI and run complex change without losing the accountability frameworks that make delivery stick. AI governance, structured delivery, and capability building.',
-      foundingDate: '2020',
+      description: brand.description,
+      foundingDate: brand.foundingYear,
       address: {
         '@type': 'PostalAddress',
         streetAddress: '7 Bell Yard',
@@ -46,15 +46,16 @@ const organisationJsonLd = {
       },
       contactPoint: {
         '@type': 'ContactPoint',
-        email: 'hello@amplified.co.uk',
+        email: brand.email,
         contactType: 'customer service',
       },
       areaServed: { '@type': 'Country', name: 'United Kingdom' },
       knowsAbout: [
+        'Digital Products',
+        'Product Strategy',
         'AI Governance',
         'AI Implementation',
         'Responsible AI',
-        'EU AI Act',
         'Technology Implementation',
         'Agile Delivery',
         'Programme Management',
@@ -64,7 +65,7 @@ const organisationJsonLd = {
       ],
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
-        name: 'Amplified Services',
+        name: `${brand.name} Services`,
         itemListElement: [
           { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'AI Governance' } },
           { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'AI Implementation' } },
@@ -74,23 +75,20 @@ const organisationJsonLd = {
           { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Tech Build' } },
         ],
       },
-      sameAs: [
-        'https://www.linkedin.com/company/amplified-consultancy',
-        'https://www.instagram.com/amplifiedco',
-      ],
+      sameAs: [brand.social.linkedin, brand.social.instagram],
     },
     {
       '@type': 'WebSite',
-      '@id': 'https://amplified.co.uk/#website',
-      url: 'https://amplified.co.uk',
-      name: 'Amplified',
-      description: 'AI Governance & Technology Delivery for Complex Change',
-      publisher: { '@id': 'https://amplified.co.uk/#organisation' },
+      '@id': `${brand.url}/#website`,
+      url: brand.url,
+      name: brand.name,
+      description: brand.tagline,
+      publisher: { '@id': `${brand.url}/#organisation` },
       potentialAction: {
         '@type': 'SearchAction',
         target: {
           '@type': 'EntryPoint',
-          urlTemplate: 'https://amplified.co.uk/insights?q={search_term_string}',
+          urlTemplate: `${brand.url}/insights?q={search_term_string}`,
         },
         'query-input': 'required name=search_term_string',
       },
@@ -99,24 +97,21 @@ const organisationJsonLd = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://amplified.co.uk'),
-  title: 'Amplified | Rigour for serious change',
-  description:
-    'Amplified is a productised digital consultancy for leaders responsible for delivery. We help organisations embed AI and run complex change with the accountability frameworks that make delivery stick.',
+  metadataBase: new URL(brand.url),
+  title: brand.metaTitle,
+  description: brand.metaDescription,
   openGraph: {
-    title: 'Amplified | Rigour for serious change',
-    description:
-      'A productised digital consultancy for leaders responsible for delivery. AI implementation and governance, structured delivery, and capability building.',
-    url: 'https://amplified.co.uk',
-    siteName: 'Amplified',
+    title: brand.metaTitle,
+    description: brand.metaDescription,
+    url: brand.url,
+    siteName: brand.name,
     images: [{ url: '/og-image.png' }],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Amplified | Rigour for serious change',
-    description:
-      'A productised digital consultancy for leaders responsible for delivery. AI implementation and governance, structured delivery, and capability building.',
+    title: brand.metaTitle,
+    description: brand.metaDescription,
     images: ['/og-image.png'],
   },
   icons: {

@@ -1,27 +1,25 @@
 import type { Metadata } from 'next';
 import { getAllEngagements } from '../lib/content/engagements';
 import { HomePageClient } from '../client/src/components/home-page-client';
+import { brand } from '../client/src/lib/brand';
 
 export const metadata: Metadata = {
-  title: 'Amplified | Rigour for serious change',
-  description:
-    'A productised digital consultancy for leaders accountable for AI, delivery, and the change that has to land. Three named engagements: Squad Blueprint, The Forge, Delivery Compass.',
+  title: brand.metaTitle,
+  description: brand.metaDescription,
   openGraph: {
-    title: 'Amplified | Rigour for serious change',
-    description:
-      'A productised digital consultancy for leaders accountable for AI, delivery, and the change that has to land. Three named engagements: Squad Blueprint, The Forge, Delivery Compass.',
-    url: 'https://amplified.co.uk/',
-    siteName: 'Amplified',
+    title: brand.metaTitle,
+    description: brand.metaDescription,
+    url: `${brand.url}/`,
+    siteName: brand.name,
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Amplified | Rigour for serious change',
-    description:
-      'A productised digital consultancy for leaders accountable for AI, delivery, and the change that has to land. Scoped to the engagement.',
+    title: brand.metaTitle,
+    description: brand.metaDescription,
   },
   alternates: {
-    canonical: 'https://amplified.co.uk/',
+    canonical: `${brand.url}/`,
   },
 };
 

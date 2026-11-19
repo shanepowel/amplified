@@ -1,12 +1,11 @@
 'use client';
 
 import Link from "next/link";
-import Image from "next/image";
 import { memo } from "react";
 import { Linkedin, Mail } from "lucide-react";
-import { SiInstagram, SiYoutube, SiPinterest } from "react-icons/si";
-import amplifiedLogo from "@assets/amplified-logo-pink-purple.png";
+import { SiInstagram } from "react-icons/si";
 import { Container, Eyebrow, Grid, Stack, Text } from "@/components/system";
+import { brand } from "@/lib/brand";
 
 const Footer = memo(function Footer() {
   return (
@@ -19,24 +18,24 @@ const Footer = memo(function Footer() {
           className="mb-10 border-b border-[#60266A]/30 pb-10 lg:grid-cols-5"
         >
           <div className="lg:col-span-2">
-            <Image
-              src={amplifiedLogo}
-              alt="Amplified"
-              sizes="160px"
-              className="mb-4 !h-10 !w-auto object-contain brightness-200"
+            <Link
+              href="/"
+              className="mb-4 inline-block font-sans text-2xl font-semibold tracking-tight text-white transition-colors hover:text-[#F85C70]"
               data-testid="footer-logo"
-            />
+            >
+              {brand.nameDisplay}
+            </Link>
             <Text variant="small" className="mb-2 text-white/60">
-              Built for industries where rigour is not optional.
+              {brand.tagline}
             </Text>
             <Text variant="small" className="mb-1 text-white/40">
-              London, UK
+              {brand.location}
             </Text>
             <a
-              href="mailto:hello@amplified.co.uk"
+              href={`mailto:${brand.email}`}
               className="text-sm text-white/40 transition-colors hover:text-[#F85C70]"
             >
-              hello@amplified.co.uk
+              {brand.email}
             </a>
           </div>
 
@@ -103,7 +102,7 @@ const Footer = memo(function Footer() {
 
         <Stack direction="row-responsive" gap="md" justify="between" align="center" className="flex-wrap">
           <Text variant="caption" className="text-white/30">
-            © 2026 Amplified Ltd · London, UK · Company No. 08589016
+            © 2026 {brand.legalName} · London, UK
           </Text>
 
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
@@ -126,11 +125,9 @@ const Footer = memo(function Footer() {
 
             <div className="ml-2 flex items-center gap-3">
               {[
-                { href: "https://linkedin.com/company/amplifiedlimited/", label: "LinkedIn", icon: <Linkedin className="h-4 w-4" /> },
-                { href: "https://www.instagram.com/amplifiedguide", label: "Instagram", icon: <SiInstagram className="h-4 w-4" /> },
-                { href: "https://www.youtube.com/@amplifiedguide", label: "YouTube", icon: <SiYoutube className="h-4 w-4" /> },
-                { href: "https://uk.pinterest.com/AmplifiedGuide/", label: "Pinterest", icon: <SiPinterest className="h-4 w-4" /> },
-                { href: "mailto:hello@amplified.co.uk", label: "Email", icon: <Mail className="h-4 w-4" /> },
+                { href: brand.social.linkedin, label: "LinkedIn", icon: <Linkedin className="h-4 w-4" /> },
+                { href: brand.social.instagram, label: "Instagram", icon: <SiInstagram className="h-4 w-4" /> },
+                { href: `mailto:${brand.email}`, label: "Email", icon: <Mail className="h-4 w-4" /> },
               ].map((s) => (
                 <a
                   key={s.label}
