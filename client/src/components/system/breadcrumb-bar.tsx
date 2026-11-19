@@ -16,18 +16,18 @@ export function BreadcrumbBar({
   className?: string;
 }) {
   return (
-    <div className={cn("bg-[#F2F0F7] py-5", className)}>
+    <div className={cn("border-b border-[#E0DBD2] bg-[#F5F2EA] py-5", className)}>
       <Container>
-        <nav aria-label="Breadcrumb" className="font-mono text-xs uppercase tracking-[0.1em]">
-          <ol className="flex min-w-0 flex-wrap items-center gap-2 text-[#6B6E81]">
+        <nav aria-label="Breadcrumb" className="font-sans text-[11px] uppercase tracking-[0.14em]">
+          <ol className="flex min-w-0 flex-wrap items-center gap-2 text-[#7A7468]">
             {items.map((item, index) => {
               const isLast = index === items.length - 1;
               return (
                 <React.Fragment key={`${item.label}-${index}`}>
                   {index > 0 ? <li aria-hidden="true">/</li> : null}
-                  <li className={cn(isLast && "text-[#181F4F]")}>
+                  <li className={cn(isLast && "text-[#1A1A1A]")}>
                     {item.href && !isLast ? (
-                      <Link href={item.href} className="hover:underline">
+                      <Link href={item.href} className="hover:text-[#C75B39]">
                         {item.label}
                       </Link>
                     ) : (

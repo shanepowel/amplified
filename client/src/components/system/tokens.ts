@@ -2,17 +2,18 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 /** Shared brand tokens used by layout and surface components. */
 export const ampTokens = {
-  navy: "#181F4F",
-  purple: "#60266A",
-  coral: "#F85C70",
-  coralHover: "#d94a5e",
-  mist: "#F2F0F7",
-  mistSoft: "#FAF9FD",
-  border: "#E5E3EE",
-  borderStrong: "#C8C4D8",
-  ink: "#181F4F",
-  inkMuted: "#65677B",
-  inkSubtle: "#6B6E81",
+  navy: "#1A1A1A",
+  purple: "#8B3A2A",
+  coral: "#C75B39",
+  coralHover: "#A8482C",
+  mist: "#EFEBE3",
+  mistSoft: "#F7F4EE",
+  border: "#E0DBD2",
+  borderStrong: "#C9C2B6",
+  ink: "#1A1A1A",
+  inkMuted: "#5C584F",
+  inkSubtle: "#7A7468",
+  paper: "#F5F2EA",
   white: "#FFFFFF",
   white70: "rgba(255,255,255,0.70)",
   white75: "rgba(255,255,255,0.75)",
@@ -23,12 +24,12 @@ export const ampTokens = {
   white04: "rgba(255,255,255,0.04)",
 } as const;
 
-export const containerVariants = cva("mx-auto w-full min-w-0 px-4 sm:px-6 lg:px-8", {
+export const containerVariants = cva("mx-auto w-full min-w-0 px-5 sm:px-8 lg:px-10", {
   variants: {
     size: {
-      default: "max-w-[1200px]",
+      default: "max-w-[1120px]",
       narrow: "max-w-[760px]",
-      wide: "max-w-[1400px]",
+      wide: "max-w-[1320px]",
       full: "max-w-none",
     },
   },
@@ -40,18 +41,18 @@ export const containerVariants = cva("mx-auto w-full min-w-0 px-4 sm:px-6 lg:px-
 export const sectionVariants = cva("w-full min-w-0 overflow-x-clip", {
   variants: {
     tone: {
-      white: "bg-white text-[#181F4F]",
-      mist: "bg-[#F2F0F7] text-[#181F4F]",
-      navy: "bg-[#181F4F] text-white",
-      purple: "bg-[#60266A] text-white",
+      white: "bg-[#F5F2EA] text-[#1A1A1A]",
+      mist: "bg-[#EFEBE3] text-[#1A1A1A]",
+      navy: "bg-[#1A1A1A] text-white",
+      purple: "bg-[#8B3A2A] text-white",
       transparent: "bg-transparent",
     },
     padding: {
       none: "py-0",
       sm: "py-10 lg:py-12",
       md: "py-16 lg:py-20",
-      lg: "py-24 lg:py-28",
-      xl: "py-28 lg:py-36",
+      lg: "py-20 lg:py-28",
+      xl: "py-24 lg:py-32",
       hero: "py-24 lg:py-32",
     },
   },
@@ -136,21 +137,21 @@ export const textVariants = cva("min-w-0 max-w-full break-words [overflow-wrap:a
       display:
         "font-display font-normal leading-[1.05] tracking-tight text-4xl sm:text-5xl md:text-6xl lg:text-7xl",
       h1: "font-display font-normal leading-[1.08] tracking-tight text-4xl md:text-5xl lg:text-6xl",
-      h2: "font-display font-normal leading-tight text-3xl md:text-4xl lg:text-5xl",
+      h2: "font-display font-normal leading-tight text-3xl md:text-4xl lg:text-[2.75rem]",
       h3: "font-display font-normal leading-snug text-2xl md:text-3xl",
       h4: "font-display font-normal leading-snug text-xl md:text-2xl",
       lead: "font-sans text-lg leading-relaxed",
       body: "font-sans text-base leading-relaxed",
       small: "font-sans text-sm leading-relaxed",
       caption: "font-sans text-xs leading-relaxed",
-      eyebrow: "font-mono text-xs uppercase tracking-[0.12em]",
-      mono: "font-mono text-xs uppercase tracking-[0.1em]",
+      eyebrow: "font-sans text-[11px] uppercase tracking-[0.14em]",
+      mono: "font-sans text-[11px] uppercase tracking-[0.12em]",
     },
     tone: {
-      ink: "text-[#181F4F]",
-      muted: "text-[#65677B]",
-      subtle: "text-[#6B6E81]",
-      coral: "text-[#F85C70]",
+      ink: "text-[#1A1A1A]",
+      muted: "text-[#5C584F]",
+      subtle: "text-[#7A7468]",
+      coral: "text-[#C75B39]",
       white: "text-white",
       "white-80": "text-white/80",
       "white-75": "text-white/75",
@@ -180,11 +181,11 @@ export const surfaceVariants = cva(
     variants: {
       variant: {
         plain: "bg-transparent",
-        panel: "bg-white",
-        mist: "bg-[#F2F0F7]",
-        navy: "bg-[#181F4F] text-white",
-        purple: "bg-[#60266A] text-white",
-        bordered: "bg-white border border-[#E5E3EE]",
+        panel: "bg-[#F5F2EA]",
+        mist: "bg-[#EFEBE3]",
+        navy: "bg-[#1A1A1A] text-white",
+        purple: "bg-[#8B3A2A] text-white",
+        bordered: "bg-[#F5F2EA] border border-[#E0DBD2]",
         inset: "bg-white/5 border border-white/10",
       },
       padding: {
@@ -202,8 +203,8 @@ export const surfaceVariants = cva(
       },
       border: {
         none: "",
-        hairline: "border border-[#E5E3EE]",
-        strong: "border border-[#C8C4D8]",
+        hairline: "border border-[#E0DBD2]",
+        strong: "border border-[#C9C2B6]",
         white10: "border border-white/10",
         white15: "border border-white/15",
       },
@@ -218,21 +219,21 @@ export const surfaceVariants = cva(
 );
 
 export const ampButtonVariants = cva(
-  "amp-focus-ring inline-flex items-center justify-center gap-2 whitespace-nowrap rounded font-sans font-bold transition-colors duration-200 disabled:pointer-events-none disabled:opacity-50 shrink-0 min-w-0 max-w-full",
+  "amp-focus-ring inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-none font-sans font-medium transition-colors duration-200 disabled:pointer-events-none disabled:opacity-50 shrink-0 min-w-0 max-w-full",
   {
     variants: {
       variant: {
         coral:
-          "bg-[#F85C70] text-[#181F4F] hover:bg-[#d94a5e] amp-focus-ring-on-navy",
-        navy: "bg-[#181F4F] text-white hover:bg-[#12183d] amp-focus-ring-on-light",
+          "bg-[#C75B39] text-white hover:bg-[#A8482C] amp-focus-ring-on-navy",
+        navy: "bg-[#1A1A1A] text-white hover:bg-[#000000] amp-focus-ring-on-light",
         outlineLight:
           "border border-white/30 bg-transparent text-white hover:bg-white/10 amp-focus-ring-on-navy",
         outlineDark:
-          "border border-[#181F4F]/30 bg-transparent text-[#181F4F] hover:bg-[#181F4F]/5 amp-focus-ring-on-light",
+          "border border-[#1A1A1A]/25 bg-transparent text-[#1A1A1A] hover:bg-[#1A1A1A]/5 amp-focus-ring-on-light",
         ghostLight:
           "bg-transparent text-white underline-offset-4 hover:underline amp-focus-ring-on-navy",
         ghostDark:
-          "bg-transparent text-[#181F4F] underline-offset-4 hover:underline amp-focus-ring-on-light",
+          "bg-transparent text-[#1A1A1A] underline-offset-4 hover:underline amp-focus-ring-on-light",
       },
       size: {
         sm: "h-10 px-5 text-sm",
