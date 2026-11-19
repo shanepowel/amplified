@@ -25,7 +25,6 @@ import { Badge } from "@/components/ui/badge";
 import { HexagonDecoration } from "@/components/hexagon-decoration";
 import Image from "next/image";
 import { CheckCircle, ArrowRight, Clock, Users, Shield, Lightbulb, Code2, Zap, Target, Handshake, BookOpen } from "lucide-react";
-import heroImage from "@assets/36_1760470798015.webp";
 import storeImage from "@assets/35_1760470608291.webp";
 import coachImage from "@assets/50_1760470599806.webp";
 import teamsImage from "@assets/68_1760470836673.webp";
@@ -41,7 +40,7 @@ const Services = memo(function Services({ onOpenConsultation }: ServicesProps) {
     {
       id: "amp-store",
       icon: Lightbulb,
-      title: "ampStore",
+      title: "bmkrs Store",
       subtitle: "Capability Amplification Through Learning",
       description: "Amp up your skills instantly. Curated learning experiences that transform knowledge into capability, capability into results. Access expert-led training and resources designed for digital transformation.",
       image: storeImage.src,
@@ -52,12 +51,12 @@ const Services = memo(function Services({ onOpenConsultation }: ServicesProps) {
         "Digital transformation and AI governance content"
       ],
       ideal: "Independent consultants and teams needing capability amplification",
-      cta: "Explore ampStore"
+      cta: "Explore bmkrs Store"
     },
     {
       id: "coaching", 
       icon: Users,
-      title: "AmplifiedGuide",
+      title: "bmkrs Guide",
       subtitle: "Capability Amplification Through Guidance",
       description: "Amp up your leadership capability. Strategic guidance from senior operators who amplify your decision-making and strategic thinking power for business operations enhancement.",
       image: coachImage.src,
@@ -73,7 +72,7 @@ const Services = memo(function Services({ onOpenConsultation }: ServicesProps) {
     {
       id: "teams",
       icon: Shield,
-      title: "AmplifiedTeams", 
+      title: "bmkrs Teams", 
       subtitle: "Capability Amplification Pods",
       description: "Amp up your team capability instantly with our on-demand capability pods. High-quality talent assembled and mobilised within 48 hours, seamlessly integrating into your team and amplifying existing capacity.",
       image: teamsImage.src,
@@ -91,7 +90,7 @@ const Services = memo(function Services({ onOpenConsultation }: ServicesProps) {
     {
       id: "transformation",
       icon: Code2,
-      title: "AmplifiedTech",
+      title: "bmkrs Tech",
       subtitle: "Software Builds & Technical Transformation", 
       description: "Amp up your technology stack and software delivery. Custom-built solutions, modernised platforms, and orchestrated architectures designed for scale, security, and innovation. From legacy systems to cutting-edge implementations.",
       image: transformImage.src,
@@ -144,57 +143,22 @@ const Services = memo(function Services({ onOpenConsultation }: ServicesProps) {
 
   return (
     <PageShell className="bg-background">
-      {/* Hero Section - Premium glassmorphic design */}
-      <Section className="py-24 md:py-32 bg-gradient-to-br from-background via-muted/10 to-primary/5 relative overflow-hidden">
-        <div className="absolute inset-0 modern-pattern opacity-5"></div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <div className="inline-block bg-gradient-to-r from-primary/10 to-accent/10 backdrop-blur-sm px-6 py-2 rounded-full mb-6">
-                <span className="text-sm font-semibold tracking-wide text-primary">Six Ways to Amplify</span>
-              </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6" data-testid="text-services-title">
-                Capability{' '}
-                <span className="text-primary">Amplification</span>
-              </h1>
-              <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed" data-testid="text-services-subtitle">
-                Whatever capability challenge you're facing, <strong className="text-foreground">we have an amp for that</strong>. Six ways to amplify your potential.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button
-                  size="lg"
-                  className="bg-primary text-primary-foreground hover:bg-primary/90"
-                  onClick={() => onOpenConsultation()}
-                  data-testid="button-discover-services"
-                >
-                  Find Your Amp
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  onClick={() => window.location.href = '/#calculator'}
-                  data-testid="button-calculate-potential"
-                >
-                  Calculate Potential
-                </Button>
-              </div>
-            </div>
-            <div className="relative">
-              <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-accent/20 rounded-3xl blur-2xl opacity-50"></div>
-              <Image
-                src={heroImage}
-                alt="Business operations services overview"
-                className="relative w-full h-auto rounded-2xl shadow-2xl crystalline-border"
-                priority
-                fetchPriority="high"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                data-testid="img-services-hero"
-              />
-            </div>
-          </div>
-        </div>
-      </Section>
+      <PageHero
+        eyebrow="What we do"
+        title={<span data-testid="text-services-title">Capability amplification</span>}
+        lead="Whatever capability challenge you are facing, we have an approach for it — six ways to ship products, implement AI, and build lasting delivery strength."
+        contentClassName="max-w-[960px]"
+      >
+        <Stack direction="row-responsive" gap="md">
+          <AmpButton size="md" onClick={() => onOpenConsultation()} data-testid="button-discover-services">
+            Find your approach
+            <ArrowRight className="h-4 w-4" />
+          </AmpButton>
+          <AmpButton asChild size="md" variant="outlineLight" data-testid="button-calculate-potential">
+            <Link href="/#calculator">Calculate potential</Link>
+          </AmpButton>
+        </Stack>
+      </PageHero>
 
       <div className="luminous-divider"></div>
 
@@ -253,7 +217,7 @@ const Services = memo(function Services({ onOpenConsultation }: ServicesProps) {
               <span className="text-sm font-semibold tracking-wide text-primary">Our Services</span>
             </div>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
-              Six Ways to Get <span className="text-primary">Amplified</span>
+              Six Ways to Get <span className="text-primary">bmkrs</span>
             </h2>
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
               From learning and guidance to capability pods, responsible AI, and fixing broken foundations.
@@ -447,7 +411,7 @@ const Services = memo(function Services({ onOpenConsultation }: ServicesProps) {
 
       <div className="luminous-divider"></div>
 
-      {/* Why Amplified Works Section */}
+      {/* Why bmkrs Works Section */}
       <Section className="py-24 md:py-32 bg-gradient-to-br from-muted/20 to-primary/5 relative overflow-hidden">
         <div className="absolute inset-0 modern-pattern opacity-5"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -456,7 +420,7 @@ const Services = memo(function Services({ onOpenConsultation }: ServicesProps) {
               <span className="text-sm font-semibold tracking-wide text-primary">Why Choose Us</span>
             </div>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
-              Why Being <span className="text-primary">Amplified</span> Works
+              Why Being <span className="text-primary">bmkrs</span> Works
             </h2>
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
               We don't just solve problems; we amplify your capability to solve them yourself.
@@ -488,9 +452,9 @@ const Services = memo(function Services({ onOpenConsultation }: ServicesProps) {
               <div className="w-16 h-16 bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
                 <CheckCircle className="h-8 w-8 text-primary" />
               </div>
-              <h3 className="text-lg md:text-xl font-bold text-foreground mb-3">Amplified Innovation</h3>
+              <h3 className="text-lg md:text-xl font-bold text-foreground mb-3">bmkrs Innovation</h3>
               <p className="text-muted-foreground">
-                Our innovations like the Stable Teams® Framework enable digital transformation. When you're amplified, you innovate.
+                Our innovations like the Stable Teams® Framework enable digital transformation. When you're bmkrs, you innovate.
               </p>
             </Card>
           </div>
@@ -502,7 +466,7 @@ const Services = memo(function Services({ onOpenConsultation }: ServicesProps) {
               onClick={() => onOpenConsultation()}
               data-testid="button-start-journey"
             >
-              Get Amplified
+              Get bmkrs
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </div>

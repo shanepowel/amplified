@@ -26,11 +26,11 @@ interface ConsultationModalProps {
 
 const serviceOptions = [
   { value: "discovery", label: "Not sure yet, let's talk" },
-  { value: "amplified-teams", label: "AMP 01/03 | AI Governance or Structured Delivery" },
-  { value: "amplified-transformation", label: "AMP 02 | AI Implementation" },
-  { value: "amplified-learn", label: "AMP 04 | Capability Building" },
-  { value: "amplified-coach", label: "AMP 05 | Coaching" },
-  { value: "full-suite", label: "AMP 06 | Tech Build" },
+  { value: "bmkrs-teams", label: "BMK 01/03 | AI Governance or Structured Delivery" },
+  { value: "bmkrs-transformation", label: "BMK 02 | AI Implementation" },
+  { value: "bmkrs-learn", label: "BMK 04 | Capability Building" },
+  { value: "bmkrs-coach", label: "BMK 05 | Coaching" },
+  { value: "full-suite", label: "BMK 06 | Tech Build" },
 ];
 
 export default function ConsultationModal({ isOpen, onClose, serviceType }: ConsultationModalProps) {
@@ -76,7 +76,7 @@ export default function ConsultationModal({ isOpen, onClose, serviceType }: Cons
     onError: () => {
       toast({
         title: "Something went wrong",
-        description: "Please try again or email us directly at hello@amplified.co.uk",
+        description: "Please try again or email us directly at hello@bmkrs.com",
         variant: "destructive",
       });
     },
@@ -140,7 +140,7 @@ export default function ConsultationModal({ isOpen, onClose, serviceType }: Cons
                 </p>
               </div>
               <p className="font-mono text-xs text-white/35">
-                hello@amplified.co.uk
+                hello@bmkrs.com
               </p>
             </div>
           </div>
@@ -278,7 +278,7 @@ export default function ConsultationModal({ isOpen, onClose, serviceType }: Cons
                 {/* Submit */}
                 <div className="flex flex-col items-start justify-between gap-4 pt-2 sm:flex-row sm:items-center">
                   <p className="max-w-[280px] font-sans text-xs leading-relaxed text-[#9ca3af]">
-                    Your details are sent directly to hello@amplified.co.uk and are not shared with third parties.
+                    Your details are sent directly to hello@bmkrs.com and are not shared with third parties.
                   </p>
                   <AmpButton
                     type="submit"

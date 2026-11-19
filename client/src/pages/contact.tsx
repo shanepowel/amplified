@@ -82,7 +82,7 @@ const Contact = memo(function Contact({ onOpenConsultation: _onOpenConsultation 
     onError: () => {
       toast({
         title: "Failed to Send",
-        description: "Please try again or email us directly at hello@amplified.co.uk",
+        description: "Please try again or email us directly at hello@bmkrs.com",
         variant: "destructive",
       });
     },
@@ -97,10 +97,10 @@ const Contact = memo(function Contact({ onOpenConsultation: _onOpenConsultation 
       <BreadcrumbBar items={[{ label: "Home", href: "/" }, { label: "Contact" }]} />
 
       <PageHero
-        padding="hero"
+        padding="md"
         eyebrow="Get in Touch"
         title={<span data-testid="text-contact-title">Let's talk</span>}
-        lead="Whether you are starting an AI governance programme, rethinking a delivery model, or exploring what the Stable Teams framework could do for your organisation, we will give you a straight answer. No slide decks in the first meeting."
+        lead="Whether you are starting an AI programme, rethinking delivery, or exploring Stable Teams — we will give you a straight answer. No slide decks in the first meeting."
       >
         <Stack direction="row-responsive" gap="md">
           <AmpButton size="md" onClick={() => setShowCalendar(true)} data-testid="button-book-call">
@@ -138,11 +138,11 @@ const Contact = memo(function Contact({ onOpenConsultation: _onOpenConsultation 
               <div>
                 <Eyebrow tone="subtle" className="mb-1">Email</Eyebrow>
                 <a
-                  href="mailto:london@amplified.co.uk"
+                  href="mailto:london@bmkrs.com"
                   className="font-sans text-sm text-[#F85C70] transition-colors duration-200 hover:underline"
                   data-testid="text-email-london"
                 >
-                  london@amplified.co.uk
+                  london@bmkrs.com
                 </a>
               </div>
               <div>
@@ -159,18 +159,18 @@ const Contact = memo(function Contact({ onOpenConsultation: _onOpenConsultation 
             </Stack>
             <Text variant="h2" className="mb-2 text-3xl">Porto</Text>
             <Text variant="small" tone="muted" className="mb-6">
-              Our European technology and delivery hub. Home to our tech build capability and the AmplifiedTeams
+              Our European technology and delivery hub. Home to our tech build capability and the bmkrs Teams
               Stable Teams practice.
             </Text>
             <Stack gap="sm">
               <div>
                 <Eyebrow tone="subtle" className="mb-1">Email</Eyebrow>
                 <a
-                  href="mailto:porto@amplified.co.uk"
+                  href="mailto:porto@bmkrs.com"
                   className="font-sans text-sm text-[#60266A] transition-colors duration-200 hover:underline"
                   data-testid="text-email-porto"
                 >
-                  porto@amplified.co.uk
+                  porto@bmkrs.com
                 </a>
               </div>
               <div>
@@ -300,7 +300,7 @@ const Contact = memo(function Contact({ onOpenConsultation: _onOpenConsultation 
                     <SelectItem value="social">Social Media</SelectItem>
                     <SelectItem value="event">Networking Event</SelectItem>
                     <SelectItem value="article">Blog or Article</SelectItem>
-                    <SelectItem value="previous">Worked with Amplified Previously</SelectItem>
+                    <SelectItem value="previous">Worked with bmkrs Previously</SelectItem>
                     <SelectItem value="other">Other</SelectItem>
                   </SelectContent>
                 </Select>
@@ -354,40 +354,40 @@ const Contact = memo(function Contact({ onOpenConsultation: _onOpenConsultation 
                 For general enquiries not covered by the form, reach the partnership directly.
               </Text>
               <a
-                href="mailto:hi@amplified.co.uk"
+                href="mailto:hi@bmkrs.com"
                 className="inline-flex items-center gap-2 text-sm font-semibold text-[#F85C70] transition-all duration-200 hover:gap-3"
               >
                 <Mail className="h-4 w-4" />
-                hi@amplified.co.uk <ArrowRight className="h-3 w-3" />
+                hi@bmkrs.com <ArrowRight className="h-3 w-3" />
               </a>
             </div>
 
             <div className="border-b border-[#E5E3EE] py-10 pl-10">
               <Eyebrow tone="subtle" className="mb-4">Careers</Eyebrow>
               <Text variant="small" tone="muted" className="mb-4">
-                Interested in joining the partnership or working with AmplifiedTeams?
+                Interested in joining the partnership or working with bmkrs Teams?
                 View open roles or send us a speculative application.
               </Text>
               <a
-                href="mailto:careers@amplified.co.uk"
+                href="mailto:careers@bmkrs.com"
                 className="inline-flex items-center gap-2 text-sm font-semibold text-[#F85C70] transition-all duration-200 hover:gap-3"
               >
                 <Mail className="h-4 w-4" />
-                careers@amplified.co.uk <ArrowRight className="h-3 w-3" />
+                careers@bmkrs.com <ArrowRight className="h-3 w-3" />
               </a>
             </div>
 
             <div className="pl-10 pt-10">
               <Eyebrow tone="subtle" className="mb-4">Partnerships</Eyebrow>
               <Text variant="small" tone="muted" className="mb-4">
-                Working on something that could benefit from the Amplified ecosystem? Let's explore it.
+                Working on something that could benefit from the bmkrs ecosystem? Let's explore it.
               </Text>
               <a
-                href="mailto:partnerships@amplified.co.uk"
+                href="mailto:partnerships@bmkrs.com"
                 className="inline-flex items-center gap-2 text-sm font-semibold text-[#F85C70] transition-all duration-200 hover:gap-3"
               >
                 <Mail className="h-4 w-4" />
-                partnerships@amplified.co.uk <ArrowRight className="h-3 w-3" />
+                partnerships@bmkrs.com <ArrowRight className="h-3 w-3" />
               </a>
             </div>
           </div>

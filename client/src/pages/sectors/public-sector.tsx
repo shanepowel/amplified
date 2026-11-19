@@ -75,7 +75,7 @@ const challenges = [
 
 const publicSectorServiceSchema = createServiceSchema({
   name: 'AI Governance & Technology Delivery for Public Sector Organisations',
-  url: 'https://amplified.co.uk/sectors/public-sector',
+  url: 'https://bmkrs.com/sectors/public-sector',
   description: 'GDS-aligned AI governance, responsible AI frameworks, and structured digital delivery for central government, local authorities, and arm\'s length bodies.',
   keywords: [
     'AI governance public sector UK',
@@ -88,9 +88,9 @@ const publicSectorServiceSchema = createServiceSchema({
 });
 
 const breadcrumbSchema = createBreadcrumbSchema([
-  { name: 'Home', url: 'https://amplified.co.uk/' },
-  { name: 'Sectors', url: 'https://amplified.co.uk/sectors/public-sector' },
-  { name: 'Public Sector', url: 'https://amplified.co.uk/sectors/public-sector' },
+  { name: 'Home', url: 'https://bmkrs.com/' },
+  { name: 'Sectors', url: 'https://bmkrs.com/sectors/public-sector' },
+  { name: 'Public Sector', url: 'https://bmkrs.com/sectors/public-sector' },
 ]);
 
 
@@ -109,7 +109,7 @@ const SectorPublicSector = memo(function SectorPublicSector({ onOpenConsultation
         ]}
       />
 
-      <Section tone="navy" padding="xl" className="relative overflow-hidden" contained={false}>
+      <Section tone="navy" padding="hero" className="relative overflow-hidden" contained={false}>
         <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-[48%] lg:block" aria-hidden="true">
           <Image
             src={heroImg}
@@ -126,12 +126,10 @@ const SectorPublicSector = memo(function SectorPublicSector({ onOpenConsultation
           />
         </div>
         <Container className="relative">
-          <Stack gap="lg" className="max-w-[920px]">
+          <Stack gap="md" className="max-w-[920px]">
             <Eyebrow>Sector Focus</Eyebrow>
-            <Text variant="display" tone="white">
-              AI Governance for
-              <br />
-              Public Sector Organisations
+            <Text variant="h1" tone="white">
+              AI Governance for Public Sector Organisations
             </Text>
             <Text variant="lead" tone="white-75" className="max-w-2xl">
               Public sector AI adoption carries accountability to citizens that private sector organisations
@@ -221,7 +219,7 @@ const SectorPublicSector = memo(function SectorPublicSector({ onOpenConsultation
 
       <Section tone="white" padding="lg">
         <Stack gap="lg">
-          <Eyebrow>What Amplified Delivers</Eyebrow>
+          <Eyebrow>What bmkrs Delivers</Eyebrow>
           <Text variant="h2">Services for public sector organisations</Text>
           <Grid cols={2} gap="md">
             {deliverables.map((item) => (
@@ -291,22 +289,22 @@ const SectorPublicSector = memo(function SectorPublicSector({ onOpenConsultation
               {
                 q: "What is the GDS Service Standard and how does it apply to AI?",
                 a:
-                  "The GDS Service Standard sets out 14 principles for designing and delivering government digital services. For AI systems, the most relevant standards are: understanding users and their needs (including how AI affects them), making the service accessible, testing with real users, and making source code open. Amplified applies the GDS Service Standard to AI delivery specifically, adapting it for systems that use machine learning and automated decision-making.",
+                  "The GDS Service Standard sets out 14 principles for designing and delivering government digital services. For AI systems, the most relevant standards are: understanding users and their needs (including how AI affects them), making the service accessible, testing with real users, and making source code open. bmkrs applies the GDS Service Standard to AI delivery specifically, adapting it for systems that use machine learning and automated decision-making.",
               },
               {
                 q: "How does the UK AI in Public Sector framework affect local authorities?",
                 a:
-                  "The UK Government's AI in Public Sector framework, combined with CDDO guidance, sets expectations for how public bodies should assess, procure, and govern AI systems. Local authorities using AI in benefit assessments, planning decisions, or enforcement must ensure those systems are explainable, regularly audited, and do not produce discriminatory outcomes. Amplified builds governance structures that satisfy these requirements and prepare organisations for DSIT scrutiny.",
+                  "The UK Government's AI in Public Sector framework, combined with CDDO guidance, sets expectations for how public bodies should assess, procure, and govern AI systems. Local authorities using AI in benefit assessments, planning decisions, or enforcement must ensure those systems are explainable, regularly audited, and do not produce discriminatory outcomes. bmkrs builds governance structures that satisfy these requirements and prepare organisations for DSIT scrutiny.",
               },
               {
                 q: "Can public sector organisations use AI in decision-making?",
                 a:
-                  "Yes, but with specific governance requirements. The Algorithmic Transparency Recording Standard (ATRS) requires public sector bodies to publish records of algorithms used in significant decisions. Automated decisions affecting individuals must comply with UK GDPR Article 22. Amplified structures AI governance to ensure all automated and AI-assisted decision-making is properly documented, explainable, and has appropriate human oversight.",
+                  "Yes, but with specific governance requirements. The Algorithmic Transparency Recording Standard (ATRS) requires public sector bodies to publish records of algorithms used in significant decisions. Automated decisions affecting individuals must comply with UK GDPR Article 22. bmkrs structures AI governance to ensure all automated and AI-assisted decision-making is properly documented, explainable, and has appropriate human oversight.",
               },
               {
-                q: "How does Amplified work within public sector procurement constraints?",
+                q: "How does bmkrs work within public sector procurement constraints?",
                 a:
-                  "Amplified is experienced working within public sector procurement frameworks including G-Cloud, DOS/Digital Outcomes, and Crown Commercial Service agreements. Engagements are structured to comply with procurement rules, with clear statement of work, defined deliverables, and milestone-based payment structures. We also support organisations through the business case and approval process before an engagement begins.",
+                  "bmkrs is experienced working within public sector procurement frameworks including G-Cloud, DOS/Digital Outcomes, and Crown Commercial Service agreements. Engagements are structured to comply with procurement rules, with clear statement of work, defined deliverables, and milestone-based payment structures. We also support organisations through the business case and approval process before an engagement begins.",
               },
             ].map((item, i) => (
               <details key={i} className="cursor-pointer rounded-xl border border-[#E5E3EE] bg-white p-6">

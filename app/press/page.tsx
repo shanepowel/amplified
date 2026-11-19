@@ -1,22 +1,22 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Press Centre | Amplified',
-  description: 'Press resources, brand assets, and media information for Amplified.',
+  title: 'Press Centre | bmkrs',
+  description: 'Press resources, brand assets, and media information for bmkrs.',
   openGraph: {
-    title: 'Press Centre | Amplified',
-    description: 'Press resources, brand assets, and media information for Amplified.',
-    url: 'https://amplified.co.uk/press',
-    siteName: 'Amplified',
+    title: 'Press Centre | bmkrs',
+    description: 'Press resources, brand assets, and media information for bmkrs.',
+    url: 'https://bmkrs.com/press',
+    siteName: 'bmkrs',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Press Centre | Amplified',
-    description: 'Press resources, brand assets, and media information for Amplified.',
+    title: 'Press Centre | bmkrs',
+    description: 'Press resources, brand assets, and media information for bmkrs.',
   },
   alternates: {
-    canonical: 'https://amplified.co.uk/press',
+    canonical: 'https://bmkrs.com/press',
   },
 };
 

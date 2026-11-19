@@ -35,7 +35,7 @@ export async function POST(request: NextRequest) {
       company,
     });
 
-    const filename = `amplified-${safeFilename(engagement.name)}-playbook.pdf`;
+    const filename = `bmkrs-${safeFilename(engagement.name)}-playbook.pdf`;
 
     // Sync to HubSpot (fire and forget)
     const nameParts = parsed.name.trim().split(/\s+/);

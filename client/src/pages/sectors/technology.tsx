@@ -91,15 +91,15 @@ const engagementPhases = [
 
 const faqs = [
   {
-    q: "Does Amplified only work with regulated industries, or do you work with technology companies too?",
-    a: "Amplified works with technology companies, scale-ups, and private sector organisations as well as regulated industries. Our methods and governance frameworks are designed for environments where rigour matters, whether that rigour is imposed by a regulator or by the demands of operating at scale. Many of our technology clients are moving into regulated markets, building AI-native products, or operating inside enterprises where delivery accountability has become critical.",
+    q: "Does bmkrs only work with regulated industries, or do you work with technology companies too?",
+    a: "bmkrs works with technology companies, scale-ups, and private sector organisations as well as regulated industries. Our methods and governance frameworks are designed for environments where rigour matters, whether that rigour is imposed by a regulator or by the demands of operating at scale. Many of our technology clients are moving into regulated markets, building AI-native products, or operating inside enterprises where delivery accountability has become critical.",
   },
   {
     q: "What does AI governance look like for a technology company that is not yet in a regulated market?",
     a: "For technology companies not yet subject to external regulation, AI governance is primarily about internal accountability, product risk management, and preparing for the regulatory landscape you will inevitably enter. We help you build governance frameworks that are proportionate to your current context but designed to scale into the FCA, ICO, EU AI Act, or sector-specific frameworks your product trajectory will require.",
   },
   {
-    q: "We already have strong engineering processes. What does Amplified add?",
+    q: "We already have strong engineering processes. What does bmkrs add?",
     a: "Most strong engineering organisations have excellent delivery processes at the squad or product level. The gaps we address are typically governance above the squad level: how AI decisions are made and documented, how accountability flows from engineering to product to board, how you demonstrate responsible AI use to enterprise customers, regulators, or investors, and how you build the leadership capability to govern technology at scale.",
   },
   {
@@ -107,7 +107,7 @@ const faqs = [
     a: "Yes. We do not impose delivery frameworks that conflict with engineering culture. We work within your existing rituals and tooling, identifying the governance and accountability gaps without adding unnecessary process. Our goal is to make your teams more effective, not to slow them down with frameworks built for a different context.",
   },
   {
-    q: "What does a Tech Build engagement with Amplified look like?",
+    q: "What does a Tech Build engagement with bmkrs look like?",
     a: "Tech Build engagements start with a clear brief: what you need to build, the constraints you are working within, and the accountability you need to maintain. We build alongside your team or independently depending on your preference, with a strong emphasis on architecture that is maintainable and governance that satisfies your enterprise and regulatory obligations. We document as we go so the handover is clean.",
   },
 ];
@@ -118,9 +118,9 @@ const SectorTechnology = memo(function SectorTechnology({ onOpenConsultation }: 
       <StructuredData data={technologySectorFAQSchema} id="technology-faq-schema" />
       <StructuredData
         data={createBreadcrumbSchema([
-          { name: "Home", url: "https://amplified.co.uk/" },
-          { name: "Sectors", url: "https://amplified.co.uk/sectors/technology" },
-          { name: "Technology & Private Sector", url: "https://amplified.co.uk/sectors/technology" },
+          { name: "Home", url: "https://bmkrs.com/" },
+          { name: "Sectors", url: "https://bmkrs.com/sectors/technology" },
+          { name: "Technology & Private Sector", url: "https://bmkrs.com/sectors/technology" },
         ])}
         id="technology-breadcrumb"
       />
@@ -174,7 +174,7 @@ const SectorTechnology = memo(function SectorTechnology({ onOpenConsultation }: 
             it is disruptive.
           </Text>
           <Text variant="lead" tone="muted">
-            Amplified works with technology companies, scale-ups, and private sector
+            bmkrs works with technology companies, scale-ups, and private sector
             organisations that want to build accountability frameworks before they become
             urgent, and delivery structures that scale beyond the founding team's ability
             to hold everything in their heads.

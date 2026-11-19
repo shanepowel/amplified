@@ -79,10 +79,10 @@ export default function AskAmplified({ engagementSlug, engagementName }: Props) 
           className="!fixed bottom-6 right-6 z-40 !h-12 !rounded-full !px-5 shadow-lg transition-transform duration-200 hover:scale-[1.03]"
           onClick={() => setOpen(true)}
           data-testid="button-ask-amplified-open"
-          aria-label={`Ask Amplified about ${engagementName}`}
+          aria-label={`Ask bmkrs about ${engagementName}`}
         >
           <Sparkles className="h-4 w-4 text-[#F85C70]" />
-          Ask Amplified
+          Ask bmkrs
         </AmpButton>
       )}
 
@@ -91,13 +91,13 @@ export default function AskAmplified({ engagementSlug, engagementName }: Props) 
         <div
           className="fixed bottom-6 right-6 z-50 flex max-h-[min(640px,calc(100vh-48px))] w-[min(420px,calc(100vw-32px))] flex-col rounded-lg border border-[#E5E3EE] bg-white shadow-2xl"
           role="dialog"
-          aria-label="Ask Amplified assistant"
+          aria-label="Ask bmkrs assistant"
           data-testid="dialog-ask-amplified"
         >
           {/* Header */}
           <div className="flex items-start justify-between rounded-t-lg bg-[#181F4F] p-4">
             <div>
-              <Eyebrow className="mb-1 !text-[10px]">Ask Amplified</Eyebrow>
+              <Eyebrow className="mb-1 !text-[10px]">Ask bmkrs</Eyebrow>
               <Text variant="small" tone="white" className="font-display !text-base font-normal">
                 Questions about {engagementName}?
               </Text>
@@ -106,7 +106,7 @@ export default function AskAmplified({ engagementSlug, engagementName }: Props) 
               type="button"
               onClick={() => setOpen(false)}
               className="amp-focus-ring-on-navy rounded p-1 transition-colors hover:bg-white/10"
-              aria-label="Close Ask Amplified"
+              aria-label="Close Ask bmkrs"
               data-testid="button-ask-amplified-close"
             >
               <X className="h-5 w-5 text-white" />

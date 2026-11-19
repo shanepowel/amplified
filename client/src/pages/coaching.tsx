@@ -92,19 +92,19 @@ const whoWeCoach = [
 
 const related = [
   {
-    tag: "AMP 04",
+    tag: "BMK 04",
     title: "Capability Building",
     body: "Structured programmes that build lasting internal capability alongside live delivery. Where coaching develops the individual, capability building develops the organisation.",
     href: "/capability",
   },
   {
-    tag: "AMP 03",
+    tag: "BMK 03",
     title: "Structured Delivery",
     body: "Squad-based delivery models that give practitioners the context in which coaching conversations become immediately applicable.",
     href: "/structured-delivery",
   },
   {
-    tag: "AMP 01",
+    tag: "BMK 01",
     title: "AI Governance",
     body: "AI literacy coaching is often most effective alongside a governance framework that makes the learning immediately practical.",
     href: "/ai-governance",
@@ -113,20 +113,20 @@ const related = [
 
 const faqs = [
   {
-    q: "Who is Amplified teaching and coaching designed for?",
-    a: "Amplified teaching and coaching is designed for delivery directors, programme managers, and CIOs who are leading technology change in regulated industries, either for the first time or as experienced leaders navigating a particularly complex programme. The most common coaching clients are senior professionals who are technically capable in their domain but need a thinking partner with specific experience in technology delivery, AI governance, or leading change in regulated contexts.",
+    q: "Who is bmkrs teaching and coaching designed for?",
+    a: "bmkrs teaching and coaching is designed for delivery directors, programme managers, and CIOs who are leading technology change in regulated industries, either for the first time or as experienced leaders navigating a particularly complex programme. The most common coaching clients are senior professionals who are technically capable in their domain but need a thinking partner with specific experience in technology delivery, AI governance, or leading change in regulated contexts.",
   },
   {
-    q: "How is Amplified coaching different from executive coaching?",
-    a: "General executive coaching focuses on leadership behaviour and personal development. Amplified coaching combines that with deep subject matter expertise in technology delivery and AI governance. Clients work through real delivery challenges, governance decisions, and stakeholder situations with a coach who has led similar programmes. The sessions are structured around your specific context, not a generic coaching framework.",
+    q: "How is bmkrs coaching different from executive coaching?",
+    a: "General executive coaching focuses on leadership behaviour and personal development. bmkrs coaching combines that with deep subject matter expertise in technology delivery and AI governance. Clients work through real delivery challenges, governance decisions, and stakeholder situations with a coach who has led similar programmes. The sessions are structured around your specific context, not a generic coaching framework.",
   },
   {
     q: "What does a typical coaching engagement look like?",
-    a: "A structured coaching engagement runs for three to six months, with fortnightly sessions of sixty to ninety minutes. Each session is centred on a live challenge the client is navigating. Between sessions, clients have access to resources, frameworks, and tools relevant to their situation. Amplified also offers cohort coaching for teams of delivery leaders within the same organisation, which builds shared language and mutual accountability.",
+    a: "A structured coaching engagement runs for three to six months, with fortnightly sessions of sixty to ninety minutes. Each session is centred on a live challenge the client is navigating. Between sessions, clients have access to resources, frameworks, and tools relevant to their situation. bmkrs also offers cohort coaching for teams of delivery leaders within the same organisation, which builds shared language and mutual accountability.",
   },
   {
     q: "Can coaching help with a specific programme crisis or challenge?",
-    a: "Yes. Amplified offers intensive coaching for programme leaders navigating a specific crisis, major decision, or difficult stakeholder situation. These engagements are shorter and more focused, typically four to eight sessions over four to six weeks, designed to give a leader the thinking support and practical frameworks they need to navigate a specific challenge rather than a sustained development programme.",
+    a: "Yes. bmkrs offers intensive coaching for programme leaders navigating a specific crisis, major decision, or difficult stakeholder situation. These engagements are shorter and more focused, typically four to eight sessions over four to six weeks, designed to give a leader the thinking support and practical frameworks they need to navigate a specific challenge rather than a sustained development programme.",
   },
 ];
 
@@ -136,40 +136,25 @@ const Coaching = memo(function Coaching({ onOpenConsultation }: CoachingProps) {
       <ServiceSchema
         name="Coaching"
         description="Executive, team, and practitioner coaching from senior operators who have held the roles they coach. Designed for leaders and delivery professionals in regulated industries."
-        url="https://amplified.co.uk/coaching"
+        url="https://bmkrs.com/coaching"
       />
       <StructuredData data={coachingFAQSchema} id="coaching-faq-schema" />
       <StructuredData
         data={createBreadcrumbSchema([
-          { name: "Home", url: "https://amplified.co.uk/" },
-          { name: "Coaching", url: "https://amplified.co.uk/coaching" },
+          { name: "Home", url: "https://bmkrs.com/" },
+          { name: "Coaching", url: "https://bmkrs.com/coaching" },
         ])}
         id="coaching-breadcrumb"
       />
       <BreadcrumbBar items={[{ label: "Home", href: "/" }, { label: "Coaching" }]} />
 
       <PageHero
-        eyebrow="AMP 05"
+        eyebrow="BMK 05"
         title={<span data-testid="text-page-title">Teaching &amp; Coaching</span>}
-        lead="Senior operators teaching and coaching leaders, delivery professionals, and practitioners through the realities of technology adoption and organisational transformation in regulated environments."
+        lead="Senior operators coaching leaders and practitioners through technology adoption in regulated environments — from experience, not theory."
       >
-        <Text variant="lead" tone="white-75" className="max-w-[520px]">
-          We coach from experience, not from theory. Every coach at Amplified has operated inside the
-          environments our clients work in.
-        </Text>
-        <Surface
-          variant="inset"
-          padding="md"
-          radius="sm"
-          className="max-w-[520px] border-l-4 border-[#F85C70] bg-[rgba(248,92,112,0.08)]"
-        >
-          <Text variant="h4" tone="white" className="font-normal italic">
-            &ldquo;The most useful coaching conversation is the one that asks the question you were
-            already avoiding.&rdquo;
-          </Text>
-        </Surface>
         {onOpenConsultation ? (
-          <AmpButton onClick={() => onOpenConsultation("coaching")}>
+          <AmpButton size="md" onClick={() => onOpenConsultation("coaching")}>
             Start a Conversation <ArrowRight className="h-4 w-4" />
           </AmpButton>
         ) : null}
@@ -179,7 +164,7 @@ const Coaching = memo(function Coaching({ onOpenConsultation }: CoachingProps) {
         <div className="relative mx-auto hidden aspect-[4/3] max-w-[720px] overflow-hidden rounded lg:block">
           <Image
             src={coachImage}
-            alt="Amplified coaching in practice"
+            alt="bmkrs coaching in practice"
             fill
             className="object-cover"
             priority

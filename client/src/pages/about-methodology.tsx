@@ -41,7 +41,7 @@ const phases = [
     number: "02",
     label: "Implement",
     title: "We build it with you, not for you.",
-    body: "Amplified practitioners embed inside your teams. We do not parachute in, hand over a report, and leave. We deliver alongside your people, inside your accountability structures, producing outputs that work in your governance environment.",
+    body: "bmkrs practitioners embed inside your teams. We do not parachute in, hand over a report, and leave. We deliver alongside your people, inside your accountability structures, producing outputs that work in your governance environment.",
     outputs: [
       "AI capability, governance framework, or operating model, fully built and tested",
       "Custom software, platform, or AI system delivered to production",
@@ -101,7 +101,7 @@ const principles = [
 const AboutMethodology = memo(function AboutMethodology({ onOpenConsultation }: AboutMethodologyProps) {
   return (
     <PageShell className="bg-[#FAFAF9]">
-      <Section tone="navy" padding="hero" className="pt-40 pb-28">
+      <Section tone="navy" padding="hero">
         <Link href="/how-we-work">
           <span className="mb-12 inline-flex cursor-pointer items-center gap-2 text-sm text-white/45">
             <ArrowLeft className="h-4 w-4" />
@@ -241,12 +241,12 @@ const AboutMethodology = memo(function AboutMethodology({ onOpenConsultation }: 
           </Stack>
           <Stack gap="sm">
             {[
-              { tag: "AMP 01", name: "AI Governance", href: "/ai-governance" },
-              { tag: "AMP 02", name: "AI Implementation", href: "/ai-governance" },
-              { tag: "AMP 03", name: "Structured Delivery", href: "/structured-delivery" },
-              { tag: "AMP 04", name: "Capability Building", href: "/capability" },
-              { tag: "AMP 05", name: "Coaching", href: "/coaching" },
-              { tag: "AMP 06", name: "Tech Build", href: "/transformation" },
+              { tag: "BMK 01", name: "AI Governance", href: "/ai-governance" },
+              { tag: "BMK 02", name: "AI Implementation", href: "/ai-governance" },
+              { tag: "BMK 03", name: "Structured Delivery", href: "/structured-delivery" },
+              { tag: "BMK 04", name: "Capability Building", href: "/capability" },
+              { tag: "BMK 05", name: "Coaching", href: "/coaching" },
+              { tag: "BMK 06", name: "Tech Build", href: "/transformation" },
             ].map((service) => (
               <Link key={service.tag} href={service.href}>
                 <div

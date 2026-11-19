@@ -3,7 +3,7 @@ import { pgTable, text, varchar, integer, timestamp, decimal } from "drizzle-orm
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
-export const serviceInterestEnum = ["amplified-learn", "amplified-coach", "amplified-teams", "amplified-transformation", "full-suite", "discovery"] as const;
+export const serviceInterestEnum = ["bmkrs-learn", "bmkrs-coach", "bmkrs-teams", "bmkrs-transformation", "full-suite", "discovery"] as const;
 export type ServiceInterest = typeof serviceInterestEnum[number];
 
 export const customerPersonaEnum = ["contractor-pete", "sme-jill", "enterprise-sally", "other"] as const;

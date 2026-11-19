@@ -59,26 +59,26 @@ const StructuredDelivery = memo(function StructuredDelivery({
 }: StructuredDeliveryProps) {
   return (
     <PageShell>
-      <ServiceSchema name="Structured Delivery" description="Squad-based delivery models designed for PM-heavy industries. Agile operating models, hybrid frameworks, PMO integration for infrastructure, energy, financial services and public sector." url="https://amplified.co.uk/structured-delivery" />
+      <ServiceSchema name="Structured Delivery" description="Squad-based delivery models designed for PM-heavy industries. Agile operating models, hybrid frameworks, PMO integration for infrastructure, energy, financial services and public sector." url="https://bmkrs.com/structured-delivery" />
       <StructuredData data={structuredDeliveryFAQSchema} id="structured-delivery-faq-schema" />
-      <StructuredData data={createBreadcrumbSchema([{ name: 'Home', url: 'https://amplified.co.uk/' }, { name: 'Structured Delivery', url: 'https://amplified.co.uk/structured-delivery' }])} id="structured-delivery-breadcrumb" />
+      <StructuredData data={createBreadcrumbSchema([{ name: 'Home', url: 'https://bmkrs.com/' }, { name: 'Structured Delivery', url: 'https://bmkrs.com/structured-delivery' }])} id="structured-delivery-breadcrumb" />
       <BreadcrumbBar items={[{ label: "Home", href: "/" }, { label: "Structured Delivery" }]} />
 
-      <Section tone="navy" padding="xl" className="relative overflow-hidden" contained={false}>
+      <Section tone="navy" padding="hero" className="relative overflow-hidden" contained={false}>
         <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-[48%] lg:block" aria-hidden="true">
           <Image src={heroImg} alt="" aria-hidden="true" fill className="object-cover opacity-30" priority sizes="48vw" />
           <div className="absolute inset-0 bg-gradient-to-r from-[#181F4F] via-[#181F4F]/80 to-transparent" />
         </div>
         <Container className="relative">
-          <Stack gap="lg" className="max-w-[720px]">
-            <Eyebrow>AMP 03</Eyebrow>
-            <Text variant="display" tone="white">Structured Delivery</Text>
+          <Stack gap="md" className="max-w-[720px]">
+            <Eyebrow>BMK 03</Eyebrow>
+            <Text variant="h1" tone="white">Structured Delivery</Text>
             <Text variant="h3" tone="coral">
               Agile done right for industries where governance isn&apos;t optional.
             </Text>
             <Text variant="lead" tone="white-75">
               Most agile transformations fail in project-driven organisations because they ignore the
-              governance structures those organisations were built on. Amplified&apos;s delivery model
+              governance structures those organisations were built on. bmkrs&apos;s delivery model
               bridges both worlds, agile pace and flexibility, with the accountability and
               auditability your industry requires.
             </Text>

@@ -374,16 +374,16 @@ export function analyzeSeoContent(rawContent: string): SEOReport {
   const topTopic = priorityKeywords[0] || 'ai governance';
   const recommendations = {
     meta_tags: {
-      title: `Amplified | ${topTopic.replace(/\b\w/g, (char) => char.toUpperCase())} for Regulated Industries`,
+      title: `bmkrs | ${topTopic.replace(/\b\w/g, (char) => char.toUpperCase())} for Regulated Industries`,
       description:
-        'Amplified helps delivery leaders embed AI and run complex change with accountable frameworks. Productised engagements for regulated industries.',
-      og_title: `Amplified | ${topTopic.replace(/\b\w/g, (char) => char.toUpperCase())}`,
+        'bmkrs helps delivery leaders embed AI and run complex change with accountable frameworks. Productised engagements for regulated industries.',
+      og_title: `bmkrs | ${topTopic.replace(/\b\w/g, (char) => char.toUpperCase())}`,
       og_description:
         'Productised digital consultancy for leaders accountable for AI, delivery, and the change that has to land.',
     },
     suggested_headings: [
       `Why ${topTopic} matters for regulated delivery teams`,
-      'How Amplified approaches accountable AI and digital change',
+      'How bmkrs approaches accountable AI and digital change',
       'What you receive at the end of the engagement',
       'Who this work is for, and who it is not for',
     ],
@@ -395,14 +395,14 @@ export function analyzeSeoContent(rawContent: string): SEOReport {
     ],
     faqs: [
       {
-        question: 'What makes Amplified different from a traditional consultancy?',
+        question: 'What makes bmkrs different from a traditional consultancy?',
         answer:
-          'Amplified runs named, scoped engagements with fixed timelines and tangible artefacts, rather than open-ended advisory retainers.',
+          'bmkrs runs named, scoped engagements with fixed timelines and tangible artefacts, rather than open-ended advisory retainers.',
       },
       {
         question: 'Do you work with regulated industries?',
         answer:
-          'Yes. Amplified specialises in infrastructure, energy, financial services, public sector, and technology organisations where rigour is essential.',
+          'Yes. bmkrs specialises in infrastructure, energy, financial services, public sector, and technology organisations where rigour is essential.',
       },
       {
         question: 'Can you help with AI governance and implementation together?',

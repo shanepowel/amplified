@@ -68,41 +68,39 @@ const successItems = [
 const ecosystemPaths = [
   {
     tag: "Consulting",
-    title: "AMP 01 to AMP 06",
+    title: "BMK 01 to BMK 06",
     body: "Governance, implementation, structured delivery, capability building, coaching, and tech build across five sectors.",
     cta: "See the services",
     href: "/how-we-work",
   },
   {
     tag: "Stable Teams",
-    title: "AmplifiedTeams",
+    title: "bmkrs Teams",
     body: "Roles delivering the Stable Teams framework inside client organisations. Helping teams rebaseline and achieve sustained high performance.",
-    cta: "Visit AmplifiedTeams",
-    href: "https://amplifiedteams.co.uk",
+    cta: "Visit bmkrs Teams",
+    href: "https://bmkrs.com",
     external: true,
   },
   {
     tag: "Learning",
-    title: "ampStore",
+    title: "bmkrs Store",
     body: "Curriculum design, learning experience development, and practitioner coaching for regulated-industry capability programmes.",
-    cta: "Explore ampStore",
+    cta: "Explore bmkrs Store",
     href: "/amp-store",
   },
 ];
 
-const talentHRJobsUrl = "https://jobs.talenthr.io/amplified/";
+const talentHRJobsUrl = "https://jobs.talenthr.io/bmkrs/";
 
 const Careers = memo(function Careers({ onOpenConsultation }: CareersProps) {
   return (
     <PageShell className="bg-[#FAFAF9]">
-      <Section tone="navy" padding="hero" className="pt-32 lg:pt-40">
+      <Section tone="navy" padding="hero">
         <Grid cols="2-lg" gap="xl" equal={false} className="items-center">
-          <Stack gap="lg">
+          <Stack gap="md">
             <Eyebrow>Join the Partnership</Eyebrow>
-            <Text variant="display" tone="white" data-testid="text-careers-title">
-              This is what
-              <br />
-              we are building.
+            <Text variant="h1" tone="white" data-testid="text-careers-title">
+              This is what we are building.
             </Text>
             <Text variant="lead" tone="white-70">
               A management consultancy that works across infrastructure, energy, financial services,
@@ -135,7 +133,7 @@ const Careers = memo(function Careers({ onOpenConsultation }: CareersProps) {
             <div className="aspect-[4/3] overflow-hidden rounded">
               <img
                 src={peopleWorkingImage.src}
-                alt="Amplified team members at work"
+                alt="bmkrs team members at work"
                 className="h-full w-full object-cover"
                 data-testid="img-careers-hero"
               />
@@ -179,9 +177,9 @@ const Careers = memo(function Careers({ onOpenConsultation }: CareersProps) {
             />
             <Grid cols={2} gap="none" equal={false} className="border-l border-t border-[#DDD9EA]">
               {[
-                { icon: Users, label: "AmplifiedTeams", desc: "Stable Teams and Ops as a Service" },
-                { icon: BookOpen, label: "ampStore", desc: "Curated learning and capability programmes" },
-                { icon: Zap, label: "Six AMP Lines", desc: "Governance, delivery, coaching, build" },
+                { icon: Users, label: "bmkrs Teams", desc: "Stable Teams and Ops as a Service" },
+                { icon: BookOpen, label: "bmkrs Store", desc: "Curated learning and capability programmes" },
+                { icon: Zap, label: "Six BMK Lines", desc: "Governance, delivery, coaching, build" },
                 { icon: CheckCircle, label: "Five Sectors", desc: "Infrastructure, energy, finance, public, private" },
               ].map((item, i) => {
                 const Icon = item.icon;
@@ -271,10 +269,10 @@ const Careers = memo(function Careers({ onOpenConsultation }: CareersProps) {
       <Section tone="mist" padding="lg" className="border-t border-[#DDD9EA]">
         <Stack gap="md" className="mb-14 max-w-[540px]">
           <Eyebrow>Where You Could Work</Eyebrow>
-          <Text variant="h2">The Amplified Ecosystem</Text>
+          <Text variant="h2">The bmkrs Ecosystem</Text>
           <Text variant="body" tone="muted">
-            Roles span our six AMP consulting service lines, our Stable Teams capability through AmplifiedTeams,
-            and learning design through the ampStore.
+            Roles span our six BMK consulting service lines, our Stable Teams capability through bmkrs Teams,
+            and learning design through the bmkrs Store.
           </Text>
         </Stack>
 

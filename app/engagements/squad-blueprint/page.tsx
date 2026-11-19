@@ -4,22 +4,22 @@ import { getEngagementBySlug } from '../../../lib/content/engagements';
 import EngagementDetailClient from '../../../client/src/components/engagement-detail-client';
 
 export const metadata: Metadata = {
-  title: 'Squad Blueprint | Operating Model Engagement | Amplified',
+  title: 'Squad Blueprint | Operating Model Engagement | bmkrs',
   description: 'A six-week engagement for delivery directors running engineering teams of fifty or more. Operating model redesign with named accountabilities and a 90-day plan.',
   openGraph: {
-    title: 'Squad Blueprint | Operating Model Engagement | Amplified',
+    title: 'Squad Blueprint | Operating Model Engagement | bmkrs',
     description: 'A six-week engagement for delivery directors running engineering teams of fifty or more. Operating model redesign with named accountabilities and a 90-day plan.',
-    url: 'https://amplified.co.uk/engagements/squad-blueprint',
-    siteName: 'Amplified',
+    url: 'https://bmkrs.com/engagements/squad-blueprint',
+    siteName: 'bmkrs',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Squad Blueprint | Six-week operating model engagement | Amplified',
+    title: 'Squad Blueprint | Six-week operating model engagement | bmkrs',
     description: 'A six-week engagement for delivery directors running engineering teams of fifty people or more. Operating model redesign and 90-day adoption plan.',
   },
   alternates: {
-    canonical: 'https://amplified.co.uk/engagements/squad-blueprint',
+    canonical: 'https://bmkrs.com/engagements/squad-blueprint',
   },
 };
 

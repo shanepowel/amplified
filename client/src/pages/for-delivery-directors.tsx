@@ -45,19 +45,19 @@ const challenges = [
 
 const howWeHelp = [
   {
-    service: "Structured Delivery (AMP 03)",
+    service: "Structured Delivery (BMK 03)",
     href: "/structured-delivery",
     title: "Governance that enables pace, not just assurance",
     body: "We design delivery governance frameworks that produce accountability without bureaucracy. Assurance built into cadences. Reporting that gives stakeholders real confidence rather than managed perception. Stage gates that test readiness, not compliance.",
   },
   {
-    service: "AmplifiedTeams",
+    service: "bmkrs Teams",
     href: "/teams",
     title: "Stable teams mobilised in 48 hours",
     body: "IR35-compliant multi-disciplinary delivery teams with established ways of working. Not assembled from a contractor pool. Stable units that start delivering from day one rather than spending weeks forming. Available across delivery, product, and technology disciplines.",
   },
   {
-    service: "AI Implementation (AMP 02)",
+    service: "AI Implementation (BMK 02)",
     href: "/ai-implementation",
     title: "Technology that integrates with delivery accountability",
     body: "AI tools that are implemented within proper governance boundaries, not alongside them. Every implementation includes a structured accountability framework, a risk assessment, and a clear chain of decision-making from the technology to the senior responsible owner.",
@@ -66,12 +66,12 @@ const howWeHelp = [
 
 const faqs = [
   {
-    q: "What is different about Amplified's approach to structured delivery?",
+    q: "What is different about bmkrs's approach to structured delivery?",
     a: "We combine proper governance rigour with delivery pace. Most delivery frameworks treat governance as a checkpoint process. We build governance into delivery cadences so that assurance happens continuously, not at stage gates. Programmes move faster because there are fewer surprises.",
   },
   {
     q: "How does the Stable Teams model work?",
-    a: "AmplifiedTeams provides IR35-compliant, multi-disciplinary delivery teams mobilised within 48 hours. Teams are not assembled ad hoc from a contractor pool. They are stable units with established ways of working, which means onboarding friction is minimal and delivery starts immediately.",
+    a: "bmkrs Teams provides IR35-compliant, multi-disciplinary delivery teams mobilised within 48 hours. Teams are not assembled ad hoc from a contractor pool. They are stable units with established ways of working, which means onboarding friction is minimal and delivery starts immediately.",
   },
   {
     q: "Can you come into a programme that is already in trouble?",
@@ -102,8 +102,8 @@ const ForDeliveryDirectors = memo(function ForDeliveryDirectors({ onOpenConsulta
       <StructuredData data={deliveryDirectorsFAQSchema} id="delivery-directors-faq-schema" />
       <StructuredData
         data={createBreadcrumbSchema([
-          { name: "Home", url: "https://amplified.co.uk/" },
-          { name: "For Delivery Directors", url: "https://amplified.co.uk/for-delivery-directors" },
+          { name: "Home", url: "https://bmkrs.com/" },
+          { name: "For Delivery Directors", url: "https://bmkrs.com/for-delivery-directors" },
         ])}
         id="cios-breadcrumb"
       />
@@ -141,7 +141,7 @@ const ForDeliveryDirectors = memo(function ForDeliveryDirectors({ onOpenConsulta
             permanent tension.
           </Text>
           <Text variant="lead" tone="muted">
-            Amplified works with delivery directors and programme directors in infrastructure,
+            bmkrs works with delivery directors and programme directors in infrastructure,
             energy, financial services, and public sector to build the delivery governance
             frameworks, stable team structures, and accountability models that let programmes
             move fast without losing control. We have been in the delivery seats you are in.
@@ -176,7 +176,7 @@ const ForDeliveryDirectors = memo(function ForDeliveryDirectors({ onOpenConsulta
 
       <Section tone="mist" padding="lg">
         <Stack gap="xl">
-          <Eyebrow>What Amplified delivers</Eyebrow>
+          <Eyebrow>What bmkrs delivers</Eyebrow>
           <Text variant="h2">How we help delivery directors</Text>
           <Grid cols={3} gap="md">
             {howWeHelp.map((item) => (
@@ -212,7 +212,7 @@ const ForDeliveryDirectors = memo(function ForDeliveryDirectors({ onOpenConsulta
             artefacts would not survive proper scrutiny.
           </Text>
           <Text variant="lead" tone="muted">
-            Amplified ran a two-week rapid diagnostic. We mapped the genuine delivery position,
+            bmkrs ran a two-week rapid diagnostic. We mapped the genuine delivery position,
             identified the accountability gaps between the three system integrators, and built
             a recovery plan that the delivery director could present to the SRO with confidence.
             The plan was honest about the position and credible about the path forward.

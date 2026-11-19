@@ -45,19 +45,19 @@ const challenges = [
 
 const howWeHelp = [
   {
-    service: "AI Governance (AMP 01)",
+    service: "AI Governance (BMK 01)",
     href: "/ai-governance",
     title: "A governance framework built for your regulatory context",
     body: "We build AI governance frameworks that map to your existing assurance structures rather than sitting alongside them. AI risk registers, model inventories, usage policies, approval pathways, and board reporting packs. Everything documented to be owned and operated by your team.",
   },
   {
-    service: "Structured Delivery (AMP 03)",
+    service: "Structured Delivery (BMK 03)",
     href: "/structured-delivery",
     title: "Delivery governance that enables pace",
     body: "Governance that slows delivery is governance that gets bypassed. We design assurance into delivery cadences so accountability happens continuously rather than at stage gates. Programmes move faster and boards have better visibility.",
   },
   {
-    service: "Capability Building (AMP 04)",
+    service: "Capability Building (BMK 04)",
     href: "/capability",
     title: "AI literacy for boards and governance teams",
     body: "Your board cannot govern what it does not understand. We run structured AI literacy programmes for senior leaders and governance teams: practical, honest, and built around the decisions they actually need to make.",
@@ -66,11 +66,11 @@ const howWeHelp = [
 
 const faqs = [
   {
-    q: "How does Amplified work alongside our existing technology governance?",
+    q: "How does bmkrs work alongside our existing technology governance?",
     a: "We work inside your existing governance structures, not around them. Our AI governance frameworks are designed to slot into established assurance, risk, and compliance processes. We map existing controls first, identify gaps, and build only what is missing rather than starting from scratch.",
   },
   {
-    q: "What does an AI governance framework from Amplified actually include?",
+    q: "What does an AI governance framework from bmkrs actually include?",
     a: "A framework built around your regulatory context: an AI risk register, model inventory, usage policies, approval and escalation pathways, third-party AI assessment criteria, and a governance board pack template. Everything is documented to be owned and operated by your team, not us.",
   },
   {
@@ -102,8 +102,8 @@ const ForCIOs = memo(function ForCIOs({ onOpenConsultation }: ForCIOsProps) {
       <StructuredData data={ciosFAQSchema} id="cios-faq-schema" />
       <StructuredData
         data={createBreadcrumbSchema([
-          { name: "Home", url: "https://amplified.co.uk/" },
-          { name: "For CIOs", url: "https://amplified.co.uk/for-cios" },
+          { name: "Home", url: "https://bmkrs.com/" },
+          { name: "For CIOs", url: "https://bmkrs.com/for-cios" },
         ])}
         id="cios-breadcrumb"
       />
@@ -140,7 +140,7 @@ const ForCIOs = memo(function ForCIOs({ onOpenConsultation }: ForCIOsProps) {
             expectations is yours to close.
           </Text>
           <Text variant="lead" tone="muted">
-            Amplified works with CIOs in infrastructure, energy, financial services, and public
+            bmkrs works with CIOs in infrastructure, energy, financial services, and public
             sector organisations to build the governance frameworks, delivery accountability
             structures, and board-facing reporting that make AI adoption responsible and auditable.
             Built for industries where rigour is not optional.
@@ -174,7 +174,7 @@ const ForCIOs = memo(function ForCIOs({ onOpenConsultation }: ForCIOsProps) {
 
       <Section tone="mist" padding="lg">
         <Stack gap="xl">
-          <Eyebrow>What Amplified delivers</Eyebrow>
+          <Eyebrow>What bmkrs delivers</Eyebrow>
           <Text variant="h2">How we help CIOs</Text>
           <Grid cols={3} gap="md">
             {howWeHelp.map((item) => (
@@ -216,11 +216,11 @@ const ForCIOs = memo(function ForCIOs({ onOpenConsultation }: ForCIOsProps) {
           </Text>
           <Text variant="lead" tone="muted">
             The board review passed. The framework remained operational twelve months later, managed
-            entirely by the internal team. Amplified was no longer required.
+            entirely by the internal team. bmkrs was no longer required.
           </Text>
           <Surface variant="mist" padding="lg" radius="lg" className="border-l-4 border-[#60266A]">
             <Text variant="body" className="font-medium">
-              &ldquo;We needed to move from exposure to a defensible position quickly. Amplified gave us
+              &ldquo;We needed to move from exposure to a defensible position quickly. bmkrs gave us
               a framework that held up under proper scrutiny.&rdquo;
             </Text>
             <Text variant="small" tone="muted" className="mt-3">

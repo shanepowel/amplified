@@ -1,22 +1,22 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Our Work | Digital Transformation Case Studies | Amplified',
-  description: 'Real digital transformation case studies from Amplified. See how we deliver structured, accountable change for organisations in regulated industries.',
+  title: 'Our Work | Digital Transformation Case Studies | bmkrs',
+  description: 'Real digital transformation case studies from bmkrs. See how we deliver structured, accountable change for organisations in regulated industries.',
   openGraph: {
-    title: 'Our Work | Digital Transformation Case Studies | Amplified',
-    description: 'Real digital transformation case studies from Amplified. See how we deliver structured, accountable change for organisations in regulated industries.',
-    url: 'https://amplified.co.uk/case-studies',
-    siteName: 'Amplified',
+    title: 'Our Work | Digital Transformation Case Studies | bmkrs',
+    description: 'Real digital transformation case studies from bmkrs. See how we deliver structured, accountable change for organisations in regulated industries.',
+    url: 'https://bmkrs.com/case-studies',
+    siteName: 'bmkrs',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Our Work | Digital Transformation Case Studies | Amplified',
-    description: 'Real digital transformation case studies from Amplified. See how we deliver structured, accountable change for organisations in regulated industries.',
+    title: 'Our Work | Digital Transformation Case Studies | bmkrs',
+    description: 'Real digital transformation case studies from bmkrs. See how we deliver structured, accountable change for organisations in regulated industries.',
   },
   alternates: {
-    canonical: 'https://amplified.co.uk/case-studies',
+    canonical: 'https://bmkrs.com/case-studies',
   },
 };
 

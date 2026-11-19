@@ -22,10 +22,10 @@ export function AnalyticsScripts() {
 
     onConsentChange();
     window.addEventListener('storage', onConsentChange);
-    window.addEventListener('amplified:cookie-consent', onConsentChange);
+    window.addEventListener('bmkrs:cookie-consent', onConsentChange);
     return () => {
       window.removeEventListener('storage', onConsentChange);
-      window.removeEventListener('amplified:cookie-consent', onConsentChange);
+      window.removeEventListener('bmkrs:cookie-consent', onConsentChange);
     };
   }, []);
 

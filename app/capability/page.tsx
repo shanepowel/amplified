@@ -1,22 +1,22 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Capability Building | Build It In, Not Bolted On | Amplified',
+  title: 'Capability Building | Build It In, Not Bolted On | bmkrs',
   description: 'Product Owner development, Centres of Excellence, AI literacy programmes, agile practitioner training. We transfer real skills to your teams so you can run it yourselves.',
   openGraph: {
-    title: 'Capability Building | Build It In, Not Bolted On | Amplified',
+    title: 'Capability Building | Build It In, Not Bolted On | bmkrs',
     description: 'Product Owner development, Centres of Excellence, AI literacy programmes, agile practitioner training. We transfer real skills to your teams so you can run it yourselves.',
-    url: 'https://amplified.co.uk/capability',
-    siteName: 'Amplified',
+    url: 'https://bmkrs.com/capability',
+    siteName: 'bmkrs',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Capability Building | Build It In, Not Bolted On | Amplified',
+    title: 'Capability Building | Build It In, Not Bolted On | bmkrs',
     description: 'Product Owner development, Centres of Excellence, AI literacy programmes, agile practitioner training. We transfer real skills to your teams so you can run it yourselves.',
   },
   alternates: {
-    canonical: 'https://amplified.co.uk/capability',
+    canonical: 'https://bmkrs.com/capability',
   },
 };
 

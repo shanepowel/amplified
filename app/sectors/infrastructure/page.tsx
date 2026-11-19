@@ -1,22 +1,22 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'AI Governance for Infrastructure Programmes | Amplified',
+  title: 'AI Governance for Infrastructure Programmes | bmkrs',
   description: 'AI governance and structured delivery for infrastructure and construction organisations. Built for NEC contracts, PMO governance, and capital programmes.',
   openGraph: {
-    title: 'AI Governance for Infrastructure Programmes | Amplified',
+    title: 'AI Governance for Infrastructure Programmes | bmkrs',
     description: 'AI governance and structured delivery for infrastructure and construction organisations. Built for NEC contracts, PMO governance, and capital programmes.',
-    url: 'https://amplified.co.uk/sectors/infrastructure',
-    siteName: 'Amplified',
+    url: 'https://bmkrs.com/sectors/infrastructure',
+    siteName: 'bmkrs',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AI Governance for Infrastructure Programmes | Amplified',
+    title: 'AI Governance for Infrastructure Programmes | bmkrs',
     description: 'AI governance and structured delivery for infrastructure and construction organisations. Built for NEC contracts, PMO governance, and capital programmes.',
   },
   alternates: {
-    canonical: 'https://amplified.co.uk/sectors/infrastructure',
+    canonical: 'https://bmkrs.com/sectors/infrastructure',
   },
 };
 

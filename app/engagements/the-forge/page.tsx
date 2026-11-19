@@ -4,22 +4,22 @@ import { getEngagementBySlug } from '../../../lib/content/engagements';
 import EngagementDetailClient from '../../../client/src/components/engagement-detail-client';
 
 export const metadata: Metadata = {
-  title: 'The Forge | Four-week programme launch intensive for SROs | Amplified',
+  title: 'The Forge | Four-week programme launch intensive for SROs | bmkrs',
   description: 'The Forge is a four-week launch intensive for programme directors and SROs starting major digital transformation programmes in regulated industries and government.',
   openGraph: {
-    title: 'The Forge | Four-week programme launch intensive for SROs | Amplified',
+    title: 'The Forge | Four-week programme launch intensive for SROs | bmkrs',
     description: 'A four-week launch intensive for programme directors and SROs starting major digital transformation programmes in regulated industries and government.',
-    url: 'https://amplified.co.uk/engagements/the-forge',
-    siteName: 'Amplified',
+    url: 'https://bmkrs.com/engagements/the-forge',
+    siteName: 'bmkrs',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'The Forge | Four-week programme launch intensive | Amplified',
+    title: 'The Forge | Four-week programme launch intensive | bmkrs',
     description: 'A four-week launch intensive for programme directors and SROs starting major digital transformation programmes in regulated industries and government.',
   },
   alternates: {
-    canonical: 'https://amplified.co.uk/engagements/the-forge',
+    canonical: 'https://bmkrs.com/engagements/the-forge',
   },
 };
 

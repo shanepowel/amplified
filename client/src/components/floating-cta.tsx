@@ -38,7 +38,7 @@ export function FloatingCTA({ onOpenConsultation }: FloatingCTAProps) {
           <Stack gap="sm">
             <div className="flex items-center justify-between">
               <Text variant="small" className="font-medium">
-                Ready to get amplified?
+                Ready to get bmkrs?
               </Text>
               <button
                 onClick={() => setIsExpanded(false)}

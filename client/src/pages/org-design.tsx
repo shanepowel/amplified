@@ -135,8 +135,8 @@ const OrgDesign = memo(function OrgDesign({ onOpenConsultation }: OrgDesignProps
     <PageShell>
       <ServiceSchema
         name="Autonomous Organisations"
-        description="Amplified helps ambitious organisations replace slow hierarchies with self-managing, product-led operating models powered by AI. Holacracy, product org design, and AI integration."
-        url="https://amplified.co.uk/org-design"
+        description="bmkrs helps ambitious organisations replace slow hierarchies with self-managing, product-led operating models powered by AI. Holacracy, product org design, and AI integration."
+        url="https://bmkrs.com/org-design"
       />
 
       <BreadcrumbBar
@@ -144,7 +144,7 @@ const OrgDesign = memo(function OrgDesign({ onOpenConsultation }: OrgDesignProps
       />
 
       <PageHero
-        eyebrow="AMP 07 / Autonomous Organisations"
+        eyebrow="BMK 07 / Autonomous Organisations"
         title="The organisation of the future runs itself."
         lead="We help leadership teams move from slow, manager-dependent hierarchies to product-led, self-managing organisations powered by AI. Less coordination overhead. Faster decisions. Teams that know what to do without being told."
       >
@@ -292,7 +292,7 @@ const OrgDesign = memo(function OrgDesign({ onOpenConsultation }: OrgDesignProps
       <Section tone="navy" padding="lg">
         <Grid cols="2-lg" gap="xl" equal={false}>
           <Stack gap="md">
-            <Eyebrow>Why Amplified</Eyebrow>
+            <Eyebrow>Why bmkrs</Eyebrow>
             <Text variant="h2" tone="white">
               We have built and run these models. Not just designed them.
             </Text>

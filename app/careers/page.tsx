@@ -1,22 +1,22 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Careers at Amplified | Join the Partnership',
+  title: 'Careers at bmkrs | Join the Partnership',
   description: 'Join a partnership that hires from all walks of life. Seasoned consultants delivering AI governance and structured change for regulated industries.',
   openGraph: {
-    title: 'Careers at Amplified | Join the Partnership',
+    title: 'Careers at bmkrs | Join the Partnership',
     description: 'Join a partnership that hires from all walks of life. Seasoned consultants delivering AI governance and structured change for regulated industries.',
-    url: 'https://amplified.co.uk/careers',
-    siteName: 'Amplified',
+    url: 'https://bmkrs.com/careers',
+    siteName: 'bmkrs',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Careers at Amplified | Join the Partnership',
+    title: 'Careers at bmkrs | Join the Partnership',
     description: 'Join a partnership that hires from all walks of life. Seasoned consultants delivering AI governance and structured change for regulated industries.',
   },
   alternates: {
-    canonical: 'https://amplified.co.uk/careers',
+    canonical: 'https://bmkrs.com/careers',
   },
 };
 

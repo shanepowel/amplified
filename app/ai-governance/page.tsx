@@ -1,22 +1,22 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'AI Governance for Regulated Industries | Amplified',
+  title: 'AI Governance for Regulated Industries | bmkrs',
   description: 'Responsible AI governance frameworks, policies, and assurance for regulated industries. EU AI Act, FCA, and GDS aligned, board-ready structures.',
   openGraph: {
-    title: 'AI Governance for Regulated Industries | Amplified',
+    title: 'AI Governance for Regulated Industries | bmkrs',
     description: 'Responsible AI governance frameworks, policies, and assurance for regulated industries. EU AI Act, FCA, and GDS aligned, board-ready structures.',
-    url: 'https://amplified.co.uk/ai-governance',
-    siteName: 'Amplified',
+    url: 'https://bmkrs.com/ai-governance',
+    siteName: 'bmkrs',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AI Governance for Regulated Industries | Amplified',
+    title: 'AI Governance for Regulated Industries | bmkrs',
     description: 'Responsible AI governance frameworks, policies, and assurance for regulated industries. EU AI Act, FCA, and GDS aligned, board-ready structures.',
   },
   alternates: {
-    canonical: 'https://amplified.co.uk/ai-governance',
+    canonical: 'https://bmkrs.com/ai-governance',
   },
 };
 

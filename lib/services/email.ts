@@ -9,7 +9,7 @@ class EmailService {
   constructor() {
     const apiKey = process.env.RESEND_API_KEY?.trim();
     this.fromEmail = process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev';
-    this.toEmail = process.env.CONTACT_EMAIL || 'hello@amplified.co.uk';
+    this.toEmail = process.env.CONTACT_EMAIL || 'hello@bmkrs.com';
     
     if (apiKey) {
       this.resend = new Resend(apiKey);
@@ -166,10 +166,10 @@ class EmailService {
           </div>
           
           <div style="margin-top: 30px; text-align: center; color: #6b7280; font-size: 14px;">
-            <p>This email was sent from the Amplified contact form</p>
+            <p>This email was sent from the bmkrs contact form</p>
             <p style="margin-top: 10px;">
-              <a href="${process.env.NEXT_PUBLIC_SITE_URL || 'https://amplified.co.uk'}" style="color: #f97316; text-decoration: none;">
-                Visit Amplified
+              <a href="${process.env.NEXT_PUBLIC_SITE_URL || 'https://bmkrs.com'}" style="color: #f97316; text-decoration: none;">
+                Visit bmkrs
               </a>
             </p>
           </div>
@@ -180,10 +180,10 @@ class EmailService {
 
   private formatServiceInterest(interest: string): string {
     const labels: Record<string, string> = {
-      'amplified-learn': 'The Amp Store - Quick skill modules',
-      'amplified-coach': 'AmplifiedCoach - Strategic guidance',
-      'amplified-teams': 'AmplifiedTeams - Team scaling',
-      'amplified-transformation': 'AmplifiedTransformation - Complete transformation',
+      'bmkrs-learn': 'The Amp Store - Quick skill modules',
+      'bmkrs-coach': 'bmkrs Coach - Strategic guidance',
+      'bmkrs-teams': 'bmkrs Teams - Team scaling',
+      'bmkrs-transformation': 'bmkrs Transformation - Complete transformation',
       'full-suite': 'Full Suite - All services',
       'discovery': 'Just exploring options'
     };
@@ -245,9 +245,9 @@ class EmailService {
           <p style="font-size:15px;line-height:1.6;color:#181F4F;margin:0 0 16px;">Hi ${name.split(' ')[0]},</p>
           <p style="font-size:15px;line-height:1.6;color:#181F4F;margin:0 0 16px;">Here is the playbook for the <strong>${engagementName}</strong> engagement, attached as a PDF. It covers the problem we solve, what is included, how the weeks unfold, what you have at the end, and the qualifiers we use to confirm fit.</p>
           <p style="font-size:15px;line-height:1.6;color:#181F4F;margin:0 0 24px;">If after a read it feels like a fit, reply to this email and we will book a 30-minute discovery call. No pitch, no deck.</p>
-          <p style="font-size:14px;line-height:1.6;color:#65677B;margin:0;">— The Amplified team</p>
+          <p style="font-size:14px;line-height:1.6;color:#65677B;margin:0;">— The bmkrs team</p>
         </div>
-        <div style="padding:18px 32px;background:#181F4F;color:#FFFFFF;font-size:12px;">amplified.co.uk · hello@amplified.co.uk</div>
+        <div style="padding:18px 32px;background:#181F4F;color:#FFFFFF;font-size:12px;">bmkrs.com · hello@bmkrs.com</div>
       </div>
     </body></html>`;
 
@@ -256,7 +256,7 @@ class EmailService {
         from: this.fromEmail,
         to: toEmail,
         replyTo: this.toEmail,
-        subject: `Your ${engagementName} playbook from Amplified`,
+        subject: `Your ${engagementName} playbook from bmkrs`,
         html,
         attachments: [
           {

@@ -43,11 +43,11 @@ export default function EngagementDetailContent({ engagement, onOpenConsultation
         title={e.name}
         subtitle={`${e.tagline}.`}
         lead={e.buyerSentence}
-        contentClassName="max-w-[1200px]"
+        contentClassName="max-w-[900px]"
       >
         <BorderGrid
           cols={3}
-          className="mt-4 !border-white/12 [&_.amp-border-cell]:!border-white/12"
+          className="!border-white/12 [&_.amp-border-cell]:!border-white/12"
         >
           <BorderCell>
             <Stack direction="row" gap="xs" align="center" className="mb-2">

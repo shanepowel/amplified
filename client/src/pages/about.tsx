@@ -59,17 +59,17 @@ const beliefs = [
 const About = memo(function About({ onOpenConsultation }: AboutProps) {
   return (
     <PageShell className="bg-[#FAFAF9]">
-      <Section tone="navy" padding="hero" className="pt-32 pb-20 lg:pt-40 lg:pb-28">
-        <Stack gap="lg">
-          <Eyebrow>About Amplified</Eyebrow>
-          <Grid cols="2-lg" gap="xl" className="items-end">
-            <Text variant="h1" tone="white" data-testid="text-about-title">
-              Founded by<br />practitioners.<br />Built from the inside.
+      <Section tone="navy" padding="hero">
+        <Stack gap="md">
+          <Eyebrow>About bmkrs</Eyebrow>
+          <Grid cols="2-lg" gap="xl" equal={false} className="items-end">
+            <Text variant="h1" tone="white" className="max-w-[16ch]" data-testid="text-about-title">
+              Founded by practitioners. Built from the inside.
             </Text>
             <Stack gap="md">
               <Text variant="lead" tone="white-70">
                 We are a consultancy founded by practitioners who had operated inside the industries we now serve.
-                We did not build Amplified by reading about regulated delivery. We built it because we had lived it,
+                We did not build bmkrs by reading about regulated delivery. We built it because we had lived it,
                 and we saw a gap that most consultancies were not closing.
               </Text>
               <button
@@ -89,7 +89,7 @@ const About = memo(function About({ onOpenConsultation }: AboutProps) {
       <div className="w-full max-h-[480px] overflow-hidden">
         <img
           src={heroImage.src}
-          alt="Amplified partnership at work"
+          alt="bmkrs partnership at work"
           className="max-h-[480px] w-full object-cover object-center"
           loading="eager"
         />
@@ -100,10 +100,10 @@ const About = memo(function About({ onOpenConsultation }: AboutProps) {
           <Stack gap="md">
             <Eyebrow tone="subtle">Our Origins</Eyebrow>
             <Text variant="h2" tone="ink">
-              Why Amplified exists
+              Why bmkrs exists
             </Text>
             <Text variant="body" tone="muted" className="mb-6">
-                Amplified was founded by delivery practitioners who had seen the same pattern repeat across
+                bmkrs was founded by delivery practitioners who had seen the same pattern repeat across
                 infrastructure programmes, energy organisations, financial services firms, and public sector
                 bodies. The pattern was this: good people, unclear governance, and external consultancies who
                 had never actually operated inside a regulated environment advising on how to run one.
@@ -115,7 +115,7 @@ const About = memo(function About({ onOpenConsultation }: AboutProps) {
                 Capability programmes were being bolted on after delivery rather than embedded inside it.
             </Text>
             <Text variant="body" tone="muted" className="mb-6">
-                We founded Amplified to close that gap. Not as generalists who could turn their hand to anything,
+                We founded bmkrs to close that gap. Not as generalists who could turn their hand to anything,
                 but as specialists who had operated under the same governance pressure our clients face every day.
             </Text>
             <Text variant="body" tone="muted" className="italic">
@@ -126,7 +126,7 @@ const About = memo(function About({ onOpenConsultation }: AboutProps) {
           <Stack gap="md">
               <img
                 src={modernWorkImage.src}
-                alt="Amplified at work"
+                alt="bmkrs at work"
                 className="w-full rounded"
                 loading="lazy"
               />
@@ -134,7 +134,7 @@ const About = memo(function About({ onOpenConsultation }: AboutProps) {
               {[
                 { num: "10+", label: "Years of delivery leadership" },
                 { num: "5", label: "Sectors we specialise in" },
-                { num: "6", label: "AMP service lines" },
+                { num: "6", label: "BMK service lines" },
                 { num: "2", label: "Offices: London and Porto" },
               ].map((stat, i) => (
                 <BorderCell key={i} className="p-6">
@@ -257,7 +257,7 @@ const About = memo(function About({ onOpenConsultation }: AboutProps) {
           <Stack gap="md">
               <img
                 src={strategicThinkingImage.src}
-                alt="Amplified in practice"
+                alt="bmkrs in practice"
                 className="w-full rounded mb-8"
                 loading="lazy"
               />
@@ -266,7 +266,7 @@ const About = memo(function About({ onOpenConsultation }: AboutProps) {
                 "We practice what we preach. Not because it is a good line. Because we built this consultancy
                 by living through the same pressures we now help our clients navigate."
               </Text>
-              <Eyebrow>The Amplified Partnership</Eyebrow>
+              <Eyebrow>The bmkrs Partnership</Eyebrow>
             </Surface>
           </Stack>
         </Grid>
@@ -294,7 +294,7 @@ const About = memo(function About({ onOpenConsultation }: AboutProps) {
               },
               {
                 tag: "Work With Us",
-                title: "Careers at Amplified",
+                title: "Careers at bmkrs",
                 body: "We hire from all walks of life, as long as the experience or ambitions match. If what we do resonates and you want to do the most interesting work of your career, we would like to hear from you.",
                 href: "/careers",
                 cta: "See open roles",

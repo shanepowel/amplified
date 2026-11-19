@@ -45,19 +45,19 @@ const challenges = [
 
 const howWeHelp = [
   {
-    service: "Capability Building (AMP 04)",
+    service: "Capability Building (BMK 04)",
     href: "/capability",
     title: "Skills that stay when we leave",
     body: "Every capability programme we design is tied to real delivery. Product Owner development, AI literacy, Centres of Excellence, and agile practitioner training built around your regulatory context. Skills transferred through doing, not slides.",
   },
   {
-    service: "Coaching (AMP 05)",
+    service: "Coaching (BMK 05)",
     href: "/coaching",
     title: "A thinking partner who has held the role",
     body: "One-to-one and team coaching for digital leads, heads of digital, and CDOs navigating technology adoption, team upskilling, and the politics of transformation inside regulated organisations. Honest, not comfortable.",
   },
   {
-    service: "ampStore",
+    service: "bmkrs Store",
     href: "/amp-store",
     title: "Curated learning built for practitioners",
     body: "A curated library of frameworks, templates, and learning resources built by practitioners for practitioners. Agile delivery, AI governance, product management, and digital leadership. Designed for people who learn through application, not theory.",
@@ -66,12 +66,12 @@ const howWeHelp = [
 
 const faqs = [
   {
-    q: "How does Amplified avoid the 'training course' trap?",
+    q: "How does bmkrs avoid the 'training course' trap?",
     a: "Every capability programme we design is tied to real delivery. Skills are built through doing, not through slide decks. We embed practitioners alongside your teams on live work, so learning happens in context and sticks. We also build in structured knowledge transfer so the capability stays when we leave.",
   },
   {
     q: "What does embedded upskilling look like in practice?",
-    a: "An Amplified practitioner joins your team in a coaching and doing capacity. They model the behaviours, challenge the gaps, and transfer the skills through the actual work. This is not instruction from the front of a room. It is collaborative work with explicit capability transfer built into every sprint or workstream.",
+    a: "a bmkrs practitioner joins your team in a coaching and doing capacity. They model the behaviours, challenge the gaps, and transfer the skills through the actual work. This is not instruction from the front of a room. It is collaborative work with explicit capability transfer built into every sprint or workstream.",
   },
   {
     q: "How long does it take to build real internal AI capability?",
@@ -102,8 +102,8 @@ const ForDigitalLeads = memo(function ForDigitalLeads({ onOpenConsultation }: Fo
       <StructuredData data={digitalLeadsFAQSchema} id="digital-leads-faq-schema" />
       <StructuredData
         data={createBreadcrumbSchema([
-          { name: "Home", url: "https://amplified.co.uk/" },
-          { name: "For Digital Leads", url: "https://amplified.co.uk/for-digital-leads" },
+          { name: "Home", url: "https://bmkrs.com/" },
+          { name: "For Digital Leads", url: "https://bmkrs.com/for-digital-leads" },
         ])}
         id="cios-breadcrumb"
       />
@@ -141,7 +141,7 @@ const ForDigitalLeads = memo(function ForDigitalLeads({ onOpenConsultation }: Fo
             to own and operate it are developing.
           </Text>
           <Text variant="lead" tone="muted">
-            Amplified works with digital leads, heads of digital, and CDOs in infrastructure,
+            bmkrs works with digital leads, heads of digital, and CDOs in infrastructure,
             energy, financial services, and public sector to close the gap between what has been
             deployed and what internal teams can own. Every engagement is designed to make us
             unnecessary. The skills transfer. The dependency does not.
@@ -175,7 +175,7 @@ const ForDigitalLeads = memo(function ForDigitalLeads({ onOpenConsultation }: Fo
 
       <Section tone="mist" padding="lg">
         <Stack gap="xl">
-          <Eyebrow>What Amplified delivers</Eyebrow>
+          <Eyebrow>What bmkrs delivers</Eyebrow>
           <Text variant="h2">How we help digital leads</Text>
           <Grid cols={3} gap="md">
             {howWeHelp.map((item) => (
@@ -212,7 +212,7 @@ const ForDigitalLeads = memo(function ForDigitalLeads({ onOpenConsultation }: Fo
             proposed by the board.
           </Text>
           <Text variant="lead" tone="muted">
-            Amplified worked with the head of digital to build the capability foundation before
+            bmkrs worked with the head of digital to build the capability foundation before
             the next pilot began. An AI literacy programme for the governance and operational
             teams. A usage policy framework. A Centre of Excellence model for AI ownership.
             Embedded practitioners who coached the internal team through the implementation
@@ -220,11 +220,11 @@ const ForDigitalLeads = memo(function ForDigitalLeads({ onOpenConsultation }: Fo
           </Text>
           <Text variant="lead" tone="muted">
             The fourth pilot moved to scaled deployment. The internal team owned the tool,
-            the governance, and the ongoing development. Amplified left. The capability stayed.
+            the governance, and the ongoing development. bmkrs left. The capability stayed.
           </Text>
           <Surface variant="mist" padding="lg" radius="lg" className="border-l-4 border-[#60266A]">
                         <Text variant="body" className="font-medium">
-              &ldquo;Every other consultancy had helped us run the pilot. Amplified helped us work
+              &ldquo;Every other consultancy had helped us run the pilot. bmkrs helped us work
               out why the pilots kept failing and then built the thing that made scale possible.&rdquo;
             </Text>
             <Text variant="small" tone="muted" className="mt-3">

@@ -263,10 +263,10 @@ export default function ArticleDetail({ onOpenConsultation }: ArticleDetailProps
   const articleSchema = createArticleSchema({
     headline: article.title,
     description: article.content?.description || '',
-    url: `https://amplified.co.uk/insights/${article.slug}`,
+    url: `https://bmkrs.com/insights/${article.slug}`,
     datePublished: dateIso,
     dateModified: article.lastModified ? new Date(article.lastModified).toISOString() : dateIso,
-    authorName: article.content?.author || 'Amplified',
+    authorName: article.content?.author || 'bmkrs',
     image: article.content?.image || undefined,
     keywords: articleTags.length > 0
       ? articleTags
@@ -274,9 +274,9 @@ export default function ArticleDetail({ onOpenConsultation }: ArticleDetailProps
   });
 
   const breadcrumbSchema = createBreadcrumbSchema([
-    { name: 'Home', url: 'https://amplified.co.uk/' },
-    { name: 'Insights', url: 'https://amplified.co.uk/insights' },
-    { name: article.title, url: `https://amplified.co.uk/insights/${article.slug}` },
+    { name: 'Home', url: 'https://bmkrs.com/' },
+    { name: 'Insights', url: 'https://bmkrs.com/insights' },
+    { name: article.title, url: `https://bmkrs.com/insights/${article.slug}` },
   ]);
 
   const faqSchema = articleFaqs.length > 0 ? createFAQSchema(articleFaqs) : null;

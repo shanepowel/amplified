@@ -1,22 +1,46 @@
 import * as React from "react";
-import { Slot } from "@radix-ui/react-slot";
+import { Button, type ButtonProps } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { ampButtonVariants, type AmpButtonVariantProps } from "./tokens";
+
+export type AmpButtonVariant =
+  | "coral"
+  | "navy"
+  | "outlineLight"
+  | "outlineDark"
+  | "ghostLight"
+  | "ghostDark";
+
+export type AmpButtonSize = "sm" | "md" | "lg" | "xl";
 
 export interface AmpButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    AmpButtonVariantProps {
-  asChild?: boolean;
+  extends Omit<ButtonProps, "variant" | "size"> {
+  variant?: AmpButtonVariant;
+  size?: AmpButtonSize;
+  fullWidth?: boolean;
 }
 
-/** Brand CTA button with fixed heights so CTAs never look irregular across pages. */
+/**
+ * Brand CTA built on shadcn Button.
+ * Keeps fixed heights so CTAs stay consistent across pages.
+ */
 export const AmpButton = React.forwardRef<HTMLButtonElement, AmpButtonProps>(
-  ({ className, variant, size, fullWidth, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button";
+  (
+    {
+      className,
+      variant = "coral",
+      size = "lg",
+      fullWidth = false,
+      ...props
+    },
+    ref,
+  ) => {
     return (
-      <Comp
+      <Button
         ref={ref}
-        className={cn(ampButtonVariants({ variant, size, fullWidth }), className)}
+        variant={variant}
+        size={size}
+        fullWidth={fullWidth}
+        className={cn("amp-focus-ring", className)}
         {...props}
       />
     );

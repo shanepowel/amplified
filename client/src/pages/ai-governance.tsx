@@ -77,30 +77,27 @@ const gaps = [
 const AiGovernance = memo(function AiGovernance({ onOpenConsultation }: AiGovernanceProps) {
   return (
     <PageShell>
-      <ServiceSchema name="AI Governance" description="Responsible AI governance frameworks, policies, and assurance structures for infrastructure, energy, financial services and public sector organisations. EU AI Act, FCA, GDS aligned." url="https://amplified.co.uk/ai-governance" />
+      <ServiceSchema name="AI Governance" description="Responsible AI governance frameworks, policies, and assurance structures for infrastructure, energy, financial services and public sector organisations. EU AI Act, FCA, GDS aligned." url="https://bmkrs.com/ai-governance" />
       <StructuredData data={aiGovernanceFAQSchema} id="ai-governance-faq-schema" />
-      <StructuredData data={createBreadcrumbSchema([{ name: 'Home', url: 'https://amplified.co.uk/' }, { name: 'AI Governance', url: 'https://amplified.co.uk/ai-governance' }])} id="ai-governance-breadcrumb" />
+      <StructuredData data={createBreadcrumbSchema([{ name: 'Home', url: 'https://bmkrs.com/' }, { name: 'AI Governance', url: 'https://bmkrs.com/ai-governance' }])} id="ai-governance-breadcrumb" />
 
       <BreadcrumbBar items={[{ label: "Home", href: "/" }, { label: "AI Governance" }]} />
 
-      <Section tone="navy" padding="xl" className="relative overflow-hidden" contained={false}>
+      <Section tone="navy" padding="hero" className="relative overflow-hidden" contained={false}>
         <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-[48%] lg:block" aria-hidden="true">
           <Image src={heroImg} alt="" aria-hidden="true" fill className="object-cover opacity-30" priority sizes="48vw" />
           <div className="absolute inset-0 bg-gradient-to-r from-[#181F4F] via-[#181F4F]/80 to-transparent" />
         </div>
         <Container className="relative">
-          <Stack gap="lg" className="max-w-[720px]">
-            <Eyebrow>AMP 01</Eyebrow>
-            <Text variant="display" tone="white">AI Governance</Text>
+          <Stack gap="md" className="max-w-[640px]">
+            <Eyebrow>BMK 01</Eyebrow>
+            <Text variant="h1" tone="white">AI Governance</Text>
             <Text variant="lead" tone="white-75">
               AI implementation without governance isn&apos;t innovation. In a regulated industry, it&apos;s a
-              liability.
+              liability. We build the frameworks, policies, and assurance structures your organisation needs
+              before your board asks the question.
             </Text>
-            <Text variant="lead" tone="white-75">
-              Amplified builds the governance frameworks, policies, and assurance structures your
-              organisation needs to adopt AI with confidence, before your board asks the question.
-            </Text>
-            <Surface variant="inset" padding="md" radius="sm" className="max-w-[540px] border-l-4 border-[#F85C70] bg-[rgba(248,92,112,0.08)]">
+            <Surface variant="inset" padding="sm" radius="sm" className="max-w-[480px] border-l-4 border-[#F85C70] bg-[rgba(248,92,112,0.08)]">
               <Text variant="h4" tone="white" className="italic font-normal">
                 &ldquo;The question isn&apos;t whether to adopt AI. It&apos;s whether your governance can support it.&rdquo;
               </Text>

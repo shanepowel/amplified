@@ -49,10 +49,10 @@ export const sectionVariants = cva("w-full min-w-0 overflow-x-clip", {
     padding: {
       none: "py-0",
       sm: "py-10 lg:py-12",
-      md: "py-16 lg:py-20",
-      lg: "py-24 lg:py-28",
-      xl: "py-28 lg:py-36",
-      hero: "py-24 lg:py-32",
+      md: "py-14 lg:py-16",
+      lg: "py-16 lg:py-20",
+      xl: "py-20 lg:py-24",
+      hero: "py-14 lg:py-20",
     },
   },
   defaultVariants: {
@@ -130,16 +130,16 @@ export const gridVariants = cva("grid min-w-0 w-full", {
   },
 });
 
-export const textVariants = cva("min-w-0 max-w-full break-words [overflow-wrap:anywhere]", {
+export const textVariants = cva("min-w-0 max-w-full break-words", {
   variants: {
     variant: {
       display:
-        "font-display font-normal leading-[1.05] tracking-tight text-4xl sm:text-5xl md:text-6xl lg:text-7xl",
-      h1: "font-display font-normal leading-[1.08] tracking-tight text-4xl md:text-5xl lg:text-6xl",
-      h2: "font-display font-normal leading-tight text-3xl md:text-4xl lg:text-5xl",
-      h3: "font-display font-normal leading-snug text-2xl md:text-3xl",
-      h4: "font-display font-normal leading-snug text-xl md:text-2xl",
-      lead: "font-sans text-lg leading-relaxed",
+        "font-display font-normal leading-[1.08] tracking-tight text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem]",
+      h1: "font-display font-normal leading-[1.1] tracking-tight text-3xl md:text-4xl lg:text-5xl",
+      h2: "font-display font-normal leading-tight text-2xl md:text-3xl lg:text-4xl",
+      h3: "font-display font-normal leading-snug text-xl md:text-2xl",
+      h4: "font-display font-normal leading-snug text-lg md:text-xl",
+      lead: "font-sans text-base md:text-lg leading-relaxed",
       body: "font-sans text-base leading-relaxed",
       small: "font-sans text-sm leading-relaxed",
       caption: "font-sans text-xs leading-relaxed",
@@ -175,7 +175,7 @@ export const textVariants = cva("min-w-0 max-w-full break-words [overflow-wrap:a
 });
 
 export const surfaceVariants = cva(
-  "min-w-0 max-w-full overflow-x-clip break-words [overflow-wrap:anywhere]",
+  "min-w-0 max-w-full overflow-x-clip break-words",
   {
     variants: {
       variant: {

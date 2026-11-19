@@ -362,7 +362,7 @@ class CRMService {
       return false;
     }
   }
-  // Log an "Ask Amplified" buyer question for sales follow-up.
+  // Log an "Ask bmkrs" buyer question for sales follow-up.
   // If an email is provided, the question is attached to (or creates) a HubSpot contact.
   // Otherwise we log locally so sales can review unattributed questions in the workflow output.
   async logAskAmplifiedQuestion(params: {
@@ -374,7 +374,7 @@ class CRMService {
     name?: string;
     company?: string;
   }): Promise<void> {
-    const summaryLine = `[Ask Amplified${params.engagementName ? ` · ${params.engagementName}` : ''}] Question: ${params.question}`;
+    const summaryLine = `[Ask bmkrs${params.engagementName ? ` · ${params.engagementName}` : ''}] Question: ${params.question}`;
     console.log(summaryLine + (params.email ? ` (from ${params.email})` : ' (anonymous)'));
 
     if (!this.hubspotApiKey || !params.email) {
@@ -386,7 +386,7 @@ class CRMService {
     const lastname = nameParts.length > 1 ? nameParts.slice(1).join(' ') : undefined;
 
     const message = [
-      `Source: Ask Amplified assistant`,
+      `Source: Ask bmkrs assistant`,
       params.engagementName ? `Engagement: ${params.engagementName}` : '',
       `Question: ${params.question}`,
       params.answer ? `Answer shown: ${params.answer.slice(0, 800)}${params.answer.length > 800 ? '…' : ''}` : '',

@@ -32,9 +32,9 @@ function getOpenAI(): OpenAI {
   return openaiClient;
 }
 
-const systemPromptHeader = `You are "Ask Amplified", an in-page assistant on amplified.co.uk.
+const systemPromptHeader = `You are "Ask bmkrs", an in-page assistant on bmkrs.com.
 
-Your job: help senior buyers (delivery directors, programme directors, SROs, COOs, CTOs, CROs, compliance leaders) decide whether one of Amplified's three productised engagements — Squad Blueprint, The Forge, Delivery Compass — is the right fit for their situation.
+Your job: help senior buyers (delivery directors, programme directors, SROs, COOs, CTOs, CROs, compliance leaders) decide whether one of bmkrs' three productised engagements — Squad Blueprint, The Forge, Delivery Compass — is the right fit for their situation.
 
 Rules:
 1. Ground every answer in the CONTEXT below. If the answer is not supported by the context, say so plainly and suggest booking a discovery call rather than guessing.
@@ -68,7 +68,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(
       {
         success: false,
-        error: "Ask Amplified is not configured. Please book a discovery call instead.",
+        error: "Ask bmkrs is not configured. Please book a discovery call instead.",
       },
       { status: 503 },
     );

@@ -74,7 +74,7 @@ export default function EngagementPlaybookDownload({ engagement }: Props) {
       const blob = await res.blob();
       const cd = res.headers.get('Content-Disposition') || '';
       const match = cd.match(/filename="?([^";]+)"?/i);
-      const filename = match?.[1] || `amplified-${engagement.slug}-playbook.pdf`;
+      const filename = match?.[1] || `bmkrs-${engagement.slug}-playbook.pdf`;
 
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');

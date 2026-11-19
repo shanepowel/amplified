@@ -92,14 +92,14 @@ const Teams = memo(function Teams({ onOpenConsultation }: TeamsProps) {
     <PageShell>
       <ServiceSchema
         name="Stable Teams"
-        description="Stable Teams is a trademarked framework from AmplifiedTeams that helps organisations rebaseline their teams and operations to achieve sustained high performance. Not recruitment."
-        url="https://amplified.co.uk/teams"
+        description="Stable Teams is a trademarked framework from bmkrs Teams that helps organisations rebaseline their teams and operations to achieve sustained high performance. Not recruitment."
+        url="https://bmkrs.com/teams"
       />
 
       <BreadcrumbBar items={[{ label: "Home", href: "/" }, { label: "Stable Teams" }]} />
 
       <PageHero
-        eyebrow="AmplifiedTeams"
+        eyebrow="bmkrs Teams"
         title={
           <span data-testid="text-teams-title">
             Stable Teams&trade;
@@ -119,9 +119,9 @@ const Teams = memo(function Teams({ onOpenConsultation }: TeamsProps) {
             Start a Conversation
           </AmpButton>
           <AmpButton asChild variant="outlineLight" size="lg">
-            <a href="https://amplifiedteams.co.uk" target="_blank" rel="noopener noreferrer">
+            <a href="https://bmkrs.com" target="_blank" rel="noopener noreferrer">
               <ExternalLink className="h-4 w-4" />
-              amplifiedteams.co.uk
+              bmkrs.com
             </a>
           </AmpButton>
         </Stack>
@@ -143,7 +143,7 @@ const Teams = memo(function Teams({ onOpenConsultation }: TeamsProps) {
               capability gap. It is a structural one.
             </Text>
             <Text variant="body" tone="muted" className="italic">
-              Stable Teams was developed by AmplifiedTeams, a subsidiary of Amplified, to give
+              Stable Teams was developed by bmkrs Teams, a subsidiary of bmkrs, to give
               organisations a repeatable, evidence-based route to team performance that does not
               require a restructure to see results.
             </Text>
@@ -269,13 +269,13 @@ const Teams = memo(function Teams({ onOpenConsultation }: TeamsProps) {
             </ul>
           </Stack>
           <Surface variant="navy" padding="xl" radius="sm">
-            <Eyebrow className="mb-6">AmplifiedTeams</Eyebrow>
+            <Eyebrow className="mb-6">bmkrs Teams</Eyebrow>
             <Text variant="h3" tone="white" className="mb-4">
-              The Stable Teams framework is delivered by AmplifiedTeams, our specialist team
+              The Stable Teams framework is delivered by bmkrs Teams, our specialist team
               performance subsidiary
             </Text>
             <Text variant="body" tone="white-70" className="mb-8">
-              AmplifiedTeams works alongside the Amplified consulting partnership to deliver the
+              bmkrs Teams works alongside the bmkrs consulting partnership to deliver the
               framework inside client environments. Where our consulting work diagnoses systemic
               issues, Stable Teams provides the structured route to resolution at team level.
             </Text>
@@ -292,9 +292,9 @@ const Teams = memo(function Teams({ onOpenConsultation }: TeamsProps) {
                 size="lg"
                 data-testid="button-visit-amplifiedteams"
               >
-                <a href="https://amplifiedteams.co.uk" target="_blank" rel="noopener noreferrer">
+                <a href="https://bmkrs.com" target="_blank" rel="noopener noreferrer">
                   <ExternalLink className="h-4 w-4" />
-                  amplifiedteams.co.uk
+                  bmkrs.com
                 </a>
               </AmpButton>
             </Stack>
@@ -311,8 +311,8 @@ const Teams = memo(function Teams({ onOpenConsultation }: TeamsProps) {
             Start a Conversation <ArrowRight className="h-4 w-4" />
           </AmpButton>
           <AmpButton asChild variant="outlineLight" size="lg">
-            <a href="https://amplifiedteams.co.uk" target="_blank" rel="noopener noreferrer">
-              Visit AmplifiedTeams
+            <a href="https://bmkrs.com" target="_blank" rel="noopener noreferrer">
+              Visit bmkrs Teams
             </a>
           </AmpButton>
         </Stack>

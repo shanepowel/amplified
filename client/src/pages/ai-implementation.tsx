@@ -89,19 +89,19 @@ const gaps = [
 
 const related = [
   {
-    tag: "AMP 01",
+    tag: "BMK 01",
     title: "AI Governance",
-    body: "The governance framework that makes responsible AI implementation possible. We typically run AMP 01 and AMP 02 together.",
+    body: "The governance framework that makes responsible AI implementation possible. We typically run BMK 01 and BMK 02 together.",
     href: "/ai-governance",
   },
   {
-    tag: "AMP 03",
+    tag: "BMK 03",
     title: "Structured Delivery",
     body: "Squad-based delivery models designed for organisations where governance and programme rigour are non-negotiable.",
     href: "/structured-delivery",
   },
   {
-    tag: "AMP 04",
+    tag: "BMK 04",
     title: "Capability Building",
     body: "Building the internal capability your teams need to operate and evolve AI systems after we have left.",
     href: "/capability",
@@ -116,39 +116,24 @@ const AiImplementation = memo(function AiImplementation({
       <ServiceSchema
         name="AI Implementation"
         description="End-to-end AI implementation with governance built in. Use case identification, proof of concept, production-grade delivery, and capability transfer for regulated industries."
-        url="https://amplified.co.uk/ai-implementation"
+        url="https://bmkrs.com/ai-implementation"
       />
       <StructuredData data={aiImplementationFAQSchema} id="ai-implementation-faq-schema" />
       <StructuredData
         data={createBreadcrumbSchema([
-          { name: "Home", url: "https://amplified.co.uk/" },
-          { name: "AI Implementation", url: "https://amplified.co.uk/ai-implementation" },
+          { name: "Home", url: "https://bmkrs.com/" },
+          { name: "AI Implementation", url: "https://bmkrs.com/ai-implementation" },
         ])}
         id="ai-implementation-breadcrumb"
       />
       <BreadcrumbBar items={[{ label: "Home", href: "/" }, { label: "AI Implementation" }]} />
 
       <PageHero
-        eyebrow="AMP 02"
+        eyebrow="BMK 02"
         title="AI Implementation"
-        lead="We do not just advise on AI. We build it with you, inside your governance, all the way from use case identification to production deployment and capability handover."
+        lead="We do not just advise on AI. We build it with you, inside your governance — from use case to production — because in regulated industries implementation is a governance and change challenge, not only a technical one."
       >
-        <Text variant="lead" tone="white-75" className="max-w-[580px]">
-          In regulated industries, AI implementation is not just a technical challenge. It is a
-          governance, accountability, and change management challenge. We have done all three.
-        </Text>
-        <Surface
-          variant="inset"
-          padding="md"
-          radius="sm"
-          className="max-w-[540px] border-l-4 border-[#F85C70] bg-[rgba(248,92,112,0.08)]"
-        >
-          <Text variant="h4" tone="white" className="font-normal italic">
-            &ldquo;A proof of concept that cannot pass your governance board is not a proof of
-            anything.&rdquo;
-          </Text>
-        </Surface>
-        <AmpButton onClick={() => onOpenConsultation("ai-implementation")}>
+        <AmpButton size="md" onClick={() => onOpenConsultation("ai-implementation")}>
           Start a Conversation <ArrowRight className="h-4 w-4" />
         </AmpButton>
       </PageHero>

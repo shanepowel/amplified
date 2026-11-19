@@ -40,7 +40,7 @@ export const manifestoClaims: ManifestoClaim[] = [
     headline: "Capability that walks out the door with the consultants was never capability.",
     body: [
       "If your team cannot run the operating model, the governance framework, or the delivery dashboard six months after we leave, we have not built capability. We have built dependency. We deliberately design for handover from day one of every engagement: artefacts you own, decisions your people made, and skills that stay with the function we worked alongside.",
-      "Where genuine delivery capacity is what is needed rather than strategic advice, we run that through AmplifiedTeams as a deliberately separate offering, with a different commercial model and a different team. Amplified is small-team, senior-led strategic work. AmplifiedTeams is delivery capacity. Keeping them clearly distinct is how we make sure clients get what they are actually buying.",
+      "Where genuine delivery capacity is what is needed rather than strategic advice, we run that through bmkrs Teams as a deliberately separate offering, with a different commercial model and a different team. bmkrs is small-team, senior-led strategic work. bmkrs Teams is delivery capacity. Keeping them clearly distinct is how we make sure clients get what they are actually buying.",
     ],
   },
 ];
