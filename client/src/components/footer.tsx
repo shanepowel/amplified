@@ -1,47 +1,68 @@
 'use client';
 
 import Link from "next/link";
-import Image from "next/image";
 import { memo } from "react";
-import { Linkedin, Mail } from "lucide-react";
+import { Linkedin, Mail, ArrowRight } from "lucide-react";
 import { SiInstagram, SiYoutube, SiPinterest } from "react-icons/si";
-import amplifiedLogo from "@assets/amplified-logo-pink-purple.png";
-import { Container, Eyebrow, Grid, Stack, Text } from "@/components/system";
+import { Separator } from "@/components/ui/separator";
+import { Container, Grid, Stack, Text } from "@/components/system";
 
 const Footer = memo(function Footer() {
   return (
-    <footer className="border-t border-[#60266A]/40 bg-[#181F4F] font-sans">
-      <Container className="py-12">
+    <footer className="border-t border-[#E0DBD2] bg-[#EFEBE3] font-sans">
+      <Container className="py-16 lg:py-20">
+        <div className="mb-14 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div className="max-w-xl">
+            <Text variant="h2" className="mb-3">
+              Let&apos;s talk.
+            </Text>
+            <Text variant="body" tone="muted">
+              Whether you&apos;re starting an AI strategy or untangling a delivery model, we&apos;ll give you a straight answer on where to begin.
+            </Text>
+          </div>
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-2 border-b border-[#1A1A1A] pb-1 font-sans text-sm font-medium text-[#1A1A1A] transition-colors hover:border-[#C75B39] hover:text-[#C75B39]"
+            data-testid="footer-link-get-in-touch"
+          >
+            Get in touch <ArrowRight className="h-3.5 w-3.5" />
+          </Link>
+        </div>
+
+        <Separator className="mb-12 bg-[#E0DBD2]" />
+
         <Grid
           cols="12"
           gap="lg"
           equal={false}
-          className="mb-10 border-b border-[#60266A]/30 pb-10 lg:grid-cols-5"
+          className="mb-12 lg:grid-cols-5"
         >
           <div className="lg:col-span-2">
-            <Image
-              src={amplifiedLogo}
-              alt="Amplified"
-              sizes="160px"
-              className="mb-4 !h-10 !w-auto object-contain brightness-200"
+            <Link
+              href="/"
+              className="mb-4 inline-block font-sans text-lg font-semibold tracking-tight text-[#1A1A1A]"
               data-testid="footer-logo"
-            />
-            <Text variant="small" className="mb-2 text-white/60">
-              Built for industries where rigour is not optional.
+            >
+              amplified
+            </Link>
+            <Text variant="small" tone="muted" className="mb-2 max-w-xs">
+              A productised digital consultancy for leaders accountable for AI, delivery, and change that has to land.
             </Text>
-            <Text variant="small" className="mb-1 text-white/40">
+            <Text variant="small" tone="subtle" className="mb-1">
               London, UK
             </Text>
             <a
               href="mailto:hello@amplified.co.uk"
-              className="text-sm text-white/40 transition-colors hover:text-[#F85C70]"
+              className="text-sm text-[#5C584F] transition-colors hover:text-[#C75B39]"
             >
               hello@amplified.co.uk
             </a>
           </div>
 
           <div>
-            <Eyebrow className="mb-4">Services</Eyebrow>
+            <Text variant="eyebrow" tone="subtle" className="mb-4">
+              Services
+            </Text>
             <ul className="space-y-2">
               {[
                 { label: "AI Governance", href: "/ai-governance" },
@@ -51,7 +72,7 @@ const Footer = memo(function Footer() {
                 { label: "Autonomous Organisations", href: "/org-design" },
               ].map((link) => (
                 <li key={link.label}>
-                  <Link href={link.href} className="text-sm text-white/50 transition-colors hover:text-white/90">
+                  <Link href={link.href} className="text-sm text-[#5C584F] transition-colors hover:text-[#1A1A1A]">
                     {link.label}
                   </Link>
                 </li>
@@ -60,7 +81,9 @@ const Footer = memo(function Footer() {
           </div>
 
           <div>
-            <Eyebrow className="mb-4">Company</Eyebrow>
+            <Text variant="eyebrow" tone="subtle" className="mb-4">
+              Company
+            </Text>
             <ul className="space-y-2">
               {[
                 { label: "How We Work", href: "/how-we-work" },
@@ -70,7 +93,7 @@ const Footer = memo(function Footer() {
                 { label: "Contact", href: "/contact" },
               ].map((link) => (
                 <li key={link.label}>
-                  <Link href={link.href} className="text-sm text-white/50 transition-colors hover:text-white/90">
+                  <Link href={link.href} className="text-sm text-[#5C584F] transition-colors hover:text-[#1A1A1A]">
                     {link.label}
                   </Link>
                 </li>
@@ -79,7 +102,9 @@ const Footer = memo(function Footer() {
           </div>
 
           <div>
-            <Eyebrow className="mb-4">Who We Work With</Eyebrow>
+            <Text variant="eyebrow" tone="subtle" className="mb-4">
+              Who We Work With
+            </Text>
             <ul className="space-y-2">
               {[
                 { label: "For CIOs", href: "/for-cios" },
@@ -89,10 +114,10 @@ const Footer = memo(function Footer() {
                 { label: "Financial Services", href: "/sectors/financial-services" },
                 { label: "Energy & Utilities", href: "/sectors/energy-utilities" },
                 { label: "Public Sector", href: "/sectors/public-sector" },
-                { label: "Technology & Private Sector", href: "/sectors/technology" },
+                { label: "Technology", href: "/sectors/technology" },
               ].map((link) => (
                 <li key={link.label}>
-                  <Link href={link.href} className="text-sm text-white/50 transition-colors hover:text-white/90">
+                  <Link href={link.href} className="text-sm text-[#5C584F] transition-colors hover:text-[#1A1A1A]">
                     {link.label}
                   </Link>
                 </li>
@@ -101,8 +126,10 @@ const Footer = memo(function Footer() {
           </div>
         </Grid>
 
+        <Separator className="mb-8 bg-[#E0DBD2]" />
+
         <Stack direction="row-responsive" gap="md" justify="between" align="center" className="flex-wrap">
-          <Text variant="caption" className="text-white/30">
+          <Text variant="caption" tone="subtle">
             © 2026 Amplified Ltd · London, UK · Company No. 08589016
           </Text>
 
@@ -117,7 +144,7 @@ const Footer = memo(function Footer() {
               <Link
                 key={link.label}
                 href={link.href}
-                className="text-xs text-white/30 transition-colors hover:text-white/70"
+                className="text-xs text-[#7A7468] transition-colors hover:text-[#1A1A1A]"
                 data-testid={`footer-link-${link.label.toLowerCase().replace(/\s+/g, "-")}`}
               >
                 {link.label}
@@ -138,7 +165,7 @@ const Footer = memo(function Footer() {
                   target={s.href.startsWith("mailto") ? undefined : "_blank"}
                   rel={s.href.startsWith("mailto") ? undefined : "noopener noreferrer"}
                   aria-label={s.label}
-                  className="text-white/30 transition-colors hover:text-[#F85C70]"
+                  className="text-[#7A7468] transition-colors hover:text-[#C75B39]"
                 >
                   {s.icon}
                 </a>

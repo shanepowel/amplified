@@ -9,7 +9,7 @@ export function PageShell({
 }: React.HTMLAttributes<HTMLDivElement>) {
   return (
     <div
-      className={cn("min-h-screen min-w-0 overflow-x-clip bg-white font-sans", className)}
+      className={cn("min-h-screen min-w-0 overflow-x-clip bg-[#F5F2EA] font-sans", className)}
       {...props}
     >
       {children}

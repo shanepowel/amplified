@@ -1,22 +1,22 @@
 import type { Metadata } from 'next';
-import { Inter, Fraunces } from 'next/font/google';
+import { Manrope, Newsreader } from 'next/font/google';
 import './globals.css';
 import { AnalyticsScripts, GoogleTagManagerNoScript } from '../client/src/components/analytics-scripts';
 import { Providers } from '../client/src/components/providers';
 
-const inter = Inter({
+const manrope = Manrope({
   subsets: ['latin'],
-  weight: ['400', '600', '700'],
+  weight: ['400', '500', '600', '700'],
   display: 'swap',
-  variable: '--font-inter',
+  variable: '--font-manrope',
 });
 
-const fraunces = Fraunces({
+const newsreader = Newsreader({
   subsets: ['latin'],
-  weight: ['400', '500'],
-  style: ['normal'],
+  weight: ['400', '500', '600'],
+  style: ['normal', 'italic'],
   display: 'swap',
-  variable: '--font-fraunces',
+  variable: '--font-newsreader',
 });
 
 const organisationJsonLd = {
@@ -128,8 +128,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${fraunces.variable}`}>
-      <body className={inter.className}>
+    <html lang="en" suppressHydrationWarning className={`${manrope.variable} ${newsreader.variable}`}>
+      <body className={manrope.className}>
         <GoogleTagManagerNoScript />
         <script
           type="application/ld+json"

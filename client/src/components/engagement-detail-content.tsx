@@ -39,36 +39,35 @@ export default function EngagementDetailContent({ engagement, onOpenConsultation
       />
 
       <PageHero
-        eyebrow={`Engagement ${e.forBuyer}`}
+        tone="paper"
+        eyebrow={`Work / Case study`}
         title={e.name}
         subtitle={`${e.tagline}.`}
         lead={e.buyerSentence}
         contentClassName="max-w-[1200px]"
+        className="pt-10 lg:pt-14"
       >
-        <BorderGrid
-          cols={3}
-          className="mt-4 !border-white/12 [&_.amp-border-cell]:!border-white/12"
-        >
-          <BorderCell>
+        <BorderGrid cols={3} className="mt-2 border-[#E0DBD2] [&_.amp-border-cell]:border-[#E0DBD2]">
+          <BorderCell className="bg-transparent p-5">
             <Stack direction="row" gap="xs" align="center" className="mb-2">
-              <Clock className="h-3.5 w-3.5 shrink-0 text-[#F85C70]" />
-              <Text as="span" variant="mono" tone="white-45">Duration</Text>
+              <Clock className="h-3.5 w-3.5 shrink-0 text-[#C75B39]" />
+              <Text as="span" variant="mono" tone="subtle">Duration</Text>
             </Stack>
-            <Text variant="h4" tone="white">{e.duration}</Text>
+            <Text variant="h4">{e.duration}</Text>
           </BorderCell>
-          <BorderCell>
+          <BorderCell className="bg-transparent p-5">
             <Stack direction="row" gap="xs" align="center" className="mb-2">
-              <Tag className="h-3.5 w-3.5 shrink-0 text-[#F85C70]" />
-              <Text as="span" variant="mono" tone="white-45">Investment</Text>
+              <Tag className="h-3.5 w-3.5 shrink-0 text-[#C75B39]" />
+              <Text as="span" variant="mono" tone="subtle">Investment</Text>
             </Stack>
-            <Text variant="caption" tone="white">{e.price}</Text>
+            <Text variant="caption">{e.price}</Text>
           </BorderCell>
-          <BorderCell className="col-span-2 lg:col-span-1">
+          <BorderCell className="col-span-2 bg-transparent p-5 lg:col-span-1">
             <Stack direction="row" gap="xs" align="center" className="mb-2">
-              <Users className="h-3.5 w-3.5 shrink-0 text-[#F85C70]" />
-              <Text as="span" variant="mono" tone="white-45">Built for</Text>
+              <Users className="h-3.5 w-3.5 shrink-0 text-[#C75B39]" />
+              <Text as="span" variant="mono" tone="subtle">Built for</Text>
             </Stack>
-            <Text variant="h4" tone="white" className="capitalize">
+            <Text variant="h4" className="capitalize">
               {e.forBuyer.replace("for ", "")}
             </Text>
           </BorderCell>
@@ -91,10 +90,10 @@ export default function EngagementDetailContent({ engagement, onOpenConsultation
               <li key={i}>
                 <Surface variant="bordered" padding="md" className="flex items-start gap-4">
                   <span
-                    className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#181F4F]"
+                    className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#1A1A1A]"
                     aria-hidden="true"
                   >
-                    <Check className="h-4 w-4 text-[#F85C70]" />
+                    <Check className="h-4 w-4 text-[#C75B39]" />
                   </span>
                   <Text variant="body">{item}</Text>
                 </Surface>
@@ -130,9 +129,9 @@ export default function EngagementDetailContent({ engagement, onOpenConsultation
           </Stack>
           <ol className="space-y-5 lg:col-span-7 lg:col-start-6">
             {e.included.map((item, i) => (
-              <li key={i} className="flex items-start gap-5 border-b border-[#E5E3EE] pb-5">
+              <li key={i} className="flex items-start gap-5 border-b border-[#E0DBD2] pb-5">
                 <span
-                  className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#181F4F] font-mono text-sm font-bold text-[#F85C70]"
+                  className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#1A1A1A] font-mono text-sm font-bold text-[#C75B39]"
                   aria-hidden="true"
                 >
                   {String(i + 1).padStart(2, "0")}
@@ -167,7 +166,7 @@ export default function EngagementDetailContent({ engagement, onOpenConsultation
             >
               <div className="mb-4 flex items-center gap-3">
                 <span
-                  className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#F85C70]/15 font-mono text-xs text-[#F85C70]"
+                  className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#C75B39]/15 font-mono text-xs text-[#C75B39]"
                   aria-hidden="true"
                 >
                   {String(i + 1).padStart(2, "0")}
@@ -183,7 +182,7 @@ export default function EngagementDetailContent({ engagement, onOpenConsultation
         </ol>
 
         <Stack direction="row" gap="sm" align="center" className="mt-10">
-          <CalendarDays className="h-4 w-4 shrink-0 text-[#F85C70]" aria-hidden="true" />
+          <CalendarDays className="h-4 w-4 shrink-0 text-[#C75B39]" aria-hidden="true" />
           <Text variant="small" tone="white-45">
             Start date is agreed during the discovery call and held in the diary before contract sign-off.
           </Text>
@@ -197,8 +196,8 @@ export default function EngagementDetailContent({ engagement, onOpenConsultation
             <Text variant="h2">The handover, in one paragraph.</Text>
           </Stack>
           <div className="lg:col-span-7 lg:col-start-6">
-            <Surface variant="mist" padding="lg" className="border-l-4 border-l-[#F85C70]">
-              <CheckCircle className="mb-5 h-6 w-6 text-[#F85C70]" />
+            <Surface variant="mist" padding="lg" className="border-l-4 border-l-[#C75B39]">
+              <CheckCircle className="mb-5 h-6 w-6 text-[#C75B39]" />
               <Text variant="h3">{e.outcome}</Text>
             </Surface>
           </div>
@@ -226,7 +225,7 @@ export default function EngagementDetailContent({ engagement, onOpenConsultation
                 <Text variant="body" tone="white-80" className="flex-1">
                   {e.caseStudyOutcome}
                 </Text>
-                <ArrowRight className="h-5 w-5 shrink-0 text-[#F85C70]" />
+                <ArrowRight className="h-5 w-5 shrink-0 text-[#C75B39]" />
               </Stack>
             </Grid>
           </Surface>
@@ -257,42 +256,33 @@ export default function EngagementDetailContent({ engagement, onOpenConsultation
         </Grid>
       </Section>
 
-      <Section tone="purple" padding="lg">
-        <Stack gap="lg" align="center" className="text-center">
-          <Eyebrow>Start a conversation</Eyebrow>
-          <Text variant="h2" tone="white" className="max-w-[760px]">
-            Ready to scope a {e.name} engagement?
-          </Text>
-          <Text variant="lead" tone="white-75" className="max-w-[640px]">
-            We start every engagement with a 30-minute discovery call. Bring the situation,
-            we will tell you whether {e.name} is the right fit before we send a proposal.
-          </Text>
-          <Stack direction="row-responsive" gap="md" align="center" justify="center" className="flex-wrap">
+      <Section tone="mist" padding="lg" className="border-t border-[#E0DBD2]">
+        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <Stack gap="sm" className="max-w-xl">
+            <Text variant="h2">Next project</Text>
+            <Text variant="body" tone="muted">
+              Ready to scope a {e.name} engagement? We start with a 30-minute discovery call — no pitch, no deck.
+            </Text>
+          </Stack>
+          <Stack direction="row-responsive" gap="md" align="center" className="flex-wrap">
             <AmpButton
-              size="xl"
+              size="lg"
               onClick={() => onOpenConsultation(e.name)}
               data-testid={`button-engagement-cta-${e.slug}`}
             >
-              Book a Discovery Call <ArrowRight className="h-4 w-4" />
+              Book a discovery call <ArrowRight className="h-4 w-4" />
             </AmpButton>
-            <div className="amp-playbook-cta-on-purple">
-              <EngagementPlaybookDownload engagement={e} />
-            </div>
-          </Stack>
-          <Text variant="small" tone="white-45">
-            No pitch. No deck. Just a 30-minute call — or grab the full playbook as a PDF.
-          </Text>
-
-          <div className="mt-16 flex w-full flex-wrap items-center justify-center gap-6 border-t border-white/15 pt-10">
-            <Text as="span" variant="mono" tone="white-45">Other engagements</Text>
             <Link
               href="/engagements"
-              className="inline-flex items-center gap-2 font-sans text-sm font-semibold text-[#F85C70]"
+              className="inline-flex items-center gap-2 border-b border-[#1A1A1A] pb-0.5 text-sm font-medium transition-colors hover:border-[#C75B39] hover:text-[#C75B39]"
             >
-              See all three engagements <ArrowRight className="h-3 w-3" />
+              See all engagements <ArrowRight className="h-3.5 w-3.5" />
             </Link>
-          </div>
-        </Stack>
+          </Stack>
+        </div>
+        <div className="mt-10">
+          <EngagementPlaybookDownload engagement={e} />
+        </div>
       </Section>
 
       <AskAmplified engagementSlug={e.slug} engagementName={e.name} />
