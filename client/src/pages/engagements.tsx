@@ -30,10 +30,10 @@ export default memo(function Engagements({ onOpenConsultation, engagements: enga
     <PageShell>
       <BreadcrumbBar items={[{ label: "Home", href: "/" }, { label: "Engagements" }]} />
 
-      <Section tone="navy" padding="xl">
-        <Stack gap="lg" className="max-w-[920px]">
+      <Section tone="navy" padding="hero">
+        <Stack gap="md" className="max-w-[920px]">
           <Eyebrow>Engagements</Eyebrow>
-          <Text variant="display" tone="white">
+          <Text variant="h1" tone="white">
             Named work. Scoped to outcome, and delivered to a deadline.
           </Text>
           <Text variant="lead" tone="white-75" className="max-w-[680px]">

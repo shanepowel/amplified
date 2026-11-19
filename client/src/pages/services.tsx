@@ -25,7 +25,6 @@ import { Badge } from "@/components/ui/badge";
 import { HexagonDecoration } from "@/components/hexagon-decoration";
 import Image from "next/image";
 import { CheckCircle, ArrowRight, Clock, Users, Shield, Lightbulb, Code2, Zap, Target, Handshake, BookOpen } from "lucide-react";
-import heroImage from "@assets/36_1760470798015.webp";
 import storeImage from "@assets/35_1760470608291.webp";
 import coachImage from "@assets/50_1760470599806.webp";
 import teamsImage from "@assets/68_1760470836673.webp";
@@ -144,57 +143,22 @@ const Services = memo(function Services({ onOpenConsultation }: ServicesProps) {
 
   return (
     <PageShell className="bg-background">
-      {/* Hero Section - Premium glassmorphic design */}
-      <Section className="py-24 md:py-32 bg-gradient-to-br from-background via-muted/10 to-primary/5 relative overflow-hidden">
-        <div className="absolute inset-0 modern-pattern opacity-5"></div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <div className="inline-block bg-gradient-to-r from-primary/10 to-accent/10 backdrop-blur-sm px-6 py-2 rounded-full mb-6">
-                <span className="text-sm font-semibold tracking-wide text-primary">Six Ways to Amplify</span>
-              </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6" data-testid="text-services-title">
-                Capability{' '}
-                <span className="text-primary">Amplification</span>
-              </h1>
-              <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed" data-testid="text-services-subtitle">
-                Whatever capability challenge you're facing, <strong className="text-foreground">we have an amp for that</strong>. Six ways to amplify your potential.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button
-                  size="lg"
-                  className="bg-primary text-primary-foreground hover:bg-primary/90"
-                  onClick={() => onOpenConsultation()}
-                  data-testid="button-discover-services"
-                >
-                  Find Your Amp
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  onClick={() => window.location.href = '/#calculator'}
-                  data-testid="button-calculate-potential"
-                >
-                  Calculate Potential
-                </Button>
-              </div>
-            </div>
-            <div className="relative">
-              <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-accent/20 rounded-3xl blur-2xl opacity-50"></div>
-              <Image
-                src={heroImage}
-                alt="Business operations services overview"
-                className="relative w-full h-auto rounded-2xl shadow-2xl crystalline-border"
-                priority
-                fetchPriority="high"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                data-testid="img-services-hero"
-              />
-            </div>
-          </div>
-        </div>
-      </Section>
+      <PageHero
+        eyebrow="What we do"
+        title={<span data-testid="text-services-title">Capability amplification</span>}
+        lead="Whatever capability challenge you are facing, we have an approach for it — six ways to ship products, implement AI, and build lasting delivery strength."
+        contentClassName="max-w-[960px]"
+      >
+        <Stack direction="row-responsive" gap="md">
+          <AmpButton size="md" onClick={() => onOpenConsultation()} data-testid="button-discover-services">
+            Find your approach
+            <ArrowRight className="h-4 w-4" />
+          </AmpButton>
+          <AmpButton asChild size="md" variant="outlineLight" data-testid="button-calculate-potential">
+            <Link href="/#calculator">Calculate potential</Link>
+          </AmpButton>
+        </Stack>
+      </PageHero>
 
       <div className="luminous-divider"></div>
 

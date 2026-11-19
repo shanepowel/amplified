@@ -101,7 +101,7 @@ const principles = [
 const AboutMethodology = memo(function AboutMethodology({ onOpenConsultation }: AboutMethodologyProps) {
   return (
     <PageShell className="bg-[#FAFAF9]">
-      <Section tone="navy" padding="hero" className="pt-40 pb-28">
+      <Section tone="navy" padding="hero">
         <Link href="/how-we-work">
           <span className="mb-12 inline-flex cursor-pointer items-center gap-2 text-sm text-white/45">
             <ArrowLeft className="h-4 w-4" />

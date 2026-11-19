@@ -109,7 +109,7 @@ const SectorInfrastructure = memo(function SectorInfrastructure({ onOpenConsulta
         ]}
       />
 
-      <Section tone="navy" padding="xl" className="relative overflow-hidden" contained={false}>
+      <Section tone="navy" padding="hero" className="relative overflow-hidden" contained={false}>
         <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-[48%] lg:block" aria-hidden="true">
           <Image
             src={heroImg}
@@ -126,12 +126,10 @@ const SectorInfrastructure = memo(function SectorInfrastructure({ onOpenConsulta
           />
         </div>
         <Container className="relative">
-          <Stack gap="lg" className="max-w-[920px]">
+          <Stack gap="md" className="max-w-[920px]">
             <Eyebrow>Sector Focus</Eyebrow>
-            <Text variant="display" tone="white">
-              AI Governance for
-              <br />
-              Infrastructure Organisations
+            <Text variant="h1" tone="white">
+              AI Governance for Infrastructure Organisations
             </Text>
             <Text variant="lead" tone="white-75" className="max-w-2xl">
               Infrastructure and construction programmes run on governance structures that most technology

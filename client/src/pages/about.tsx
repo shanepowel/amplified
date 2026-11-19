@@ -59,12 +59,12 @@ const beliefs = [
 const About = memo(function About({ onOpenConsultation }: AboutProps) {
   return (
     <PageShell className="bg-[#FAFAF9]">
-      <Section tone="navy" padding="hero" className="pt-32 pb-20 lg:pt-40 lg:pb-28">
-        <Stack gap="lg">
+      <Section tone="navy" padding="hero">
+        <Stack gap="md">
           <Eyebrow>About bmkrs</Eyebrow>
-          <Grid cols="2-lg" gap="xl" className="items-end">
-            <Text variant="h1" tone="white" data-testid="text-about-title">
-              Founded by<br />practitioners.<br />Built from the inside.
+          <Grid cols="2-lg" gap="xl" equal={false} className="items-end">
+            <Text variant="h1" tone="white" className="max-w-[16ch]" data-testid="text-about-title">
+              Founded by practitioners. Built from the inside.
             </Text>
             <Stack gap="md">
               <Text variant="lead" tone="white-70">

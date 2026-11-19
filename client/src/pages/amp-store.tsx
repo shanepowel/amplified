@@ -114,11 +114,10 @@ const AmpStore = memo(function AmpStore({ onOpenConsultation }: AmpStoreProps) {
         className="bg-[#60266A]"
         eyebrow="The bmkrs Ecosystem"
         title={<span data-testid="text-ampstore-title">bmkrs Store</span>}
-        subtitle="Practitioner-grade capability resources, curated for regulated and complex industries."
-        lead="Not a training platform. Not an eLearning library. The bmkrs Store is a curated catalogue of frameworks, tools, playbooks, and learning resources built directly around the six BMK service lines. Everything your teams need to build lasting capability, not just pass a module."
+        lead="A curated catalogue of frameworks, tools, and playbooks mapped to the six BMK service lines — practitioner-grade resources for lasting capability, not just another eLearning library."
       >
         <Stack direction="row-responsive" gap="md" className="flex-wrap">
-          <AmpButton asChild data-testid="link-ampstore-login">
+          <AmpButton asChild size="md" data-testid="link-ampstore-login">
             <a href="https://theampstore.co.uk" target="_blank" rel="noopener noreferrer">
               <ExternalLink className="h-4 w-4" />
               Access bmkrs Store
@@ -126,7 +125,7 @@ const AmpStore = memo(function AmpStore({ onOpenConsultation }: AmpStoreProps) {
           </AmpButton>
           <AmpButton
             variant="outlineLight"
-            size="lg"
+            size="md"
             onClick={() => onOpenConsultation("amp-store")}
           >
             Talk to Us About Access

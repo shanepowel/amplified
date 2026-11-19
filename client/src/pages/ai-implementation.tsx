@@ -131,24 +131,9 @@ const AiImplementation = memo(function AiImplementation({
       <PageHero
         eyebrow="BMK 02"
         title="AI Implementation"
-        lead="We do not just advise on AI. We build it with you, inside your governance, all the way from use case identification to production deployment and capability handover."
+        lead="We do not just advise on AI. We build it with you, inside your governance — from use case to production — because in regulated industries implementation is a governance and change challenge, not only a technical one."
       >
-        <Text variant="lead" tone="white-75" className="max-w-[580px]">
-          In regulated industries, AI implementation is not just a technical challenge. It is a
-          governance, accountability, and change management challenge. We have done all three.
-        </Text>
-        <Surface
-          variant="inset"
-          padding="md"
-          radius="sm"
-          className="max-w-[540px] border-l-4 border-[#F85C70] bg-[rgba(248,92,112,0.08)]"
-        >
-          <Text variant="h4" tone="white" className="font-normal italic">
-            &ldquo;A proof of concept that cannot pass your governance board is not a proof of
-            anything.&rdquo;
-          </Text>
-        </Surface>
-        <AmpButton onClick={() => onOpenConsultation("ai-implementation")}>
+        <AmpButton size="md" onClick={() => onOpenConsultation("ai-implementation")}>
           Start a Conversation <ArrowRight className="h-4 w-4" />
         </AmpButton>
       </PageHero>

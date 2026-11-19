@@ -187,7 +187,7 @@ const Home = memo(function Home({ onOpenConsultation, engagements: engagementsPr
       {/* SECTION 1: HERO */}
       <section
         ref={heroRef}
-        className="relative flex min-h-screen items-center overflow-hidden bg-[#181F4F]"
+        className="relative overflow-hidden bg-[#181F4F]"
       >
         <div
           className="pointer-events-none absolute inset-0"
@@ -196,46 +196,46 @@ const Home = memo(function Home({ onOpenConsultation, engagements: engagementsPr
               "radial-gradient(circle at 80% 20%, rgba(96, 38, 106, 0.15) 0%, transparent 60%)",
           }}
         />
-        <Container className="relative z-10 w-full py-24 lg:py-32">
-          <Grid cols="5-hero" gap="xl" equal={false} className="items-center">
+        <Container className="relative z-10 w-full py-14 lg:py-20">
+          <Grid cols="2-lg" gap="xl" equal={false} className="items-start lg:items-center">
             <Stack
-              gap="xl"
-              className="lg:col-span-3"
+              gap="md"
+              className="min-w-0"
               style={{
                 opacity: heroVisible ? 1 : 0,
-                transform: heroVisible ? "translateY(0)" : "translateY(24px)",
-                transition: "opacity 0.7s ease, transform 0.7s ease",
+                transform: heroVisible ? "translateY(0)" : "translateY(16px)",
+                transition: "opacity 0.6s ease, transform 0.6s ease",
               }}
             >
               <Eyebrow>strategy · digital products · technology · ai</Eyebrow>
-              <Text variant="display" tone="white">
+              <Text variant="display" tone="white" className="max-w-[20ch]">
                 Good ideas deserve better than a slide deck. We make them real.
               </Text>
-              <Text variant="lead" tone="white-80" className="max-w-[560px]">
+              <Text variant="lead" tone="white-80" className="max-w-[34rem]">
                 bmkrs is a holistic digital product and AI partner. We implement practical AI and ship products with the governance that makes change stick.
               </Text>
-              <Stack direction="row-responsive" gap="md" align="start" className="pt-2">
-                <AmpButton asChild data-testid="button-hero-see-how-we-work">
+              <Stack direction="row-responsive" gap="md" align="start" className="pt-1">
+                <AmpButton asChild size="md" data-testid="button-hero-see-how-we-work">
                   <Link href="/contact">
                     Let&apos;s build something <ArrowRight className="h-4 w-4" />
                   </Link>
                 </AmpButton>
-                <AmpButton asChild variant="outlineLight" data-testid="button-hero-talk-to-us">
+                <AmpButton asChild size="md" variant="outlineLight" data-testid="button-hero-talk-to-us">
                   <a href="#how-we-work">Explore our work</a>
                 </AmpButton>
               </Stack>
             </Stack>
 
             <div
-              className="min-w-0 lg:col-span-2"
+              className="min-w-0 w-full"
               style={{
                 opacity: heroVisible ? 1 : 0,
-                transform: heroVisible ? "translateY(0)" : "translateY(24px)",
-                transition: "opacity 0.7s ease 0.2s, transform 0.7s ease 0.2s",
+                transform: heroVisible ? "translateY(0)" : "translateY(16px)",
+                transition: "opacity 0.6s ease 0.15s, transform 0.6s ease 0.15s",
               }}
             >
-              <Surface variant="inset" padding="md" radius="md" className="h-full">
-                <Eyebrow tone="white-45" className="mb-5">
+              <Surface variant="inset" padding="md" radius="md" className="w-full min-w-0">
+                <Eyebrow tone="white-45" className="mb-4">
                   Three productised engagements under Build
                 </Eyebrow>
                 <ul className="min-w-0 space-y-0">
@@ -243,23 +243,21 @@ const Home = memo(function Home({ onOpenConsultation, engagements: engagementsPr
                     <li key={eng.slug} className="min-w-0">
                       <Link
                         href={`/engagements/${eng.slug}`}
-                        className="amp-focus-ring-on-navy group block border-t border-white/10 py-4"
+                        className="amp-focus-ring-on-navy group block min-w-0 border-t border-white/10 py-3"
                         data-testid={`link-hero-engagement-${eng.slug}`}
                       >
-                        <Stack direction="row" justify="between" align="baseline" gap="md">
-                          <Text
-                            as="span"
-                            variant="h4"
-                            tone="white"
-                            className="text-xl transition-colors duration-200 group-hover:text-[#F85C70]"
-                          >
-                            {eng.name}
-                          </Text>
-                          <Text as="span" variant="eyebrow" tone="white-45" className="shrink-0">
-                            {eng.duration}
-                          </Text>
-                        </Stack>
-                        <Text variant="small" tone="white-70" clamp={2} className="mt-2">
+                        <Text
+                          as="span"
+                          variant="h4"
+                          tone="white"
+                          className="block break-normal transition-colors duration-200 group-hover:text-[#F85C70]"
+                        >
+                          {eng.name}
+                        </Text>
+                        <Text as="span" variant="eyebrow" tone="white-45" className="mt-1 block">
+                          {eng.duration}
+                        </Text>
+                        <Text variant="small" tone="white-70" clamp={2} className="mt-1.5">
                           {eng.outcome}
                         </Text>
                       </Link>

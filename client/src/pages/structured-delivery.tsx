@@ -64,15 +64,15 @@ const StructuredDelivery = memo(function StructuredDelivery({
       <StructuredData data={createBreadcrumbSchema([{ name: 'Home', url: 'https://bmkrs.com/' }, { name: 'Structured Delivery', url: 'https://bmkrs.com/structured-delivery' }])} id="structured-delivery-breadcrumb" />
       <BreadcrumbBar items={[{ label: "Home", href: "/" }, { label: "Structured Delivery" }]} />
 
-      <Section tone="navy" padding="xl" className="relative overflow-hidden" contained={false}>
+      <Section tone="navy" padding="hero" className="relative overflow-hidden" contained={false}>
         <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-[48%] lg:block" aria-hidden="true">
           <Image src={heroImg} alt="" aria-hidden="true" fill className="object-cover opacity-30" priority sizes="48vw" />
           <div className="absolute inset-0 bg-gradient-to-r from-[#181F4F] via-[#181F4F]/80 to-transparent" />
         </div>
         <Container className="relative">
-          <Stack gap="lg" className="max-w-[720px]">
+          <Stack gap="md" className="max-w-[720px]">
             <Eyebrow>BMK 03</Eyebrow>
-            <Text variant="display" tone="white">Structured Delivery</Text>
+            <Text variant="h1" tone="white">Structured Delivery</Text>
             <Text variant="h3" tone="coral">
               Agile done right for industries where governance isn&apos;t optional.
             </Text>

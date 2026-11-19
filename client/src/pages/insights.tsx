@@ -115,12 +115,12 @@ export default function Insights({ onOpenConsultation }: InsightsProps) {
       <StructuredData data={insightsHubSchema as Record<string, unknown>} id="insights-hub-schema" />
       <PageShell className="bg-[#FAFAF9]">
 
-        <Section tone="navy" padding="hero" className="pt-32 pb-20 lg:pt-40 lg:pb-28">
+        <Section tone="navy" padding="hero">
           <Grid cols="2-lg" gap="xl" className="items-end">
             <div>
-              <Eyebrow className="mb-6">Insights</Eyebrow>
-              <Text variant="display" tone="white" data-testid="text-insights-page-title">
-                Practical thinking<br />for delivery-led<br />organisations
+              <Eyebrow className="mb-3">Insights</Eyebrow>
+              <Text variant="h1" tone="white" data-testid="text-insights-page-title">
+                Practical thinking for delivery-led organisations
               </Text>
             </div>
             <Stack gap="md">

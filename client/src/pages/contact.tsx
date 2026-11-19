@@ -97,10 +97,10 @@ const Contact = memo(function Contact({ onOpenConsultation: _onOpenConsultation 
       <BreadcrumbBar items={[{ label: "Home", href: "/" }, { label: "Contact" }]} />
 
       <PageHero
-        padding="hero"
+        padding="md"
         eyebrow="Get in Touch"
         title={<span data-testid="text-contact-title">Let's talk</span>}
-        lead="Whether you are starting an AI governance programme, rethinking a delivery model, or exploring what the Stable Teams framework could do for your organisation, we will give you a straight answer. No slide decks in the first meeting."
+        lead="Whether you are starting an AI programme, rethinking delivery, or exploring Stable Teams — we will give you a straight answer. No slide decks in the first meeting."
       >
         <Stack direction="row-responsive" gap="md">
           <AmpButton size="md" onClick={() => setShowCalendar(true)} data-testid="button-book-call">

@@ -16,7 +16,6 @@ import {
   Grid,
   Text,
   Eyebrow,
-  Surface,
   AmpButton,
   BorderGrid,
   BorderCell,
@@ -127,24 +126,10 @@ const Transformation = memo(function Transformation({ onOpenConsultation }: Tran
         eyebrow="BMK 06"
         title={<span data-testid="text-page-title">Tech Build</span>}
         subtitle="Digital transformation, delivered in code."
-        lead="Hands-on digital transformation delivery from engineers and architects who embed inside your teams. We build custom software, AI-native systems, and data platforms for regulated industries where getting it wrong is not an option."
+        lead="Engineers and architects who embed with your teams — custom software, AI-native systems, and data platforms for regulated industries where getting it wrong is not an option."
       >
-        <Text variant="lead" tone="white-75" className="max-w-[520px]">
-          We do not produce recommendations and leave. We write code, architect systems, and carry
-          joint accountability for what gets built.
-        </Text>
-        <Surface
-          variant="inset"
-          padding="md"
-          radius="sm"
-          className="max-w-[520px] border-l-4 border-[#F85C70] bg-[rgba(248,92,112,0.08)]"
-        >
-          <Text variant="h4" tone="white" className="font-normal italic">
-            &ldquo;Built for industries where rigour isn&apos;t optional.&rdquo;
-          </Text>
-        </Surface>
         {onOpenConsultation ? (
-          <AmpButton onClick={() => onOpenConsultation("transformation")}>
+          <AmpButton size="md" onClick={() => onOpenConsultation("transformation")}>
             Start a Conversation <ArrowRight className="h-4 w-4" />
           </AmpButton>
         ) : null}

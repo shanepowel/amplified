@@ -151,25 +151,10 @@ const Coaching = memo(function Coaching({ onOpenConsultation }: CoachingProps) {
       <PageHero
         eyebrow="BMK 05"
         title={<span data-testid="text-page-title">Teaching &amp; Coaching</span>}
-        lead="Senior operators teaching and coaching leaders, delivery professionals, and practitioners through the realities of technology adoption and organisational transformation in regulated environments."
+        lead="Senior operators coaching leaders and practitioners through technology adoption in regulated environments — from experience, not theory."
       >
-        <Text variant="lead" tone="white-75" className="max-w-[520px]">
-          We coach from experience, not from theory. Every coach at bmkrs has operated inside the
-          environments our clients work in.
-        </Text>
-        <Surface
-          variant="inset"
-          padding="md"
-          radius="sm"
-          className="max-w-[520px] border-l-4 border-[#F85C70] bg-[rgba(248,92,112,0.08)]"
-        >
-          <Text variant="h4" tone="white" className="font-normal italic">
-            &ldquo;The most useful coaching conversation is the one that asks the question you were
-            already avoiding.&rdquo;
-          </Text>
-        </Surface>
         {onOpenConsultation ? (
-          <AmpButton onClick={() => onOpenConsultation("coaching")}>
+          <AmpButton size="md" onClick={() => onOpenConsultation("coaching")}>
             Start a Conversation <ArrowRight className="h-4 w-4" />
           </AmpButton>
         ) : null}

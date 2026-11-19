@@ -95,14 +95,12 @@ const talentHRJobsUrl = "https://jobs.talenthr.io/bmkrs/";
 const Careers = memo(function Careers({ onOpenConsultation }: CareersProps) {
   return (
     <PageShell className="bg-[#FAFAF9]">
-      <Section tone="navy" padding="hero" className="pt-32 lg:pt-40">
+      <Section tone="navy" padding="hero">
         <Grid cols="2-lg" gap="xl" equal={false} className="items-center">
-          <Stack gap="lg">
+          <Stack gap="md">
             <Eyebrow>Join the Partnership</Eyebrow>
-            <Text variant="display" tone="white" data-testid="text-careers-title">
-              This is what
-              <br />
-              we are building.
+            <Text variant="h1" tone="white" data-testid="text-careers-title">
+              This is what we are building.
             </Text>
             <Text variant="lead" tone="white-70">
               A management consultancy that works across infrastructure, energy, financial services,
