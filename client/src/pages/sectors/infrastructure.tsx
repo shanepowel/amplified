@@ -75,7 +75,7 @@ const challenges = [
 
 const infrastructureSchema = createServiceSchema({
   name: "AI Governance & Technology Delivery for Infrastructure Organisations",
-  url: "https://amplified.co.uk/sectors/infrastructure",
+  url: "https://bmkrs.com/sectors/infrastructure",
   description:
     "AI governance, structured delivery, and digital programme management for infrastructure and construction organisations operating under NEC/JCT contracts with PMO governance requirements.",
   keywords: [
@@ -89,9 +89,9 @@ const infrastructureSchema = createServiceSchema({
 });
 
 const breadcrumbSchema = createBreadcrumbSchema([
-  { name: "Home", url: "https://amplified.co.uk/" },
-  { name: "Sectors", url: "https://amplified.co.uk/sectors/infrastructure" },
-  { name: "Infrastructure", url: "https://amplified.co.uk/sectors/infrastructure" },
+  { name: "Home", url: "https://bmkrs.com/" },
+  { name: "Sectors", url: "https://bmkrs.com/sectors/infrastructure" },
+  { name: "Infrastructure", url: "https://bmkrs.com/sectors/infrastructure" },
 ]);
 
 const SectorInfrastructure = memo(function SectorInfrastructure({ onOpenConsultation }: Props) {
@@ -171,7 +171,7 @@ const SectorInfrastructure = memo(function SectorInfrastructure({ onOpenConsulta
               compensation event, are measured in millions rather than user complaints.
             </Text>
             <Text variant="lead" tone="muted">
-              Amplified was built for organisations where rigour is not optional. We understand programme
+              bmkrs was built for organisations where rigour is not optional. We understand programme
               governance because we have worked inside it, not observed it from the outside. Our AI and
               digital delivery frameworks are designed to strengthen your existing controls, not circumvent
               them.
@@ -225,7 +225,7 @@ const SectorInfrastructure = memo(function SectorInfrastructure({ onOpenConsulta
 
       <Section tone="white" padding="lg">
         <Stack gap="lg">
-          <Eyebrow>What Amplified Delivers</Eyebrow>
+          <Eyebrow>What bmkrs Delivers</Eyebrow>
           <Text variant="h2">Services for infrastructure organisations</Text>
           <Text variant="lead" tone="muted" className="max-w-3xl">
             Each service is adapted for the governance, contractual, and regulatory environment that
@@ -321,7 +321,7 @@ const SectorInfrastructure = memo(function SectorInfrastructure({ onOpenConsulta
           </Grid>
           <Surface variant="mist" padding="lg" radius="lg" border="hairline">
             <Text variant="body" tone="muted" className="mb-4 italic">
-              "A major regulated infrastructure programme engaged Amplified to design an AI governance
+              "A major regulated infrastructure programme engaged bmkrs to design an AI governance
               framework ahead of their first AI procurement. The framework mapped accountability to the
               existing programme structure, produced the assurance documentation required by their client's
               PMO, and was completed before any technology was selected. The procurement process ran against
@@ -348,17 +348,17 @@ const SectorInfrastructure = memo(function SectorInfrastructure({ onOpenConsulta
               {
                 q: "Can agile delivery work in infrastructure programmes?",
                 a:
-                  "Yes, but it requires structured adaptation. Pure agile sprint cycles are incompatible with stage-gate approvals, NEC compensation events, and regulatory sign-off requirements. Amplified implements a structured agile model that retains sprint-based delivery while preserving the governance rigour, documentation standards, and audit trails that infrastructure programmes require.",
+                  "Yes, but it requires structured adaptation. Pure agile sprint cycles are incompatible with stage-gate approvals, NEC compensation events, and regulatory sign-off requirements. bmkrs implements a structured agile model that retains sprint-based delivery while preserving the governance rigour, documentation standards, and audit trails that infrastructure programmes require.",
               },
               {
                 q: "How does digital transformation work alongside a live infrastructure programme?",
                 a:
-                  "The most effective approach is to embed digital capability within the existing programme structure rather than running it in parallel. Amplified maps the digital workstream to existing programme governance, ensures all outputs meet the same assurance standards as physical deliverables, and builds handover plans so internal teams maintain the capability after the engagement ends.",
+                  "The most effective approach is to embed digital capability within the existing programme structure rather than running it in parallel. bmkrs maps the digital workstream to existing programme governance, ensures all outputs meet the same assurance standards as physical deliverables, and builds handover plans so internal teams maintain the capability after the engagement ends.",
               },
               {
                 q: "What does an AI readiness assessment cover for an infrastructure organisation?",
                 a:
-                  "An Amplified AI readiness assessment for infrastructure covers: data maturity and availability across the programme, existing governance structures and where AI accountability would sit, regulatory and contractual constraints on AI use, workforce readiness and change management requirements, and a prioritised roadmap of AI use cases with risk-adjusted business cases.",
+                  "a bmkrs AI readiness assessment for infrastructure covers: data maturity and availability across the programme, existing governance structures and where AI accountability would sit, regulatory and contractual constraints on AI use, workforce readiness and change management requirements, and a prioritised roadmap of AI use cases with risk-adjusted business cases.",
               },
             ].map((item, i) => (
               <details key={i} className="cursor-pointer rounded-xl border border-[#E5E3EE] bg-white p-6">

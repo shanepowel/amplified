@@ -13,7 +13,7 @@ export async function generateMetadata(
     .join(' ');
 
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://amplified.co.uk';
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://bmkrs.com';
     const res = await fetch(`${baseUrl}/api/cms/content/insight`, { next: { revalidate: 300 } });
     if (res.ok) {
       const data = await res.json();
@@ -21,23 +21,23 @@ export async function generateMetadata(
       const article = articles.find((a) => a.slug === slug);
       if (article) {
         return {
-          title: `${article.title || title} | Amplified Insights`,
-          description: article.metaDescription || article.description || `Read ${article.title || title} - insights from Amplified on AI governance, technology delivery, and digital transformation.`,
+          title: `${article.title || title} | bmkrs Insights`,
+          description: article.metaDescription || article.description || `Read ${article.title || title} - insights from bmkrs on AI governance, technology delivery, and digital transformation.`,
           openGraph: {
             title: article.title || title,
-            description: article.metaDescription || article.description || `Read ${article.title || title} - insights from Amplified.`,
-            url: `https://amplified.co.uk/insights/${slug}`,
+            description: article.metaDescription || article.description || `Read ${article.title || title} - insights from bmkrs.`,
+            url: `https://bmkrs.com/insights/${slug}`,
             images: article.featuredImage ? [{ url: article.featuredImage }] : [{ url: '/og-image.png' }],
             type: 'article',
           },
           twitter: {
             card: 'summary_large_image',
             title: article.title || title,
-            description: article.metaDescription || article.description || `Read ${article.title || title} - insights from Amplified.`,
+            description: article.metaDescription || article.description || `Read ${article.title || title} - insights from bmkrs.`,
             images: article.featuredImage ? [article.featuredImage] : ['/og-image.png'],
           },
           alternates: {
-            canonical: `https://amplified.co.uk/insights/${slug}`,
+            canonical: `https://bmkrs.com/insights/${slug}`,
           },
         };
       }
@@ -47,21 +47,21 @@ export async function generateMetadata(
   }
 
   return {
-    title: `${title} | Amplified Insights`,
-    description: `Read ${title} - insights from Amplified on AI governance, technology delivery, and digital transformation for regulated industries.`,
+    title: `${title} | bmkrs Insights`,
+    description: `Read ${title} - insights from bmkrs on AI governance, technology delivery, and digital transformation for regulated industries.`,
     openGraph: {
       title,
-      description: `Read ${title} - insights from Amplified.`,
-      url: `https://amplified.co.uk/insights/${slug}`,
+      description: `Read ${title} - insights from bmkrs.`,
+      url: `https://bmkrs.com/insights/${slug}`,
       type: 'article',
     },
     twitter: {
       card: 'summary_large_image',
       title,
-      description: `Read ${title} - insights from Amplified.`,
+      description: `Read ${title} - insights from bmkrs.`,
     },
     alternates: {
-      canonical: `https://amplified.co.uk/insights/${slug}`,
+      canonical: `https://bmkrs.com/insights/${slug}`,
     },
   };
 }

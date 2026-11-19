@@ -1,22 +1,22 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'How We Work | The Amp Model | Amplified',
+  title: 'How We Work | The Amp Model | bmkrs',
   description: 'Three clear phases: Assess, Implement, Embed. Defined outputs, governance checkpoints, and built-in capability transfer in every engagement.',
   openGraph: {
-    title: 'How We Work | The Amp Model | Amplified',
+    title: 'How We Work | The Amp Model | bmkrs',
     description: 'Three clear phases: Assess, Implement, Embed. Defined outputs, governance checkpoints, and built-in capability transfer in every engagement.',
-    url: 'https://amplified.co.uk/how-we-work',
-    siteName: 'Amplified',
+    url: 'https://bmkrs.com/how-we-work',
+    siteName: 'bmkrs',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'How We Work | The Amp Model | Amplified',
+    title: 'How We Work | The Amp Model | bmkrs',
     description: 'Three clear phases: Assess, Implement, Embed. Defined outputs, governance checkpoints, and built-in capability transfer in every engagement.',
   },
   alternates: {
-    canonical: 'https://amplified.co.uk/how-we-work',
+    canonical: 'https://bmkrs.com/how-we-work',
   },
 };
 

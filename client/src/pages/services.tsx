@@ -41,7 +41,7 @@ const Services = memo(function Services({ onOpenConsultation }: ServicesProps) {
     {
       id: "amp-store",
       icon: Lightbulb,
-      title: "ampStore",
+      title: "bmkrs Store",
       subtitle: "Capability Amplification Through Learning",
       description: "Amp up your skills instantly. Curated learning experiences that transform knowledge into capability, capability into results. Access expert-led training and resources designed for digital transformation.",
       image: storeImage.src,
@@ -52,12 +52,12 @@ const Services = memo(function Services({ onOpenConsultation }: ServicesProps) {
         "Digital transformation and AI governance content"
       ],
       ideal: "Independent consultants and teams needing capability amplification",
-      cta: "Explore ampStore"
+      cta: "Explore bmkrs Store"
     },
     {
       id: "coaching", 
       icon: Users,
-      title: "AmplifiedGuide",
+      title: "bmkrs Guide",
       subtitle: "Capability Amplification Through Guidance",
       description: "Amp up your leadership capability. Strategic guidance from senior operators who amplify your decision-making and strategic thinking power for business operations enhancement.",
       image: coachImage.src,
@@ -73,7 +73,7 @@ const Services = memo(function Services({ onOpenConsultation }: ServicesProps) {
     {
       id: "teams",
       icon: Shield,
-      title: "AmplifiedTeams", 
+      title: "bmkrs Teams", 
       subtitle: "Capability Amplification Pods",
       description: "Amp up your team capability instantly with our on-demand capability pods. High-quality talent assembled and mobilised within 48 hours, seamlessly integrating into your team and amplifying existing capacity.",
       image: teamsImage.src,
@@ -91,7 +91,7 @@ const Services = memo(function Services({ onOpenConsultation }: ServicesProps) {
     {
       id: "transformation",
       icon: Code2,
-      title: "AmplifiedTech",
+      title: "bmkrs Tech",
       subtitle: "Software Builds & Technical Transformation", 
       description: "Amp up your technology stack and software delivery. Custom-built solutions, modernised platforms, and orchestrated architectures designed for scale, security, and innovation. From legacy systems to cutting-edge implementations.",
       image: transformImage.src,
@@ -253,7 +253,7 @@ const Services = memo(function Services({ onOpenConsultation }: ServicesProps) {
               <span className="text-sm font-semibold tracking-wide text-primary">Our Services</span>
             </div>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
-              Six Ways to Get <span className="text-primary">Amplified</span>
+              Six Ways to Get <span className="text-primary">bmkrs</span>
             </h2>
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
               From learning and guidance to capability pods, responsible AI, and fixing broken foundations.
@@ -447,7 +447,7 @@ const Services = memo(function Services({ onOpenConsultation }: ServicesProps) {
 
       <div className="luminous-divider"></div>
 
-      {/* Why Amplified Works Section */}
+      {/* Why bmkrs Works Section */}
       <Section className="py-24 md:py-32 bg-gradient-to-br from-muted/20 to-primary/5 relative overflow-hidden">
         <div className="absolute inset-0 modern-pattern opacity-5"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -456,7 +456,7 @@ const Services = memo(function Services({ onOpenConsultation }: ServicesProps) {
               <span className="text-sm font-semibold tracking-wide text-primary">Why Choose Us</span>
             </div>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
-              Why Being <span className="text-primary">Amplified</span> Works
+              Why Being <span className="text-primary">bmkrs</span> Works
             </h2>
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
               We don't just solve problems; we amplify your capability to solve them yourself.
@@ -488,9 +488,9 @@ const Services = memo(function Services({ onOpenConsultation }: ServicesProps) {
               <div className="w-16 h-16 bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
                 <CheckCircle className="h-8 w-8 text-primary" />
               </div>
-              <h3 className="text-lg md:text-xl font-bold text-foreground mb-3">Amplified Innovation</h3>
+              <h3 className="text-lg md:text-xl font-bold text-foreground mb-3">bmkrs Innovation</h3>
               <p className="text-muted-foreground">
-                Our innovations like the Stable Teams® Framework enable digital transformation. When you're amplified, you innovate.
+                Our innovations like the Stable Teams® Framework enable digital transformation. When you're bmkrs, you innovate.
               </p>
             </Card>
           </div>
@@ -502,7 +502,7 @@ const Services = memo(function Services({ onOpenConsultation }: ServicesProps) {
               onClick={() => onOpenConsultation()}
               data-testid="button-start-journey"
             >
-              Get Amplified
+              Get bmkrs
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </div>

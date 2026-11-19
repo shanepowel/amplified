@@ -75,7 +75,7 @@ const challenges = [
 
 const fsSchema = createServiceSchema({
   name: 'AI Governance & Technology Delivery for Financial Services Organisations',
-  url: 'https://amplified.co.uk/sectors/financial-services',
+  url: 'https://bmkrs.com/sectors/financial-services',
   description: 'FCA-aligned AI governance frameworks, EU AI Act compliance, and model risk management for banks, insurers, and regulated financial services firms.',
   keywords: [
     'AI governance financial services UK',
@@ -88,9 +88,9 @@ const fsSchema = createServiceSchema({
 });
 
 const breadcrumbSchema = createBreadcrumbSchema([
-  { name: 'Home', url: 'https://amplified.co.uk/' },
-  { name: 'Sectors', url: 'https://amplified.co.uk/sectors/financial-services' },
-  { name: 'Financial Services', url: 'https://amplified.co.uk/sectors/financial-services' },
+  { name: 'Home', url: 'https://bmkrs.com/' },
+  { name: 'Sectors', url: 'https://bmkrs.com/sectors/financial-services' },
+  { name: 'Financial Services', url: 'https://bmkrs.com/sectors/financial-services' },
 ]);
 
 
@@ -220,7 +220,7 @@ const SectorFinancialServices = memo(function SectorFinancialServices({ onOpenCo
 
       <Section tone="white" padding="lg">
         <Stack gap="lg">
-          <Eyebrow>What Amplified Delivers</Eyebrow>
+          <Eyebrow>What bmkrs Delivers</Eyebrow>
           <Text variant="h2">Services for financial services organisations</Text>
           <Grid cols={2} gap="md">
             {deliverables.map((item) => (
@@ -295,15 +295,15 @@ const SectorFinancialServices = memo(function SectorFinancialServices({ onOpenCo
               {
                 q: "How does the EU AI Act affect UK financial services firms?",
                 a:
-                  "UK financial services firms operating in EU markets, offering products to EU customers, or processing data from EU subjects must comply with the EU AI Act. High-risk AI applications in credit scoring, insurance underwriting, and employment decisions face the strictest requirements. Amplified builds dual-compliance frameworks that satisfy both UK FCA requirements and EU AI Act obligations.",
+                  "UK financial services firms operating in EU markets, offering products to EU customers, or processing data from EU subjects must comply with the EU AI Act. High-risk AI applications in credit scoring, insurance underwriting, and employment decisions face the strictest requirements. bmkrs builds dual-compliance frameworks that satisfy both UK FCA requirements and EU AI Act obligations.",
               },
               {
                 q: "What is SMCR accountability for AI systems?",
                 a:
-                  "Under SMCR, Senior Managers are individually accountable for the areas they oversee, including technology and AI systems. This means a named Senior Manager must own every material AI system, understand its risk profile, and be able to demonstrate adequate oversight if the FCA investigates. Amplified structures AI governance frameworks to satisfy SMCR accountability requirements explicitly.",
+                  "Under SMCR, Senior Managers are individually accountable for the areas they oversee, including technology and AI systems. This means a named Senior Manager must own every material AI system, understand its risk profile, and be able to demonstrate adequate oversight if the FCA investigates. bmkrs structures AI governance frameworks to satisfy SMCR accountability requirements explicitly.",
               },
               {
-                q: "How quickly can Amplified implement an AI governance framework?",
+                q: "How quickly can bmkrs implement an AI governance framework?",
                 a:
                   "For most financial services organisations, an initial AI governance framework covering existing systems and controls can be delivered in eight to twelve weeks. This includes a risk assessment of current AI use, an accountability mapping exercise, policy documentation, and board reporting templates. Ongoing assurance and monitoring is then structured as a retained service.",
               },

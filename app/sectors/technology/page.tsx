@@ -3,25 +3,25 @@ import { PageWrapper } from '../../../client/src/components/page-wrapper';
 import SectorTechnology from '../../../client/src/pages/sectors/technology';
 
 export const metadata: Metadata = {
-  title: 'AI Governance and Delivery for Technology | Amplified',
+  title: 'AI Governance and Delivery for Technology | bmkrs',
   description:
-    'Amplified helps technology companies and scale-ups build AI governance, implement AI at scale, and develop delivery accountability for enterprise scrutiny.',
+    'bmkrs helps technology companies and scale-ups build AI governance, implement AI at scale, and develop delivery accountability for enterprise scrutiny.',
   openGraph: {
-    title: 'AI Governance and Delivery for Technology | Amplified',
+    title: 'AI Governance and Delivery for Technology | bmkrs',
     description:
-      'Amplified helps technology companies and scale-ups build AI governance, implement AI at scale, and develop delivery accountability for enterprise scrutiny.',
-    url: 'https://amplified.co.uk/sectors/technology',
-    siteName: 'Amplified',
+      'bmkrs helps technology companies and scale-ups build AI governance, implement AI at scale, and develop delivery accountability for enterprise scrutiny.',
+    url: 'https://bmkrs.com/sectors/technology',
+    siteName: 'bmkrs',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AI Governance and Delivery for Technology | Amplified',
+    title: 'AI Governance and Delivery for Technology | bmkrs',
     description:
-      'Amplified helps technology companies and scale-ups build AI governance, implement AI at scale, and develop delivery accountability for enterprise scrutiny.',
+      'bmkrs helps technology companies and scale-ups build AI governance, implement AI at scale, and develop delivery accountability for enterprise scrutiny.',
   },
   alternates: {
-    canonical: 'https://amplified.co.uk/sectors/technology',
+    canonical: 'https://bmkrs.com/sectors/technology',
   },
 };
 

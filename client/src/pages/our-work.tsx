@@ -111,59 +111,59 @@ const transformationProjects = [
     title: "AI Governance Framework Implementation",
     desc: "Designed and embedded an enterprise AI governance framework for a regulated UK financial services firm. Covered model risk policy, AI risk appetite statement, governance committee structure, and alignment to FCA AI guidance.",
     outcome: "Governance framework ratified at board level within 14 weeks.",
-    tags: ["AMP 01", "AI Governance", "Financial Services"],
+    tags: ["BMK 01", "AI Governance", "Financial Services"],
   },
   {
     sector: "Public Sector",
     title: "Agile Transformation Programme",
     desc: "End-to-end agile transformation for a central government department. Introduced structured sprint practices, squad models, and delivery governance to replace waterfall processes across a 120-person programme.",
     outcome: "Time-to-delivery reduced by 38% in the first two quarters.",
-    tags: ["AMP 03", "Structured Delivery", "Public Sector"],
+    tags: ["BMK 03", "Structured Delivery", "Public Sector"],
   },
   {
     sector: "Energy",
     title: "AI Readiness and Implementation Roadmap",
     desc: "Full AI readiness assessment for a UK energy provider. Identified 11 viable AI use cases, prioritised three for immediate implementation, and produced a 24-month roadmap including resourcing, governance, and change management.",
     outcome: "Board-approved AI roadmap delivered on time and within budget.",
-    tags: ["AMP 02", "AI Implementation", "Energy"],
+    tags: ["BMK 02", "AI Implementation", "Energy"],
   },
   {
     sector: "Infrastructure",
     title: "Digital Product and Platform Build",
     desc: "Designed and delivered a customer-facing digital platform for an infrastructure organisation managing maintenance operations. Included field team mobile tooling, management dashboard, and third-party system integrations.",
     outcome: "Platform went live on schedule, adopted by 400+ users in week one.",
-    tags: ["AMP 06", "Tech Build", "Infrastructure"],
+    tags: ["BMK 06", "Tech Build", "Infrastructure"],
   },
   {
     sector: "Technology",
     title: "Product Capability and Coaching Programme",
     desc: "A structured 12-month capability programme for a private technology company scaling its product function. Included Product Owner coaching, Centre of Excellence setup, and tooling standardisation across four squads.",
     outcome: "Squad velocity improved by 44% within six months of programme start.",
-    tags: ["AMP 04", "AMP 05", "Capability Building"],
+    tags: ["BMK 04", "BMK 05", "Capability Building"],
   },
   {
     sector: "Private Sector",
     title: "Tech Build and Legacy Modernisation",
     desc: "Led the modernisation of a legacy system for a UK professional services firm. Replaced a monolithic architecture with a modular, API-first platform, reducing operational risk and enabling faster product iteration.",
     outcome: "System downtime eliminated. Deployment frequency increased sixfold.",
-    tags: ["AMP 06", "Tech Build", "Modernisation"],
+    tags: ["BMK 06", "Tech Build", "Modernisation"],
   },
 ];
 
 const credibilityStats: { value: string; label: string; icon: typeof BarChart3; desc: string; sub?: string }[] = [
   { value: "40+", label: "Projects Delivered", icon: BarChart3, desc: "Full-cycle engagements from discovery and scoping through to handover" },
   { value: "5", label: "Sectors Served", icon: TrendingUp, desc: "Infrastructure, energy, financial services, public sector, and technology" },
-  { value: "3", label: "Live Products", icon: Smartphone, desc: "Apps and platforms built and operated by Amplified beyond client work" },
+  { value: "3", label: "Live Products", icon: Smartphone, desc: "Apps and platforms built and operated by bmkrs beyond client work" },
   { value: "10+", label: "Years of Practice", icon: Award, desc: "Combined practitioner experience across our partnership and associate network" },
 ];
 
-const ampStoreAreas = [
-  { tag: "AMP 01", title: "AI Governance", modules: ["AI Act Fundamentals", "Board-Level AI Briefing", "Responsible AI Policy Writing", "Governance Framework Design"] },
-  { tag: "AMP 02", title: "AI Implementation", modules: ["AI Readiness Self-Assessment", "Use Case Prioritisation", "Implementation Planning Toolkit", "Handover and Transfer"] },
-  { tag: "AMP 03", title: "Structured Delivery", modules: ["Structured Agile Fundamentals", "Squad Model Design", "Hybrid Delivery Playbook", "Sprint Governance Integration"] },
-  { tag: "AMP 04", title: "Capability Building", modules: ["Product Owner Foundations", "Centre of Excellence Blueprint", "AI Literacy for Leaders", "Agile Practitioner Toolkit"] },
-  { tag: "AMP 05", title: "Coaching", modules: ["Executive Coaching Frameworks", "Team Performance Tools", "Delivery Lead Coaching", "Practitioner Reflection Guides"] },
-  { tag: "AMP 06", title: "Tech Build", modules: ["Platform Engineering Playbook", "DevOps Foundations", "API Design Standards", "Legacy Modernisation Toolkit"] },
+const bmkrsStoreAreas = [
+  { tag: "BMK 01", title: "AI Governance", modules: ["AI Act Fundamentals", "Board-Level AI Briefing", "Responsible AI Policy Writing", "Governance Framework Design"] },
+  { tag: "BMK 02", title: "AI Implementation", modules: ["AI Readiness Self-Assessment", "Use Case Prioritisation", "Implementation Planning Toolkit", "Handover and Transfer"] },
+  { tag: "BMK 03", title: "Structured Delivery", modules: ["Structured Agile Fundamentals", "Squad Model Design", "Hybrid Delivery Playbook", "Sprint Governance Integration"] },
+  { tag: "BMK 04", title: "Capability Building", modules: ["Product Owner Foundations", "Centre of Excellence Blueprint", "AI Literacy for Leaders", "Agile Practitioner Toolkit"] },
+  { tag: "BMK 05", title: "Coaching", modules: ["Executive Coaching Frameworks", "Team Performance Tools", "Delivery Lead Coaching", "Practitioner Reflection Guides"] },
+  { tag: "BMK 06", title: "Tech Build", modules: ["Platform Engineering Playbook", "DevOps Foundations", "API Design Standards", "Legacy Modernisation Toolkit"] },
 ];
 
 const sustainabilityCommitments = [
@@ -196,7 +196,7 @@ const sustainabilityCommitments = [
 const charitableEfforts = [
   {
     title: "Pro-bono consulting for social enterprises",
-    body: "Each year, Amplified commits a proportion of consulting capacity to charities, social enterprises, and not-for-profit organisations that would not otherwise be able to access this level of expertise.",
+    body: "Each year, bmkrs commits a proportion of consulting capacity to charities, social enterprises, and not-for-profit organisations that would not otherwise be able to access this level of expertise.",
   },
   {
     title: "Digital literacy programmes",
@@ -216,10 +216,10 @@ const charitableEfforts = [
   },
 ];
 
-const ampStoreFacts: [string, string][] = [
-  ["What it is", "A curated digital platform delivering practitioner-led learning resources aligned to each Amplified service line."],
+const bmkrsStoreFacts: [string, string][] = [
+  ["What it is", "A curated digital platform delivering practitioner-led learning resources aligned to each bmkrs service line."],
   ["Who it is for", "Delivery leads, product owners, technical leads, and senior leaders in regulated industries who need learning that applies to their actual context."],
-  ["How you access it", "Annual or rolling subscription. Module sets can be licensed per team or accessed as part of a broader Amplified engagement."],
+  ["How you access it", "Annual or rolling subscription. Module sets can be licensed per team or accessed as part of a broader bmkrs engagement."],
   ["What makes it different", "Every resource is built or reviewed by practitioners who have done the work. No generic content. Every module reflects real delivery experience."],
 ];
 
@@ -295,7 +295,7 @@ const OurWork = memo(function OurWork({ onOpenConsultation }: OurWorkProps) {
             { label: "Client Work", href: "#client-work" },
             { label: "Apps", href: "#apps" },
             { label: "Transformation", href: "#transformation" },
-            { label: "ampStore", href: "#amp-store" },
+            { label: "bmkrs Store", href: "#amp-store" },
             { label: "Sustainability", href: "#sustainability" },
             { label: "Charitable Efforts", href: "#charitable" },
           ].map((item) => (
@@ -530,7 +530,7 @@ const OurWork = memo(function OurWork({ onOpenConsultation }: OurWorkProps) {
       <Section id="amp-store" tone="mist" padding="lg" className="scroll-mt-20">
         <SectionHeading
           icon={ShoppingBag}
-          eyebrow="ampStore"
+          eyebrow="bmkrs Store"
           title={
             <>
               Practitioner Learning.
@@ -543,22 +543,22 @@ const OurWork = memo(function OurWork({ onOpenConsultation }: OurWorkProps) {
         <Grid cols="2-lg" gap="xl" className="mb-12 items-start">
           <Stack gap="md">
             <Text variant="body" tone="muted">
-              ampStore is our curated learning platform designed for practitioners in regulated
+              bmkrs Store is our curated learning platform designed for practitioners in regulated
               industries. Not generic e-learning. Not certification for its own sake. Content
               built by the people who deliver the work, for the people doing it.
             </Text>
             <Text variant="body" tone="muted">
-              Each module aligns directly to one of our six AMP service lines. The tools,
-              frameworks, and playbooks in ampStore are the same ones our consultants use on live
+              Each module aligns directly to one of our six BMK service lines. The tools,
+              frameworks, and playbooks in bmkrs Store are the same ones our consultants use on live
               engagements. No gap between theory and practice.
             </Text>
             <Text variant="body" tone="muted">
               Available as a standalone subscription, as part of a Capability Building engagement,
-              or integrated into a broader Amplified programme as a continuous development layer.
+              or integrated into a broader bmkrs programme as a continuous development layer.
             </Text>
           </Stack>
           <Stack gap="sm">
-            {ampStoreFacts.map(([label, value]) => (
+            {bmkrsStoreFacts.map(([label, value]) => (
               <Surface key={label} variant="plain" padding="md" radius="sm" className="bg-white">
                 <Text variant="caption" className="mb-1.5 font-bold uppercase tracking-[0.08em] text-[#60266A]">
                   {label}
@@ -571,7 +571,7 @@ const OurWork = memo(function OurWork({ onOpenConsultation }: OurWorkProps) {
 
         <Eyebrow tone="subtle" className="mb-8">Catalogue areas</Eyebrow>
         <BorderGrid cols={3} className="border-l border-t border-[#E5E3EE]">
-          {ampStoreAreas.map((area) => (
+          {bmkrsStoreAreas.map((area) => (
             <BorderCell key={area.tag} className="border-[#E5E3EE] bg-white">
               <Stack direction="row" gap="sm" align="center" className="mb-4">
                 <Eyebrow>{area.tag}</Eyebrow>
@@ -592,7 +592,7 @@ const OurWork = memo(function OurWork({ onOpenConsultation }: OurWorkProps) {
         <Stack direction="row-responsive" gap="md" className="mt-10 flex-wrap">
           <AmpButton asChild data-testid="button-explore-amp-store">
             <Link href="/amp-store">
-              Explore ampStore <ArrowRight className="h-4 w-4" />
+              Explore bmkrs Store <ArrowRight className="h-4 w-4" />
             </Link>
           </AmpButton>
           <AmpButton variant="outlineDark" onClick={() => onOpenConsultation?.("amp-store")} data-testid="button-amp-store-access">
@@ -663,8 +663,8 @@ const OurWork = memo(function OurWork({ onOpenConsultation }: OurWorkProps) {
             <Text variant="small" tone="muted">
               If you lead or work with a charitable organisation that could benefit from pro-bono
               support in technology, AI governance, or structured delivery, contact us at{" "}
-              <a href="mailto:hello@amplified.co.uk" className="text-[#F85C70] hover:underline">
-                hello@amplified.co.uk
+              <a href="mailto:hello@bmkrs.com" className="text-[#F85C70] hover:underline">
+                hello@bmkrs.com
               </a>{" "}
               with a brief description of your organisation and the challenge you are working on.
             </Text>
@@ -674,16 +674,16 @@ const OurWork = memo(function OurWork({ onOpenConsultation }: OurWorkProps) {
 
       <CtaBand
         tone="purple"
-        eyebrow="Work with Amplified"
+        eyebrow="Work with bmkrs"
         title="Ready to Start Something?"
-        lead="Whether you want to explore ampStore, discuss a transformation challenge, or find out about our pro-bono programme, we would like to hear from you."
+        lead="Whether you want to explore bmkrs Store, discuss a transformation challenge, or find out about our pro-bono programme, we would like to hear from you."
       >
         <Stack direction="row-responsive" gap="md" className="justify-center">
           <AmpButton onClick={() => onOpenConsultation?.("our-work")} data-testid="button-cta">
             Start a Conversation <ArrowRight className="h-4 w-4" />
           </AmpButton>
           <AmpButton asChild variant="outlineLight" data-testid="button-browse-amp-store">
-            <Link href="/amp-store">Browse ampStore</Link>
+            <Link href="/amp-store">Browse bmkrs Store</Link>
           </AmpButton>
         </Stack>
       </CtaBand>

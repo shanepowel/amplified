@@ -75,7 +75,7 @@ const challenges = [
 
 const energySchema = createServiceSchema({
   name: 'AI Governance & Technology Delivery for Energy and Utilities Organisations',
-  url: 'https://amplified.co.uk/sectors/energy-utilities',
+  url: 'https://bmkrs.com/sectors/energy-utilities',
   description: 'Ofgem-aligned AI governance, safety-critical technology frameworks, and digital transformation for energy transmission, distribution, and utilities organisations.',
   keywords: [
     'AI governance energy sector UK',
@@ -88,9 +88,9 @@ const energySchema = createServiceSchema({
 });
 
 const breadcrumbSchema = createBreadcrumbSchema([
-  { name: 'Home', url: 'https://amplified.co.uk/' },
-  { name: 'Sectors', url: 'https://amplified.co.uk/sectors/energy-utilities' },
-  { name: 'Energy & Utilities', url: 'https://amplified.co.uk/sectors/energy-utilities' },
+  { name: 'Home', url: 'https://bmkrs.com/' },
+  { name: 'Sectors', url: 'https://bmkrs.com/sectors/energy-utilities' },
+  { name: 'Energy & Utilities', url: 'https://bmkrs.com/sectors/energy-utilities' },
 ]);
 
 
@@ -221,7 +221,7 @@ const SectorEnergyUtilities = memo(function SectorEnergyUtilities({ onOpenConsul
 
       <Section tone="white" padding="lg">
         <Stack gap="lg">
-          <Eyebrow>What Amplified Delivers</Eyebrow>
+          <Eyebrow>What bmkrs Delivers</Eyebrow>
           <Text variant="h2">Services for energy and utilities organisations</Text>
           <Grid cols={2} gap="md">
             {deliverables.map((item) => (
@@ -291,7 +291,7 @@ const SectorEnergyUtilities = memo(function SectorEnergyUtilities({ onOpenConsul
               {
                 q: "What AI governance requirements apply to Ofgem-regulated organisations?",
                 a:
-                  "Ofgem has issued guidance on AI use in regulated energy activities, with particular focus on customer-facing AI systems, algorithmic pricing, and smart grid management. Organisations must be able to demonstrate that AI systems used in regulated activities meet transparency, accountability, and non-discrimination standards. Amplified builds governance frameworks that align to Ofgem guidance while satisfying broader UK AI regulatory requirements.",
+                  "Ofgem has issued guidance on AI use in regulated energy activities, with particular focus on customer-facing AI systems, algorithmic pricing, and smart grid management. Organisations must be able to demonstrate that AI systems used in regulated activities meet transparency, accountability, and non-discrimination standards. bmkrs builds governance frameworks that align to Ofgem guidance while satisfying broader UK AI regulatory requirements.",
               },
               {
                 q: "How is AI being used in energy and utilities programmes?",
@@ -301,12 +301,12 @@ const SectorEnergyUtilities = memo(function SectorEnergyUtilities({ onOpenConsul
               {
                 q: "What makes AI governance different for a safety-critical environment?",
                 a:
-                  "Safety-critical environments require AI governance to integrate with existing safety management systems, not sit alongside them. Every AI system that could affect physical safety must have a documented failure mode analysis, a human override procedure, and a clear accountability chain that extends to operational teams on the ground. Amplified builds AI governance that satisfies both regulatory and safety management standards simultaneously.",
+                  "Safety-critical environments require AI governance to integrate with existing safety management systems, not sit alongside them. Every AI system that could affect physical safety must have a documented failure mode analysis, a human override procedure, and a clear accountability chain that extends to operational teams on the ground. bmkrs builds AI governance that satisfies both regulatory and safety management standards simultaneously.",
               },
               {
-                q: "How does Amplified work alongside existing operational technology teams?",
+                q: "How does bmkrs work alongside existing operational technology teams?",
                 a:
-                  "Amplified embeds within your existing programme and OT team structures rather than operating as an external advisory layer. This means governance frameworks are built with the people who will use them, accountability structures map to existing roles, and training is practical rather than theoretical. Handover is planned from day one so your teams own the capability when we leave.",
+                  "bmkrs embeds within your existing programme and OT team structures rather than operating as an external advisory layer. This means governance frameworks are built with the people who will use them, accountability structures map to existing roles, and training is practical rather than theoretical. Handover is planned from day one so your teams own the capability when we leave.",
               },
             ].map((item, i) => (
               <details key={i} className="cursor-pointer rounded-xl border border-[#E5E3EE] bg-white p-6">

@@ -92,19 +92,19 @@ const capabilities = [
 
 const related = [
   {
-    tag: "AMP 01",
+    tag: "BMK 01",
     title: "AI Governance",
-    body: "Tech Build engagements involving AI systems are designed inside the governance frameworks we establish through AMP 01. Accountability and auditability are built in from the start.",
+    body: "Tech Build engagements involving AI systems are designed inside the governance frameworks we establish through BMK 01. Accountability and auditability are built in from the start.",
     href: "/ai-governance",
   },
   {
-    tag: "AMP 02",
+    tag: "BMK 02",
     title: "AI Implementation",
-    body: "For organisations with an AI strategy already in place, Tech Build delivers the production systems. AMP 02 and AMP 06 frequently run as a single integrated engagement.",
+    body: "For organisations with an AI strategy already in place, Tech Build delivers the production systems. BMK 02 and BMK 06 frequently run as a single integrated engagement.",
     href: "/ai-implementation",
   },
   {
-    tag: "AMP 03",
+    tag: "BMK 03",
     title: "Structured Delivery",
     body: "Tech Build engagements are run inside delivery frameworks that provide the governance and accountability structures your organisation requires.",
     href: "/structured-delivery",
@@ -117,14 +117,14 @@ const Transformation = memo(function Transformation({ onOpenConsultation }: Tran
       <ServiceSchema
         name="Tech Build"
         description="Hands-on technology build from engineers and architects who embed inside your teams. Custom software, AI-native systems, platform engineering, and legacy modernisation for regulated industries."
-        url="https://amplified.co.uk/transformation"
+        url="https://bmkrs.com/transformation"
         serviceType="TechnologyService"
       />
 
       <BreadcrumbBar items={[{ label: "Home", href: "/" }, { label: "Tech Build" }]} />
 
       <PageHero
-        eyebrow="AMP 06"
+        eyebrow="BMK 06"
         title={<span data-testid="text-page-title">Tech Build</span>}
         subtitle="Digital transformation, delivered in code."
         lead="Hands-on digital transformation delivery from engineers and architects who embed inside your teams. We build custom software, AI-native systems, and data platforms for regulated industries where getting it wrong is not an option."
@@ -154,7 +154,7 @@ const Transformation = memo(function Transformation({ onOpenConsultation }: Tran
         <div className="relative mx-auto hidden aspect-[4/3] max-w-[720px] overflow-hidden rounded lg:block">
           <Image
             src={transformImage}
-            alt="Amplified Tech Build in practice"
+            alt="bmkrs Tech Build in practice"
             fill
             className="object-cover"
             priority

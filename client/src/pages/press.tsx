@@ -1,6 +1,6 @@
 'use client';
 
-import { Mail, Linkedin, Instagram, Youtube } from "lucide-react";
+import { Mail, Linkedin, Instagram } from "lucide-react";
 import { SiPinterest } from "react-icons/si";
 import amplifiedLogo from "@assets/amplified-logo-pink-purple.png";
 import {
@@ -14,41 +14,31 @@ import {
   Surface,
   Text,
 } from "@/components/system";
+import { brand } from "@/lib/brand";
 
 export default function Press() {
   const socialLinks = [
     {
       name: "LinkedIn",
-      href: "https://linkedin.com/company/amplifiedlimited/",
+      href: brand.social.linkedin,
       icon: Linkedin,
-      handle: "amplifiedlimited",
+      handle: "bmkrs",
       testId: "link-press-linkedin",
     },
     {
       name: "Instagram",
-      href: "https://www.instagram.com/amplifiedguide",
+      href: brand.social.instagram,
       icon: Instagram,
-      handle: "@amplifiedguide",
+      handle: "@bmkrs.global",
       testId: "link-press-instagram",
-    },
-    {
-      name: "YouTube",
-      href: "https://www.youtube.com/@amplifiedguide",
-      icon: Youtube,
-      handle: "@amplifiedguide",
-      testId: "link-press-youtube",
     },
   ];
 
   const companyFacts = [
-    ["Legal name", "AMPLIFIED LTD"],
-    ["Company number", "08589016"],
-    ["Incorporated", "28 June 2013"],
-    ["Headquarters", "7 Bell Yard, London WC2A 2JR"],
-    ["Additional office", "Porto, Portugal"],
-    ["Industry classification", "Information technology consultancy (SIC 62020)"],
-    ["Core positioning", "AI governance, structured delivery, and technology embedding for regulated industries"],
-    ["Tagline", "Built for industries where rigour isn't optional."],
+    ["Legal name", brand.legalName],
+    ["Headquarters", brand.location],
+    ["Core positioning", brand.description],
+    ["Tagline", brand.tagline],
   ];
 
   const colours = [
@@ -60,11 +50,11 @@ export default function Press() {
 
   const usageGuidelines = [
     "Use the official logo without modification, cropping, recolouring, or distortion.",
-    "Maintain clear space around the logo equivalent to the height of the A in the wordmark.",
+    "Maintain clear space around the logo equivalent to the height of the mark in the wordmark.",
     "Do not place the logo on backgrounds that reduce legibility. Use the reversed (white) version on dark backgrounds.",
     "Use approved brand colours. Do not introduce substitute colours.",
-    "Provide attribution when quoting Amplified materials or spokespeople.",
-    "Contact press@amplified.co.uk before creating derivative works or using assets in advertising.",
+    "Provide attribution when quoting bmkrs materials or spokespeople.",
+    "Contact press@bmkrs.com before creating derivative works or using assets in advertising.",
   ];
 
   return (
@@ -82,26 +72,24 @@ export default function Press() {
         <Stack gap="2xl">
           <Grid cols="2-lg" gap="xl" equal={false}>
             <Stack gap="md">
-              <Eyebrow>About Amplified</Eyebrow>
+              <Eyebrow>About bmkrs</Eyebrow>
               <Text variant="h3">Who we are</Text>
               <Stack gap="md">
                 <Text variant="body" tone="muted">
-                  AMPLIFIED LTD is an AI governance and technology consultancy focused on helping
-                  delivery directors, CIOs, and digital leads implement new technologies
-                  effectively inside regulated industries: infrastructure, energy, financial services,
-                  public sector, and technology.
+                  bmkrs is a digital product and AI partner for ambitious organisations. We help
+                  delivery directors, CIOs, and digital leads ship products and implement AI
+                  with the accountability frameworks that make change stick.
                 </Text>
                 <Text variant="body" tone="muted">
-                  Founded in June 2013, we are headquartered in London with operations in Porto,
-                  Portugal. Our positioning is built on a single idea: that rigour and effective
-                  technology adoption are not in tension. We make rigour the foundation of every
-                  technology transformation we touch.
+                  We connect strategy, product, design and engineering so ideas ship — and land.
+                  Rigour and effective technology adoption are not in tension; we make that the
+                  foundation of every engagement.
                 </Text>
                 <Text variant="body" tone="muted">
-                  Our six service lines span AI Governance (AMP 01), AI Implementation (AMP 02),
-                  Structured Delivery (AMP 03), Capability Building (AMP 04), Coaching (AMP 05),
-                  and Tech Build (AMP 06), supported by two ecosystem offerings: AmplifiedTeams
-                  (stable, mobilised delivery teams) and ampStore (practitioner learning).
+                  Our six service lines span AI Governance (BMK 01), AI Implementation (BMK 02),
+                  Structured Delivery (BMK 03), Capability Building (BMK 04), Coaching (BMK 05),
+                  and Tech Build (BMK 06), supported by two ecosystem offerings: bmkrs Teams
+                  (stable, mobilised delivery teams) and bmkrs Store (practitioner learning).
                 </Text>
               </Stack>
             </Stack>
@@ -113,12 +101,12 @@ export default function Press() {
                 <Surface variant="mist" padding="md" radius="sm">
                   <Text variant="small" className="mb-1 font-bold">Press enquiries</Text>
                   <a
-                    href="mailto:press@amplified.co.uk"
+                    href="mailto:press@bmkrs.com"
                     className="inline-flex items-center gap-2 text-sm text-[#F85C70] transition-colors"
                     data-testid="link-press-email"
                   >
                     <Mail className="h-4 w-4 flex-shrink-0" />
-                    press@amplified.co.uk
+                    press@bmkrs.com
                   </a>
                   <Text variant="caption" tone="muted" className="mt-2">
                     For urgent media enquiries, include "URGENT" in the subject line. We aim to
@@ -128,12 +116,12 @@ export default function Press() {
                 <Surface variant="mist" padding="md" radius="sm">
                   <Text variant="small" className="mb-1 font-bold">General enquiries</Text>
                   <a
-                    href="mailto:hello@amplified.co.uk"
+                    href="mailto:hello@bmkrs.com"
                     className="inline-flex items-center gap-2 text-sm text-[#F85C70] transition-colors"
                     data-testid="link-general-email"
                   >
                     <Mail className="h-4 w-4 flex-shrink-0" />
-                    hello@amplified.co.uk
+                    hello@bmkrs.com
                   </a>
                   <Text variant="caption" tone="muted" className="mt-2">
                     Response time: within 1 working day.
@@ -152,14 +140,14 @@ export default function Press() {
                 <Surface variant="mist" padding="lg" radius="sm" className="flex items-center justify-center">
                   <img
                     src={amplifiedLogo.src}
-                    alt="Amplified logo"
+                    alt="bmkrs logo"
                     className="h-20"
                     data-testid="img-press-logo"
                   />
                 </Surface>
                 <Text variant="caption" className="text-[#9597A5]">
                   To request the full logo package including reversed, monochrome, and symbol-only
-                  variants, email press@amplified.co.uk.
+                  variants, email press@bmkrs.com.
                 </Text>
               </Stack>
               <Stack gap="md">
@@ -200,7 +188,7 @@ export default function Press() {
 
           <Stack gap="lg">
             <Eyebrow>Social</Eyebrow>
-            <Text variant="h3">Follow Amplified</Text>
+            <Text variant="h3">Follow bmkrs</Text>
             <Grid cols={3} gap="none" equal={false} className="border-l border-t border-[#E5E3EE] md:grid-cols-3">
               {socialLinks.map((link) => (
                 <a
@@ -221,7 +209,7 @@ export default function Press() {
                 </a>
               ))}
               <a
-                href="https://uk.pinterest.com/AmplifiedGuide/"
+                href="https://instagram.com/bmkrs.global"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-4 border-b border-r border-[#E5E3EE] p-6 transition-colors hover:bg-[#F9F8FC]"
@@ -232,7 +220,7 @@ export default function Press() {
                 </Surface>
                 <div>
                   <Text variant="small" className="font-bold">Pinterest</Text>
-                  <Text variant="caption" className="text-[#9597A5]">AmplifiedGuide</Text>
+                  <Text variant="caption" className="text-[#9597A5]">bmkrs.global</Text>
                 </div>
               </a>
             </Grid>
@@ -243,7 +231,7 @@ export default function Press() {
             <Text variant="h3">Using our brand assets</Text>
             <Text variant="body" tone="muted">
               We welcome media coverage and are happy to provide assets and information to support
-              your story. When using Amplified brand assets, please observe the following:
+              your story. When using bmkrs brand assets, please observe the following:
             </Text>
             <ul className="space-y-3">
               {usageGuidelines.map((item) => (

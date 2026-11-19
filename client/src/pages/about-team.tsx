@@ -23,7 +23,7 @@ const partners = [
   {
     initial: "A",
     role: "Operations & Governance Partner",
-    focus: "AMP 01 / AMP 03",
+    focus: "BMK 01 / BMK 03",
     bio: "Twenty years building and running delivery functions inside regulated organisations. Brings a PMO director's instinct for accountability to every AI engagement. Believes that governance is not a constraint on delivery. It is what makes delivery trustworthy.",
     philosophy: "We build the governance structure before anyone writes a line of code. Every other sequence is just optimism.",
     specialties: ["Governance Framework Design", "PMO Transformation", "AI Readiness Assessment", "Regulatory Alignment"],
@@ -33,7 +33,7 @@ const partners = [
   {
     initial: "B",
     role: "Technology & AI Partner",
-    focus: "AMP 02",
+    focus: "BMK 02",
     bio: "Hands-on technical leader with deep experience in AI implementation across financial services and energy sectors. Brings the rigour of a regulated-industry background to every architectural decision. Knows that AI systems that cannot be explained cannot be trusted.",
     philosophy: "AI without accountability is just risk wearing a suit. We build systems that can answer for themselves.",
     specialties: ["AI Implementation", "Cloud-Native Architecture", "Responsible AI Design", "Technical Due Diligence"],
@@ -43,8 +43,8 @@ const partners = [
   {
     initial: "C",
     role: "Structured Delivery Partner",
-    focus: "AMP 03",
-    bio: "Career programme director with a track record across major infrastructure and public sector programmes. Designed the hybrid agile model that sits at the heart of Amplified's structured delivery practice. Has run delivery at scale under some of the toughest governance environments in the UK.",
+    focus: "BMK 03",
+    bio: "Career programme director with a track record across major infrastructure and public sector programmes. Designed the hybrid agile model that sits at the heart of bmkrs's structured delivery practice. Has run delivery at scale under some of the toughest governance environments in the UK.",
     philosophy: "Speed without structure is expensive chaos. The organisations we respect most move fast inside a governance envelope that never breaks.",
     specialties: ["Hybrid Delivery Design", "Agile at Scale", "Programme Governance", "Stage Gate Management"],
     accentClass: "bg-[#F85C70]",
@@ -53,7 +53,7 @@ const partners = [
   {
     initial: "D",
     role: "Capability & Change Partner",
-    focus: "AMP 04",
+    focus: "BMK 04",
     bio: "Organisation development specialist who has built internal capability programmes for some of the UK's largest regulated employers. Focuses on the human side of AI adoption: the knowledge, the confidence, and the culture that organisations need to govern AI themselves.",
     philosophy: "The measure of a good engagement is whether you need us twelve months later. We build capability, not dependency.",
     specialties: ["Capability Programme Design", "AI Literacy", "Leadership Development", "Change Management"],

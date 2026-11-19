@@ -7,7 +7,7 @@ const LAST_UPDATED = "1 March 2026";
 const sections = [
   {
     title: "Our commitment",
-    body: `AMPLIFIED LTD is committed to making this website accessible to everyone, including people with disabilities. We work to meet the Web Content Accessibility Guidelines (WCAG) 2.1 at Level AA, as referenced by the Public Sector Bodies (Websites and Mobile Applications) Accessibility Regulations 2018 and recognised as best practice across all sectors.
+    body: `b makers ltd is committed to making this website accessible to everyone, including people with disabilities. We work to meet the Web Content Accessibility Guidelines (WCAG) 2.1 at Level AA, as referenced by the Public Sector Bodies (Websites and Mobile Applications) Accessibility Regulations 2018 and recognised as best practice across all sectors.
 
 We believe that accessible design is good design. Clarity, legibility, and logical structure benefit every user, not only those using assistive technology.`,
   },
@@ -58,8 +58,8 @@ We believe that accessible design is good design. Clarity, legibility, and logic
     title: "Reporting an accessibility problem",
     body: `If you experience any difficulty using this website or encounter an accessibility barrier not mentioned above, please tell us. We treat accessibility feedback seriously and aim to respond within 5 working days.
 
-Email: accessibility@amplified.co.uk
-Alternative: use our contact form at amplified.co.uk/contact
+Email: accessibility@bmkrs.com
+Alternative: use our contact form at bmkrs.com/contact
 
 Please describe the barrier you have encountered, the assistive technology or browser you are using, and what you were trying to do. This helps us reproduce and fix the issue.`,
   },
@@ -81,10 +81,10 @@ export default function Accessibility() {
       lastUpdated={LAST_UPDATED}
       sections={sections}
       companyInfo={[
-        ["Legal name", "AMPLIFIED LTD"],
+        ["Legal name", "b makers ltd"],
         ["Company number", "08589016"],
         ["Registered office", "7 Bell Yard, London WC2A 2JR"],
-        ["Accessibility contact", "accessibility@amplified.co.uk"],
+        ["Accessibility contact", "accessibility@bmkrs.com"],
       ]}
     />
   );

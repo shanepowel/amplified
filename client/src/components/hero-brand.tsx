@@ -35,11 +35,11 @@ export function HeroBrand({
 
   return (
     <div className={`flex flex-col ${alignmentClasses} ${className}`}>
-      {/* Official Amplified Logo */}
+      {/* Official bmkrs Logo */}
       <div className="mb-6">
         <Image
           src={amplifiedLogo}
-          alt="Amplified. Business Operations Consulting"
+          alt="bmkrs. Business Operations Consulting"
           priority
           sizes="(max-width: 640px) 96px, (max-width: 768px) 128px, 160px"
           className={`${logoSizes[size]} !w-auto ${centerAlign ? 'mx-auto' : ''} drop-shadow-lg filter brightness-105 contrast-110`}
@@ -66,7 +66,7 @@ export function HeroBrand({
             <div className="relative w-48 h-12">
               <Image
                 src={infrastructureElement}
-                alt="Connected infrastructure supporting amplified operations"
+                alt="Connected infrastructure supporting bmkrs operations"
                 fill
                 sizes="192px"
                 className="object-contain rounded-lg opacity-30"

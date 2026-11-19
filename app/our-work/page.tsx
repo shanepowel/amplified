@@ -1,22 +1,22 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Our Work | Client Projects, Apps, Digital Transformation | Amplified',
-  description: 'Amplified\'s portfolio: website builds, apps, digital transformation projects, ampStore, sustainability commitments, and charitable efforts.',
+  title: 'Our Work | Client Projects, Apps, Digital Transformation | bmkrs',
+  description: 'bmkrs\'s portfolio: website builds, apps, digital transformation projects, bmkrs Store, sustainability commitments, and charitable efforts.',
   openGraph: {
-    title: 'Our Work | Client Projects, Apps, Digital Transformation | Amplified',
-    description: 'Amplified\'s portfolio: website builds, apps, digital transformation projects, ampStore, sustainability commitments, and charitable efforts.',
-    url: 'https://amplified.co.uk/our-work',
-    siteName: 'Amplified',
+    title: 'Our Work | Client Projects, Apps, Digital Transformation | bmkrs',
+    description: 'bmkrs\'s portfolio: website builds, apps, digital transformation projects, bmkrs Store, sustainability commitments, and charitable efforts.',
+    url: 'https://bmkrs.com/our-work',
+    siteName: 'bmkrs',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Our Work | Client Projects, Apps, Digital Transformation | Amplified',
-    description: 'Amplified\'s portfolio: website builds, apps, digital transformation projects, ampStore, sustainability commitments, and charitable efforts.',
+    title: 'Our Work | Client Projects, Apps, Digital Transformation | bmkrs',
+    description: 'bmkrs\'s portfolio: website builds, apps, digital transformation projects, bmkrs Store, sustainability commitments, and charitable efforts.',
   },
   alternates: {
-    canonical: 'https://amplified.co.uk/our-work',
+    canonical: 'https://bmkrs.com/our-work',
   },
 };
 

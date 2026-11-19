@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
 
 export async function GET() {
-  const robotsTxt = `# Amplified - AI Implementation & Governance for Regulated Industries
-# https://amplified.co.uk
+  const robotsTxt = `# bmkrs - AI Implementation & Governance for Regulated Industries
+# https://bmkrs.com
 
 User-agent: *
 Allow: /
@@ -48,7 +48,7 @@ Disallow: /api/
 Disallow: /seo-optimizer
 
 # Sitemap location
-Sitemap: https://amplified.co.uk/sitemap.xml
+Sitemap: https://bmkrs.com/sitemap.xml
 `;
 
   return new NextResponse(robotsTxt, {

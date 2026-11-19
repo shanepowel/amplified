@@ -47,7 +47,7 @@ const services = [
   },
   {
     title: "Embedded Upskilling",
-    body: "Amplified practitioners work alongside your teams on live delivery, coaching as they go. Skills transfer happens through doing, not just training. Every implementation includes an explicit upskilling plan.",
+    body: "bmkrs practitioners work alongside your teams on live delivery, coaching as they go. Skills transfer happens through doing, not just training. Every implementation includes an explicit upskilling plan.",
     note: null,
   },
 ];
@@ -62,19 +62,19 @@ const stats = [
 const faqs = [
   {
     q: "Why do most capability building programmes fail to create lasting change?",
-    a: "Most capability programmes fail because they focus on training events rather than embedded practice. A course creates awareness; working alongside experienced practitioners on real problems creates AI capability. Amplified structures all capability work around live engagements, coaching real decisions in real contexts, with deliberate handover at the end so the learning is retained by your people rather than residing in an external consultant.",
+    a: "Most capability programmes fail because they focus on training events rather than embedded practice. A course creates awareness; working alongside experienced practitioners on real problems creates AI capability. bmkrs structures all capability work around live engagements, coaching real decisions in real contexts, with deliberate handover at the end so the learning is retained by your people rather than residing in an external consultant.",
   },
   {
-    q: "What AI and digital capabilities does Amplified help organisations build?",
-    a: "The most common areas are: AI literacy for senior leaders and executives, data governance and data management practices, product thinking and user-centred design in regulated contexts, programme delivery using structured agile approaches, and AI governance and responsible AI frameworks. Amplified also builds bespoke AI capability programmes for specific roles, for example delivery directors leading technology change for the first time.",
+    q: "What AI and digital capabilities does bmkrs help organisations build?",
+    a: "The most common areas are: AI literacy for senior leaders and executives, data governance and data management practices, product thinking and user-centred design in regulated contexts, programme delivery using structured agile approaches, and AI governance and responsible AI frameworks. bmkrs also builds bespoke AI capability programmes for specific roles, for example delivery directors leading technology change for the first time.",
   },
   {
-    q: "How does Amplified measure the impact of AI capability building?",
+    q: "How does bmkrs measure the impact of AI capability building?",
     a: "We establish baseline capability measures at the start of each engagement, agree what good looks like with programme sponsors, and track measurable indicators throughout: decisions made without external input, reduction in escalations to consultants, quality of artefacts produced by internal teams, and confidence assessments from participants. Impact measurement is built into the engagement structure, not treated as an afterthought.",
   },
   {
-    q: "Can Amplified deliver capability building alongside a live programme?",
-    a: "Yes, and this is often the most effective approach. Building AI capability in the context of real delivery decisions accelerates learning and ensures the capability is immediately applicable. Amplified structures embedded capability programmes to work alongside active programmes without adding significant overhead, integrating learning activities into existing team ceremonies and decision points.",
+    q: "Can bmkrs deliver capability building alongside a live programme?",
+    a: "Yes, and this is often the most effective approach. Building AI capability in the context of real delivery decisions accelerates learning and ensures the capability is immediately applicable. bmkrs structures embedded capability programmes to work alongside active programmes without adding significant overhead, integrating learning activities into existing team ceremonies and decision points.",
   },
 ];
 
@@ -84,23 +84,23 @@ const Capability = memo(function Capability({ onOpenConsultation }: CapabilityPr
       <ServiceSchema
         name="Capability Building"
         description="Product Owner development, Centres of Excellence, AI literacy programmes, agile practitioner training. We transfer real skills to your teams so you can run it yourselves."
-        url="https://amplified.co.uk/capability"
+        url="https://bmkrs.com/capability"
       />
       <StructuredData data={capabilityBuildingFAQSchema} id="capability-faq-schema" />
       <StructuredData
         data={createBreadcrumbSchema([
-          { name: "Home", url: "https://amplified.co.uk/" },
-          { name: "Capability Building", url: "https://amplified.co.uk/capability" },
+          { name: "Home", url: "https://bmkrs.com/" },
+          { name: "Capability Building", url: "https://bmkrs.com/capability" },
         ])}
         id="capability-breadcrumb"
       />
       <BreadcrumbBar items={[{ label: "Home", href: "/" }, { label: "Capability Building" }]} />
 
       <PageHero
-        eyebrow="AMP 04"
+        eyebrow="BMK 04"
         title="AI Capability Building"
         subtitle="Build it in. Not bolted on."
-        lead="Consultants who make themselves indispensable aren't doing their job. Amplified's AI capability programmes are designed to transfer real skill to your teams, so you can run it yourselves."
+        lead="Consultants who make themselves indispensable aren't doing their job. bmkrs's AI capability programmes are designed to transfer real skill to your teams, so you can run it yourselves."
       >
         <Text variant="body" tone="white-70" className="max-w-[580px]">
           From AI literacy for senior leaders to Product Owner development and Centres of Excellence:
@@ -120,7 +120,7 @@ const Capability = memo(function Capability({ onOpenConsultation }: CapabilityPr
               months later.
             </Text>
             <Text variant="body" tone="muted">
-              That&apos;s not a nice-to-have. It&apos;s the design principle behind every Amplified
+              That&apos;s not a nice-to-have. It&apos;s the design principle behind every bmkrs
               engagement. We build capability programmes that transfer real skill, not dependency.
             </Text>
           </Stack>

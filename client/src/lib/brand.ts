@@ -1,4 +1,4 @@
-/** bmkrs brand constants — blended from Amplified rigour + bmkrs product/AI voice. */
+/** bmkrs brand constants — Amplified-style rigour + bmkrs product/AI voice. */
 export const brand = {
   name: "bmkrs",
   nameDisplay: "bmkrs.",

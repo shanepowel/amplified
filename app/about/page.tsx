@@ -1,22 +1,22 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'About Amplified | Our Story, Values, and Why We Exist',
-  description: 'Amplified was founded by delivery practitioners who had seen the same pattern repeat across regulated industries. We embed new technologies effectively, with AI at the forefront, for organisations where rigour is not optional.',
+  title: 'About bmkrs | Our Story, Values, and Why We Exist',
+  description: 'bmkrs was founded by delivery practitioners who had seen the same pattern repeat across regulated industries. We embed new technologies effectively, with AI at the forefront, for organisations where rigour is not optional.',
   openGraph: {
-    title: 'About Amplified | Our Story, Values, and Why We Exist',
-    description: 'Amplified was founded by delivery practitioners who had seen the same pattern repeat across regulated industries. We embed new technologies effectively, with AI at the forefront, for organisations where rigour is not optional.',
-    url: 'https://amplified.co.uk/about',
-    siteName: 'Amplified',
+    title: 'About bmkrs | Our Story, Values, and Why We Exist',
+    description: 'bmkrs was founded by delivery practitioners who had seen the same pattern repeat across regulated industries. We embed new technologies effectively, with AI at the forefront, for organisations where rigour is not optional.',
+    url: 'https://bmkrs.com/about',
+    siteName: 'bmkrs',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'About Amplified | Our Story, Values, and Why We Exist',
-    description: 'Amplified was founded by delivery practitioners who had seen the same pattern repeat across regulated industries. We embed new technologies effectively, with AI at the forefront, for organisations where rigour is not optional.',
+    title: 'About bmkrs | Our Story, Values, and Why We Exist',
+    description: 'bmkrs was founded by delivery practitioners who had seen the same pattern repeat across regulated industries. We embed new technologies effectively, with AI at the forefront, for organisations where rigour is not optional.',
   },
   alternates: {
-    canonical: 'https://amplified.co.uk/about',
+    canonical: 'https://bmkrs.com/about',
   },
 };
 

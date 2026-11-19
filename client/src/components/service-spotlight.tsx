@@ -18,7 +18,7 @@ interface SpotlightService {
 
 const services: SpotlightService[] = [
   {
-    tag: "AMP 01",
+    tag: "BMK 01",
     title: "AI Governance",
     subtitle: "Responsible AI for regulated industries",
     body: "We build the governance foundations AI adoption requires, before your teams write a line of code or sign a platform contract.",
@@ -35,7 +35,7 @@ const services: SpotlightService[] = [
     accent: "#F85C70",
   },
   {
-    tag: "AMP 02",
+    tag: "BMK 02",
     title: "AI Implementation",
     subtitle: "End-to-end delivery built within your governance",
     body: "We don't just advise. We embed with your teams and deliver AI capabilities that work inside your existing accountability structures.",
@@ -52,7 +52,7 @@ const services: SpotlightService[] = [
     accent: "#60266A",
   },
   {
-    tag: "AMP 03",
+    tag: "BMK 03",
     title: "Structured Delivery",
     subtitle: "Agile without the chaos",
     body: "Squad-based delivery models designed for organisations where governance, auditability, and structured programme management are non-negotiable.",
@@ -69,7 +69,7 @@ const services: SpotlightService[] = [
     accent: "#F85C70",
   },
   {
-    tag: "AMP 04",
+    tag: "BMK 04",
     title: "Capability Building",
     subtitle: "Build it in, not bolted on",
     body: "We build lasting internal capability so your teams can run it themselves twelve months later.",
@@ -86,7 +86,7 @@ const services: SpotlightService[] = [
     accent: "#60266A",
   },
   {
-    tag: "AMP 05",
+    tag: "BMK 05",
     title: "Coaching",
     subtitle: "At every level, from board to practitioner",
     body: "Senior operators coaching leaders, teams and practitioners through technology adoption, organisational transformation, and the realities of operating in regulated environments.",
@@ -103,7 +103,7 @@ const services: SpotlightService[] = [
     accent: "#F85C70",
   },
   {
-    tag: "AMP 06",
+    tag: "BMK 06",
     title: "Tech Build",
     subtitle: "Custom software and platform delivery",
     body: "We design and build software that solves real problems. From greenfield digital products to platform modernisation and AI-native systems.",
@@ -216,7 +216,7 @@ const ServiceSpotlight = memo(function ServiceSpotlight({ onOpenConsultation }: 
                   className="font-mono text-5xl font-light tracking-tight text-white/[0.08] md:text-6xl"
                   aria-hidden="true"
                 >
-                  {current.tag.replace("AMP ", "")}
+                  {current.tag.replace("BMK ", "")}
                 </span>
               </div>
               <Eyebrow className="mb-3">{current.tag}</Eyebrow>

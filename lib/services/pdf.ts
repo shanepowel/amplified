@@ -19,7 +19,7 @@ export async function generateEngagementPlaybookPdf(
         margin: 56,
         info: {
           Title: `${engagement.name} Playbook`,
-          Author: 'Amplified',
+          Author: 'bmkrs',
           Subject: `${engagement.name} engagement playbook for ${recipient.name}`,
         },
       });
@@ -52,7 +52,7 @@ export async function generateEngagementPlaybookPdf(
         doc.strokeColor(RULE).lineWidth(0.5)
           .moveTo(left, y - 10).lineTo(right, y - 10).stroke();
         doc.fillColor(MUTED).fontSize(8).font('Helvetica')
-          .text('Amplified · amplified.co.uk · hello@amplified.co.uk', left, y, { width: contentWidth, align: 'left', lineBreak: false });
+          .text('bmkrs · bmkrs.com · hello@bmkrs.com', left, y, { width: contentWidth, align: 'left', lineBreak: false });
         doc.text(`Page ${pageNo}`, left, y, { width: contentWidth, align: 'right', lineBreak: false });
         doc.restore();
       };
@@ -238,7 +238,7 @@ export async function generateEngagementPlaybookPdf(
         .text(`Ready to scope a ${engagement.name} engagement?`, left + 20, ctaY + 34, { width: contentWidth - 40 });
       doc.fillColor('rgba(255,255,255,0.85)').font('Helvetica').fontSize(10.5);
       doc.fillColor('#FFFFFF').font('Helvetica').fontSize(10.5)
-        .text('We start every engagement with a 30-minute discovery call. Bring the situation, we will tell you whether this is the right fit before we send a proposal. Reply to the email this PDF arrived in, or visit amplified.co.uk/engagements.',
+        .text('We start every engagement with a 30-minute discovery call. Bring the situation, we will tell you whether this is the right fit before we send a proposal. Reply to the email this PDF arrived in, or visit bmkrs.com/engagements.',
           left + 20, ctaY + 70, { width: contentWidth - 40, lineGap: 2 });
       doc.y = ctaY + ctaH + 12;
 

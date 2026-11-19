@@ -24,7 +24,7 @@ interface HowWeWorkProps {
 
 const phases = [
   {
-    tag: "AMP 01: ASSESS",
+    tag: "BMK 01: ASSESS",
     title: "We start by understanding what's actually there.",
     body: "Before any implementation, governance framework, or delivery model is designed, we conduct a structured assessment of your current state, covering AI readiness, delivery capability, governance maturity, and team structure.",
     note: "Typical duration: 2–4 weeks.",
@@ -36,9 +36,9 @@ const phases = [
     ],
   },
   {
-    tag: "AMP 02: IMPLEMENT",
+    tag: "BMK 02: IMPLEMENT",
     title: "We build it with you, not for you.",
-    body: "Implementation at Amplified is always embedded. Our practitioners work inside your teams, alongside your people, delivering AI capabilities, governance frameworks, or new operating models within your existing structures.",
+    body: "Implementation at bmkrs is always embedded. Our practitioners work inside your teams, alongside your people, delivering AI capabilities, governance frameworks, or new operating models within your existing structures.",
     outputs: [
       "AI implementation or governance framework, fully built and tested",
       "Squad or agile operating model configured for your sector and governance requirements",
@@ -47,10 +47,10 @@ const phases = [
     ],
   },
   {
-    tag: "AMP 03: AMPLIFY",
+    tag: "BMK 03: AMPLIFY",
     title: "We build the capability so you don't need us again.",
     body: "The measure of a good engagement is whether your teams can run it without us twelve months later. Every implementation phase includes a structured embedding programme that transfers real capability, not just documentation.",
-    note: "Amplified's goal is always to make itself unnecessary. That is how you know it worked.",
+    note: "bmkrs's goal is always to make itself unnecessary. That is how you know it worked.",
     outputs: [
       "Internal capability programme tailored to your team's current skills",
       "Centre of Excellence design and initial setup",
@@ -64,8 +64,8 @@ const phases = [
 const HowWeWork = memo(function HowWeWork({ onOpenConsultation }: HowWeWorkProps) {
 
   const breadcrumb = createBreadcrumbSchema([
-    { name: 'Home', url: 'https://amplified.co.uk/' },
-    { name: 'How We Work', url: 'https://amplified.co.uk/how-we-work' },
+    { name: 'Home', url: 'https://bmkrs.com/' },
+    { name: 'How We Work', url: 'https://bmkrs.com/how-we-work' },
   ]);
 
   return (

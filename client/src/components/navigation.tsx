@@ -256,7 +256,7 @@ const Navigation = memo(function Navigation({ onOpenConsultation }: NavigationPr
                     {
                       href: "/our-work#amp-store",
                       icon: ShoppingBag,
-                      name: "ampStore",
+                      name: "bmkrs Store",
                       desc: "Practitioner learning platform, aligned to every BMK service line",
                     },
                     {
@@ -503,7 +503,7 @@ const Navigation = memo(function Navigation({ onOpenConsultation }: NavigationPr
                         {[
                           { href: "/case-studies", icon: TrendingUp, name: "Case Studies", desc: "Named client outcomes from the field" },
                           { href: "/our-work#client-work", icon: Globe, name: "Client Work & Products", desc: "Websites, apps, and transformation" },
-                          { href: "/our-work#amp-store", icon: ShoppingBag, name: "ampStore", desc: "Practitioner learning platform" },
+                          { href: "/our-work#amp-store", icon: ShoppingBag, name: "bmkrs Store", desc: "Practitioner learning platform" },
                           { href: "/our-work#sustainability", icon: Leaf, name: "Sustainability", desc: "Our environmental commitments" },
                         ].map((item) => (
                           <a

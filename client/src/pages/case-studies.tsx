@@ -47,7 +47,7 @@ export default memo(function CaseStudies({ onOpenConsultation, items }: CaseStud
         lead={
           <>
             Real engagements with named outcomes. Every case study below reflects work that
-            was scoped, delivered, and handed over by Amplified practitioners operating inside
+            was scoped, delivered, and handed over by bmkrs practitioners operating inside
             the client organisation.
           </>
         }

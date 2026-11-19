@@ -9,13 +9,13 @@ const LAST_UPDATED = "1 March 2026";
 const sections = [
   {
     title: "Introduction",
-    body: `This statement is made pursuant to Section 54(1) of the Modern Slavery Act 2015. It constitutes AMPLIFIED LTD's Modern Slavery and Human Trafficking Statement for the financial year ${financialYear}. It sets out the steps we have taken to ensure that slavery and human trafficking are not taking place in our business operations or supply chains.
+    body: `This statement is made pursuant to Section 54(1) of the Modern Slavery Act 2015. It constitutes b makers ltd's Modern Slavery and Human Trafficking Statement for the financial year ${financialYear}. It sets out the steps we have taken to ensure that slavery and human trafficking are not taking place in our business operations or supply chains.
 
-This statement has been approved by the Board of Directors of AMPLIFIED LTD and is reviewed annually.`,
+This statement has been approved by the Board of Directors of b makers ltd and is reviewed annually.`,
   },
   {
     title: "Our organisation",
-    body: `AMPLIFIED LTD is an AI governance and technology consultancy incorporated in England and Wales. We are headquartered in London with additional operations in Porto, Portugal. We provide professional consulting services to enterprise organisations, primarily across infrastructure, energy, financial services, public sector, and technology industries.
+    body: `b makers ltd is an AI governance and technology consultancy incorporated in England and Wales. We are headquartered in London with additional operations in Porto, Portugal. We provide professional consulting services to enterprise organisations, primarily across infrastructure, energy, financial services, public sector, and technology industries.
 
 We are a knowledge-based consultancy. Our operations consist primarily of professional services delivered by our team of consultants, engineers, and specialists. Our workforce is employed or engaged through contracts that comply with UK and EU employment law.`,
   },
@@ -36,7 +36,7 @@ We are a knowledge-based consultancy. Our operations consist primarily of profes
       "Anti-Slavery Policy: sets out our zero-tolerance position on modern slavery and human trafficking, and provides guidance to employees on recognising and reporting concerns.",
       "Recruitment Policy: includes right-to-work verification for all UK-based employees and contractors, to mitigate the risk of forced or trafficking-related labour.",
       "Whistleblowing Policy: enables all employees, contractors, and supply chain partners to raise concerns confidentially and without fear of reprisal.",
-      "Code of Conduct: sets behavioural standards for all employees and sets expectations for suppliers and partners working with Amplified.",
+      "Code of Conduct: sets behavioural standards for all employees and sets expectations for suppliers and partners working with bmkrs.",
       "Supplier Due Diligence: new suppliers of material goods or services are assessed against ethical standards before engagement, including review of their own Modern Slavery statements where applicable.",
     ],
   },
@@ -105,8 +105,8 @@ export default function ModernSlavery() {
         <div className="mt-4 border-t border-[#E5E3EE] pt-10">
           <Text variant="small" tone="muted" className="mb-2">
             For questions about this statement, contact us at{" "}
-            <a href="mailto:ethics@amplified.co.uk" className="text-[#F85C70]">
-              ethics@amplified.co.uk
+            <a href="mailto:ethics@bmkrs.com" className="text-[#F85C70]">
+              ethics@bmkrs.com
             </a>
           </Text>
           <Text variant="small" tone="muted">
@@ -116,12 +116,12 @@ export default function ModernSlavery() {
         </div>
       }
       companyInfo={[
-        ["Legal name", "AMPLIFIED LTD"],
+        ["Legal name", "b makers ltd"],
         ["Company number", "08589016"],
         ["Registered office", "7 Bell Yard, London WC2A 2JR"],
         ["Incorporated", "28 June 2013"],
         ["Nature of business", "Information technology consultancy (SIC 62020)"],
-        ["Ethics contact", "ethics@amplified.co.uk"],
+        ["Ethics contact", "ethics@bmkrs.com"],
       ]}
     />
   );

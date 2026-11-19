@@ -1,22 +1,22 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'ampStore | Practitioner-Focused Capability Resources | Amplified',
-  description: 'The ampStore is Amplified\'s curated capability catalogue. Frameworks, tools, and learning resources aligned to the six AMP service lines.',
+  title: 'bmkrs Store | Practitioner-Focused Capability Resources | bmkrs',
+  description: 'The bmkrs Store is bmkrs\'s curated capability catalogue. Frameworks, tools, and learning resources aligned to the six BMK service lines.',
   openGraph: {
-    title: 'ampStore | Practitioner-Focused Capability Resources | Amplified',
-    description: 'The ampStore is Amplified\'s curated capability catalogue. Frameworks, tools, and learning resources aligned to the six AMP service lines.',
-    url: 'https://amplified.co.uk/amp-store',
-    siteName: 'Amplified',
+    title: 'bmkrs Store | Practitioner-Focused Capability Resources | bmkrs',
+    description: 'The bmkrs Store is bmkrs\'s curated capability catalogue. Frameworks, tools, and learning resources aligned to the six BMK service lines.',
+    url: 'https://bmkrs.com/amp-store',
+    siteName: 'bmkrs',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'ampStore | Practitioner-Focused Capability Resources | Amplified',
-    description: 'The ampStore is Amplified\'s curated capability catalogue. Frameworks, tools, and learning resources aligned to the six AMP service lines.',
+    title: 'bmkrs Store | Practitioner-Focused Capability Resources | bmkrs',
+    description: 'The bmkrs Store is bmkrs\'s curated capability catalogue. Frameworks, tools, and learning resources aligned to the six BMK service lines.',
   },
   alternates: {
-    canonical: 'https://amplified.co.uk/amp-store',
+    canonical: 'https://bmkrs.com/amp-store',
   },
 };
 

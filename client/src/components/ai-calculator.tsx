@@ -226,7 +226,7 @@ const AiCalculator = memo(function AiCalculator({ onOpenConsultation }: Calculat
                       <div>
                         <h4 className="font-bold text-foreground mb-2">The Solution</h4>
                         <p className="text-muted-foreground">
-                          Amplified breaks the trap by building foundations first: stable teams, elastic operations, and process maturity. Only then does technology amplify your capability.
+                          bmkrs breaks the trap by building foundations first: stable teams, elastic operations, and process maturity. Only then does technology amplify your capability.
                         </p>
                       </div>
                     </div>

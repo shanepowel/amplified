@@ -1,22 +1,22 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | Amplified',
-  description: 'Amplified\'s privacy policy. How we collect, use, and protect your personal data in line with UK GDPR.',
+  title: 'Privacy Policy | bmkrs',
+  description: 'bmkrs\'s privacy policy. How we collect, use, and protect your personal data in line with UK GDPR.',
   openGraph: {
-    title: 'Privacy Policy | Amplified',
-    description: 'Amplified\'s privacy policy. How we collect, use, and protect your personal data in line with UK GDPR.',
-    url: 'https://amplified.co.uk/privacy',
-    siteName: 'Amplified',
+    title: 'Privacy Policy | bmkrs',
+    description: 'bmkrs\'s privacy policy. How we collect, use, and protect your personal data in line with UK GDPR.',
+    url: 'https://bmkrs.com/privacy',
+    siteName: 'bmkrs',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Privacy Policy | Amplified',
-    description: 'Amplified\'s privacy policy. How we collect, use, and protect your personal data in line with UK GDPR.',
+    title: 'Privacy Policy | bmkrs',
+    description: 'bmkrs\'s privacy policy. How we collect, use, and protect your personal data in line with UK GDPR.',
   },
   alternates: {
-    canonical: 'https://amplified.co.uk/privacy',
+    canonical: 'https://bmkrs.com/privacy',
   },
 };
 

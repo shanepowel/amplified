@@ -23,11 +23,11 @@ export const caseStudies: CaseStudy[] = [
     id: "payment-provider",
     sector: "Financial Services",
     company: "Global Payment Provider PLC",
-    service: "AMP 03 · Structured Delivery",
+    service: "BMK 03 · Structured Delivery",
     challenge:
       "Following a major acquisition, the organisation's Technical Delivery function had grown to 150 people across two legacy cultures with no shared ways of working. Delivery pace had slowed, communication between leaders had broken down, and the board was asking hard questions about productivity.",
     solution:
-      "Amplified designed and embedded a structured squad model tailored to the merged organisation. Teams were given clear missions, defined capabilities, and governance structures that worked alongside the existing PMO. A programme of coaching, ceremonies redesign, and Kanban-based workflow improvement ran in parallel.",
+      "bmkrs designed and embedded a structured squad model tailored to the merged organisation. Teams were given clear missions, defined capabilities, and governance structures that worked alongside the existing PMO. A programme of coaching, ceremonies redesign, and Kanban-based workflow improvement ran in parallel.",
     results: [
       "Cohesive teams with clear missions and defined capabilities",
       "Measurable improvement in cross-leader communication",
@@ -46,7 +46,7 @@ export const caseStudies: CaseStudy[] = [
     id: "elsevier",
     sector: "Publishing & Technology",
     company: "Elsevier",
-    service: "AMP 04 · Capability Building",
+    service: "BMK 04 · Capability Building",
     challenge:
       "Elsevier needed to democratise access to architecture expertise across multiple product teams following a period of acquisition and rapid growth. Teams were inconsistent in how they approached API design and system integration, and the organisation lacked a coherent operating model for its engineering function.",
     solution:
