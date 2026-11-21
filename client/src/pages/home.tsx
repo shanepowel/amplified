@@ -49,6 +49,7 @@ const ownProducts = [
   {
     code: "MADE 03",
     name: "FreelanceNearMe",
+    display: <>Freelance<wbr />NearMe</>,
     kind: "Marketplace",
     body: "Connects people with local freelancers. Around 15,000 visitors a week and being rebuilt as a proper SaaS platform.",
     href: undefined,
@@ -191,13 +192,13 @@ const Home = memo(function Home({ onOpenConsultation }: HomeProps) {
             }}
           />
           <Container className="relative z-10 pb-16 pt-14 lg:pb-24 lg:pt-20">
-            <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
+            <div className="grid grid-cols-1 items-end gap-12 lg:grid-cols-12">
               <div className="min-w-0 lg:col-span-7" style={revealStyle(heroVisible)}>
                 <div className="mb-8 flex items-center gap-3 font-mono text-xs uppercase tracking-[0.14em] text-white/55">
                   <span className="inline-block h-2 w-2 animate-pulse rounded-full bg-[#F85C70]" />
                   Studio open · taking on new builds
                 </div>
-                <h1 className="font-display text-[2.6rem] font-extrabold uppercase leading-[0.9] tracking-[-0.025em] [font-stretch:120%] sm:text-6xl lg:text-[5.25rem]">
+                <h1 className="font-display text-[2.6rem] font-extrabold uppercase leading-[0.9] tracking-[-0.025em] [font-stretch:120%] sm:text-6xl lg:text-[4.4rem] xl:text-[4.9rem]">
                   Good ideas deserve better than a slide deck.
                   <span className="mt-3 block text-[#F85C70]">We make them real.</span>
                 </h1>
@@ -218,12 +219,12 @@ const Home = memo(function Home({ onOpenConsultation }: HomeProps) {
               </div>
 
               <div className="min-w-0 lg:col-span-5" style={revealStyle(heroVisible, 0.15)}>
-                <div className="grid aspect-[4/5] grid-cols-2 grid-rows-3 gap-3">
+                <div className="grid grid-cols-2 gap-3 [grid-template-rows:minmax(0,1fr)_minmax(0,0.62fr)] h-[440px] sm:h-[520px] lg:h-[560px]">
                   {heroFigures.map((f, i) => (
                     <figure
                       key={f.label}
                       className={`bmk-tile group relative overflow-hidden ${
-                        i === 0 ? "col-span-2 row-span-2" : ""
+                        i === 0 ? "col-span-2" : ""
                       }`}
                     >
                       <Image
@@ -271,7 +272,7 @@ const Home = memo(function Home({ onOpenConsultation }: HomeProps) {
                       <span className="text-white/45">{p.kind}</span>
                     </div>
                     <h3 className="font-display text-3xl font-extrabold uppercase tracking-[-0.02em] [font-stretch:115%] lg:text-4xl">
-                      {p.name}
+                      {"display" in p && p.display ? p.display : p.name}
                     </h3>
                     <Text variant="small" tone="white-70" className="mt-4 flex-1">
                       {p.body}
@@ -322,7 +323,7 @@ const Home = memo(function Home({ onOpenConsultation }: HomeProps) {
                     <span className="text-white/45">{o.code}</span>
                     <span className="text-[#F85C70]">{o.duration}</span>
                   </div>
-                  <h3 className="bmk-outline-text font-display text-6xl font-black uppercase leading-none tracking-[-0.03em] [font-stretch:125%] transition-colors duration-300 group-hover:text-white lg:text-7xl">
+                  <h3 className="bmk-outline-text whitespace-nowrap font-display text-5xl font-black uppercase leading-none tracking-[-0.03em] [font-stretch:120%] transition-colors duration-300 group-hover:text-white lg:text-[3.25rem] xl:text-6xl">
                     {o.name}
                   </h3>
                   <Text variant="body" tone="white-75" className="mt-6 flex-1">
