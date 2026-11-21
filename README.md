@@ -152,6 +152,7 @@ initial conversation."
 ## Content (Sanity)
 
 All inner pages (services, AI, who we work with, company, work) and insights can be edited in Sanity at `/studio`.
+They live in the **BMKRS** Sanity project (`laqqhrou`, dataset `production`), alongside the older bmkrs site's content, which this site does not use.
 Until Sanity is configured the site shows the bundled copy in `client/src/content/`, which is also what gets seeded.
 
 1. Create a Sanity project and dataset (`production`), and add `https://<your-domain>` and the Vercel preview domain as CORS origins.

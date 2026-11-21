@@ -7,6 +7,14 @@ import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from 
 import { Button } from "@/components/ui/button";
 import { Menu, ChevronDown, X, ArrowRight } from "lucide-react";
 import { AmpButton, Container } from "@/components/system";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
 import { brand } from "@/lib/brand";
 
 interface NavigationProps {
@@ -103,10 +111,11 @@ const panel = "absolute top-full z-50 overflow-hidden border border-white/10 bg-
 const itemCls =
   "group flex items-start gap-3 px-3 py-2.5 transition-colors duration-150 hover:bg-white/[0.05] focus:outline-none focus-visible:bg-white/[0.07]";
 
-function MenuItems({ items, onNavigate }: { items: NavItem[]; onNavigate?: () => void }) {
+function MenuItems({ items, onNavigate, inMenu }: { items: NavItem[]; onNavigate?: () => void; inMenu?: boolean }) {
   return (
     <>
-      {items.map((item) => (
+      {items.map((item) => {
+        const link = (
         <Link key={item.href + item.name} href={item.href} className={itemCls} onClick={onNavigate}>
           {item.tag && (
             <span className="w-12 flex-shrink-0 pt-0.5 font-mono text-[11px] tracking-[0.08em] text-[#F85C70]">{item.tag}</span>
@@ -116,13 +125,21 @@ function MenuItems({ items, onNavigate }: { items: NavItem[]; onNavigate?: () =>
             <span className="mt-0.5 block text-xs text-white/55">{item.desc}</span>
           </span>
         </Link>
-      ))}
+        );
+        return inMenu ? (
+          <NavigationMenuLink asChild key={item.href + item.name}>
+            {link}
+          </NavigationMenuLink>
+        ) : (
+          link
+        );
+      })}
     </>
   );
 }
 
-function Feature({ feature, onNavigate }: { feature: NonNullable<NavMenu["feature"]>; onNavigate?: () => void }) {
-  return (
+function Feature({ feature, onNavigate, inMenu }: { feature: NonNullable<NavMenu["feature"]>; onNavigate?: () => void; inMenu?: boolean }) {
+  const link = (
     <Link
       href={feature.href}
       onClick={onNavigate}
@@ -138,6 +155,7 @@ function Feature({ feature, onNavigate }: { feature: NonNullable<NavMenu["featur
       </div>
     </Link>
   );
+  return inMenu ? <NavigationMenuLink asChild>{link}</NavigationMenuLink> : link;
 }
 
 const Navigation = memo(function Navigation(_props: NavigationProps) {
@@ -145,20 +163,12 @@ const Navigation = memo(function Navigation(_props: NavigationProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const [openMenu, setOpenMenu] = useState<string | null>(null);
+  const [openMenu, setOpenMenu] = useState("");
 
   useEffect(() => {
     setIsOpen(false);
-    setOpenMenu(null);
+    setOpenMenu("");
   }, [pathname]);
-
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpenMenu(null);
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -194,58 +204,52 @@ const Navigation = memo(function Navigation(_props: NavigationProps) {
             </span>
           </Link>
 
-          {/* Desktop */}
-          <div className="hidden items-center gap-5 lg:flex xl:gap-7">
-            {navMenus.map((menu) => {
-              const open = openMenu === menu.id;
-              const active = menu.items.some((i) => pathname === i.href) || (menu.feature && pathname === menu.feature.href);
-              return (
-                <div
-                  key={menu.id}
-                  className="relative"
-                  onMouseEnter={() => setOpenMenu(menu.id)}
-                  onMouseLeave={() => setOpenMenu(null)}
-                >
-                  <button
-                    type="button"
-                    aria-expanded={open}
-                    onClick={() => setOpenMenu(menu.id)}
-                    onKeyDown={(e) => {
-                      if (e.key === "Escape") setOpenMenu(null);
-                    }}
-                    className={`amp-focus-ring flex items-center gap-1 py-2 font-mono text-[12px] uppercase tracking-[0.12em] transition-colors duration-200 ${
-                      active ? "text-[#F85C70]" : "text-white/80 hover:text-white"
-                    }`}
-                    data-testid={`nav-${menu.id}`}
-                  >
-                    {menu.label}
-                    <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-200 ${open ? "rotate-180" : ""}`} />
-                  </button>
-                  {open && (
-                    <div
-                      className={`${panel} ${menu.width} ${
-                        menu.align === "right" ? "right-0" : "left-1/2 -translate-x-1/2"
-                      }`}
-                    >
-                      <div className="h-[2px] w-full bg-[#F85C70]" aria-hidden />
-                      {menu.feature && <Feature feature={menu.feature} />}
-                      <div className="p-2">
-                        <MenuItems items={menu.items} />
-                      </div>
-                      {menu.footer && (
-                        <Link
-                          href={menu.footer.href}
-                          className="flex items-center justify-between border-t border-white/10 px-5 py-3 transition-colors hover:bg-white/[0.04]"
-                        >
-                          <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-white/45">{menu.footer.label}</span>
-                          <span className="text-xs font-semibold text-[#F85C70]">{menu.footer.value}</span>
-                        </Link>
-                      )}
-                    </div>
-                  )}
-                </div>
-              );
-            })}
+          {/* Desktop: shadcn NavigationMenu (Radix) for keyboard, focus and screen-reader behaviour */}
+          <div className="hidden items-center gap-4 lg:flex xl:gap-6">
+            <NavigationMenu viewport={false} value={openMenu} onValueChange={setOpenMenu}>
+              <NavigationMenuList className="gap-0 xl:gap-1">
+                {navMenus.map((menu) => {
+                  const active =
+                    menu.items.some((i) => pathname === i.href) || (menu.feature && pathname === menu.feature.href);
+                  return (
+                    <NavigationMenuItem key={menu.id} value={menu.id}>
+                      <NavigationMenuTrigger
+                        className={`h-9 rounded-none bg-transparent px-2.5 font-mono text-[12px] uppercase tracking-[0.12em] hover:bg-transparent focus:bg-transparent data-[state=open]:bg-transparent data-[state=open]:hover:bg-transparent data-[state=open]:focus:bg-transparent xl:px-3 ${
+                          active
+                            ? "text-[#F85C70] hover:text-[#F85C70] focus:text-[#F85C70] data-[state=open]:text-[#F85C70]"
+                            : "text-white/80 hover:text-white focus:text-white data-[state=open]:text-white"
+                        }`}
+                        data-testid={`nav-${menu.id}`}
+                      >
+                        {menu.label}
+                      </NavigationMenuTrigger>
+                      <NavigationMenuContent
+                        className={`!mt-0 !rounded-none !border-white/10 !bg-[#141a44] !p-0 !text-white !shadow-2xl shadow-black/40 ${menu.width} ${
+                          menu.align === "right" ? "!left-auto right-0" : "left-1/2 -translate-x-1/2"
+                        }`}
+                      >
+                        <div className="h-[2px] w-full bg-[#F85C70]" aria-hidden />
+                        {menu.feature && <Feature feature={menu.feature} inMenu />}
+                        <div className="p-2">
+                          <MenuItems items={menu.items} inMenu />
+                        </div>
+                        {menu.footer && (
+                          <NavigationMenuLink asChild>
+                            <Link
+                              href={menu.footer.href}
+                              className="flex items-center justify-between border-t border-white/10 px-5 py-3 transition-colors hover:bg-white/[0.04]"
+                            >
+                              <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-white/45">{menu.footer.label}</span>
+                              <span className="text-xs font-semibold text-[#F85C70]">{menu.footer.value}</span>
+                            </Link>
+                          </NavigationMenuLink>
+                        )}
+                      </NavigationMenuContent>
+                    </NavigationMenuItem>
+                  );
+                })}
+              </NavigationMenuList>
+            </NavigationMenu>
 
             <AmpButton
               asChild
