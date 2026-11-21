@@ -3,9 +3,17 @@ export const brand = {
   name: "bmkrs",
   nameDisplay: "bmkrs.",
   legalName: "b makers ltd",
+  /**
+   * Company register details used on the legal pages. CONFIRM AGAINST COMPANIES HOUSE BEFORE GOING LIVE:
+   * these were inherited from the previous site and the office address is the former Amplified one.
+   */
+  companyNumber: "08589016",
+  registeredOffice: "7 Bell Yard, London WC2A 2JR",
+  incorporated: "28 June 2013",
+  natureOfBusiness: "Information technology consultancy (SIC 62020)",
   email: "hello@bmkrs.com",
   url: "https://bmkrs.com",
-  location: "London, and wherever you are",
+  location: "UK based, working wherever the work is",
   foundingYear: "2013",
   tagline: "Brands, digital products and practical AI, made real.",
   shortTagline: "Good ideas deserve better than a slide deck. We make them real.",

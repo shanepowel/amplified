@@ -72,20 +72,20 @@ export default function NotFound() {
 
                 <div className="border-t border-[#E5E3EE] pt-6">
                   <Text variant="h4" className="mb-4 text-center">
-                    Quick Navigation
+                    Quick links
                   </Text>
                   <div className="flex flex-wrap justify-center gap-3">
                     <AmpButton asChild variant="ghostDark" size="sm">
-                      <Link href="/services">AI Governance Services</Link>
+                      <Link href="/services">What we make</Link>
                     </AmpButton>
                     <AmpButton asChild variant="ghostDark" size="sm">
-                      <Link href="/case-studies">Success Stories</Link>
+                      <Link href="/ai">AI</Link>
                     </AmpButton>
                     <AmpButton asChild variant="ghostDark" size="sm">
-                      <Link href="/insights">Expert Insights</Link>
+                      <Link href="/our-work">Our work</Link>
                     </AmpButton>
                     <AmpButton asChild variant="ghostDark" size="sm">
-                      <Link href="/contact">Contact Us</Link>
+                      <Link href="/contact">Contact us</Link>
                     </AmpButton>
                   </div>
                 </div>

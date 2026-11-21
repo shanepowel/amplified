@@ -270,7 +270,7 @@ export default function ArticleDetail({ onOpenConsultation }: ArticleDetailProps
     image: article.content?.image || undefined,
     keywords: articleTags.length > 0
       ? articleTags
-      : ['AI governance', 'digital transformation', 'regulated industries', 'structured delivery'],
+      : ['AI', 'AI tokenomics', 'digital products', 'brand'],
   });
 
   const breadcrumbSchema = createBreadcrumbSchema([

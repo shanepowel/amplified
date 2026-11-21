@@ -1,4 +1,5 @@
 'use client';
+import { brand } from "@/lib/brand";
 
 import { LegalDocumentLayout } from "@/components/system";
 
@@ -82,8 +83,8 @@ export default function Accessibility() {
       sections={sections}
       companyInfo={[
         ["Legal name", "b makers ltd"],
-        ["Company number", "08589016"],
-        ["Registered office", "7 Bell Yard, London WC2A 2JR"],
+        ["Company number", brand.companyNumber],
+        ["Registered office", brand.registeredOffice],
         ["Accessibility contact", "accessibility@bmkrs.com"],
       ]}
     />

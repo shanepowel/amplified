@@ -1,4 +1,5 @@
 'use client';
+import { brand } from "@/lib/brand";
 
 import { LegalDocumentLayout, Text } from "@/components/system";
 
@@ -15,9 +16,9 @@ This statement has been approved by the Board of Directors of b makers ltd and i
   },
   {
     title: "Our organisation",
-    body: `b makers ltd is an AI governance and technology consultancy incorporated in England and Wales. We are headquartered in London with additional operations in Porto, Portugal. We provide professional consulting services to enterprise organisations, primarily across infrastructure, energy, financial services, public sector, and technology industries.
+    body: `b makers ltd (trading as bmkrs) is a small UK studio that designs, builds and launches brands, digital products and practical AI. We work remotely by default and serve clients ranging from founders and growing businesses to large organisations.
 
-We are a knowledge-based consultancy. Our operations consist primarily of professional services delivered by our team of consultants, engineers, and specialists. Our workforce is employed or engaged through contracts that comply with UK and EU employment law.`,
+Our operations consist mainly of professional services delivered by our own team and a small number of trusted specialists. Everyone who works with us is employed or engaged on contracts that comply with UK employment law.`,
   },
   {
     title: "Our supply chains",
@@ -26,7 +27,7 @@ We are a knowledge-based consultancy. Our operations consist primarily of profes
       "Software and cloud platform providers (SaaS subscriptions and infrastructure).",
       "IT hardware and equipment from established UK and EU distributors.",
       "Office facilities, professional services (legal, accounting, insurance), and communications providers.",
-      "Specialist subcontractors engaged on specific client engagements, all of whom are required to comply with our ethical standards.",
+      "Specialist subcontractors engaged on specific client projects, all of whom are required to comply with our ethical standards.",
     ],
   },
   {
@@ -117,10 +118,10 @@ export default function ModernSlavery() {
       }
       companyInfo={[
         ["Legal name", "b makers ltd"],
-        ["Company number", "08589016"],
-        ["Registered office", "7 Bell Yard, London WC2A 2JR"],
-        ["Incorporated", "28 June 2013"],
-        ["Nature of business", "Information technology consultancy (SIC 62020)"],
+        ["Company number", brand.companyNumber],
+        ["Registered office", brand.registeredOffice],
+        ["Incorporated", brand.incorporated],
+        ["Nature of business", brand.natureOfBusiness],
         ["Ethics contact", "ethics@bmkrs.com"],
       ]}
     />

@@ -236,7 +236,7 @@ export const servicesPages: Record<string, BmkPageContent> = {
           { title: "Customer portals", body: "Self-service that cuts calls and emails, joined to the systems you already have." },
           { title: "Internal tools", body: "The spreadsheet that runs the business, turned into something safer and faster." },
           { title: "AI-first products", body: "Products where AI is the core, designed so the cost per user still makes sense at scale." },
-          { title: "Rescues", body: "A product that's buggy or stuck. We assess it, stabilise it and get it moving again." },
+          { title: "Rescues and modernisation", body: "A product that's buggy, stuck or built on ageing tech. We stabilise it, modernise the platform, connect it to your other systems and automate the release pipeline.", tags: ["Legacy", "APIs", "DevOps"] },
         ],
       },
       {
@@ -332,10 +332,13 @@ export const servicesPages: Record<string, BmkPageContent> = {
         code: "§ 02",
         eyebrow: "What you get",
         title: "Calm, visible delivery.",
+        cols: 2,
         items: [
           { title: "One plan", body: "A single view of scope, dates and risk that everyone, including the board, can read." },
           { title: "Supplier management", body: "Agencies and vendors held to clear outcomes, not just hours." },
           { title: "AI-assisted delivery, governed", body: "When AI is writing code across teams, we use EmberNest to keep it scoped, approved and evidenced." },
+          { title: "Coaching on the job", body: "We coach your delivery leads, product owners and teams while the work happens, so the way of working stays when we step back." },
+          { title: "Extra hands, quickly", body: "Need more capacity? We add senior people to your team, working your way, without a long recruitment cycle." },
         ],
       },
     ],

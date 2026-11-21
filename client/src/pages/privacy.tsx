@@ -1,4 +1,5 @@
 'use client';
+import { brand } from "@/lib/brand";
 
 import { LegalDocumentLayout } from "@/components/system";
 
@@ -7,7 +8,7 @@ const LAST_UPDATED = "1 March 2026";
 const sections = [
   {
     title: "Who we are",
-    body: `b makers ltd is registered in England and Wales (Company No. 08589016). Our registered office is 7 Bell Yard, London WC2A 2JR. We are the data controller for information collected through this website.
+    body: `b makers ltd is registered in England and Wales (Company No. ${brand.companyNumber}). Our registered office is ${brand.registeredOffice}. We are the data controller for information collected through this website.
 
 Contact us about data protection matters at privacy@bmkrs.com.`,
   },
@@ -89,7 +90,7 @@ Contact us about data protection matters at privacy@bmkrs.com.`,
   },
   {
     title: "How to exercise your rights",
-    body: `To exercise any of the above rights, contact us at privacy@bmkrs.com or write to: b makers ltd, 7 Bell Yard, London WC2A 2JR. We will respond within one calendar month. We may need to verify your identity before processing a request.
+    body: `To exercise any of the above rights, contact us at privacy@bmkrs.com or write to: b makers ltd, ${brand.registeredOffice}. We will respond within one calendar month. We may need to verify your identity before processing a request.
 
 You also have the right to lodge a complaint with the Information Commissioner's Office (ICO) at ico.org.uk, or by calling 0303 123 1113.`,
   },
@@ -108,10 +109,10 @@ export default function Privacy() {
       sections={sections}
       companyInfo={[
         ["Legal name", "b makers ltd"],
-        ["Company number", "08589016"],
-        ["Registered office", "7 Bell Yard, London WC2A 2JR"],
-        ["Incorporated", "28 June 2013"],
-        ["Nature of business", "Information technology consultancy (SIC 62020)"],
+        ["Company number", brand.companyNumber],
+        ["Registered office", brand.registeredOffice],
+        ["Incorporated", brand.incorporated],
+        ["Nature of business", brand.natureOfBusiness],
         ["Data protection contact", "privacy@bmkrs.com"],
       ]}
     />

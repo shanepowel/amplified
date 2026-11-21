@@ -1,4 +1,5 @@
 'use client';
+import { brand } from "@/lib/brand";
 
 import { LegalDocumentLayout } from "@/components/system";
 
@@ -9,7 +10,7 @@ const sections = [
     title: "1. Definitions and interpretation",
     body: null,
     list: [
-      "\"bmkrs\" means b makers ltd, a company registered in England and Wales (No. 08589016).",
+      `"bmkrs" means b makers ltd, a company registered in England and Wales (No. ${brand.companyNumber}).`,
       "\"Client\" or \"Buyer\" means the organisation or individual purchasing Services from bmkrs.",
       "\"Contract\" means the agreement between bmkrs and the Client for the supply of Services, formed when a Statement of Work or order is accepted by both parties.",
       "\"Deliverables\" means any outputs, documents, reports, software, or materials produced by bmkrs in performing the Services.",
@@ -98,10 +99,10 @@ export default function Terms() {
       sections={sections}
       companyInfo={[
         ["Legal name", "b makers ltd"],
-        ["Company number", "08589016"],
-        ["Registered office", "7 Bell Yard, London WC2A 2JR"],
-        ["Incorporated", "28 June 2013"],
-        ["Nature of business", "Information technology consultancy (SIC 62020)"],
+        ["Company number", brand.companyNumber],
+        ["Registered office", brand.registeredOffice],
+        ["Incorporated", brand.incorporated],
+        ["Nature of business", brand.natureOfBusiness],
         ["Legal enquiries", "legal@bmkrs.com"],
       ]}
     />

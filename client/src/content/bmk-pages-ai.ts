@@ -71,6 +71,27 @@ export const aiPages: Record<string, BmkPageContent> = {
         ],
       },
       {
+        type: "split",
+        code: "§ 04",
+        eyebrow: "Readiness, governance and skills",
+        title: "Ready for AI, without the paperwork theatre.",
+        paragraphs: [
+          "Before you build, it helps to know where AI fits, what data you can safely use and who's accountable. We run a short readiness review and write the policies you actually need, in plain English, so your teams can move with confidence.",
+          "Where regulation applies, we map your use of AI to the frameworks that matter. And because skills that leave with the supplier were never yours, we train and coach your people as we go.",
+        ],
+        image: "workshop",
+        figLabel: "FIG. 03 / SKILLS",
+        listTitle: "What this covers",
+        list: [
+          "AI readiness review and use-case shortlist",
+          "Responsible AI policy your teams will follow",
+          "Alignment with ISO/IEC 42001, the NIST AI RMF and the EU AI Act",
+          "AI literacy for non-technical teams and boards",
+          "Coaching for product, delivery and engineering leads",
+        ],
+        reverse: true,
+      },
+      {
         type: "callout",
         eyebrow: "The question nobody asks early enough",
         title: "What will this cost at ten times the usage?",
@@ -80,12 +101,13 @@ export const aiPages: Record<string, BmkPageContent> = {
       },
       {
         type: "faq",
-        code: "§ 04",
+        code: "§ 05",
         title: "Things people ask about AI.",
         items: [
           { q: "Which models do you use?", a: "Whichever does the job best for the money. We're not tied to one provider, and we often use more than one: a small, cheap model for simple steps and a stronger one only where it's needed." },
           { q: "Is our data safe?", a: "We design the data boundaries before we write any code: what the AI can see, where it's processed, and what's logged. Where it matters we use providers that don't train on your data, or run models in your own cloud." },
           { q: "How quickly can we see something?", a: "An AI Sprint gets a working version running on your real data in about two weeks, with a clear cost per run and a view on whether it's worth scaling." },
+          { q: "Can you help with AI regulation?", a: "Yes. We map what you're building to the rules that apply, such as the EU AI Act, and to standards like ISO/IEC 42001 and the NIST AI Risk Management Framework, then build the checks into the work rather than bolting them on. We're not lawyers, so we'll tell you when you need one." },
           { q: "We already pay for Copilot or ChatGPT. Why do we need you?", a: "Those tools are great for individuals. We help when you want AI built into a process or a product, measured properly and controlled, so the value shows up on a spreadsheet and not just in anecdotes." },
         ],
       },

@@ -6,6 +6,16 @@ import { Linkedin, Mail } from "lucide-react";
 import { SiInstagram } from "react-icons/si";
 import { Container, Eyebrow, Grid, Stack, Text } from "@/components/system";
 import { brand } from "@/lib/brand";
+import { navMenus, legalLinks } from "@/content/nav";
+
+/** Footer columns come from the same menu data as the header, so they always match. */
+const byId = Object.fromEntries(navMenus.map((m) => [m.id, m]));
+const footerColumns = [
+  { label: byId.what.label, items: [{ name: "Overview", href: "/services", desc: "" }, ...byId.what.items] },
+  { label: byId.ai.label, items: byId.ai.items },
+  { label: "Studio", items: [...byId.work.items, ...byId.company.items] },
+  { label: byId.who.label, items: byId.who.items },
+];
 
 const Footer = memo(function Footer() {
   return (
@@ -15,7 +25,7 @@ const Footer = memo(function Footer() {
           cols="12"
           gap="lg"
           equal={false}
-          className="mb-10 border-b border-[#60266A]/30 pb-10 lg:grid-cols-5"
+          className="mb-10 border-b border-[#60266A]/30 pb-10 lg:grid-cols-6"
         >
           <div className="lg:col-span-2">
             <Link
@@ -39,80 +49,29 @@ const Footer = memo(function Footer() {
             </a>
           </div>
 
-          <div>
-            <Eyebrow className="mb-4">Services</Eyebrow>
-            <ul className="space-y-2">
-              {[
-                { label: "Brand and identity", href: "/services/brand" },
-                { label: "Websites and platforms", href: "/services/websites" },
-                { label: "Digital products", href: "/services/products" },
-                { label: "AI and automation", href: "/ai" },
-                { label: "AI tokenomics", href: "/ai/tokenomics" },
-                { label: "EmberNest", href: "/ai/embernest" },
-                { label: "Growth and content", href: "/services/growth" },
-                { label: "Delivery leadership", href: "/services/delivery" },
-              ].map((link) => (
-                <li key={link.label}>
-                  <Link href={link.href} className="text-sm text-white/50 transition-colors hover:text-white/90">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <Eyebrow className="mb-4">Company</Eyebrow>
-            <ul className="space-y-2">
-              {[
-                { label: "About", href: "/about" },
-                { label: "How we work", href: "/how-we-work" },
-                { label: "What we've made", href: "/our-work" },
-                { label: "Track record", href: "/case-studies" },
-                { label: "Insights", href: "/insights" },
-                { label: "Careers", href: "/careers" },
-                { label: "Contact", href: "/contact" },
-              ].map((link) => (
-                <li key={link.label}>
-                  <Link href={link.href} className="text-sm text-white/50 transition-colors hover:text-white/90">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <Eyebrow className="mb-4">Who we work with</Eyebrow>
-            <ul className="space-y-2">
-              {[
-                { label: "Founders and start-ups", href: "/for/founders" },
-                { label: "Growing businesses", href: "/for/scale-ups" },
-                { label: "Marketing teams", href: "/for/marketing-teams" },
-                { label: "CTOs and digital leads", href: "/for/ctos" },
-              ].map((link) => (
-                <li key={link.label}>
-                  <Link href={link.href} className="text-sm text-white/50 transition-colors hover:text-white/90">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {footerColumns.map((col) => (
+            <div key={col.label}>
+              <Eyebrow className="mb-4">{col.label}</Eyebrow>
+              <ul className="space-y-2">
+                {col.items.map((link) => (
+                  <li key={link.href + link.name}>
+                    <Link href={link.href} className="text-sm text-white/50 transition-colors hover:text-white/90">
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </Grid>
 
         <Stack direction="row-responsive" gap="md" justify="between" align="center" className="flex-wrap">
           <Text variant="caption" className="text-white/30">
-            © 2026 {brand.legalName} · London, UK
+            © {new Date().getFullYear()} {brand.legalName} · UK
           </Text>
 
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
-            {[
-              { label: "Privacy", href: "/privacy" },
-              { label: "Terms", href: "/terms" },
-              { label: "Accessibility", href: "/accessibility" },
-              { label: "Modern Slavery", href: "/modern-slavery" },
-            ].map((link) => (
+            {legalLinks.map((link) => (
               <Link
                 key={link.label}
                 href={link.href}
