@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 
 export async function GET() {
-  const robotsTxt = `# bmkrs - AI Implementation & Governance for Regulated Industries
+  const robotsTxt = `# bmkrs - brands, digital products and practical AI
 # https://bmkrs.com
 
 User-agent: *
@@ -45,7 +45,6 @@ Disallow: /
 # Disallow admin/internal pages
 User-agent: *
 Disallow: /api/
-Disallow: /seo-optimizer
 
 # Sitemap location
 Sitemap: https://bmkrs.com/sitemap.xml

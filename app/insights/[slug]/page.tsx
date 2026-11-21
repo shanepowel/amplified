@@ -22,10 +22,10 @@ export async function generateMetadata(
       if (article) {
         return {
           title: `${article.title || title} | bmkrs Insights`,
-          description: article.metaDescription || article.description || `Read ${article.title || title} - insights from bmkrs on AI governance, technology delivery, and digital transformation.`,
+          description: article.metaDescription || article.description || `Read ${article.title || title} - notes from the bmkrs studio on brands, products and AI.`,
           openGraph: {
             title: article.title || title,
-            description: article.metaDescription || article.description || `Read ${article.title || title} - insights from bmkrs.`,
+            description: article.metaDescription || article.description || `Read ${article.title || title}: notes from the bmkrs studio.`,
             url: `https://bmkrs.com/insights/${slug}`,
             images: article.featuredImage ? [{ url: article.featuredImage }] : [{ url: '/og-image.png' }],
             type: 'article',
@@ -33,7 +33,7 @@ export async function generateMetadata(
           twitter: {
             card: 'summary_large_image',
             title: article.title || title,
-            description: article.metaDescription || article.description || `Read ${article.title || title} - insights from bmkrs.`,
+            description: article.metaDescription || article.description || `Read ${article.title || title}: notes from the bmkrs studio.`,
             images: article.featuredImage ? [article.featuredImage] : ['/og-image.png'],
           },
           alternates: {
@@ -48,17 +48,17 @@ export async function generateMetadata(
 
   return {
     title: `${title} | bmkrs Insights`,
-    description: `Read ${title} - insights from bmkrs on AI governance, technology delivery, and digital transformation for regulated industries.`,
+    description: `Read ${title}: notes from the bmkrs studio on brands, products and AI.`,
     openGraph: {
       title,
-      description: `Read ${title} - insights from bmkrs.`,
+      description: `Read ${title}: notes from the bmkrs studio.`,
       url: `https://bmkrs.com/insights/${slug}`,
       type: 'article',
     },
     twitter: {
       card: 'summary_large_image',
       title,
-      description: `Read ${title} - insights from bmkrs.`,
+      description: `Read ${title}: notes from the bmkrs studio.`,
     },
     alternates: {
       canonical: `https://bmkrs.com/insights/${slug}`,
