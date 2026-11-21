@@ -1,23 +1,22 @@
 import type { Metadata } from 'next';
-import { Inter, Fraunces } from 'next/font/google';
+import { Archivo, IBM_Plex_Mono } from 'next/font/google';
 import './globals.css';
 import { AnalyticsScripts, GoogleTagManagerNoScript } from '../client/src/components/analytics-scripts';
 import { Providers } from '../client/src/components/providers';
 import { brand } from '../client/src/lib/brand';
 
-const inter = Inter({
+const archivo = Archivo({
   subsets: ['latin'],
-  weight: ['400', '600', '700'],
+  axes: ['wdth'],
   display: 'swap',
-  variable: '--font-inter',
+  variable: '--font-archivo',
 });
 
-const fraunces = Fraunces({
+const plexMono = IBM_Plex_Mono({
   subsets: ['latin'],
   weight: ['400', '500'],
-  style: ['normal'],
   display: 'swap',
-  variable: '--font-fraunces',
+  variable: '--font-plex-mono',
 });
 
 const organisationJsonLd = {
@@ -53,26 +52,22 @@ const organisationJsonLd = {
       knowsAbout: [
         'Digital Products',
         'Product Strategy',
-        'AI Governance',
+        'Brand Identity',
+        'Product Design',
+        'Software Engineering',
         'AI Implementation',
-        'Responsible AI',
-        'Technology Implementation',
-        'Agile Delivery',
-        'Programme Management',
-        'Operating Model Design',
-        'Capability Building',
-        'Structured Delivery',
+        'Automation',
+        'Websites and Platforms',
+        'Growth Marketing',
+        'Delivery Leadership',
       ],
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
         name: `${brand.name} Services`,
         itemListElement: [
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'AI Governance' } },
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'AI Implementation' } },
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Structured Delivery' } },
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Capability Building' } },
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Coaching' } },
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Tech Build' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Sprint' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Build' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Crew' } },
         ],
       },
       sameAs: [brand.social.linkedin, brand.social.instagram],
@@ -123,8 +118,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${fraunces.variable}`}>
-      <body className={inter.className}>
+    <html lang="en" suppressHydrationWarning className={`${archivo.variable} ${plexMono.variable}`}>
+      <body className={archivo.className}>
         <GoogleTagManagerNoScript />
         <script
           type="application/ld+json"

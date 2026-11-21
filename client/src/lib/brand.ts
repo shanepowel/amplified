@@ -1,4 +1,4 @@
-/** bmkrs brand constants — Amplified-style rigour + bmkrs product/AI voice. */
+/** bmkrs brand constants: a small, senior studio that makes brands, products and practical AI. */
 export const brand = {
   name: "bmkrs",
   nameDisplay: "bmkrs.",
@@ -7,15 +7,15 @@ export const brand = {
   url: "https://bmkrs.com",
   location: "London, and wherever you are",
   foundingYear: "2013",
-  tagline: "Digital products, strategy and technology — with the rigour to make AI stick.",
+  tagline: "Brands, digital products and practical AI, made real.",
   shortTagline: "Good ideas deserve better than a slide deck. We make them real.",
   description:
-    "bmkrs is a digital product and AI partner for ambitious organisations. We connect strategy, product, design and engineering so ideas ship — and land inside the accountability frameworks that make change stick.",
-  metaTitle: "bmkrs | Digital products, strategy and technology",
+    "bmkrs is a small, senior studio that designs, builds and launches brands, digital products and practical AI. We work in short, visible cycles so you can see the thing taking shape from week one.",
+  metaTitle: "bmkrs | We make good ideas real",
   metaDescription:
-    "bmkrs is a digital product and AI partner for ambitious organisations. Strategy, product, design and engineering — with the rigour to make AI stick.",
+    "bmkrs designs, builds and launches brands, digital products and practical AI for ambitious organisations. Small team, senior people, real things shipped.",
   ctaPrimary: "Let's build something",
-  ctaSecondary: "Explore our work",
+  ctaSecondary: "See what we've made",
   social: {
     linkedin: "https://www.linkedin.com/company/bmkrs",
     instagram: "https://instagram.com/bmkrs.global",

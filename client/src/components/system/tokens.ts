@@ -134,11 +134,11 @@ export const textVariants = cva("min-w-0 max-w-full break-words", {
   variants: {
     variant: {
       display:
-        "font-display font-normal leading-[1.08] tracking-tight text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem]",
-      h1: "font-display font-normal leading-[1.1] tracking-tight text-3xl md:text-4xl lg:text-5xl",
-      h2: "font-display font-normal leading-tight text-2xl md:text-3xl lg:text-4xl",
-      h3: "font-display font-normal leading-snug text-xl md:text-2xl",
-      h4: "font-display font-normal leading-snug text-lg md:text-xl",
+        "font-display font-extrabold [font-stretch:118%] uppercase leading-[0.92] tracking-[-0.02em] text-4xl sm:text-5xl md:text-6xl lg:text-[4.75rem]",
+      h1: "font-display font-extrabold [font-stretch:112%] leading-[1.0] tracking-[-0.02em] text-3xl md:text-4xl lg:text-5xl",
+      h2: "font-display font-bold [font-stretch:110%] leading-[1.05] tracking-[-0.015em] text-2xl md:text-3xl lg:text-4xl",
+      h3: "font-display font-bold [font-stretch:105%] leading-tight tracking-[-0.01em] text-xl md:text-2xl",
+      h4: "font-display font-semibold leading-snug text-lg md:text-xl",
       lead: "font-sans text-base md:text-lg leading-relaxed",
       body: "font-sans text-base leading-relaxed",
       small: "font-sans text-sm leading-relaxed",

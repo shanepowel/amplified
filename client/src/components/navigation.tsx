@@ -15,60 +15,24 @@ interface NavigationProps {
 }
 
 const consultingServices = [
-  {
-    tag: "BMK 01",
-    name: "AI Governance",
-    desc: "Responsible AI for regulated industries",
-    href: "/ai-governance",
-  },
-  {
-    tag: "BMK 02",
-    name: "AI Implementation",
-    desc: "End-to-end delivery within your governance",
-    href: "/ai-implementation",
-  },
-  {
-    tag: "BMK 03",
-    name: "Structured Delivery",
-    desc: "Agile without the chaos",
-    href: "/structured-delivery",
-  },
-  {
-    tag: "BMK 04",
-    name: "Capability Building",
-    desc: "Build it in, not bolted on",
-    href: "/capability",
-  },
+  { tag: "BMK 01", name: "Brand and identity", desc: "Names, logos, voice and visual systems", href: "/services" },
+  { tag: "BMK 02", name: "Websites and platforms", desc: "Fast sites your team can run themselves", href: "/transformation" },
+  { tag: "BMK 03", name: "Digital products", desc: "Apps, portals and marketplaces", href: "/transformation" },
 ];
 
 const buildAndCoachServices = [
-  {
-    tag: "BMK 05",
-    name: "Coaching",
-    desc: "Executive, team and practitioner coaching",
-    href: "/coaching",
-  },
-  {
-    tag: "BMK 06",
-    name: "Tech Build",
-    desc: "Custom software, platforms and AI systems",
-    href: "/transformation",
-  },
-  {
-    tag: "BMK 07",
-    name: "Autonomous Organisations",
-    desc: "Self-managing, product-led, AI-powered",
-    href: "/org-design",
-  },
+  { tag: "BMK 04", name: "AI and automation", desc: "Practical AI with sensible guardrails", href: "/ai-implementation" },
+  { tag: "BMK 05", name: "Growth and content", desc: "Campaigns, content and tracking", href: "/services" },
+  { tag: "BMK 06", name: "Delivery leadership", desc: "Programmes and multi-agency builds", href: "/structured-delivery" },
 ];
 
 const companyLinks = [
   { name: `About ${brand.name}`, desc: "Our story, values, and why we exist", href: "/about" },
   { name: "What We Believe", desc: "Five claims about how delivery should work", href: "/what-we-believe" },
   { name: "Our Team", desc: "Meet the partnership", href: "/about/team" },
-  { name: "How We Work", desc: "The BMK Model: Assess, Implement, Amplify", href: "/how-we-work" },
+  { name: "How We Work", desc: "Sketch, make, ship, grow", href: "/how-we-work" },
   { name: "Careers", desc: "Work with us", href: "/careers" },
-  { name: "Insights", desc: "Thinking for delivery-led organisations", href: "/insights" },
+  { name: "Insights", desc: "Notes from the studio", href: "/insights" },
 ];
 
 const dropdownPanel =
@@ -181,7 +145,7 @@ const Navigation = memo(function Navigation({ onOpenConsultation }: NavigationPr
                   <div className="grid grid-cols-2 gap-0">
                     {/* Consulting column */}
                     <div className="p-4 border-r border-[#E5E3EE]">
-                      <p className={sectionLabel}>Consulting</p>
+                      <p className={sectionLabel}>Brand and product</p>
                       {consultingServices.map((item) => (
                         <Link key={item.tag} href={item.href} className={dropdownLink}>
                           <span className={tagClass}>{item.tag}</span>
@@ -195,7 +159,7 @@ const Navigation = memo(function Navigation({ onOpenConsultation }: NavigationPr
 
                     {/* Build & Coach column */}
                     <div className="p-4">
-                      <p className={sectionLabel}>Build &amp; Coach</p>
+                      <p className={sectionLabel}>AI, growth and delivery</p>
                       {buildAndCoachServices.map((item) => (
                         <Link key={item.tag} href={item.href} className={dropdownLink}>
                           <span className={tagClass}>{item.tag}</span>
@@ -439,7 +403,7 @@ const Navigation = memo(function Navigation({ onOpenConsultation }: NavigationPr
                     {/* Consulting */}
                     <div>
                       <p className="font-mono text-xs uppercase tracking-[0.12em] mb-2 text-[#6B6E81]">
-                        Consulting
+                        Brand and product
                       </p>
                       <div className="space-y-1">
                         {consultingServices.map((item) => (
@@ -468,7 +432,7 @@ const Navigation = memo(function Navigation({ onOpenConsultation }: NavigationPr
                     {/* Build & Coach */}
                     <div className="border-t border-[#E5E3EE] pt-4">
                       <p className="font-mono text-xs uppercase tracking-[0.12em] mb-2 text-[#6B6E81]">
-                        Build &amp; Coach
+                        AI, growth and delivery
                       </p>
                       <div className="space-y-1">
                         {buildAndCoachServices.map((item) => (

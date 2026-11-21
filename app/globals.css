@@ -27,9 +27,9 @@
   --border-subtle: hsl(291, 8%, 94%);
   --input: hsl(291, 10%, 90%);
   --ring: hsl(291, 47%, 28%);
-  --font-sans: var(--font-inter), 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-display: var(--font-fraunces), 'Fraunces', Georgia, 'Times New Roman', serif;
-  --font-mono: Menlo, 'Courier New', monospace;
+  --font-sans: var(--font-archivo), 'Archivo', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display: var(--font-archivo), 'Archivo', system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), 'IBM Plex Mono', Menlo, monospace;
   --navy: #181F4F;
   --navy-hsl: 231, 52%, 20%;
   --radius: 0.5rem;
@@ -1185,4 +1185,82 @@ select:focus {
   .hover-glow:hover {
     transform: none;
   }
+}
+
+/* ------------------------------------------------------------------
+   bmkrs maker system: chalk snap-lines, ruler ticks, spec labels
+   ------------------------------------------------------------------ */
+.bmk-snap {
+  position: relative;
+  height: 1px;
+  width: 100%;
+  overflow: visible;
+}
+.bmk-snap::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #F85C70 0%, #F85C70 60%, rgba(248, 92, 112, 0.25) 100%);
+  transform-origin: left center;
+  transform: scaleX(0);
+  transition: transform 0.9s cubic-bezier(0.2, 0.9, 0.1, 1.15);
+  box-shadow: 0 0 12px rgba(248, 92, 112, 0.35);
+}
+.bmk-snap.is-snapped::before { transform: scaleX(1); }
+.bmk-snap::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -4px;
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: #F85C70;
+}
+
+.bmk-ruler {
+  height: 10px;
+  background-image:
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.28) 0 1px, transparent 1px 80px),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.12) 0 1px, transparent 1px 16px);
+  background-size: 100% 10px, 100% 5px;
+  background-repeat: no-repeat;
+  background-position: left top, left top;
+}
+
+.bmk-chalk-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+.bmk-outline-text {
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.85);
+}
+
+.bmk-tile {
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: border-color 0.25s ease, background-color 0.25s ease, transform 0.25s ease;
+}
+.bmk-tile:hover {
+  border-color: rgba(248, 92, 112, 0.6);
+  background-color: rgba(255, 255, 255, 0.03);
+}
+.bmk-tile .bmk-corner {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-color: #F85C70;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.bmk-tile:hover .bmk-corner { opacity: 1; }
+.bmk-corner.tl { top: -1px; left: -1px; border-top: 2px solid; border-left: 2px solid; }
+.bmk-corner.br { bottom: -1px; right: -1px; border-bottom: 2px solid; border-right: 2px solid; }
+
+@media (prefers-reduced-motion: reduce) {
+  .bmk-snap::before { transition: none; transform: scaleX(1); }
 }
