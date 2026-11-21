@@ -145,7 +145,7 @@ export const aiPages: Record<string, BmkPageContent> = {
         type: "grid",
         code: "§ 02",
         eyebrow: "What we do",
-        title: "Five levers we pull.",
+        title: "Six levers we pull.",
         lead: "None of them mean a worse result. Most of them mean a faster one.",
         items: [
           { code: "TK 01", title: "Measure cost per outcome", body: "We tag every AI call to the job it's doing, so you can see the cost of a resolved ticket or a published article, not just a monthly total." },
