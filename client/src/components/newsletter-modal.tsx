@@ -81,7 +81,7 @@ export default function NewsletterModal({ isOpen, onClose }: NewsletterModalProp
             Subscribe to Insights
           </DialogTitle>
           <DialogDescription id="newsletter-description">
-            Get exclusive insights on digital transformation, AI governance, and business operations delivered to your inbox.
+            Notes on brands, products and AI from the bmkrs studio, sent when we have something worth saying.
           </DialogDescription>
         </DialogHeader>
 
@@ -129,10 +129,10 @@ export default function NewsletterModal({ isOpen, onClose }: NewsletterModalProp
                 📬 You'll receive:
               </p>
               <ul className="text-sm text-muted-foreground mt-2 space-y-1">
-                <li>✓ Monthly research insights & analysis</li>
-                <li>✓ Digital transformation case studies</li>
-                <li>✓ AI governance best practices</li>
-                <li>✓ Exclusive frameworks & guides</li>
+                <li>✓ Practical AI and automation ideas</li>
+                <li>✓ AI tokenomics: keeping AI costs in check</li>
+                <li>✓ What we're learning from our own products</li>
+                <li>✓ Launches and new work</li>
               </ul>
             </div>
 

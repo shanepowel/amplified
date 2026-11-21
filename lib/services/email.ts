@@ -245,7 +245,7 @@ class EmailService {
           <p style="font-size:15px;line-height:1.6;color:#181F4F;margin:0 0 16px;">Hi ${name.split(' ')[0]},</p>
           <p style="font-size:15px;line-height:1.6;color:#181F4F;margin:0 0 16px;">Here is the playbook for the <strong>${engagementName}</strong> engagement, attached as a PDF. It covers the problem we solve, what is included, how the weeks unfold, what you have at the end, and the qualifiers we use to confirm fit.</p>
           <p style="font-size:15px;line-height:1.6;color:#181F4F;margin:0 0 24px;">If after a read it feels like a fit, reply to this email and we will book a 30-minute discovery call. No pitch, no deck.</p>
-          <p style="font-size:14px;line-height:1.6;color:#65677B;margin:0;">— The bmkrs team</p>
+          <p style="font-size:14px;line-height:1.6;color:#65677B;margin:0;">The bmkrs team</p>
         </div>
         <div style="padding:18px 32px;background:#181F4F;color:#FFFFFF;font-size:12px;">bmkrs.com · hello@bmkrs.com</div>
       </div>
@@ -276,7 +276,7 @@ class EmailService {
       this.resend.emails.send({
         from: this.fromEmail,
         to: this.toEmail,
-        subject: `Playbook downloaded: ${engagementName} — ${name}${company ? ` (${company})` : ''}`,
+        subject: `Playbook downloaded: ${engagementName}: ${name}${company ? ` (${company})` : ''}`,
         html: `<p>${name} (${toEmail})${company ? ` from ${company}` : ''} downloaded the <strong>${engagementName}</strong> playbook.</p>`,
       }).catch((e) => console.error('Internal playbook notification failed:', e));
 

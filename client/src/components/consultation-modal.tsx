@@ -24,13 +24,14 @@ interface ConsultationModalProps {
   serviceType?: string;
 }
 
+// Values are fixed by the database schema; only the labels are bmkrs-facing.
 const serviceOptions = [
   { value: "discovery", label: "Not sure yet, let's talk" },
-  { value: "bmkrs-teams", label: "BMK 01/03 | AI Governance or Structured Delivery" },
-  { value: "bmkrs-transformation", label: "BMK 02 | AI Implementation" },
-  { value: "bmkrs-learn", label: "BMK 04 | Capability Building" },
-  { value: "bmkrs-coach", label: "BMK 05 | Coaching" },
-  { value: "full-suite", label: "BMK 06 | Tech Build" },
+  { value: "bmkrs-teams", label: "Brand, website or product build" },
+  { value: "bmkrs-transformation", label: "AI and automation" },
+  { value: "bmkrs-learn", label: "AI tokenomics or EmberNest" },
+  { value: "bmkrs-coach", label: "Growth and content" },
+  { value: "full-suite", label: "A Crew or delivery leadership" },
 ];
 
 export default function ConsultationModal({ isOpen, onClose, serviceType }: ConsultationModalProps) {

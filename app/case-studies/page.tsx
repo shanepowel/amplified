@@ -1,29 +1,8 @@
-import type { Metadata } from 'next';
+import { bmkMetadata } from '../../client/src/content/bmk-pages';
+import { BmkRoute } from '../../client/src/components/bmk/bmk-page';
 
-export const metadata: Metadata = {
-  title: 'Our Work | Digital Transformation Case Studies | bmkrs',
-  description: 'Real digital transformation case studies from bmkrs. See how we deliver structured, accountable change for organisations in regulated industries.',
-  openGraph: {
-    title: 'Our Work | Digital Transformation Case Studies | bmkrs',
-    description: 'Real digital transformation case studies from bmkrs. See how we deliver structured, accountable change for organisations in regulated industries.',
-    url: 'https://bmkrs.com/case-studies',
-    siteName: 'bmkrs',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Our Work | Digital Transformation Case Studies | bmkrs',
-    description: 'Real digital transformation case studies from bmkrs. See how we deliver structured, accountable change for organisations in regulated industries.',
-  },
-  alternates: {
-    canonical: 'https://bmkrs.com/case-studies',
-  },
-};
+export const metadata = bmkMetadata('case-studies');
 
-import CaseStudiesClient from '../../client/src/components/case-studies-client';
-import { getCaseStudies } from '../../lib/content/case-studies';
-
-export default async function Page() {
-  const items = await getCaseStudies();
-  return <CaseStudiesClient items={items} />;
+export default function Page() {
+  return <BmkRoute id="case-studies" />;
 }

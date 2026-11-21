@@ -125,10 +125,10 @@ function getTypeIcon(type: string) {
 }
 
 const defaultRelatedServices: RelatedService[] = [
-  { label: "AI Governance", href: "/ai-governance" },
-  { label: "AI Implementation", href: "/ai-implementation" },
-  { label: "Structured Delivery", href: "/structured-delivery" },
-  { label: "Capability Building", href: "/capability" },
+  { label: "AI and automation", href: "/ai" },
+  { label: "AI tokenomics", href: "/ai/tokenomics" },
+  { label: "EmberNest", href: "/ai/embernest" },
+  { label: "Digital products", href: "/services/products" },
 ];
 
 function FAQAccordion({ faqs }: { faqs: FAQItem[] }) {
@@ -343,7 +343,7 @@ export default function ArticleDetail({ onOpenConsultation }: ArticleDetailProps
                   <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#F85C70]" aria-hidden="true" />
                   <span>
                     By{' '}
-                    <Link href="/about/team" className="amp-focus-ring-on-light font-semibold text-foreground hover:text-[#F85C70] transition-colors">
+                    <Link href="/about" className="amp-focus-ring-on-light font-semibold text-foreground hover:text-[#F85C70] transition-colors">
                       {article.content.author}
                     </Link>
                   </span>

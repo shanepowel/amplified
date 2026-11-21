@@ -9,7 +9,7 @@ interface HeroBrandProps {
   size?: "small" | "medium" | "large";
   className?: string;
   children?: React.ReactNode;
-  /** @deprecated Decorative infrastructure marks removed — ignored. */
+  /** @deprecated Decorative infrastructure marks removed, ignored. */
   showVisualElements?: boolean;
 }
 
@@ -21,7 +21,7 @@ const logoHeights = {
 
 /**
  * Compact brand mark for hero/intro slots.
- * Wordmark only — no oversized decorative layers.
+ * Wordmark only, no oversized decorative layers.
  */
 export function HeroBrand({
   centerAlign = false,

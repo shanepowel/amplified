@@ -11,6 +11,31 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    const r = (source: string, destination: string) => ({ source, destination, permanent: true });
+    return [
+      r('/ai-governance', '/ai/embernest'),
+      r('/ai-implementation', '/ai'),
+      r('/structured-delivery', '/services/delivery'),
+      r('/capability', '/services'),
+      r('/coaching', '/services'),
+      r('/org-design', '/services'),
+      r('/transformation', '/services/products'),
+      r('/engagements', '/services'),
+      r('/engagements/:slug*', '/services'),
+      r('/sectors/technology', '/for/scale-ups'),
+      r('/sectors/:slug*', '/for/ctos'),
+      r('/for-cios', '/for/ctos'),
+      r('/for-delivery-directors', '/for/ctos'),
+      r('/for-digital-leads', '/for/ctos'),
+      r('/teams', '/services/delivery'),
+      r('/amp-store', '/our-work'),
+      r('/what-we-believe', '/about'),
+      r('/press', '/about'),
+      r('/about/team', '/about'),
+      r('/about/methodology', '/how-we-work'),
+    ];
+  },
   async headers() {
     return [
       {

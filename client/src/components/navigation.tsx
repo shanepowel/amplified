@@ -5,343 +5,236 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { Menu, ChevronDown, X, ArrowRight, ShoppingBag, Leaf, Globe, TrendingUp } from "lucide-react";
-import { ThemeToggle } from "@/components/theme-toggle";
-import { AmpButton, Container, Eyebrow, Text } from "@/components/system";
+import { Menu, ChevronDown, X, ArrowRight } from "lucide-react";
+import { AmpButton, Container } from "@/components/system";
 import { brand } from "@/lib/brand";
 
 interface NavigationProps {
   onOpenConsultation: () => void;
 }
 
-const consultingServices = [
-  { tag: "BMK 01", name: "Brand and identity", desc: "Names, logos, voice and visual systems", href: "/services" },
-  { tag: "BMK 02", name: "Websites and platforms", desc: "Fast sites your team can run themselves", href: "/transformation" },
-  { tag: "BMK 03", name: "Digital products", desc: "Apps, portals and marketplaces", href: "/transformation" },
+type NavItem = { tag?: string; name: string; desc: string; href: string };
+type NavMenu = {
+  id: string;
+  label: string;
+  width: string;
+  align: "center" | "right";
+  feature?: { eyebrow: string; title: string; desc: string; href: string };
+  items: NavItem[];
+  footer?: { label: string; value: string; href: string };
+};
+
+export const navMenus: NavMenu[] = [
+  {
+    id: "what",
+    label: "What we do",
+    width: "w-[520px]",
+    align: "center",
+    feature: {
+      eyebrow: "Three ways to start",
+      title: "Sprint · Build · Crew",
+      desc: "Two weeks, a few months, or a team on tap.",
+      href: "/services",
+    },
+    items: [
+      { tag: "BMK 01", name: "Brand and identity", desc: "Names, logos, voice and visual systems", href: "/services/brand" },
+      { tag: "BMK 02", name: "Websites and platforms", desc: "Fast sites your team can run themselves", href: "/services/websites" },
+      { tag: "BMK 03", name: "Digital products", desc: "Apps, portals and marketplaces", href: "/services/products" },
+      { tag: "BMK 06", name: "Growth and content", desc: "Campaigns, content and tracking", href: "/services/growth" },
+      { tag: "BMK 07", name: "Delivery leadership", desc: "Programmes across teams and suppliers", href: "/services/delivery" },
+    ],
+    footer: { label: "How we work", value: "Sketch → Make → Ship → Grow", href: "/how-we-work" },
+  },
+  {
+    id: "ai",
+    label: "AI",
+    width: "w-[460px]",
+    align: "center",
+    feature: {
+      eyebrow: "AI Sprint · 2 weeks",
+      title: "A working AI use case on your data",
+      desc: "With its cost per run, so you know if it's worth scaling.",
+      href: "/ai",
+    },
+    items: [
+      { tag: "BMK 04", name: "AI and automation", desc: "Assistants, agents and AI in your product", href: "/ai" },
+      { tag: "BMK 05", name: "AI tokenomics", desc: "Know what your AI costs, and make each token count", href: "/ai/tokenomics" },
+      { tag: "EN", name: "EmberNest", desc: "Governed AI-assisted software delivery", href: "/ai/embernest" },
+    ],
+  },
+  {
+    id: "work",
+    label: "Our work",
+    width: "w-[320px]",
+    align: "center",
+    items: [
+      { name: "What we've made", desc: "Viralyz, Konduit, FreelanceNearMe", href: "/our-work" },
+      { name: "Track record", desc: "Programmes our people have led", href: "/case-studies" },
+      { name: "Insights", desc: "Notes from the studio", href: "/insights" },
+    ],
+  },
+  {
+    id: "company",
+    label: "Company",
+    width: "w-[300px]",
+    align: "center",
+    items: [
+      { name: `About ${brand.name}`, desc: "Who we are and how we think", href: "/about" },
+      { name: "How we work", desc: "Sketch, make, ship, grow", href: "/how-we-work" },
+      { name: "Careers", desc: "Make things with us", href: "/careers" },
+      { name: "Contact", desc: "Start a conversation", href: "/contact" },
+    ],
+  },
+  {
+    id: "who",
+    label: "Who we work with",
+    width: "w-[340px]",
+    align: "right",
+    items: [
+      { name: "Founders and start-ups", desc: "Idea to launch without the bloat", href: "/for/founders" },
+      { name: "Growing businesses", desc: "Rebuild what's holding you back", href: "/for/scale-ups" },
+      { name: "Marketing teams", desc: "More good work, not more headcount", href: "/for/marketing-teams" },
+      { name: "CTOs and digital leads", desc: "Ship faster with AI, keep control", href: "/for/ctos" },
+    ],
+  },
 ];
 
-const buildAndCoachServices = [
-  { tag: "BMK 04", name: "AI and automation", desc: "Practical AI with sensible guardrails", href: "/ai-implementation" },
-  { tag: "BMK 05", name: "Growth and content", desc: "Campaigns, content and tracking", href: "/services" },
-  { tag: "BMK 06", name: "Delivery leadership", desc: "Programmes and multi-agency builds", href: "/structured-delivery" },
-];
+const panel = "absolute top-full z-50 overflow-hidden border border-white/10 bg-[#141a44] shadow-2xl shadow-black/40";
+const itemCls =
+  "group flex items-start gap-3 px-3 py-2.5 transition-colors duration-150 hover:bg-white/[0.05] focus:outline-none focus-visible:bg-white/[0.07]";
 
-const companyLinks = [
-  { name: `About ${brand.name}`, desc: "Our story, values, and why we exist", href: "/about" },
-  { name: "What We Believe", desc: "Five claims about how delivery should work", href: "/what-we-believe" },
-  { name: "Our Team", desc: "Meet the partnership", href: "/about/team" },
-  { name: "How We Work", desc: "Sketch, make, ship, grow", href: "/how-we-work" },
-  { name: "Careers", desc: "Work with us", href: "/careers" },
-  { name: "Insights", desc: "Notes from the studio", href: "/insights" },
-];
+function MenuItems({ items, onNavigate }: { items: NavItem[]; onNavigate?: () => void }) {
+  return (
+    <>
+      {items.map((item) => (
+        <Link key={item.href + item.name} href={item.href} className={itemCls} onClick={onNavigate}>
+          {item.tag && (
+            <span className="w-12 flex-shrink-0 pt-0.5 font-mono text-[11px] tracking-[0.08em] text-[#F85C70]">{item.tag}</span>
+          )}
+          <span className="min-w-0">
+            <span className="block text-sm font-semibold text-white group-hover:text-[#F85C70]">{item.name}</span>
+            <span className="mt-0.5 block text-xs text-white/55">{item.desc}</span>
+          </span>
+        </Link>
+      ))}
+    </>
+  );
+}
 
-const dropdownPanel =
-  "absolute top-full mt-0 rounded-lg overflow-hidden shadow-xl border border-[#E5E3EE] bg-white";
-const dropdownLink =
-  "flex items-start gap-3 px-2 py-2.5 rounded transition-colors duration-150 hover:bg-[#F2F0F7]";
-const dropdownLinkCol =
-  "flex flex-col px-2 py-2.5 rounded transition-colors duration-150 hover:bg-[#F2F0F7]";
-const sectionLabel = "font-mono text-xs uppercase tracking-[0.1em] px-2 mb-2 text-[#6B6E81]";
-const tagClass = "font-mono text-xs pt-0.5 flex-shrink-0 w-12 text-[#F85C70]";
-const itemName = "font-sans text-sm font-semibold mb-0.5 text-[#181F4F]";
-const itemDesc = "font-sans text-xs text-[#6B6E81]";
+function Feature({ feature, onNavigate }: { feature: NonNullable<NavMenu["feature"]>; onNavigate?: () => void }) {
+  return (
+    <Link
+      href={feature.href}
+      onClick={onNavigate}
+      className="group block border-b border-white/10 bg-[#181F4F] px-5 py-4 transition-colors hover:bg-[#60266A]/40"
+    >
+      <div className="flex items-start justify-between gap-3">
+        <div>
+          <p className="mb-1 font-mono text-[11px] uppercase tracking-[0.14em] text-[#F85C70]">{feature.eyebrow}</p>
+          <p className="text-sm font-semibold text-white">{feature.title}</p>
+          <p className="mt-0.5 text-xs text-white/55">{feature.desc}</p>
+        </div>
+        <ArrowRight className="mt-1 h-4 w-4 flex-shrink-0 text-[#F85C70] transition-transform group-hover:translate-x-1" />
+      </div>
+    </Link>
+  );
+}
 
-const Navigation = memo(function Navigation({ onOpenConsultation }: NavigationProps) {
+const Navigation = memo(function Navigation(_props: NavigationProps) {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const [servicesOpen, setServicesOpen] = useState(false);
-  const [ourWorkOpen, setOurWorkOpen] = useState(false);
-  const [companyOpen, setCompanyOpen] = useState(false);
-  const [whoWeWorkWithOpen, setWhoWeWorkWithOpen] = useState(false);
+  const [openMenu, setOpenMenu] = useState<string | null>(null);
 
   useEffect(() => {
     setIsOpen(false);
+    setOpenMenu(null);
   }, [pathname]);
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      if (currentScrollY < 10) {
-        setIsVisible(true);
-      } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        setIsVisible(false);
-      } else if (currentScrollY < lastScrollY) {
-        setIsVisible(true);
-      }
-      setLastScrollY(currentScrollY);
+      const y = window.scrollY;
+      if (y < 10) setIsVisible(true);
+      else if (y > lastScrollY && y > 100) setIsVisible(false);
+      else if (y < lastScrollY) setIsVisible(true);
+      setLastScrollY(y);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
-  const linkColor = "text-white/85 hover:text-white";
-
   return (
     <nav
-      className={`sticky top-0 z-50 bg-[#181F4F] shadow-sm transition-all duration-300 ${
+      className={`sticky top-0 z-50 border-b border-white/10 bg-[#181F4F] transition-all duration-300 ${
         isVisible ? "translate-y-0" : "-translate-y-full"
       }`}
     >
       <Container>
-        <div className="flex justify-between items-center h-20">
-
-          {/* Logo */}
+        <div className="flex h-20 items-center justify-between">
           <Link
             href="/"
             aria-label={`${brand.name}, return to homepage`}
-            className="group flex-shrink-0 relative block rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F85C70] focus-visible:ring-offset-4 focus-visible:ring-offset-[#181F4F]"
+            className="group relative block flex-shrink-0 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F85C70] focus-visible:ring-offset-4 focus-visible:ring-offset-[#181F4F]"
           >
             <span
-              className="font-sans text-xl sm:text-2xl font-semibold tracking-tight text-white transition-colors duration-200 group-hover:text-[#F85C70]"
+              className="font-display text-2xl font-extrabold tracking-[-0.02em] text-white transition-colors duration-200 [font-stretch:115%] group-hover:text-[#F85C70]"
               data-testid="logo"
             >
               {brand.name}
+              <span className="text-[#F85C70]">.</span>
             </span>
           </Link>
 
-          {/* Desktop nav */}
-          <div className="hidden lg:flex items-center gap-7">
-
-            {/* What We Do dropdown */}
-            <div
-              className="relative"
-              onMouseEnter={() => setServicesOpen(true)}
-              onMouseLeave={() => setServicesOpen(false)}
-            >
-              <button
-                className={`amp-focus-ring flex items-center gap-1 font-sans text-sm uppercase tracking-[0.08em] font-medium transition-colors duration-200 py-2 ${linkColor}`}
-                data-testid="nav-what-we-do"
-              >
-                What We Do
-                <ChevronDown
-                  className={`h-3.5 w-3.5 transition-transform duration-200 ${
-                    servicesOpen ? "rotate-180" : ""
-                  }`}
-                />
-              </button>
-
-              {servicesOpen && (
-                <div className={`${dropdownPanel} left-1/2 -translate-x-1/2 w-[560px]`}>
-                  {/* Featured: Engagements banner */}
-                  <Link
-                    href="/engagements"
-                    className="block px-5 py-4 bg-[#181F4F] border-b border-[#E5E3EE] transition-colors duration-150 hover:bg-[#60266A] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F85C70] focus-visible:ring-inset focus-visible:bg-[#60266A]"
+          {/* Desktop */}
+          <div className="hidden items-center gap-5 lg:flex xl:gap-7">
+            {navMenus.map((menu) => {
+              const open = openMenu === menu.id;
+              const active = menu.items.some((i) => pathname === i.href) || (menu.feature && pathname === menu.feature.href);
+              return (
+                <div
+                  key={menu.id}
+                  className="relative"
+                  onMouseEnter={() => setOpenMenu(menu.id)}
+                  onMouseLeave={() => setOpenMenu(null)}
+                >
+                  <button
+                    type="button"
+                    aria-expanded={open}
+                    onClick={() => setOpenMenu(open ? null : menu.id)}
+                    className={`amp-focus-ring flex items-center gap-1 py-2 font-mono text-[12px] uppercase tracking-[0.12em] transition-colors duration-200 ${
+                      active ? "text-[#F85C70]" : "text-white/80 hover:text-white"
+                    }`}
+                    data-testid={`nav-${menu.id}`}
                   >
-                    <div className="flex items-start justify-between gap-3">
-                      <div>
-                        <Eyebrow className="mb-1">Engagements · Productised</Eyebrow>
-                        <Text variant="small" tone="white" className="mb-0.5 font-semibold">
-                          Squad Blueprint · The Forge · Delivery Compass
-                        </Text>
-                        <Text variant="caption" className="text-white/60">
-                          Three named engagements. Scoped to outcome and timed.
-                        </Text>
-                      </div>
-                      <ArrowRight className="h-4 w-4 mt-1 flex-shrink-0 text-[#F85C70]" />
-                    </div>
-                  </Link>
-                  <div className="grid grid-cols-2 gap-0">
-                    {/* Consulting column */}
-                    <div className="p-4 border-r border-[#E5E3EE]">
-                      <p className={sectionLabel}>Brand and product</p>
-                      {consultingServices.map((item) => (
-                        <Link key={item.tag} href={item.href} className={dropdownLink}>
-                          <span className={tagClass}>{item.tag}</span>
-                          <div>
-                            <div className={itemName}>{item.name}</div>
-                            <div className={itemDesc}>{item.desc}</div>
-                          </div>
-                        </Link>
-                      ))}
-                    </div>
-
-                    {/* Build & Coach column */}
-                    <div className="p-4">
-                      <p className={sectionLabel}>AI, growth and delivery</p>
-                      {buildAndCoachServices.map((item) => (
-                        <Link key={item.tag} href={item.href} className={dropdownLink}>
-                          <span className={tagClass}>{item.tag}</span>
-                          <div>
-                            <div className={itemName}>{item.name}</div>
-                            <div className={itemDesc}>{item.desc}</div>
-                          </div>
-                        </Link>
-                      ))}
-
-                      {/* Methodology badge */}
-                      <Link href="/how-we-work">
-                        <div className="mt-4 mx-2 p-3 rounded cursor-pointer bg-[#181F4F] transition-colors duration-150 hover:bg-[#60266A]">
-                          <p className="font-mono text-xs uppercase tracking-[0.1em] mb-1 text-white/50">
-                            Our Methodology
-                          </p>
-                          <p className="font-sans text-xs font-semibold text-[#F85C70]">
-                            Assess → Implement → Amplify
-                          </p>
-                        </div>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* Our Work dropdown */}
-            <div
-              className="relative"
-              onMouseEnter={() => setOurWorkOpen(true)}
-              onMouseLeave={() => setOurWorkOpen(false)}
-            >
-              <button
-                className={`amp-focus-ring flex items-center gap-1 font-sans text-sm uppercase tracking-[0.08em] font-medium transition-colors duration-200 py-2 ${linkColor}`}
-              >
-                Our Work
-                <ChevronDown
-                  className={`h-3.5 w-3.5 transition-transform duration-200 ${ourWorkOpen ? "rotate-180" : ""}`}
-                />
-              </button>
-
-              {ourWorkOpen && (
-                <div className={`${dropdownPanel} left-1/2 -translate-x-1/2 w-[280px] p-2`}>
-                  {[
-                    {
-                      href: "/case-studies",
-                      icon: TrendingUp,
-                      name: "Case Studies",
-                      desc: "Named client outcomes from regulated-industry engagements",
-                    },
-                    {
-                      href: "/our-work#client-work",
-                      icon: Globe,
-                      name: "Client Work & Products",
-                      desc: "Websites, apps, and digital transformation we have delivered",
-                    },
-                    {
-                      href: "/our-work#amp-store",
-                      icon: ShoppingBag,
-                      name: "bmkrs Store",
-                      desc: "Practitioner learning platform, aligned to every BMK service line",
-                    },
-                    {
-                      href: "/our-work#sustainability",
-                      icon: Leaf,
-                      name: "Sustainability",
-                      desc: "Our commitments to responsible and sustainable practice",
-                    },
-                  ].map((item) => (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      className="flex items-start gap-3 px-4 py-3 rounded transition-colors duration-150 hover:bg-[#F2F0F7]"
+                    {menu.label}
+                    <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-200 ${open ? "rotate-180" : ""}`} />
+                  </button>
+                  {open && (
+                    <div
+                      className={`${panel} ${menu.width} ${
+                        menu.align === "right" ? "right-0" : "left-1/2 -translate-x-1/2"
+                      }`}
                     >
-                      <item.icon className="h-4 w-4 flex-shrink-0 mt-0.5 text-[#F85C70]" />
-                      <div>
-                        <span className="font-sans text-sm font-semibold block text-[#181F4F]">
-                          {item.name}
-                        </span>
-                        <span className="font-sans text-xs mt-0.5 block text-[#6B6E81]">
-                          {item.desc}
-                        </span>
+                      <div className="h-[2px] w-full bg-[#F85C70]" aria-hidden />
+                      {menu.feature && <Feature feature={menu.feature} />}
+                      <div className="p-2">
+                        <MenuItems items={menu.items} />
                       </div>
-                    </a>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {/* Company dropdown */}
-            <div
-              className="relative"
-              onMouseEnter={() => setCompanyOpen(true)}
-              onMouseLeave={() => setCompanyOpen(false)}
-            >
-              <button
-                className={`amp-focus-ring flex items-center gap-1 font-sans text-sm uppercase tracking-[0.08em] font-medium transition-colors duration-200 py-2 ${linkColor}`}
-              >
-                Company
-                <ChevronDown
-                  className={`h-3.5 w-3.5 transition-transform duration-200 ${
-                    companyOpen ? "rotate-180" : ""
-                  }`}
-                />
-              </button>
-
-              {companyOpen && (
-                <div className={`${dropdownPanel} left-1/2 -translate-x-1/2 w-[280px] p-2`}>
-                  {companyLinks.map((item) => (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      className="flex flex-col px-4 py-3 rounded transition-colors duration-150 hover:bg-[#F2F0F7]"
-                    >
-                      <span className="font-sans text-sm font-semibold text-[#181F4F]">
-                        {item.name}
-                      </span>
-                      <span className="font-sans text-xs mt-0.5 text-[#6B6E81]">
-                        {item.desc}
-                      </span>
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {/* Who We Work With dropdown */}
-            <div
-              className="relative"
-              onMouseEnter={() => setWhoWeWorkWithOpen(true)}
-              onMouseLeave={() => setWhoWeWorkWithOpen(false)}
-            >
-              <button
-                className={`amp-focus-ring flex items-center gap-1 font-sans text-sm uppercase tracking-[0.08em] font-medium transition-colors duration-200 py-2 ${linkColor}`}
-              >
-                Who We Work With
-                <ChevronDown
-                  className={`h-3.5 w-3.5 transition-transform duration-200 ${whoWeWorkWithOpen ? "rotate-180" : ""}`}
-                />
-              </button>
-
-              {whoWeWorkWithOpen && (
-                <div className={`${dropdownPanel} right-0 w-[520px]`}>
-                  <div className="grid grid-cols-2 gap-0">
-                    {/* By Role */}
-                    <div className="p-4 border-r border-[#E5E3EE]">
-                      <p className={sectionLabel}>By Role</p>
-                      {[
-                        { name: "For CIOs", desc: "Technology leadership in regulated organisations", href: "/for-cios" },
-                        { name: "For Delivery Directors", desc: "Programme accountability and AI governance", href: "/for-delivery-directors" },
-                        { name: "For Digital Leads", desc: "Implementation, tooling, and team capability", href: "/for-digital-leads" },
-                      ].map((item) => (
-                        <Link key={item.href} href={item.href} className={dropdownLinkCol}>
-                          <span className="font-sans text-sm font-semibold text-[#181F4F]">{item.name}</span>
-                          <span className="font-sans text-xs mt-0.5 text-[#6B6E81]">{item.desc}</span>
+                      {menu.footer && (
+                        <Link
+                          href={menu.footer.href}
+                          className="flex items-center justify-between border-t border-white/10 px-5 py-3 transition-colors hover:bg-white/[0.04]"
+                        >
+                          <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-white/45">{menu.footer.label}</span>
+                          <span className="text-xs font-semibold text-[#F85C70]">{menu.footer.value}</span>
                         </Link>
-                      ))}
+                      )}
                     </div>
-
-                    {/* By Sector */}
-                    <div className="p-4">
-                      <p className={sectionLabel}>By Sector</p>
-                      {[
-                        { name: "Infrastructure", desc: "Major programmes and capital delivery", href: "/sectors/infrastructure" },
-                        { name: "Financial Services", desc: "FCA, SMCR, and regulated AI", href: "/sectors/financial-services" },
-                        { name: "Energy & Utilities", desc: "OFGEM-compliant AI governance", href: "/sectors/energy-utilities" },
-                        { name: "Public Sector", desc: "GDS, DDaT and accountable delivery", href: "/sectors/public-sector" },
-                        { name: "Technology & Private Sector", desc: "AI governance for scale-ups and commercial enterprises", href: "/sectors/technology" },
-                      ].map((item) => (
-                        <Link key={item.href} href={item.href} className={dropdownLinkCol}>
-                          <span className="font-sans text-sm font-semibold text-[#181F4F]">{item.name}</span>
-                          <span className="font-sans text-xs mt-0.5 text-[#6B6E81]">{item.desc}</span>
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
+                  )}
                 </div>
-              )}
-            </div>
-
-            <ThemeToggle />
+              );
+            })}
 
             <AmpButton
               asChild
@@ -354,15 +247,14 @@ const Navigation = memo(function Navigation({ onOpenConsultation }: NavigationPr
             </AmpButton>
           </div>
 
-          {/* Mobile menu */}
-          <div className="lg:hidden flex items-center gap-2">
-            <ThemeToggle />
+          {/* Mobile */}
+          <div className="flex items-center gap-2 lg:hidden">
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
                 <Button
                   variant="ghost"
                   size="icon"
-                  className={`rounded amp-focus-ring ${linkColor} hover:bg-white/10`}
+                  className="amp-focus-ring rounded text-white/85 hover:bg-white/10 hover:text-white"
                   aria-label={isOpen ? "Close menu" : "Open menu"}
                   aria-expanded={isOpen}
                   data-testid="button-mobile-menu"
@@ -370,220 +262,42 @@ const Navigation = memo(function Navigation({ onOpenConsultation }: NavigationPr
                   {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-80 sm:w-96 p-0" aria-describedby="mobile-nav-desc">
-                <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
+              <SheetContent
+                side="right"
+                className="w-80 border-l border-white/10 bg-[#141a44] p-0 text-white sm:w-96"
+                aria-describedby="mobile-nav-desc"
+              >
+                <SheetTitle className="sr-only">Navigation menu</SheetTitle>
                 <SheetDescription id="mobile-nav-desc" className="sr-only">
                   Main navigation for {brand.name}
                 </SheetDescription>
-                <div className="flex flex-col h-full bg-white">
-                  <div className="flex items-center justify-between p-6 border-b border-[#E5E3EE]">
-                    <span className="font-sans text-xl font-semibold tracking-tight text-[#181F4F]">
+                <div className="flex h-full flex-col">
+                  <div className="border-b border-white/10 p-6">
+                    <span className="font-display text-2xl font-extrabold [font-stretch:115%]">
                       {brand.name}
+                      <span className="text-[#F85C70]">.</span>
                     </span>
                   </div>
-
-                  <div className="flex-1 overflow-y-auto p-6 space-y-4">
-                    {/* Featured: Engagements */}
-                    <Link
-                      href="/engagements"
-                      className="block p-4 rounded bg-[#181F4F] transition-colors hover:bg-[#60266A]"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      <p className="font-mono text-xs uppercase tracking-[0.12em] mb-1 text-[#F85C70]">
-                        Engagements · Productised
-                      </p>
-                      <p className="font-sans text-sm font-semibold text-white mb-0.5">
-                        Squad Blueprint · The Forge · Delivery Compass
-                      </p>
-                      <p className="font-sans text-xs text-white/60">
-                        Three named engagements. Scoped to outcome and timed.
-                      </p>
-                    </Link>
-
-                    {/* Consulting */}
-                    <div>
-                      <p className="font-mono text-xs uppercase tracking-[0.12em] mb-2 text-[#6B6E81]">
-                        Brand and product
-                      </p>
-                      <div className="space-y-1">
-                        {consultingServices.map((item) => (
-                          <Link
-                            key={item.tag}
-                            href={item.href}
-                            className="flex items-start gap-3 p-3 rounded transition-colors hover:bg-[#F2F0F7]"
-                            onClick={() => setIsOpen(false)}
-                          >
-                            <span className="font-mono text-xs pt-0.5 w-12 flex-shrink-0 text-[#F85C70]">
-                              {item.tag}
-                            </span>
-                            <div>
-                              <div className="font-sans text-sm font-semibold text-[#181F4F]">
-                                {item.name}
-                              </div>
-                              <div className="font-sans text-xs text-[#6B6E81]">
-                                {item.desc}
-                              </div>
-                            </div>
-                          </Link>
-                        ))}
+                  <div className="flex-1 space-y-6 overflow-y-auto p-4">
+                    {navMenus.map((menu) => (
+                      <div key={menu.id}>
+                        <p className="mb-2 px-3 font-mono text-[11px] uppercase tracking-[0.14em] text-[#F85C70]">{menu.label}</p>
+                        {menu.feature && (
+                          <div className="mb-1">
+                            <Feature feature={menu.feature} onNavigate={() => setIsOpen(false)} />
+                          </div>
+                        )}
+                        <MenuItems items={menu.items} onNavigate={() => setIsOpen(false)} />
                       </div>
-                    </div>
-
-                    {/* Build & Coach */}
-                    <div className="border-t border-[#E5E3EE] pt-4">
-                      <p className="font-mono text-xs uppercase tracking-[0.12em] mb-2 text-[#6B6E81]">
-                        AI, growth and delivery
-                      </p>
-                      <div className="space-y-1">
-                        {buildAndCoachServices.map((item) => (
-                          <Link
-                            key={item.tag}
-                            href={item.href}
-                            className="flex items-start gap-3 p-3 rounded transition-colors hover:bg-[#F2F0F7]"
-                            onClick={() => setIsOpen(false)}
-                          >
-                            <span className="font-mono text-xs pt-0.5 w-12 flex-shrink-0 text-[#F85C70]">
-                              {item.tag}
-                            </span>
-                            <div>
-                              <div className="font-sans text-sm font-semibold text-[#181F4F]">
-                                {item.name}
-                              </div>
-                              <div className="font-sans text-xs text-[#6B6E81]">
-                                {item.desc}
-                              </div>
-                            </div>
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Our Work */}
-                    <div className="border-t border-[#E5E3EE] pt-4">
-                      <p className="font-mono text-xs uppercase tracking-[0.12em] mb-2 text-[#6B6E81]">
-                        Our Work
-                      </p>
-                      <div className="space-y-1">
-                        {[
-                          { href: "/case-studies", icon: TrendingUp, name: "Case Studies", desc: "Named client outcomes from the field" },
-                          { href: "/our-work#client-work", icon: Globe, name: "Client Work & Products", desc: "Websites, apps, and transformation" },
-                          { href: "/our-work#amp-store", icon: ShoppingBag, name: "bmkrs Store", desc: "Practitioner learning platform" },
-                          { href: "/our-work#sustainability", icon: Leaf, name: "Sustainability", desc: "Our environmental commitments" },
-                        ].map((item) => (
-                          <a
-                            key={item.name}
-                            href={item.href}
-                            className="flex items-start gap-3 p-3 rounded transition-colors hover:bg-[#F2F0F7]"
-                            onClick={() => setIsOpen(false)}
-                          >
-                            <item.icon className="h-4 w-4 flex-shrink-0 mt-0.5 text-[#F85C70]" />
-                            <div>
-                              <div className="font-sans text-sm font-semibold text-[#181F4F]">
-                                {item.name}
-                              </div>
-                              <div className="font-sans text-xs text-[#6B6E81]">
-                                {item.desc}
-                              </div>
-                            </div>
-                          </a>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Company links */}
-                    <div className="border-t border-[#E5E3EE] pt-4">
-                      <p className="font-mono text-xs uppercase tracking-[0.12em] mb-2 text-[#6B6E81]">
-                        Company
-                      </p>
-                      <div className="space-y-1">
-                        {companyLinks.map((link) => (
-                          <Link
-                            key={link.href}
-                            href={link.href}
-                            className="block px-3 py-2.5 font-sans text-sm font-medium rounded text-[#181F4F] transition-colors hover:bg-[#F2F0F7]"
-                            onClick={() => setIsOpen(false)}
-                          >
-                            {link.name}
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Who We Work With */}
-                    <div className="border-t border-[#E5E3EE] pt-4">
-                      <p className="font-mono text-xs uppercase tracking-[0.12em] mb-2 text-[#6B6E81]">
-                        Who We Work With
-                      </p>
-                      <p className="font-mono text-xs uppercase tracking-[0.1em] px-3 mb-1 mt-2 text-[#60266A]">
-                        By Role
-                      </p>
-                      <div className="space-y-1 mb-3">
-                        {[
-                          { name: "For CIOs", href: "/for-cios" },
-                          { name: "For Delivery Directors", href: "/for-delivery-directors" },
-                          { name: "For Digital Leads", href: "/for-digital-leads" },
-                        ].map((item) => (
-                          <Link
-                            key={item.href}
-                            href={item.href}
-                            className="block px-3 py-2.5 font-sans text-sm font-medium rounded text-[#181F4F] transition-colors hover:bg-[#F2F0F7]"
-                            onClick={() => setIsOpen(false)}
-                          >
-                            {item.name}
-                          </Link>
-                        ))}
-                      </div>
-                      <p className="font-mono text-xs uppercase tracking-[0.1em] px-3 mb-1 text-[#60266A]">
-                        By Sector
-                      </p>
-                      <div className="space-y-1">
-                        {[
-                          { name: "Infrastructure", href: "/sectors/infrastructure" },
-                          { name: "Financial Services", href: "/sectors/financial-services" },
-                          { name: "Energy & Utilities", href: "/sectors/energy-utilities" },
-                          { name: "Public Sector", href: "/sectors/public-sector" },
-                          { name: "Technology & Private Sector", href: "/sectors/technology" },
-                        ].map((item) => (
-                          <Link
-                            key={item.href}
-                            href={item.href}
-                            className="block px-3 py-2.5 font-sans text-sm font-medium rounded text-[#181F4F] transition-colors hover:bg-[#F2F0F7]"
-                            onClick={() => setIsOpen(false)}
-                          >
-                            {item.name}
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Methodology badge */}
-                    <Link href="/how-we-work" onClick={() => setIsOpen(false)}>
-                      <div className="mx-0 p-4 rounded bg-[#181F4F]">
-                        <p className="font-mono text-xs uppercase tracking-[0.1em] mb-1 text-white/50">
-                          Our Methodology
-                        </p>
-                        <p className="font-sans text-sm font-semibold text-[#F85C70]">
-                          Assess → Implement → Amplify
-                        </p>
-                      </div>
-                    </Link>
+                    ))}
                   </div>
-
-                  <div className="p-6 border-t border-[#E5E3EE]">
-                    <AmpButton
-                      asChild
-                      fullWidth
-                      size="lg"
-                      className="!text-white"
-                      data-testid="button-mobile-get-in-touch"
-                    >
+                  <div className="border-t border-white/10 p-6">
+                    <AmpButton asChild fullWidth size="lg" className="!text-white" data-testid="button-mobile-get-in-touch">
                       <Link href="/contact" onClick={() => setIsOpen(false)}>
                         {brand.ctaPrimary} →
                       </Link>
                     </AmpButton>
-                    <Text variant="caption" tone="subtle" className="mt-3 text-center">
-                      No pitch. No deck. Just a 30-minute call.
-                    </Text>
+                    <p className="mt-3 text-center text-xs text-white/50">No pitch. No deck. Just a 30-minute call.</p>
                   </div>
                 </div>
               </SheetContent>

@@ -1,64 +1,49 @@
-import type { Engagement } from "../client/src/lib/engagements";
-import { getAllEngagements } from "./content/engagements";
-import { getCaseStudySummaries } from "./content/case-studies";
-import { getManifestoClaims } from "./content/site-settings";
+import { bmkPages } from "../client/src/content/bmk-pages";
+import type { BmkBlock, BmkPageContent } from "../client/src/content/bmk-types";
 
-function engagementBlock(e: Engagement): string {
+/** Flatten one block of page content to plain text for the assistant's context. */
+function blockText(b: BmkBlock): string {
+  switch (b.type) {
+    case "grid":
+      return `${b.title}\n${b.items.map((i) => `- ${i.title}: ${i.body}`).join("\n")}`;
+    case "steps":
+      return `${b.title}\n${b.items.map((i) => `- ${i.title}: ${i.body}`).join("\n")}`;
+    case "split":
+      return `${b.title}\n${b.paragraphs.join(" ")}${b.list ? `\n${b.list.map((l) => `- ${l}`).join("\n")}` : ""}`;
+    case "ledger":
+      return `${b.title}${b.footnote ? ` (${b.footnote})` : ""}\n${b.items.map((i) => `- ${i.title}: ${i.body}${i.meta ? ` Result: ${i.meta}.` : ""}`).join("\n")}`;
+    case "callout":
+      return `${b.title} ${b.body}`;
+    case "statement":
+      return `${b.text} ${b.accent ?? ""}`;
+    case "faq":
+      return b.items.map((i) => `Q: ${i.q}\nA: ${i.a}`).join("\n");
+    case "links":
+      return "";
+  }
+}
+
+function pageText(p: BmkPageContent): string {
   return [
-    `=== ENGAGEMENT: ${e.name} (slug: ${e.slug}) ===`,
-    `Tagline: ${e.tagline}`,
-    `Built for: ${e.forBuyer.replace(/^for /, "")}`,
-    `Buyer profile: ${e.buyerSentence}`,
-    `Duration: ${e.duration}`,
-    `Investment: ${e.price}`,
-    `Problem solved: ${e.problem.join(" ")}`,
-    `What is included: ${e.included.map((i) => `- ${i}`).join("\n")}`,
-    `Timeline: ${e.timeline.map((t) => `${t.label} — ${t.focus}: ${t.detail}`).join(" | ")}`,
-    `What you have at the end: ${e.outcome}`,
-    `Qualifiers (is this you?): ${e.qualifiers.map((q) => `- ${q}`).join("\n")}`,
-    `Not for you if: ${e.notForYouIf.map((n) => `- ${n}`).join("\n")}`,
-    `Reference case study: ${e.caseStudyName} (${e.caseStudySector}) — ${e.caseStudyOutcome}`,
-    `One-line outcome: ${e.oneLineOutcome}`,
+    `=== PAGE: ${p.hero.eyebrow} (${p.path}) ===`,
+    `${p.hero.title} ${p.hero.accent ?? ""}`.trim(),
+    p.hero.lead,
+    ...(p.hero.facts ?? []).map((f) => `${f.label}: ${f.value}`),
+    ...p.blocks.map(blockText).filter(Boolean),
   ].join("\n");
 }
 
-export async function buildKnowledgeContext(focusSlug?: string): Promise<string> {
-  const [engagements, manifesto, caseStudies] = await Promise.all([
-    getAllEngagements(),
-    getManifestoClaims(),
-    getCaseStudySummaries(),
-  ]);
-  const focused = focusSlug ? engagements.filter((e) => e.slug === focusSlug) : [];
-  const others = focusSlug ? engagements.filter((e) => e.slug !== focusSlug) : engagements;
-
+export async function buildKnowledgeContext(focusPath?: string): Promise<string> {
+  const pages = Object.values(bmkPages);
+  const focused = focusPath ? pages.filter((p) => p.path === focusPath) : [];
+  const others = pages.filter((p) => !focused.includes(p));
   const parts: string[] = [];
-
-  if (focused.length) {
-    parts.push("# CURRENT ENGAGEMENT THE BUYER IS VIEWING\n" + focused.map(engagementBlock).join("\n\n"));
-  }
-
-  parts.push(
-    (focusSlug ? "# OTHER ENGAGEMENTS (for comparison)\n" : "# ENGAGEMENTS\n") +
-      others.map(engagementBlock).join("\n\n"),
-  );
-
-  parts.push(
-    "# WHAT WE BELIEVE (manifesto)\n" +
-      manifesto.map((m) => `## ${m.headline}\n${m.body.join(" ")}`).join("\n\n"),
-  );
-
-  parts.push(
-    "# CASE STUDIES\n" +
-      caseStudies
-        .map((c) => `## ${c.company}, ${c.sector} (${c.service})\n${c.summary}`)
-        .join("\n\n"),
-  );
-
+  if (focused.length) parts.push("# PAGE THE VISITOR IS VIEWING\n" + focused.map(pageText).join("\n\n"));
+  parts.push("# BMKRS SITE CONTENT\n" + others.map(pageText).join("\n\n"));
   return parts.join("\n\n");
 }
 
-export async function getEngagementName(slug?: string): Promise<string | undefined> {
-  if (!slug) return undefined;
-  const engagements = await getAllEngagements();
-  return engagements.find((e) => e.slug === slug)?.name;
+/** Kept for API compatibility; bmkrs no longer has named engagements. */
+export async function getEngagementName(_slug?: string): Promise<string | undefined> {
+  return undefined;
 }

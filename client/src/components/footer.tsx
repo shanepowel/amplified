@@ -43,11 +43,14 @@ const Footer = memo(function Footer() {
             <Eyebrow className="mb-4">Services</Eyebrow>
             <ul className="space-y-2">
               {[
-                { label: "Brand and identity", href: "/services" },
-                { label: "Websites and platforms", href: "/transformation" },
-                { label: "Digital products", href: "/transformation" },
-                { label: "AI and automation", href: "/ai-implementation" },
-                { label: "Delivery leadership", href: "/structured-delivery" },
+                { label: "Brand and identity", href: "/services/brand" },
+                { label: "Websites and platforms", href: "/services/websites" },
+                { label: "Digital products", href: "/services/products" },
+                { label: "AI and automation", href: "/ai" },
+                { label: "AI tokenomics", href: "/ai/tokenomics" },
+                { label: "EmberNest", href: "/ai/embernest" },
+                { label: "Growth and content", href: "/services/growth" },
+                { label: "Delivery leadership", href: "/services/delivery" },
               ].map((link) => (
                 <li key={link.label}>
                   <Link href={link.href} className="text-sm text-white/50 transition-colors hover:text-white/90">
@@ -62,8 +65,10 @@ const Footer = memo(function Footer() {
             <Eyebrow className="mb-4">Company</Eyebrow>
             <ul className="space-y-2">
               {[
-                { label: "How We Work", href: "/how-we-work" },
-                { label: "Our Work", href: "/our-work" },
+                { label: "About", href: "/about" },
+                { label: "How we work", href: "/how-we-work" },
+                { label: "What we've made", href: "/our-work" },
+                { label: "Track record", href: "/case-studies" },
                 { label: "Insights", href: "/insights" },
                 { label: "Careers", href: "/careers" },
                 { label: "Contact", href: "/contact" },
@@ -78,17 +83,13 @@ const Footer = memo(function Footer() {
           </div>
 
           <div>
-            <Eyebrow className="mb-4">Who We Work With</Eyebrow>
+            <Eyebrow className="mb-4">Who we work with</Eyebrow>
             <ul className="space-y-2">
               {[
-                { label: "For CIOs", href: "/for-cios" },
-                { label: "For Delivery Directors", href: "/for-delivery-directors" },
-                { label: "For Digital Leads", href: "/for-digital-leads" },
-                { label: "Infrastructure", href: "/sectors/infrastructure" },
-                { label: "Financial Services", href: "/sectors/financial-services" },
-                { label: "Energy & Utilities", href: "/sectors/energy-utilities" },
-                { label: "Public Sector", href: "/sectors/public-sector" },
-                { label: "Technology & Private Sector", href: "/sectors/technology" },
+                { label: "Founders and start-ups", href: "/for/founders" },
+                { label: "Growing businesses", href: "/for/scale-ups" },
+                { label: "Marketing teams", href: "/for/marketing-teams" },
+                { label: "CTOs and digital leads", href: "/for/ctos" },
               ].map((link) => (
                 <li key={link.label}>
                   <Link href={link.href} className="text-sm text-white/50 transition-colors hover:text-white/90">
@@ -111,7 +112,6 @@ const Footer = memo(function Footer() {
               { label: "Terms", href: "/terms" },
               { label: "Accessibility", href: "/accessibility" },
               { label: "Modern Slavery", href: "/modern-slavery" },
-              { label: "Press", href: "/press" },
             ].map((link) => (
               <Link
                 key={link.label}

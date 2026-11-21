@@ -43,7 +43,7 @@ export function ServiceSchema({ name, description, url, serviceType = "Consultin
     "areaServed": { "@type": "Country", "name": "United Kingdom" },
     "audience": {
       "@type": "Audience",
-      "audienceType": "Delivery Directors, CIOs and Digital Leads in regulated industries"
+      "audienceType": "Founders, growing businesses, marketing teams and CTOs"
     }
   };
   return <StructuredData data={data} id={`service-schema-${name.replace(/\s+/g, '-').toLowerCase()}`} />;

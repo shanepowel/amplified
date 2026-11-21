@@ -94,103 +94,78 @@ const Contact = memo(function Contact({ onOpenConsultation: _onOpenConsultation 
 
   return (
     <PageShell className="bg-[#FAFAF9]">
-      <BreadcrumbBar items={[{ label: "Home", href: "/" }, { label: "Contact" }]} />
 
-      <PageHero
-        padding="md"
-        eyebrow="Get in Touch"
-        title={<span data-testid="text-contact-title">Let's talk</span>}
-        lead="Whether you are starting an AI programme, rethinking delivery, or exploring Stable Teams — we will give you a straight answer. No slide decks in the first meeting."
-      >
-        <Stack direction="row-responsive" gap="md">
-          <AmpButton size="md" onClick={() => setShowCalendar(true)} data-testid="button-book-call">
-            <Calendar className="h-4 w-4" />
-            Book a Discovery Call
-          </AmpButton>
-          <AmpButton
-            variant="outlineLight"
-            size="md"
-            onClick={() => document.getElementById("contact-form")?.scrollIntoView({ behavior: "smooth" })}
-            data-testid="button-send-message"
+      <section className="bmk-chalk-grid relative overflow-hidden bg-[#181F4F] text-white">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0"
+          style={{ background: "radial-gradient(circle at 85% 15%, rgba(96, 38, 106, 0.35) 0%, transparent 55%)" }}
+        />
+        <div className="relative z-10 mx-auto max-w-7xl px-4 pb-16 pt-12 sm:px-6 lg:px-8 lg:pb-20 lg:pt-16">
+          <div className="mb-8 flex items-center gap-3 font-mono text-xs uppercase tracking-[0.14em]">
+            <span className="text-white/45">BMK / CONTACT</span>
+            <span className="h-px w-8 bg-[#F85C70]" aria-hidden />
+            <span className="text-[#F85C70]">Get in touch</span>
+          </div>
+          <h1
+            className="max-w-4xl font-display text-[2.4rem] font-extrabold uppercase leading-[0.92] tracking-[-0.025em] [font-stretch:118%] sm:text-5xl lg:text-[3.9rem]"
+            data-testid="text-contact-title"
           >
-            Send a Message
-          </AmpButton>
-        </Stack>
-      </PageHero>
-
-      <Section id="locations" tone="mist" padding="none" className="border-b border-[#DDD9EA]">
-        <BorderGrid cols={2} className="border-l border-[#C8C4D8]">
-          <BorderCell className="border-[#C8C4D8] p-10">
-            <Stack direction="row" gap="sm" align="center" className="mb-6">
-              <MapPin className="h-4 w-4 text-[#F85C70]" aria-hidden="true" />
-              <Eyebrow tone="subtle">London, United Kingdom</Eyebrow>
-            </Stack>
-            <Text variant="h2" className="mb-2 text-3xl">London</Text>
-            <Text variant="small" tone="muted" className="mb-6">
-              Our UK headquarters. Primary client-facing office for infrastructure, energy, financial services,
-              and public sector work.
-            </Text>
-            <Stack gap="sm">
-              <div>
-                <Eyebrow tone="subtle" className="mb-1">Address</Eyebrow>
-                <Text variant="small">7 Bell Yard, London WC2A 2JR</Text>
+            Got an idea?
+            <span className="mt-2 block text-[#F85C70]">Let&apos;s make it real.</span>
+          </h1>
+          <p className="mt-7 max-w-[38rem] text-lg leading-relaxed text-white/80">
+            A brand, a product, an AI build or a bill that needs taming. Tell us what you&apos;re working on and you&apos;ll get a straight answer, and a rough price, on the first call.
+          </p>
+          <div className="mt-9 flex flex-col gap-4 sm:flex-row">
+            <AmpButton size="md" onClick={() => setShowCalendar(true)} data-testid="button-book-call">
+              <Calendar className="h-4 w-4" />
+              Book a 30-minute call
+            </AmpButton>
+            <AmpButton
+              variant="outlineLight"
+              size="md"
+              onClick={() => document.getElementById("contact-form")?.scrollIntoView({ behavior: "smooth" })}
+              data-testid="button-send-message"
+            >
+              Send a message
+            </AmpButton>
+          </div>
+          <dl className="mt-12 grid max-w-3xl grid-cols-1 gap-px border border-white/10 bg-white/10 sm:grid-cols-3">
+            {[
+              { label: "Email", value: "hello@bmkrs.com", href: "mailto:hello@bmkrs.com" },
+              { label: "We reply", value: "Within two working days" },
+              { label: "First call", value: "30 minutes, no deck" },
+            ].map((f) => (
+              <div key={f.label} className="bg-[#181F4F] p-4">
+                <dt className="font-mono text-[10px] uppercase tracking-[0.14em] text-white/45">{f.label}</dt>
+                <dd className="mt-1.5 text-sm font-semibold">
+                  {f.href ? (
+                    <a href={f.href} className="text-[#F85C70] hover:underline" data-testid="text-email-hello">
+                      {f.value}
+                    </a>
+                  ) : (
+                    f.value
+                  )}
+                </dd>
               </div>
-              <div>
-                <Eyebrow tone="subtle" className="mb-1">Email</Eyebrow>
-                <a
-                  href="mailto:london@bmkrs.com"
-                  className="font-sans text-sm text-[#F85C70] transition-colors duration-200 hover:underline"
-                  data-testid="text-email-london"
-                >
-                  london@bmkrs.com
-                </a>
-              </div>
-              <div>
-                <Eyebrow tone="subtle" className="mb-1">Hours</Eyebrow>
-                <Text variant="small" tone="muted">Monday to Friday, 09:00 to 18:00 GMT</Text>
-              </div>
-            </Stack>
-          </BorderCell>
-
-          <BorderCell className="border-[#C8C4D8] p-10">
-            <Stack direction="row" gap="sm" align="center" className="mb-6">
-              <MapPin className="h-4 w-4 text-[#60266A]" aria-hidden="true" />
-              <Eyebrow tone="subtle">Porto, Portugal</Eyebrow>
-            </Stack>
-            <Text variant="h2" className="mb-2 text-3xl">Porto</Text>
-            <Text variant="small" tone="muted" className="mb-6">
-              Our European technology and delivery hub. Home to our tech build capability and the bmkrs Teams
-              Stable Teams practice.
-            </Text>
-            <Stack gap="sm">
-              <div>
-                <Eyebrow tone="subtle" className="mb-1">Email</Eyebrow>
-                <a
-                  href="mailto:porto@bmkrs.com"
-                  className="font-sans text-sm text-[#60266A] transition-colors duration-200 hover:underline"
-                  data-testid="text-email-porto"
-                >
-                  porto@bmkrs.com
-                </a>
-              </div>
-              <div>
-                <Eyebrow tone="subtle" className="mb-1">Hours</Eyebrow>
-                <Text variant="small" tone="muted">Monday to Friday, 09:00 to 18:00 WET</Text>
-              </div>
-            </Stack>
-          </BorderCell>
-        </BorderGrid>
-      </Section>
+            ))}
+          </dl>
+        </div>
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="bmk-ruler" aria-hidden />
+        </div>
+      </section>
 
       <Section tone="transparent" padding="lg" id="contact-form" className="bg-[#FAFAF9]">
         <Grid cols="5-hero" gap="xl">
           <div className="lg:col-span-3">
             <Eyebrow tone="subtle" className="mb-4">Send a Message</Eyebrow>
             <Text variant="h2" tone="ink" className="mb-6">
-              Tell us what you are working on
+              Tell us what you&apos;re working on
             </Text>
             <Text variant="body" tone="muted" className="mb-10">
-              Send a short brief and we will respond within two working days. If your problem is one of the three named engagements (Squad Blueprint, The Forge, Delivery Compass) we will say so up front. If it is something different, we will tell you whether we are the right partnership for it, and if we are not, we will point you towards someone better suited. The first conversation is a thirty-minute call, no obligation. We will share examples of recent comparable work, talk through how we would approach the engagement, and confirm scope, timing, and the team we would put on it before any commercial conversation.
+              A few lines is plenty. What you want to make, roughly when, and anything that&apos;s keeping you up at night. We&apos;ll reply within two working days, and if we&apos;re not the right people we&apos;ll tell you who is.
             </Text>
 
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">

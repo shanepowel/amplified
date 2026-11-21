@@ -20,7 +20,7 @@ export interface PageHeroProps {
 
 /**
  * Standard navy marketing hero.
- * Compact by default: eyebrow, title, optional lead, CTA slot — no full-viewport height.
+ * Compact by default: eyebrow, title, optional lead, CTA slot, no full-viewport height.
  */
 export function PageHero({
   eyebrow,

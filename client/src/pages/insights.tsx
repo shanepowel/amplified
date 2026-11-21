@@ -120,17 +120,16 @@ export default function Insights({ onOpenConsultation }: InsightsProps) {
             <div>
               <Eyebrow className="mb-3">Insights</Eyebrow>
               <Text variant="h1" tone="white" data-testid="text-insights-page-title">
-                Practical thinking for delivery-led organisations
+                Notes from the studio
               </Text>
             </div>
             <Stack gap="md">
               <Text variant="body" tone="white-70">
-                Research, frameworks, and analysis from practitioners who have operated inside
-                infrastructure, energy, financial services, public sector, and technology organisations.
-                Written for delivery directors, CIOs, and digital leads.
+                What we&apos;re learning while we make brands, products and AI, for us and for clients.
+                Practical, short where it can be, and written in plain English.
               </Text>
               <div className="flex flex-wrap gap-3">
-                {["AI Governance", "Structured Delivery", "Capability Building", "Tech Build"].map((tag) => (
+                {["AI", "Tokenomics", "Products", "Brand"].map((tag) => (
                   <span
                     key={tag}
                     className="rounded border border-white/20 px-3 py-1.5 font-mono text-xs uppercase tracking-[0.1em] text-white/55"
@@ -212,7 +211,7 @@ export default function Insights({ onOpenConsultation }: InsightsProps) {
                 <Stack gap="lg" className="mb-20">
                   <Stack gap="xs">
                     <Eyebrow tone="subtle">Featured</Eyebrow>
-                    <Text variant="h2" data-testid="text-featured-insights">Latest Research</Text>
+                    <Text variant="h2" data-testid="text-featured-insights">Latest notes</Text>
                   </Stack>
 
                   <Grid cols="2-lg" gap="lg">
@@ -293,7 +292,7 @@ export default function Insights({ onOpenConsultation }: InsightsProps) {
                 <Stack gap="lg" className="mb-20">
                   <Stack gap="xs">
                     <Eyebrow tone="subtle">All Insights</Eyebrow>
-                    <Text variant="h2" data-testid="text-all-insights">Research and Resources</Text>
+                    <Text variant="h2" data-testid="text-all-insights">All notes</Text>
                   </Stack>
 
                   <BorderGrid cols={3}>
@@ -367,8 +366,7 @@ export default function Insights({ onOpenConsultation }: InsightsProps) {
               <Eyebrow tone="subtle" className="mb-4">Stay Current</Eyebrow>
               <Text variant="h2" className="mb-4">Get insights direct to your inbox</Text>
               <Text variant="small" tone="muted" className="mb-8">
-                New research, frameworks, and analysis sent to delivery directors, CIOs, and digital leads
-                across infrastructure, energy, financial services, public and private sector.
+                New notes on brands, products and AI, sent when we have something worth saying.
               </Text>
               <AmpButton
                 variant="navy"
@@ -384,8 +382,8 @@ export default function Insights({ onOpenConsultation }: InsightsProps) {
               <Eyebrow tone="subtle" className="mb-4">Work With Us</Eyebrow>
               <Text variant="h2" className="mb-4">Need a straight answer?</Text>
               <Text variant="small" tone="muted" className="mb-8">
-                Whether you are starting an AI governance programme or rethinking a delivery model, we will give
-                you an honest view of where to begin. No slide decks in the first meeting.
+                Whether it&apos;s a new product, an AI build or an AI bill that needs taming, we&apos;ll give
+                you an honest view of where to start. No slide decks in the first meeting.
               </Text>
               <AmpButton
                 variant="outlineDark"

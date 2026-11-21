@@ -122,7 +122,7 @@ export default function AskAmplified({ engagementSlug, engagementName }: Props) 
               <div className="space-y-3">
                 <Text variant="small" tone="muted">
                   Grounded answers from the engagement page, our manifesto, and our case studies.
-                  No sales pitch — if it isn&apos;t a fit, we&apos;ll say so.
+                  No sales pitch. If it isn&apos;t a fit, we&apos;ll say so.
                 </Text>
                 <div className="space-y-2">
                   {STARTER_QUESTIONS.map((q) => (
@@ -202,7 +202,7 @@ export default function AskAmplified({ engagementSlug, engagementName }: Props) 
                 type="text"
                 value={question}
                 onChange={(e) => setQuestion(e.target.value)}
-                placeholder="Ask about fit, scope, timeline…"
+                placeholder="Ask about AI, products, brand, costs…"
                 className="amp-focus-ring-on-navy h-10 flex-1 rounded border border-[#E5E3EE] px-3 font-sans text-sm text-[#181F4F]"
                 disabled={loading}
                 data-testid="input-ask-amplified-question"

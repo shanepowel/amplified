@@ -38,7 +38,7 @@ export function FloatingCTA({ onOpenConsultation }: FloatingCTAProps) {
           <Stack gap="sm">
             <div className="flex items-center justify-between">
               <Text variant="small" className="font-medium">
-                Ready to get bmkrs?
+                Got an idea?
               </Text>
               <button
                 onClick={() => setIsExpanded(false)}
@@ -60,10 +60,10 @@ export function FloatingCTA({ onOpenConsultation }: FloatingCTAProps) {
               data-testid="floating-cta-book-call"
             >
               <Calendar className="h-4 w-4" />
-              Book Discovery Call
+              Book a 30-minute call
             </AmpButton>
             <Text variant="caption" tone="subtle" className="text-center">
-              Response within 2 hours
+              We reply within two working days
             </Text>
           </Stack>
         </Surface>
