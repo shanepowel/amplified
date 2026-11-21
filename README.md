@@ -148,3 +148,19 @@ sections stay aligned when copy lengths differ.
 Copy is written in UK English with no em dashes. Engagement pricing is never a
 published figure — it renders as "Scoped to engagement, discussed during
 initial conversation."
+
+## Content (Sanity)
+
+All inner pages (services, AI, who we work with, company, work) and insights can be edited in Sanity at `/studio`.
+Until Sanity is configured the site shows the bundled copy in `client/src/content/`, which is also what gets seeded.
+
+1. Create a Sanity project and dataset (`production`), and add `https://<your-domain>` and the Vercel preview domain as CORS origins.
+2. Set these in Vercel (and `.env.local`):
+   - `NEXT_PUBLIC_SANITY_PROJECT_ID`
+   - `NEXT_PUBLIC_SANITY_DATASET` (defaults to `production`)
+   - `SANITY_API_READ_TOKEN` (only needed for a private dataset)
+3. Load the current content: `SANITY_API_WRITE_TOKEN=... npm run seed:sanity`
+   Add `-- --remove-legacy` to delete old Amplified engagement and case-study documents.
+4. Pages refresh from Sanity within 60 seconds of publishing.
+
+Optional: `NEXT_PUBLIC_BOOKING_URL` (a Calendly or Google appointments link) makes "Book a call" open a booking page; without it, it opens the enquiry form.

@@ -2,14 +2,13 @@
 
 import Link from "next/link";
 import Image, { type StaticImageData } from "next/image";
-import { useState } from "react";
-import { ArrowRight, ArrowUpRight, Plus, Minus } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { useReveal } from "@/hooks/use-intersection-observer";
 import { useConsultation } from "@/lib/consultation-context";
 import { AmpButton, Container, Eyebrow, PageShell, Text } from "@/components/system";
 import type { BmkBlock, BmkImageKey, BmkPageContent } from "@/content/bmk-types";
-import { bmkPages } from "@/content/bmk-pages";
 import { Corners, FigLabel, SectionHead, SnapLine, revealStyle } from "./primitives";
+import { BmkCard, BmkFaq, SpecTags } from "./ui";
 
 import imgVr from "@assets/56_1760470571209.webp";
 import imgMegaphone from "@assets/36_1760470798015.webp";
@@ -166,18 +165,7 @@ function GridBlock({ block, alt }: { block: Extract<BmkBlock, { type: "grid" }>;
                 <Text variant="small" tone="white-70" className="mt-3 flex-1">
                   {item.body}
                 </Text>
-                {item.tags && (
-                  <div className="mt-6 flex flex-wrap gap-2">
-                    {item.tags.map((t) => (
-                      <span
-                        key={t}
-                        className="border border-white/15 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.12em] text-white/60"
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                )}
+                <SpecTags tags={item.tags} className="mt-6" />
                 {item.href && (
                   <span className="mt-6 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.12em] text-[#F85C70] transition-all group-hover:gap-3">
                     Find out more {item.external ? <ArrowUpRight className="h-3.5 w-3.5" /> : <ArrowRight className="h-3 w-3" />}
@@ -320,12 +308,8 @@ function CalloutBlock({ block }: { block: Extract<BmkBlock, { type: "callout" }>
   return (
     <section className="border-t border-white/10 py-14 lg:py-16">
       <Container>
-        <SmartLink
-          href={block.href}
-          external={block.external}
-          className="bmk-tile group relative flex flex-col gap-6 overflow-hidden border-[#F85C70]/40 p-8 lg:flex-row lg:items-center lg:justify-between lg:p-12"
-        >
-          <Corners />
+        <SmartLink href={block.href} external={block.external} className="group block">
+          <BmkCard className="flex flex-col gap-6 overflow-hidden border-[#F85C70]/40 p-8 lg:flex-row lg:items-center lg:justify-between lg:p-12">
           <div
             aria-hidden
             className="pointer-events-none absolute inset-0 opacity-60"
@@ -343,6 +327,7 @@ function CalloutBlock({ block }: { block: Extract<BmkBlock, { type: "callout" }>
           <span className="relative inline-flex shrink-0 items-center gap-2 font-mono text-xs uppercase tracking-[0.12em] text-[#F85C70] transition-all group-hover:gap-3">
             {block.linkLabel} {block.external ? <ArrowUpRight className="h-4 w-4" /> : <ArrowRight className="h-4 w-4" />}
           </span>
+          </BmkCard>
         </SmartLink>
       </Container>
     </section>
@@ -362,38 +347,11 @@ function StatementBlock({ block }: { block: Extract<BmkBlock, { type: "statement
 }
 
 function FaqBlock({ block, alt }: { block: Extract<BmkBlock, { type: "faq" }>; alt: boolean }) {
-  const [open, setOpen] = useState<number | null>(0);
   return (
     <section className={`border-t border-white/10 py-20 lg:py-24 ${alt ? "bg-[#141a44]" : ""}`}>
       <Container>
         <SectionHead code={block.code} eyebrow="Questions" title={block.title} />
-        <div className="max-w-4xl border-t border-white/10">
-          {block.items.map((f, i) => {
-            const isOpen = open === i;
-            return (
-              <div key={f.q} className="border-b border-white/10">
-                <button
-                  type="button"
-                  aria-expanded={isOpen}
-                  onClick={() => setOpen(isOpen ? null : i)}
-                  className="flex w-full items-center justify-between gap-6 py-6 text-left"
-                >
-                  <span className="text-lg font-semibold text-white">{f.q}</span>
-                  {isOpen ? (
-                    <Minus className="h-5 w-5 shrink-0 text-[#F85C70]" />
-                  ) : (
-                    <Plus className="h-5 w-5 shrink-0 text-[#F85C70]" />
-                  )}
-                </button>
-                {isOpen && (
-                  <Text variant="body" tone="white-75" className="pb-7 pr-10">
-                    {f.a}
-                  </Text>
-                )}
-              </div>
-            );
-          })}
-        </div>
+        <BmkFaq items={block.items} />
       </Container>
     </section>
   );
@@ -406,8 +364,8 @@ function LinksBlock({ block, alt }: { block: Extract<BmkBlock, { type: "links" }
         <SectionHead code={block.code} eyebrow={block.eyebrow} title={block.title} />
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {block.items.map((l) => (
-            <SmartLink key={l.href + l.label} href={l.href} external={l.external} className="bmk-tile group relative block p-7">
-              <Corners />
+            <SmartLink key={l.href + l.label} href={l.href} external={l.external} className="group block">
+              <BmkCard className="h-full p-7">
               <div className="flex items-center justify-between">
                 <h3 className="font-display text-xl font-bold [font-stretch:108%]">{l.label}</h3>
                 {l.external ? (
@@ -419,6 +377,7 @@ function LinksBlock({ block, alt }: { block: Extract<BmkBlock, { type: "links" }
               <Text variant="small" tone="white-70" className="mt-2">
                 {l.desc}
               </Text>
+              </BmkCard>
             </SmartLink>
           ))}
         </div>
@@ -502,11 +461,4 @@ export function BmkPage({ page }: { page: BmkPageContent }) {
       </div>
     </PageShell>
   );
-}
-
-/** Client entry used by app routes: look the page up by id. */
-export function BmkRoute({ id }: { id: string }) {
-  const page = bmkPages[id];
-  if (!page) return null;
-  return <BmkPage page={page} />;
 }

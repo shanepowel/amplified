@@ -344,10 +344,10 @@ export const companyPages: Record<string, BmkPageContent> = {
         title: "Selected programmes.",
         footnote: "Programmes led by members of the bmkrs team in previous roles.",
         items: [
-          { title: "Direct Wines", body: "Customer website replatformed onto React and Node across several agencies.", meta: "Faster checkout, 20% more sales" },
-          { title: "Ovo Energy", body: "A new payments platform with a better customer experience.", meta: "£250k a year saved, 38% fewer errors" },
-          { title: "Persimmon Homes", body: "Photoreal AI that lets buyers place catalogue furniture into any room.", meta: "AI in the sales journey" },
-          { title: "JCDecaux", body: "A new advertising platform built end to end and wired into Google analytics.", meta: "Full lifecycle" },
+          { title: "Online wine retailer", body: "Customer website replatformed onto React and Node across several agencies.", meta: "Faster checkout, 20% more sales" },
+          { title: "UK energy supplier", body: "A new payments platform with a better customer experience.", meta: "£250k a year saved, 38% fewer errors" },
+          { title: "National housebuilder", body: "Photoreal AI that lets buyers place catalogue furniture into any room.", meta: "AI in the sales journey" },
+          { title: "Global outdoor advertising group", body: "A new advertising platform built end to end and wired into Google analytics.", meta: "Full lifecycle" },
         ],
       },
     ],
@@ -358,7 +358,7 @@ export const companyPages: Record<string, BmkPageContent> = {
     path: "/case-studies",
     metaTitle: "Track record | bmkrs",
     metaDescription:
-      "Programmes led by members of the bmkrs team: Direct Wines, Ovo Energy, Persimmon Homes, JCDecaux, Community Fibre and more.",
+      "Programmes led by members of the bmkrs team for retailers, energy suppliers, housebuilders, media groups and more.",
     hero: {
       code: "BMK / RECORD",
       eyebrow: "Track record",
@@ -377,12 +377,12 @@ export const companyPages: Record<string, BmkPageContent> = {
         title: "Results, not slideware.",
         footnote: "Programmes led by members of the bmkrs team in previous roles.",
         items: [
-          { title: "Direct Wines", body: "Customer-facing website replatformed onto React and Node, with several agencies, pricing and technical decisions to manage.", meta: "Faster checkout, 20% more sales" },
-          { title: "Ovo Energy", body: "A new payments platform with a better customer experience and fewer things going wrong.", meta: "£250k a year saved, 38% fewer errors" },
-          { title: "Persimmon Homes", body: "A photoreal AI platform letting buyers place catalogue furniture into any room.", meta: "AI in the sales journey" },
-          { title: "JCDecaux", body: "A new advertising platform built end to end and integrated with Google's analytics tools.", meta: "Full lifecycle, one team" },
-          { title: "Community Fibre", body: "Customer portal delivered by four scrum teams across two locations.", meta: "4 teams, 1 plan" },
-          { title: "University of Sussex", body: "Programme-level migration from on-premise systems to the cloud.", meta: "Cloud migration" },
+          { title: "Online wine retailer", body: "Customer-facing website replatformed onto React and Node, with several agencies, pricing and technical decisions to manage.", meta: "Faster checkout, 20% more sales" },
+          { title: "UK energy supplier", body: "A new payments platform with a better customer experience and fewer things going wrong.", meta: "£250k a year saved, 38% fewer errors" },
+          { title: "National housebuilder", body: "A photoreal AI platform letting buyers place catalogue furniture into any room.", meta: "AI in the sales journey" },
+          { title: "Global outdoor advertising group", body: "A new advertising platform built end to end and integrated with Google's analytics tools.", meta: "Full lifecycle, one team" },
+          { title: "London broadband provider", body: "Customer portal delivered by four scrum teams across two locations.", meta: "4 teams, 1 plan" },
+          { title: "UK university", body: "Programme-level migration from on-premise systems to the cloud.", meta: "Cloud migration" },
         ],
       },
       {

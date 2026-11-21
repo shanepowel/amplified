@@ -40,10 +40,14 @@ interface ContactProps {
 const fieldBase =
   "w-full rounded border-0 border-b-2 border-[#DDD9EA] bg-transparent px-4 py-3 font-sans text-sm text-[#181F4F] transition-colors duration-200 focus:outline-none focus:ring-0";
 
-const Contact = memo(function Contact({ onOpenConsultation: _onOpenConsultation }: ContactProps) {
+/** Optional booking page (e.g. Calendly or Google appointments). When unset, "book a call" opens the enquiry form. */
+const BOOKING_URL = process.env.NEXT_PUBLIC_BOOKING_URL || "";
+
+const Contact = memo(function Contact({ onOpenConsultation }: ContactProps) {
   const { toast } = useToast();
   const queryClient = useQueryClient();
   const [showCalendar, setShowCalendar] = useState(false);
+  const bookCall = () => (BOOKING_URL ? setShowCalendar(true) : onOpenConsultation("discovery"));
 
   const form = useForm<InsertConsultationRequest>({
     resolver: zodResolver(insertConsultationRequestSchema),
@@ -118,7 +122,7 @@ const Contact = memo(function Contact({ onOpenConsultation: _onOpenConsultation 
             A brand, a product, an AI build or a bill that needs taming. Tell us what you&apos;re working on and you&apos;ll get a straight answer, and a rough price, on the first call.
           </p>
           <div className="mt-9 flex flex-col gap-4 sm:flex-row">
-            <AmpButton size="md" onClick={() => setShowCalendar(true)} data-testid="button-book-call">
+            <AmpButton size="md" onClick={bookCall} data-testid="button-book-call">
               <Calendar className="h-4 w-4" />
               Book a 30-minute call
             </AmpButton>
@@ -306,42 +310,40 @@ const Contact = memo(function Contact({ onOpenConsultation: _onOpenConsultation 
 
           <div className="space-y-0 border-l border-[#E5E3EE] lg:col-span-2">
             <div className="border-b border-[#E5E3EE] pb-10 pl-10">
-              <Eyebrow tone="subtle" className="mb-4">Prefer a Call?</Eyebrow>
-              <Text variant="h3" className="mb-4">Book a Discovery Call</Text>
+              <Eyebrow tone="subtle" className="mb-4">Prefer a call?</Eyebrow>
+              <Text variant="h3" className="mb-4">Talk it through</Text>
               <Text variant="small" tone="muted" className="mb-6">
-                Schedule a 30-minute conversation. We will give you an honest view of whether and how
-                we can help. No commitment required.
+                Thirty minutes, no deck. An honest view of whether and how we can help, and a rough price.
               </Text>
               <button
                 type="button"
-                onClick={() => setShowCalendar(true)}
+                onClick={bookCall}
                 className="amp-focus-ring-on-light inline-flex items-center gap-2 rounded text-sm font-semibold text-[#F85C70] transition-all duration-200 hover:gap-3"
                 data-testid="button-book-call-sidebar"
               >
                 <Calendar className="h-4 w-4" />
-                Book with Steph <ArrowRight className="h-3 w-3" />
+                Book a 30-minute call <ArrowRight className="h-3 w-3" />
               </button>
             </div>
 
             <div className="border-b border-[#E5E3EE] py-10 pl-10">
-              <Eyebrow tone="subtle" className="mb-4">General Enquiries</Eyebrow>
+              <Eyebrow tone="subtle" className="mb-4">General enquiries</Eyebrow>
               <Text variant="small" tone="muted" className="mb-4">
-                For general enquiries not covered by the form, reach the partnership directly.
+                Anything the form doesn't cover, just email us.
               </Text>
               <a
-                href="mailto:hi@bmkrs.com"
+                href="mailto:hello@bmkrs.com"
                 className="inline-flex items-center gap-2 text-sm font-semibold text-[#F85C70] transition-all duration-200 hover:gap-3"
               >
                 <Mail className="h-4 w-4" />
-                hi@bmkrs.com <ArrowRight className="h-3 w-3" />
+                hello@bmkrs.com <ArrowRight className="h-3 w-3" />
               </a>
             </div>
 
             <div className="border-b border-[#E5E3EE] py-10 pl-10">
               <Eyebrow tone="subtle" className="mb-4">Careers</Eyebrow>
               <Text variant="small" tone="muted" className="mb-4">
-                Interested in joining the partnership or working with bmkrs Teams?
-                View open roles or send us a speculative application.
+                Like making things? Send us a link to something you&apos;ve built and a couple of lines about you.
               </Text>
               <a
                 href="mailto:careers@bmkrs.com"
@@ -355,7 +357,7 @@ const Contact = memo(function Contact({ onOpenConsultation: _onOpenConsultation 
             <div className="pl-10 pt-10">
               <Eyebrow tone="subtle" className="mb-4">Partnerships</Eyebrow>
               <Text variant="small" tone="muted" className="mb-4">
-                Working on something that could benefit from the bmkrs ecosystem? Let's explore it.
+                Building something we could make better together? Let&apos;s talk.
               </Text>
               <a
                 href="mailto:partnerships@bmkrs.com"
@@ -371,28 +373,28 @@ const Contact = memo(function Contact({ onOpenConsultation: _onOpenConsultation 
 
       <CtaBand
         className="border-t border-[#0d1230]"
-        eyebrow="Two Offices. One Partnership."
-        title="London and Porto"
-        lead="Regulated-industry expertise from the UK. European technology and delivery capability from Porto."
+        eyebrow="Small team. Senior people."
+        title="UK based, working wherever the work is"
+        lead="Brands, digital products and practical AI, made by the people you actually talk to."
       />
 
-      <Dialog open={showCalendar} onOpenChange={setShowCalendar}>
+      <Dialog open={Boolean(BOOKING_URL) && showCalendar} onOpenChange={setShowCalendar}>
         <DialogContent className="max-h-[90vh] max-w-4xl overflow-auto">
           <DialogHeader>
             <DialogTitle className="font-display text-2xl font-normal text-[#181F4F]">
-              Book a Discovery Call
+              Book a call
             </DialogTitle>
             <DialogDescription className="font-sans text-sm text-[#65677B]">
-              A 30-minute conversation to understand your challenge and see whether and how we can help. No commitment required.
+              Thirty minutes to talk through what you want to make. No deck, no commitment.
             </DialogDescription>
           </DialogHeader>
           <div className="mt-4">
             <iframe
-              src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3CMapE9CB2QKRCvEK7vVKRfUN_L61PDJPMo_v2mQOw-DsnvwYUC-fjt5_RVHLYKU5cbz3P2bhV?gv=true"
+              src={BOOKING_URL}
               width="100%"
               height="800"
               frameBorder="0"
-              title="Book a discovery call with Steph"
+              title="Book a call with bmkrs"
               aria-label="Google Calendar scheduler"
               data-testid="iframe-google-calendar"
             />

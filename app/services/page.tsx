@@ -1,8 +1,15 @@
-import { bmkMetadata } from '../../client/src/content/bmk-pages';
-import { BmkRoute } from '../../client/src/components/bmk/bmk-page';
+import { notFound } from 'next/navigation';
+import { getBmkMetadata, getBmkPage } from '../../lib/content/bmk-pages';
+import { BmkPage } from '../../client/src/components/bmk/bmk-page';
 
-export const metadata = bmkMetadata('services');
+export const revalidate = 60;
 
-export default function Page() {
-  return <BmkRoute id="services" />;
+export function generateMetadata() {
+  return getBmkMetadata('services');
+}
+
+export default async function Page() {
+  const page = await getBmkPage('services');
+  if (!page) notFound();
+  return <BmkPage page={page} />;
 }

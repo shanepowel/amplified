@@ -1,16 +1,36 @@
 import type { StructureResolver } from 'sanity/structure';
 
-// Custom desk structure: site settings is a singleton, the rest are lists.
+// Pages first (grouped by site section), then insights.
+const groups: { title: string; prefix: string }[] = [
+  { title: 'What we do', prefix: '/services' },
+  { title: 'AI', prefix: '/ai' },
+  { title: 'Who we work with', prefix: '/for' },
+];
+
 export const structure: StructureResolver = (S) =>
   S.list()
-    .title('Content')
+    .title('bmkrs content')
     .items([
+      ...groups.map((g) =>
+        S.listItem()
+          .title(g.title)
+          .child(
+            S.documentList()
+              .title(g.title)
+              .schemaType('bmkPage')
+              .filter('_type == "bmkPage" && path match $p')
+              .params({ p: `${g.prefix}*` }),
+          ),
+      ),
       S.listItem()
-        .title('Site settings')
-        .id('siteSettings')
-        .child(S.document().schemaType('siteSettings').documentId('siteSettings')),
+        .title('Company and work')
+        .child(
+          S.documentList()
+            .title('Company and work')
+            .schemaType('bmkPage')
+            .filter('_type == "bmkPage" && !(path match "/services*") && !(path match "/ai*") && !(path match "/for*")'),
+        ),
       S.divider(),
-      S.documentTypeListItem('insight').title('Insights / Articles'),
-      S.documentTypeListItem('engagement').title('Engagements'),
-      S.documentTypeListItem('caseStudy').title('Case studies'),
+      S.documentTypeListItem('bmkPage').title('All pages'),
+      S.documentTypeListItem('insight').title('Insights'),
     ]);

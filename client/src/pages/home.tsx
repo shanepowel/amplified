@@ -1,12 +1,13 @@
 'use client';
 
-import { memo, type ReactNode } from "react";
+import { memo } from "react";
 import Link from "next/link";
 import Image, { type StaticImageData } from "next/image";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { useReveal } from "@/hooks/use-intersection-observer";
-import type { Engagement } from "@/lib/engagements";
 import { AmpButton, Container, Eyebrow, PageShell, Text } from "@/components/system";
+import { SpecTags, BmkCard } from "@/components/bmk/ui";
+import { Corners, SectionHead, SnapLine, revealStyle } from "@/components/bmk/primitives";
 
 import imgVr from "@assets/56_1760470571209.webp";
 import imgMegaphone from "@assets/36_1760470798015.webp";
@@ -17,8 +18,6 @@ import imgPortrait from "@assets/59_1760471391711.webp";
 
 interface HomeProps {
   onOpenConsultation: (serviceType?: string) => void;
-  /** Kept for API compatibility with the page loader. Not rendered on the bmkrs home. */
-  engagements?: Engagement[];
 }
 
 /* ------------------------------------------------------------------ */
@@ -90,10 +89,10 @@ const capabilities = [
 ];
 
 const trackRecord = [
-  { client: "Direct Wines", what: "Customer website rebuilt on React and Node across several agencies.", result: "Faster checkout, 20% more sales" },
-  { client: "Ovo Energy", what: "A new payments platform with a better customer experience.", result: "£250k a year saved, 38% fewer payment errors" },
-  { client: "Persimmon Homes", what: "Photoreal AI that lets buyers place catalogue furniture into any room.", result: "AI in the sales journey" },
-  { client: "JCDecaux", what: "A new advertising platform built end to end and wired into Google analytics.", result: "Full lifecycle, one team" },
+  { client: "Online wine retailer", what: "Customer website rebuilt on React and Node across several agencies.", result: "Faster checkout, 20% more sales" },
+  { client: "UK energy supplier", what: "A new payments platform with a better customer experience.", result: "£250k a year saved, 38% fewer payment errors" },
+  { client: "National housebuilder", what: "Photoreal AI that lets buyers place catalogue furniture into any room.", result: "AI in the sales journey" },
+  { client: "Global outdoor advertising group", what: "A new advertising platform built end to end and wired into Google analytics.", result: "Full lifecycle, one team" },
 ];
 
 const method = [
@@ -105,67 +104,6 @@ const method = [
 
 /* ------------------------------------------------------------------ */
 /* Small building blocks                                               */
-/* ------------------------------------------------------------------ */
-
-function SnapLine({ className = "" }: { className?: string }) {
-  const [ref, visible] = useReveal(0.4);
-  return <div ref={ref} aria-hidden className={`bmk-snap ${visible ? "is-snapped" : ""} ${className}`} />;
-}
-
-function SectionHead({
-  code,
-  eyebrow,
-  title,
-  lead,
-  action,
-}: {
-  code: string;
-  eyebrow: string;
-  title: ReactNode;
-  lead?: string;
-  action?: ReactNode;
-}) {
-  return (
-    <div className="mb-12 lg:mb-16">
-      <div className="mb-8 flex items-center gap-4">
-        <span className="font-mono text-xs tracking-[0.12em] text-white/40">{code}</span>
-        <SnapLine className="flex-1" />
-      </div>
-      <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-        <div className="max-w-3xl">
-          <Eyebrow className="mb-4">{eyebrow}</Eyebrow>
-          <Text variant="h2" tone="white" className="text-3xl md:text-4xl lg:text-5xl">
-            {title}
-          </Text>
-          {lead && (
-            <Text variant="lead" tone="white-70" className="mt-5 max-w-2xl">
-              {lead}
-            </Text>
-          )}
-        </div>
-        {action}
-      </div>
-    </div>
-  );
-}
-
-function Corners() {
-  return (
-    <>
-      <span aria-hidden className="bmk-corner tl" />
-      <span aria-hidden className="bmk-corner br" />
-    </>
-  );
-}
-
-function revealStyle(visible: boolean, delay = 0) {
-  return {
-    opacity: visible ? 1 : 0,
-    transform: visible ? "translateY(0)" : "translateY(18px)",
-    transition: `opacity 0.6s ease ${delay}s, transform 0.6s ease ${delay}s`,
-  };
-}
-
 /* ------------------------------------------------------------------ */
 /* Page                                                                */
 /* ------------------------------------------------------------------ */
@@ -262,11 +200,10 @@ const Home = memo(function Home({ onOpenConsultation }: HomeProps) {
             <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
               {ownProducts.map((p, i) => {
                 const inner = (
-                  <div
-                    className="bmk-tile flex h-full flex-col p-7 lg:p-8"
+                  <BmkCard
+                    className="flex h-full flex-col p-7 lg:p-8"
                     style={revealStyle(madeVisible, i * 0.08)}
                   >
-                    <Corners />
                     <div className="mb-10 flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.14em]">
                       <span className="text-[#F85C70]">{p.code}</span>
                       <span className="text-white/45">{p.kind}</span>
@@ -286,7 +223,7 @@ const Home = memo(function Home({ onOpenConsultation }: HomeProps) {
                         <>Rebuild in progress</>
                       )}
                     </span>
-                  </div>
+                  </BmkCard>
                 );
                 return p.href ? (
                   <a key={p.name} href={p.href} target="_blank" rel="noopener noreferrer" className="group block">
@@ -313,12 +250,11 @@ const Home = memo(function Home({ onOpenConsultation }: HomeProps) {
             />
             <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
               {offers.map((o, i) => (
-                <article
+                <BmkCard
                   key={o.code}
-                  className="bmk-tile group flex flex-col p-8 lg:p-10"
+                  className="flex flex-col p-8 lg:p-10"
                   style={revealStyle(offersVisible, i * 0.08)}
                 >
-                  <Corners />
                   <div className="mb-8 flex items-baseline justify-between font-mono text-[11px] uppercase tracking-[0.14em]">
                     <span className="text-white/45">{o.code}</span>
                     <span className="text-[#F85C70]">{o.duration}</span>
@@ -347,7 +283,7 @@ const Home = memo(function Home({ onOpenConsultation }: HomeProps) {
                   >
                     Start a {o.name} <ArrowRight className="h-4 w-4" />
                   </button>
-                </article>
+                </BmkCard>
               ))}
             </div>
           </Container>
@@ -419,16 +355,7 @@ const Home = memo(function Home({ onOpenConsultation }: HomeProps) {
                   <Text variant="small" tone="white-70" className="mt-3">
                     {c.body}
                   </Text>
-                  <div className="mt-6 flex flex-wrap gap-2">
-                    {c.tags.map((t) => (
-                      <span
-                        key={t}
-                        className="border border-white/15 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.12em] text-white/60"
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
+                  <SpecTags tags={c.tags} className="mt-6" />
                 </div>
               ))}
             </div>

@@ -176,7 +176,7 @@ export const servicesPages: Record<string, BmkPageContent> = {
         eyebrow: "Proof",
         title: "We've rebuilt big sites under pressure.",
         paragraphs: [
-          "Our team led the rebuild of Direct Wines' customer website onto React and Node, across several agencies. Checkout got faster and sales went up by 20%.",
+          "Our team led the rebuild of a leading online wine retailer's customer website onto React and Node, across several agencies. Checkout got faster and sales went up by 20%.",
           "Same approach for you, at whatever size fits: modern stack, clear ownership, measurable results.",
         ],
         listTitle: "You walk away with",
@@ -320,11 +320,11 @@ export const servicesPages: Record<string, BmkPageContent> = {
         title: "Seventeen years of getting big things live.",
         footnote: "Programmes led by members of the bmkrs team in previous roles.",
         items: [
-          { title: "Direct Wines", body: "Customer website replatformed across several agencies, including pricing and technical decisions.", meta: "20% more sales" },
-          { title: "Ovo Energy", body: "New payments platform with a better customer experience.", meta: "£250k a year saved, 38% fewer errors" },
-          { title: "Community Fibre", body: "Customer portal delivered by four scrum teams in two locations.", meta: "4 teams, 1 plan" },
-          { title: "JCDecaux", body: "Advertising platform built end to end and wired into Google analytics.", meta: "Full lifecycle" },
-          { title: "University of Sussex", body: "Programme-level move from on-premise systems to the cloud.", meta: "Cloud migration" },
+          { title: "Online wine retailer", body: "Customer website replatformed across several agencies, including pricing and technical decisions.", meta: "20% more sales" },
+          { title: "UK energy supplier", body: "New payments platform with a better customer experience.", meta: "£250k a year saved, 38% fewer errors" },
+          { title: "London broadband provider", body: "Customer portal delivered by four scrum teams in two locations.", meta: "4 teams, 1 plan" },
+          { title: "Global outdoor advertising group", body: "Advertising platform built end to end and wired into Google analytics.", meta: "Full lifecycle" },
+          { title: "UK university", body: "Programme-level move from on-premise systems to the cloud.", meta: "Cloud migration" },
         ],
       },
       {

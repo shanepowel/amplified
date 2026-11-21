@@ -1,12 +1,5 @@
 import type { SchemaTypeDefinition } from 'sanity';
 import { insight } from './insight';
-import { engagement } from './engagement';
-import { caseStudy } from './caseStudy';
-import { siteSettings } from './siteSettings';
+import { bmkPageTypes } from './bmkPage';
 
-export const schemaTypes: SchemaTypeDefinition[] = [
-  insight,
-  engagement,
-  caseStudy,
-  siteSettings,
-];
+export const schemaTypes: SchemaTypeDefinition[] = [...bmkPageTypes, insight];

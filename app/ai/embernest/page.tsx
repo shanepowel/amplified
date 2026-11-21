@@ -1,8 +1,15 @@
-import { bmkMetadata } from '../../../client/src/content/bmk-pages';
-import { BmkRoute } from '../../../client/src/components/bmk/bmk-page';
+import { notFound } from 'next/navigation';
+import { getBmkMetadata, getBmkPage } from '../../../lib/content/bmk-pages';
+import { BmkPage } from '../../../client/src/components/bmk/bmk-page';
 
-export const metadata = bmkMetadata('ai-embernest');
+export const revalidate = 60;
 
-export default function Page() {
-  return <BmkRoute id="ai-embernest" />;
+export function generateMetadata() {
+  return getBmkMetadata('ai-embernest');
+}
+
+export default async function Page() {
+  const page = await getBmkPage('ai-embernest');
+  if (!page) notFound();
+  return <BmkPage page={page} />;
 }
