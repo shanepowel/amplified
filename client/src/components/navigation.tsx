@@ -153,6 +153,14 @@ const Navigation = memo(function Navigation(_props: NavigationProps) {
   }, [pathname]);
 
   useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpenMenu(null);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+
+  useEffect(() => {
     const handleScroll = () => {
       const y = window.scrollY;
       if (y < 10) setIsVisible(true);
@@ -201,7 +209,10 @@ const Navigation = memo(function Navigation(_props: NavigationProps) {
                   <button
                     type="button"
                     aria-expanded={open}
-                    onClick={() => setOpenMenu(open ? null : menu.id)}
+                    onClick={() => setOpenMenu(menu.id)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Escape") setOpenMenu(null);
+                    }}
                     className={`amp-focus-ring flex items-center gap-1 py-2 font-mono text-[12px] uppercase tracking-[0.12em] transition-colors duration-200 ${
                       active ? "text-[#F85C70]" : "text-white/80 hover:text-white"
                     }`}
