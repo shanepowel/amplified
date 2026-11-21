@@ -43,11 +43,11 @@ const Footer = memo(function Footer() {
             <Eyebrow className="mb-4">Services</Eyebrow>
             <ul className="space-y-2">
               {[
-                { label: "AI Governance", href: "/ai-governance" },
-                { label: "AI Implementation", href: "/ai-implementation" },
-                { label: "Structured Delivery", href: "/structured-delivery" },
-                { label: "Capability Building", href: "/capability" },
-                { label: "Autonomous Organisations", href: "/org-design" },
+                { label: "Brand and identity", href: "/services" },
+                { label: "Websites and platforms", href: "/transformation" },
+                { label: "Digital products", href: "/transformation" },
+                { label: "AI and automation", href: "/ai-implementation" },
+                { label: "Delivery leadership", href: "/structured-delivery" },
               ].map((link) => (
                 <li key={link.label}>
                   <Link href={link.href} className="text-sm text-white/50 transition-colors hover:text-white/90">
